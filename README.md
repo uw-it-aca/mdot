@@ -1,5 +1,5 @@
-SQLSHARE WEB
-============
+MDOT APP
+========
 
 This README documents whatever steps are necessary to get your application up and running.
 
@@ -11,7 +11,7 @@ This README documents whatever steps are necessary to get your application up an
     $ cd yourenv
     $ source bin/activate
     
-**Install Sqlshare Web**  
+**Install Mdot app**  
     
     $ (yourenv) pip install -e git+https://github.com/charlon/mdot/#egg=mdot
 
