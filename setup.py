@@ -17,6 +17,7 @@ setup(
         'django-compressor',
         'django_mobileesp',
         'django-easy-pjax',
+        'django-templatetag-handlebars',
     ],
     license='Apache License, Version 2.0',  # example license
     description='A Django app to ...',
