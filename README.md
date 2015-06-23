@@ -40,6 +40,7 @@ This README documents whatever steps are necessary to get your application up an
         ...
         'compressor',
         'templatetag_handlebars',
+        'easy_pjax',
         'mdot',
     )
     
