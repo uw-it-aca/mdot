@@ -51,6 +51,7 @@ This README documents whatever steps are necessary to get your application up an
                     ...
                     'mdot.context_processors.less_compiled',
                     'mdot.context_processors.google_analytics',
+                    'mdot.context_processors.devtools_bar',
                 ]
             }
         }
