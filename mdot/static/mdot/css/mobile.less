@@ -1,0 +1,44 @@
+/*** breakpoints ***/
+
+@tablet: ~"screen and (min-width: 768px)";
+
+
+/*** less variables ***/
+
+
+
+
+/*** global ***/
+html, body { height: 100%; }
+
+/* wrapper for sticky footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+/*** content ***/
+
+#content { 
+    
+    /* inline media queries */
+    @media @tablet { }
+    
+}
+
+/* sticky footer with fixed height */
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  position: relative;
+  
+  .credit { line-height: 60px; margin: 0; }
+  
+}
+
+/*** developer ***/
+
+#developer { position: absolute; top:10px; right: 10px; text-transform: uppercase; }
