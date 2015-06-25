@@ -36,9 +36,7 @@ This README documents whatever steps are necessary to get your application up an
         'easy_pjax',
         'mdot',
     )
-    
-    'django_mobileesp.middleware.UserAgentDetectionMiddleware',
-    
+
     MIDDLEWARE_CLASSES = (
         ...
         'django_mobileesp.middleware.UserAgentDetectionMiddleware',
