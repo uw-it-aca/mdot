@@ -37,6 +37,13 @@ This README documents whatever steps are necessary to get your application up an
         'mdot',
     )
     
+    'django_mobileesp.middleware.UserAgentDetectionMiddleware',
+    
+    MIDDLEWARE_CLASSES = (
+        ...
+        'django_mobileesp.middleware.UserAgentDetectionMiddleware',
+    )
+
     TEMPLATES = [
         {
             ...
@@ -76,6 +83,9 @@ This README documents whatever steps are necessary to get your application up an
     from django_mobileesp.detector import mobileesp_agent as agent
     
     DETECT_USER_AGENTS = {
+        'is_android': agent.detectAndroid,
+        'is_ios': agent.detectIos,
+        'is_windows_phone': agent.detectWindowsPhone,
         'is_tablet' : agent.detectTierTablet,
         'is_mobile': agent.detectMobileQuick,
     }
