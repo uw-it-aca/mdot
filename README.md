@@ -29,13 +29,6 @@ This README documents whatever steps are necessary to get your application up an
     
 **Update your settings.py**
     
-    from django_mobileesp.detector import mobileesp_agent as agent
-    
-    DETECT_USER_AGENTS = {
-        'is_tablet' : agent.detectTierTablet,
-        'is_mobile': agent.detectMobileQuick,
-    }
-
     INSTALLED_APPS = (
         ...
         'compressor',
@@ -75,6 +68,17 @@ This README documents whatever steps are necessary to get your application up an
     COMPRESS_JS_FILTERS = [
         'compressor.filters.jsmin.JSMinFilter',
     ]
+    
+    # devtools
+    ACA_DEVTOOLS_ENABLED = True
+    
+    # mobileesp
+    from django_mobileesp.detector import mobileesp_agent as agent
+    
+    DETECT_USER_AGENTS = {
+        'is_tablet' : agent.detectTierTablet,
+        'is_mobile': agent.detectMobileQuick,
+    }
 
 **Create your database**
     $ (yourenv) python manage.py syncdb
