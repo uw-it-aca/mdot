@@ -98,16 +98,49 @@
         
         <div id="content">
             
-            <div style="font-weight:bold; color:red;">
-                 {% if request.is_mobile %}You are using a mobile device...  
-                    {% if request.is_ios %}specifically an iPhone!
-                    {% elif request.is_android %}specifically Android!
-                    {% elif request.is_windows_phone %}specifically Windows Phone!{% endif %}
-                {% elif request.is_tablet %}You are using a tablet...  
-                    {% if request.is_ios %}specifically an iPad!
-                    {% elif request.is_android %}specifically Android!
-                    {% elif request.is_windows_phone %}specifically Windows!{% endif %}
-                {% else %}You are using a desktop browser!{%endif %}
+            <div style="font-weight:bold; color:gray;">
+                <h2>Device Info (done)</h2>
+                <ul>
+                    <li>Type: {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}</li>
+                    <li>Device: {% if request.is_ios %}iOS{% elif request.is_android %}Android{% elif request.is_windows_phone %}Windows Mobile{% else %}Web Browser{% endif %}</li>
+                </ul>
+            </div>
+            
+            <div style="font-weight:bold; color:purple;">
+                <h2>User Info</h2>
+                <ul>    
+                    <li>Name: --undefined--</li>
+                    <li>NetID: </li>
+                    <li>School: </li>
+                    <li>Department: </li>
+                    <li>Major: </li>
+                    <li>Class Standing: </li>
+                    <li>Role: [student, staff, faculty]</li>
+                    <li>International?: </li>
+                    <li>A11y?: </li>
+                </ul>
+            </div>
+
+            <div style="font-weight:bold; color:green;">
+                <h2>Mobile Resource Info</h2>
+                <ul>    
+                    <li>Name: </li>
+                    <li>Image: </li>
+                    <li>Short Description: </li>
+                    <li>Feature description: </li>
+                    <li>Part of bundle? [new student, staff essentials, research, etc.]</li>
+                    <li>Web URL:</li>
+                    <li>iTunes URL:</li>
+                    <li>Play URL:</li>
+                    <li>Windows URL:</li>
+                    <li>Role focus: [student, staff, faculty, etc]</li>
+                    <li>School focus:</li>
+                    <li>Major focus:</li>
+                    <li>Class Standing focus:</li>
+                    <li>App Type: [academic, research, third-party?]</li>
+                    <li>Supporting URL:</li>
+                    <li>Date added:</li>
+                </ul>
             </div>
             
             <!-- pjax loading -->
