@@ -1,0 +1,143 @@
+{% extends "mdot/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- carousel -->
+<div class="mdot-carousel">
+    
+    <div id="carousel-example-generic" class="carousel slide">
+      
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active" style="background:red;">
+          
+          <div class="container">
+              <h2>Featured bundle #1</h2>
+              <ul>    
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+              </ul>
+            </div>
+            <div class="carousel-caption sr-only">asd</div>
+          
+        </div>
+        <div class="item" style="background:yellow;">
+            
+            <div class="container">
+              <h2>Featured bundle #2</h2>
+              <ul>    
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+              </ul>
+            </div>
+          <div class="carousel-caption sr-only">sadfasd</div>
+        </div>
+        <div class="item" style="background:green;">
+            
+            <div class="container">
+              <h2>Featured bundle #3</h2>
+              <ul>    
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+              </ul>
+            </div>
+          <div class="carousel-caption sr-only">sadfasd</div>
+        </div>
+      </div>
+    
+      <!-- Controls
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      -->
+      
+    </div>   
+
+</div>
+
+<div class="container">
+    
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+            <h2>Students</h2>
+            <ul>    
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+          <h2>Faculty</h2>
+            <ul>    
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+            </ul>
+       </div>
+        <div class="col-md-4">
+          <h2>Staff</h2>
+            <ul>    
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+                <li>Mobile Resource</li>
+            </ul>
+        </div>
+      </div>
+
+    <hr>         
+      
+    <div id="footer">
+        <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
+    </div>
+      
+</div> <!-- /container -->
+    
+{% endblock %}

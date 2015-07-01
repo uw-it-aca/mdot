@@ -29,5 +29,17 @@ $(function() {
         // Prevent default timeout redirection behavior
         event.preventDefault();
     });
+    
+    $('#carousel-example-generic').carousel({
+      interval: 5000
+    });
 
+    // handle carousel swipe
+    $("#carousel-example-generic").swiperight(function() {  
+        $(this).carousel('prev');  
+    });  
+    $("#carousel-example-generic").swipeleft(function() {  
+        $(this).carousel('next');  
+    });  
+	
 }); 
