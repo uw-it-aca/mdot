@@ -30,16 +30,10 @@ $(function() {
         event.preventDefault();
     });
     
-    $('#carousel-example-generic').carousel({
-      interval: 5000
-    });
+    // carousel 
+    $('.mdot-carousel').slick({        
 
-    // handle carousel swipe
-    $("#carousel-example-generic").swiperight(function() {  
-        $(this).carousel('prev');  
-    });  
-    $("#carousel-example-generic").swipeleft(function() {  
-        $(this).carousel('next');  
-    });  
+    });
+    
 	
 }); 

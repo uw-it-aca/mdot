@@ -39,6 +39,7 @@
             body {
               padding-top: 80px;
               padding-bottom: 20px;
+              overflow-x: hidden;
             }
             
             ul { list-style: none; padding: 0; margin: 0;
@@ -51,18 +52,20 @@
                 h1 { line-height: 80px; margin: 0; color: #111; }
                 .container { position: relative; }
             }
-            .mdot-carousel { background: #ccc;
+            
+            .mdot-carousel { background: #ccc; overflow: hidden;
                 
-                .carousel-inner {
-                    .item { height: 400px; }
-                }
+                div { min-height: 400px; }
+                
             }
 
-
-           
         </style>
         {% endcompress %}
         
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick-theme.css"/>
+
+
         {% if request.is_mobile %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
@@ -138,7 +141,10 @@
             <span class="label label-fold">The fold</span>
         </div>
         {% endif %}
-                
+        
+        
+
+        
         <!-- javascript -->
         {% compress js %}
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
@@ -162,6 +168,8 @@
             ga('send', 'pageview');        
         </script>
         {% endif %}
+        
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
         
     </body>
 </html>
