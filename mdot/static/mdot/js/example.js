@@ -1,6 +1,7 @@
 // document.ready shorthand
 $(function() {
     
+    /*
     // identify what type of hyperlinks are pjax-able
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
@@ -29,11 +30,10 @@ $(function() {
         // Prevent default timeout redirection behavior
         event.preventDefault();
     });
+    */
     
     // carousel 
-    $('.mdot-carousel').slick({        
-
-    });
+    $('.mdot-carousel').slick({ });
     
 	
 }); 
