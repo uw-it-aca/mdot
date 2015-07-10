@@ -53,17 +53,29 @@
                 .container { position: relative; }
             }
             
-            .mdot-carousel { background: #ccc; overflow: hidden;
+            .mdot-feature { background: #ccc; overflow: hidden;
                 
                 div { min-height: 750px; }
                 
                 ul { 
                     li { float: left; width: 48%; display: block; margin-right: 10px; margin-bottom: 10px; 
-                    a { display:block; background: grey; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; }
+                        a { display:block; background: grey; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                            span { color: red; position: absolute; bottom:5px; right:5px; font-size: 11px; }
+                        }
                     }
                     li:nth-child(even) { margin-right: 0; }
                 }
+            }
+            
+            .mdot-bundle {
                 
+                ul {
+                    li {
+                        a {
+                            span { color: red; text-transform: uppercase; font-size: 11px; }
+                        }
+                    }
+                }
             }
 
         </style>

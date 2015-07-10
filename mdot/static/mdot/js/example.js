@@ -33,7 +33,7 @@ $(function() {
     */
     
     // carousel 
-    $('.mdot-carousel').slick({ });
+    $('.mdot-feature').slick({ });
     
 	
 }); 
