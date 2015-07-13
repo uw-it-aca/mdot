@@ -55,8 +55,8 @@
             
             .mdot-feature { background: #ccc; overflow: hidden;
                 
-                div { min-height: 750px; }
-                
+                /*div { min-height: 750px; }*/
+                /*
                 ul { 
                     li { float: left; width: 48%; display: block; margin-right: 10px; margin-bottom: 10px; 
                         a { display:block; background: grey; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
@@ -64,6 +64,13 @@
                         }
                     }
                     li:nth-child(even) { margin-right: 0; }
+                }*/
+                
+                .item { margin-bottom: 1em;
+                    span { font-size: 12px; }
+                    a { display:block; background: grey; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                        span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
+                    }
                 }
             }
             
@@ -123,15 +130,16 @@
     </head>
     <body>
        
-    <nav class="navbar navbar-fixed-top mdot-navbar">
-      <div class="container">
-          <h1>UW BUNDLES</h1>
-          <div style="position:absolute; right:15px; top:0; line-height:80px;">netid</div>
-        </div>
-    </nav>
-
+        <nav class="navbar navbar-fixed-top mdot-navbar">
+          <div class="container">
+              <h1>UW / MOBILE</h1>
+              <div style="position:absolute; right:15px; top:0; line-height:80px;">netid</div>
+            </div>
+        </nav>
+    
         <div id="content">
             {% block content %}{% endblock %}
+            <!-- baskdflkajsflkajsd --->
         </div>            
                         
         {% if devtools_bar %}
