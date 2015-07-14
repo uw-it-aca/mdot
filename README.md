@@ -13,7 +13,7 @@ This README documents whatever steps are necessary to get your application up an
     
 **Install Mdot app**  
     
-    $ (yourenv) pip install -e git+https://github.com/charlon/mdot/#egg=mdot
+    $ (yourenv) pip install -e git+https://github.com/uw-it-aca/mdot/#egg=mdot
 
 **Create an empty Django project**
     
