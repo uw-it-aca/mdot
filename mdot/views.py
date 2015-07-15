@@ -12,3 +12,12 @@ def home(request):
 
 def test(request):
     return render_to_response('mdot/test.html', context_instance=RequestContext(request))
+
+def featured_list(request):
+    return render_to_response('mdot/partials/featured_list.html', context_instance=RequestContext(request))
+    
+def category_list(request):
+    return render_to_response('mdot/partials/category_list.html', context_instance=RequestContext(request))
+
+def topic_list(request):
+    return render_to_response('mdot/partials/topic_list.html', context_instance=RequestContext(request))
