@@ -138,8 +138,7 @@
         </nav>
         
         <div class="container" style="margin-top:10px; position:relative;">
-            <p class="text-muted" style="display:inline-block;">John Average #09873645<br/>Freshman | Major: Undeclared</p>
-            <p class="text-muted" style="position:absolute; right:15px; bottom:0;">New student | International</p>
+            {% include "mdot/partials/user_profile.html" %}
         </div>
         
         <div id="content">
@@ -164,10 +163,7 @@
             <span class="label label-fold">The fold</span>
         </div>
         {% endif %}
-        
-        
-
-        
+                
         <!-- javascript -->
         {% compress js %}
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
@@ -176,7 +172,7 @@
         <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
         <script src="{% static "vendor/js/jquery-mobile-swipe.min.js" %}"></script>
         <!-- app js goes here -->
-        <script src="{% static "mdot/js/example.js" %}"></script>
+        <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
         
         {% if google_analytics %}
