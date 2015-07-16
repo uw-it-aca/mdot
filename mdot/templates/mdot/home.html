@@ -10,7 +10,7 @@
     <div style="background:#9b59b6; color:#fff;">
         <div class="container">
            
-            <h2>FOR YOU</h2>
+            <h2>YOU</h2>
             <p style="color:#222;">featured resources bundled for you... based on combination of role and categories</p>
             
             <div class="row list-group">                      
@@ -28,6 +28,9 @@
     <div style="background: #e74c3c; color:#fff;">
         <div class="container">
           
+          <h2>STUDENTS</h2>
+          <p style="color:#222;">featured resources bundled for you... based on combination of role and categories</p>
+            
           {% include "mdot/partials/featured_list.html" %}
           
         </div>
@@ -36,6 +39,20 @@
     <div style="background: #27ae60; color:#fff;">
         <div class="container">
           
+          <h2>FACULTY</h2>
+        <p style="color:#222;">featured resources bundled for you... based on combination of role and categories</p>
+            
+          {% include "mdot/partials/featured_list.html" %}
+        
+        </div>
+    </div>
+    
+    <div style="background: #e67e22; color:#fff;">
+        <div class="container">
+          
+          <h2>STAFF</h2>
+          <p style="color:#222;">featured resources bundled for you... based on combination of role and categories</p>
+            
           {% include "mdot/partials/featured_list.html" %}
         
         </div>
@@ -48,9 +65,18 @@
     <!-- Example row of columns -->
     <div class="row">
 	      
-	    <h2 class="col-md-12 sr-only">Categories</h3>
-	    <p style="color:#222;">all categories and resources available to the user</p>
-	      
+	    <h2 class="sr-only">Categories</h3>
+        <div class="col-md-12">
+    	    <p style="color:#222;">all categories and resources available to the user</p>
+    	    <select>
+              <option value="All" selected="selected">All</option>
+              <option value="Category 1">Category 1</option>
+              <option value="Category 2">Category 2</option>
+              <option value="Category 3">Category 3</option>
+              <option value="Category 4">Category 4</option>
+            </select>
+        </div>
+            
         {% include "mdot/partials/category_list.html" %}
         
     </div>
@@ -59,9 +85,18 @@
     
     <div class="row">
 	    
-	    <h2 class="col-md-12 sr-only">Topics</h3>
-	    <p style="color:#222;">all topics and resources available to the user</p>
-	    
+	    <h2 class="sr-only">Topics</h3>
+        <div class="col-md-12">
+    	    <p style="color:#222;">all topics and resources available to the user</p>
+    	    <select>
+              <option value="All" selected="selected">All</option>
+              <option value="Category 1">Topic 1</option>
+              <option value="Category 2">Topic 2</option>
+              <option value="Category 3">Topic 3</option>
+              <option value="Category 4">Topic 4</option>
+            </select>
+        </div>
+        
         {% include "mdot/partials/topic_list.html" %}
        
     </div>

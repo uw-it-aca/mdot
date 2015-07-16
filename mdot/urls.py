@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     # Examples:
     
     url(r'^$', 'mdot.views.home', name='home'),
-    #url(r'^test/', 'mdot.views.test', name='test'),
+    url(r'^profile/', 'mdot.views.user_profile', name='user_profile'),
     
     # url(r'^blog/', include('blog.urls')),
     #url(r'^admin/', include(admin.site.urls)),

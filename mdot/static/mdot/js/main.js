@@ -34,6 +34,22 @@ $(function() {
     
     // carousel 
     $('.mdot-feature').slick({ });
+       
+   
     
+    // profile display
+    
+    $("#mdot_user_button").click(function() {
+        
+        event.preventDefault();
+        
+        /*** turn this into an ajax function **/
+        
+        $.get('/profile', function(data){ 
+            // append the data to the badge container
+            $(data).appendTo('#mdot_user');        
+        });
+    });    
+        
 	
 }); 

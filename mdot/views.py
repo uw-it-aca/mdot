@@ -18,3 +18,6 @@ def category_list(request):
 
 def topic_list(request):
     return render_to_response('mdot/partials/topic_list.html', context_instance=RequestContext(request))
+    
+def user_profile(request):
+    return render_to_response('mdot/partials/user_profile.html', context_instance=RequestContext(request))
