@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>MDOT: {% block title %}{% endblock %}</title>
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
@@ -31,13 +31,46 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="">
         -->
+        
         <!-- critical css (above the fold styles) -->
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
-            body { }
+            
+            body {
+              padding-top: 80px;
+              padding-bottom: 20px;
+              overflow-x: hidden;
+            }
+            
+            ul { list-style: none; padding: 0; margin: 0;
+                li { padding: 0; margin: 0; }
+            }
+            
+            .jumbotron { padding-bottom: 0 !important; padding-top: 0 !important; }
+            
+            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:rgba(255,255,255, 0.9); border-bottom: solid 1px #ddd !important;
+                h1 { line-height: 80px; margin: 0; color: #111; }
+                .container { position: relative; }
+            }
+            
+            .mdot-feature { background: #ccc; overflow: hidden;
+                
+                .item { margin-bottom: 1em;
+                    span { font-size: 12px; }
+                    a { display:block; background: grey; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                        span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
+                    }
+                }
+                                
+            }
+            
         </style>
         {% endcompress %}
         
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick-theme.css"/>
+
+
         {% if request.is_mobile %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
@@ -85,83 +118,24 @@
     </head>
     <body>
        
-        <div id="header"> 
-            <h1>Mobile Resources @ UW</h1>
-        </div>
+        <nav class="navbar navbar-fixed-top mdot-navbar">
+          <div class="container">
+              <h1>UW / MOBILE</h1>
+              <p class="text-muted" style="position:absolute; right:15px; top:0; line-height:80px;"><a href="" id="mdot_user_button">javerage</a></p>
+            </div>
+        </nav>
         
-        <div id="navigation">
-            <ul>
-                <li><a data-pjax href="/">Example</a></li>
-                <li><a data-pjax href="/test/">Test</a></li>
-            </ul>             
+        <div class="container" id="mdot_user" style="position:relative;">
+            <div style="padding-top:10px;">
+                <p class="text-muted" style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
+                <p class="text-muted" style="position:absolute; right:15px; bottom:0;">New student | International</p>
+            </div>
         </div>
         
         <div id="content">
-            
-            <div style="font-weight:bold; color:gray;">
-                <h2>Device Info (done)</h2>
-                <ul>
-                    <li>Type: {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}</li>
-                    <li>Device: {% if request.is_ios %}iOS{% elif request.is_android %}Android{% elif request.is_windows_phone %}Windows Mobile{% else %}Web Browser{% endif %}</li>
-                </ul>
-            </div>
-            
-            <div style="font-weight:bold; color:purple;">
-                <h2>User Info</h2>
-                <ul>    
-                    <li>Name: --undefined--</li>
-                    <li>NetID: </li>
-                    <li>School: </li>
-                    <li>Department: </li>
-                    <li>Major: </li>
-                    <li>Class Standing: </li>
-                    <li>Role: [student, staff, faculty]</li>
-                    <li>International?: </li>
-                    <li>A11y?: </li>
-                </ul>
-            </div>
-
-            <div style="font-weight:bold; color:green;">
-                <h2>Mobile Resource Info</h2>
-                <ul>    
-                    <li>Name: </li>
-                    <li>Image: </li>
-                    <li>Short Description: </li>
-                    <li>Feature description: </li>
-                    <li>Part of bundle? [new student, staff essentials, research, etc.]</li>
-                    <li>Web URL:</li>
-                    <li>iTunes URL:</li>
-                    <li>Play URL:</li>
-                    <li>Windows URL:</li>
-                    <li>Role focus: [student, staff, faculty, etc]</li>
-                    <li>School focus:</li>
-                    <li>Major focus:</li>
-                    <li>Class Standing focus:</li>
-                    <li>App Type: [academic, research, third-party?]</li>
-                    <li>Supporting URL:</li>
-                    <li>Date added:</li>
-                </ul>
-            </div>
-            
-            <!-- pjax loading -->
-            <div id="pjax-loading" style="display:none;">loading...</div>
-            
-            <!-- all pjax content will render inside of this id -->
-            <div id="pjax-container">
-                {% block content %}{% endblock %}
-            </div>            
+            {% block content %}{% endblock %}
+        </div>            
                         
-        </div>
-                     
-        <div id="footer">
-            <!-- example of request.is_mobile and request.is_tablet usage in templates -->    
-            {% if request.is_mobile %}
-            <p class="text-muted credit">Courtesy of <a href="">Charlon</a> and <a href="">Craig</a>. UW-IT ACA</p>
-            {% else %}
-            <p class="text-muted credit">Courtesy of <a href="">Charlon Palacay</a> and <a href="">Craig Stimmel</a>. UW-IT ACA</p>
-            {% endif %}
-        </div>
-        
         {% if devtools_bar %}
         <!-- devtools bar -->
         <div id="dev_toolbar">
@@ -186,8 +160,9 @@
         <script src="{% static "vendor/js/jquery-pjax.min.js" %}"></script>
         <script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>
         <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
+        <script src="{% static "vendor/js/jquery-mobile-swipe.min.js" %}"></script>
         <!-- app js goes here -->
-        <script src="{% static "mdot/js/example.js" %}"></script>
+        <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
         
         {% if google_analytics %}
@@ -202,6 +177,8 @@
             ga('send', 'pageview');        
         </script>
         {% endif %}
+        
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
         
     </body>
 </html>
