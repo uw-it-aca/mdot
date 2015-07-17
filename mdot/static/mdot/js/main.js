@@ -1,7 +1,14 @@
 // document.ready shorthand
 $(function() {
     
-    // carousel 
-    $('.mdot-feature').slick({ });
+ 	$( '#feature_slider' ).sliderPro({
+     	width : '100%',
+     	autoHeight : true,
+     	buttons : false,
+     	autoplay : false,
+     	
+     	thumbnailHeight : 30,
+     	thumbnailWidth : 70,
+    });
  	
 }); 
