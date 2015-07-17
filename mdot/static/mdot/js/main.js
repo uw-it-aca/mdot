@@ -8,6 +8,7 @@ $(function() {
      	buttons : false,
      	autoplay : false,
      	
+     	slideDistance : 0,
      	thumbnailHeight : 'auto',
      	thumbnailWidth : 70,
      	
