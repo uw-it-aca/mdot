@@ -10,7 +10,7 @@ $(function() {
      	
      	slideDistance : 0,
      	thumbnailHeight : 'auto',
-     	thumbnailWidth : 70,
+     	thumbnailWidth : 120,
      	
     });
  	
@@ -18,8 +18,16 @@ $(function() {
  	$( '#feature_slider' ).on( 'gotoSlideComplete', function( event ) {
         console.log("you are on slide: " + event.index);
     })
+    
+    var static_header = $(".sp-thumbnails-container");
+    var stickyRibbonTop = $('.mdot-resources').offset().top + 270;
+          
+    $(window).scroll(function(){
+        if( $(window).scrollTop() > stickyRibbonTop )static_header.addClass("stuuuuuuuuuuck");
+        else static_header.removeClass("stuuuuuuuuuuck");
+    });
 
+
+    
 
 });
-
- 
