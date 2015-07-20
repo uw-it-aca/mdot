@@ -10,7 +10,7 @@ $(function() {
      	
      	slideDistance : 0,
      	thumbnailHeight : 'auto',
-     	thumbnailWidth : 120,
+     	thumbnailWidth : 80,
      	
     });
  	
@@ -23,8 +23,14 @@ $(function() {
     var stickyRibbonTop = $('.mdot-resources').offset().top + 270;
           
     $(window).scroll(function(){
-        if( $(window).scrollTop() > stickyRibbonTop )static_header.addClass("stuuuuuuuuuuck");
-        else static_header.removeClass("stuuuuuuuuuuck");
+        if( $(window).scrollTop() > stickyRibbonTop ) {
+            static_header.addClass("stuuuuuuuuuuck");
+            $("#thumb_back").addClass("stuuuuuuuuuuck");
+        }
+        else {
+            static_header.removeClass("stuuuuuuuuuuck");
+            $("#thumb_back").removeClass("stuuuuuuuuuuck");
+        }
     });
 
 
