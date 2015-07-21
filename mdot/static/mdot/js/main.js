@@ -10,7 +10,7 @@ $(function() {
      	
      	slideDistance : 0,
      	thumbnailHeight : 'auto',
-     	thumbnailWidth : 80,
+     	thumbnailWidth : 85,
      	
     });
  	
