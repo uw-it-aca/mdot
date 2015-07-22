@@ -48,12 +48,15 @@
             
             .jumbotron { padding-bottom: 0 !important; padding-top: 0 !important; }
             
-            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:rgba(255,255,255, 0.9); border-bottom: solid 1px #ddd !important;
-                h1 { line-height: 80px; margin: 0; color: #111; }
+            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#8e44ad;
+                h1 { line-height: 80px; margin: 0; color: #fff; }
+                a { color: #fff; }
                 .container { position: relative; }
             }
             
-            .mdot-feature { background: #ccc; overflow: hidden;
+            .mdot-user { background: #e9e9e9; border-top: solid 1px #ddd !important; }
+            
+            .mdot-feature { background: #ccc;
                 
                 .item { margin-bottom: 1em;
                     span { font-size: 12px; }
@@ -61,21 +64,25 @@
                         span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
                     }
                 }
-                                
+                
+                .sp-thumbnails-container { background: #ccc; }
+                .sp-bottom-thumbnails { margin: 0 auto; }
+                .sp-thumbnail { text-align: center; line-height: 40px; text-transform: uppercase; cursor: pointer; }
+                .sp-selected-thumbnail { 
+                    
+                    .sp-thumbnail { font-weight: bold; }
+                }                
             }
             
         </style>
         {% endcompress %}
         
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.5/slick-theme.css"/>
-
-
         {% if request.is_mobile %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.3.5.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/slider-pro.min.css" %}">
         <!-- devtools -->
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile -->  
@@ -88,6 +95,7 @@
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.3.5.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/slider-pro.min.css" %}">
         <!-- devtools -->
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile + tablet -->  
@@ -101,6 +109,7 @@
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.3.5.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/slider-pro.min.css" %}">
         <!-- devtools -->
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile + tablet + desktop -->  
@@ -125,8 +134,8 @@
             </div>
         </nav>
         
-        <div class="container" id="mdot_user" style="position:relative;">
-            <div style="padding-top:10px;">
+        <div class="mdot-user" style="position:relative;">
+            <div class="container" style="padding-top:10px;">
                 <p class="text-muted" style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
                 <p class="text-muted" style="position:absolute; right:15px; bottom:0;">New student | International</p>
             </div>
@@ -157,10 +166,9 @@
         <!-- javascript -->
         {% compress js %}
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
-        <script src="{% static "vendor/js/jquery-pjax.min.js" %}"></script>
         <script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>
         <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
-        <script src="{% static "vendor/js/jquery-mobile-swipe.min.js" %}"></script>
+        <script src="{% static "vendor/js/jquery.sliderPro.min.js" %}"></script>
         <!-- app js goes here -->
         <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
@@ -177,8 +185,6 @@
             ga('send', 'pageview');        
         </script>
         {% endif %}
-        
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
-        
+                
     </body>
 </html>
