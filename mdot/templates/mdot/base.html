@@ -144,7 +144,17 @@
         <div id="content">
             {% block content %}{% endblock %}
         </div>            
-                        
+        
+        <div id="footer">
+            <div class="container" style="position:relative;">
+                <hr>
+                <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
+                <div style="position:absolute; right:10px; top: 30px; text-transform:uppercase;">
+                    <a href="/developers">For developers</a>
+                </div>
+            </div>
+        </div>
+                    
         {% if devtools_bar %}
         <!-- devtools bar -->
         <div id="dev_toolbar">
