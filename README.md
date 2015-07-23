@@ -25,6 +25,7 @@ This README documents whatever steps are necessary to get your application up an
     
     urlpatterns = patterns('',
         ...
+        url(r'^developers', include('mdotdevs.urls')),
         url(r'^', include('mdot.urls')),
     )
     
