@@ -14,23 +14,29 @@
         {% load compress %}
         
         <!-- favicon and mobile device icons-->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "vendor/ico/apple-touch-icon-144x144-precomposed.png" %}">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "vendor/ico/apple-touch-icon-114x114-precomposed.png" %}">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "vendor/ico/apple-touch-icon-72x72-precomposed.png" %}">
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57x57-precomposed.png" %}"> 
+        <link rel="icon" sizes="192x192" href="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
+        <link rel="icon" sizes="128x128" href="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
+        
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "vendor/ico/apple-touch-icon-114-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "vendor/ico/apple-touch-icon-72-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57-precomposed.png" %}"> 
         <link rel="shortcut icon" href="{% static "vendor/ico/favicon.ico" %}">
         
         <!-- windows8 - tile icon  & color -->
-        <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144x144-precomposed.png" %}">
+        <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
         <meta name="msapplication-TileColor" content="#222222">
         
-        <!-- ios webapps - delete if not needed -->
-        <!--
+        <!-- ios homescreen webapps - delete if not needed -->
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="">
-        -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        
+        <!-- android homescreen webapps -->
+        <meta name="mobile-web-app-capable" content="yes">
         
         <!-- critical css (above the fold styles) -->
         {% compress css inline %}
@@ -48,29 +54,30 @@
             
             .jumbotron { padding-bottom: 0 !important; padding-top: 0 !important; }
             
-            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#8e44ad;
-                h1 { line-height: 80px; margin: 0; color: #fff; }
-                a { color: #fff; }
+            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#fff; border:none !important;
+                h1 { line-height: 80px; margin: 0; color: #4b2e83; text-transform: uppercase;
+                    i { font-size: 40px; }
+                }
+                a { color: #333; }
                 .container { position: relative; }
             }
             
-            .mdot-user { background: #e9e9e9; border-top: solid 1px #ddd !important; }
+            .mdot-user { background: #bdc3c7; }
             
-            .mdot-feature { background: #ccc;
+            .mdot-feature { background: #ece9e2;
                 
                 .item { margin-bottom: 1em;
                     span { font-size: 12px; }
-                    a { display:block; background: grey; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                    a { display:block; background: grey; padding: 10px; height: 130px; color: #222; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
                         span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
                     }
                 }
                 
-                .sp-thumbnails-container { background: #ccc; }
+                .sp-thumbnails-container { }
                 .sp-bottom-thumbnails { margin: 0 auto; }
-                .sp-thumbnail { text-align: center; line-height: 40px; text-transform: uppercase; cursor: pointer; }
+                .sp-thumbnail { text-align: center; line-height: 40px; text-transform: uppercase; cursor: pointer; color: #aaa; }
                 .sp-selected-thumbnail { 
-                    
-                    .sp-thumbnail { font-weight: bold; }
+                    .sp-thumbnail { font-weight: bold; color: #fff; }
                 }                
             }
             
@@ -129,7 +136,7 @@
        
         <nav class="navbar navbar-fixed-top mdot-navbar">
           <div class="container">
-              <h1>UW / MOBILE</h1>
+              <h1><i class="fa fa-mobile"></i> Mobile</h1>
               <p class="text-muted" style="position:absolute; right:15px; top:0; line-height:80px;"><a href="" id="mdot_user_button">javerage</a></p>
             </div>
         </nav>

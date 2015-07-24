@@ -11,6 +11,7 @@ $(function() {
      	slideDistance : 0,
      	thumbnailHeight : 'auto',
      	thumbnailWidth : 85,
+     	//thumbnailTouchSwipe : false,
      	
     });
  	
