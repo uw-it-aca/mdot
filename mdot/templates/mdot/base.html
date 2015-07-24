@@ -44,7 +44,6 @@
             
             body {
               padding-top: 80px;
-              padding-bottom: 20px;
               overflow-x: hidden;
             }
             
@@ -54,7 +53,7 @@
             
             .jumbotron { padding-bottom: 0 !important; padding-top: 0 !important; }
             
-            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#fff; border:none !important;
+            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#fff; border-bottom:solid 3px #ecf0f1 !important;
                 h1 { line-height: 80px; margin: 0; color: #4b2e83; text-transform: uppercase;
                     i { font-size: 40px; }
                 }
@@ -62,13 +61,14 @@
                 .container { position: relative; }
             }
             
-            .mdot-user { background: #bdc3c7; }
+            .mdot-user { background: #4b2e83; color: #fff; }
             
-            .mdot-feature { background: #ece9e2;
-                
+            .mdot-feature { 
+                 h2 { font-size: 18px; color: #b7a57a; }
+                 
                 .item { margin-bottom: 1em;
                     span { font-size: 12px; }
-                    a { display:block; background: grey; padding: 10px; height: 130px; color: #222; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                    a { display:block; background: #ccc; padding: 10px; height: 130px; color: #222; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
                         span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
                     }
                 }
@@ -143,8 +143,8 @@
         
         <div class="mdot-user">
             <div class="container" style="padding-top:10px;position:relative;">
-                <p class="text-muted" style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
-                <p class="text-muted" style="position:absolute; right:15px; bottom:0;">New student | International</p>
+                <p style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
+                <p style="position:absolute; right:15px; bottom:0;">New student | International</p>
             </div>
         </div>
         
@@ -152,7 +152,7 @@
             {% block content %}{% endblock %}
         </div>            
         
-        <div id="footer">
+        <div id="footer" class="mdot-footer">
             <div class="container" style="position:relative;">
                 <hr>
                 <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
