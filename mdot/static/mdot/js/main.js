@@ -1,7 +1,8 @@
 // document.ready shorthand
 $(function() {
     
-    // initiate the slide
+    // initiate the slider
+ 	/*
  	$( '#feature_slider' ).sliderPro({
      	width : '100%',
      	autoHeight : true,
@@ -11,6 +12,7 @@ $(function() {
      	slideDistance : 0,
      	thumbnailHeight : 'auto',
      	thumbnailWidth : 85,
+     	//thumbnailTouchSwipe : false,
      	
     });
  	
@@ -18,7 +20,7 @@ $(function() {
  	$( '#feature_slider' ).on( 'gotoSlideComplete', function( event ) {
         console.log("you are on slide: " + event.index);
     })
-    
+    */
     
     $(window).scroll(function(){
         
@@ -36,7 +38,8 @@ $(function() {
         console.log("userheight: " + user_header);
         console.log("fetheight: " + feaure_header);
         */
-                
+        
+        /*        
         if( page_top > sticky_point) {
             nav_container.addClass("stuck");
             $("#nav_back").addClass("stuck");
@@ -47,6 +50,8 @@ $(function() {
             $("#nav_back").removeClass("stuck");
             $("#nav_shim").hide();
         }
+        */
+        
     });
 
 
