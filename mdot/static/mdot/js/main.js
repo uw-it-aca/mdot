@@ -1,7 +1,8 @@
 // document.ready shorthand
 $(function() {
     
-    // initiate the slide
+    // initiate the slider
+ 	/*
  	$( '#feature_slider' ).sliderPro({
      	width : '100%',
      	autoHeight : true,
@@ -19,7 +20,7 @@ $(function() {
  	$( '#feature_slider' ).on( 'gotoSlideComplete', function( event ) {
         console.log("you are on slide: " + event.index);
     })
-    
+    */
     
     $(window).scroll(function(){
         
