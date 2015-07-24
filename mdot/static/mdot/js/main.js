@@ -38,7 +38,8 @@ $(function() {
         console.log("userheight: " + user_header);
         console.log("fetheight: " + feaure_header);
         */
-                
+        
+        /*        
         if( page_top > sticky_point) {
             nav_container.addClass("stuck");
             $("#nav_back").addClass("stuck");
@@ -49,6 +50,8 @@ $(function() {
             $("#nav_back").removeClass("stuck");
             $("#nav_shim").hide();
         }
+        */
+        
     });
 
 
