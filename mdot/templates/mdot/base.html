@@ -42,38 +42,39 @@
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
             
-            body {
-              padding-top: 80px;
-              overflow-x: hidden;
-            }
-            
+            body { padding-top: 60px; overflow-x: hidden; }
+        
             ul { list-style: none; padding: 0; margin: 0;
                 li { padding: 0; margin: 0; }
             }
-            
-            .jumbotron { padding-bottom: 0 !important; padding-top: 0 !important; }
-            
-            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#fff; border-bottom:solid 3px #ecf0f1 !important;
-                h1 { line-height: 80px; margin: 0; color: #4b2e83; text-transform: uppercase;
+                        
+            .mdot-navbar { height: 60px; margin-bottom: 0 !important; background:#fff;   border-bottom: 1px solid #eaeaea !important;
+                
+                .mdot-logo { line-height: 60px; margin: 0; color: #4b2e83; text-transform: uppercase;
                     i { font-size: 40px; }
                 }
-                a { color: #333; }
-                .container { position: relative; }
+                
+                .mdot-netid { position:absolute; right:15px; top:0; line-height:80px; display: none;
+                    a { color: #666; text-decoration: none; }
+                }
             }
             
-            .mdot-user { background: #4b2e83; color: #fff; }
+            .mdot-user-info { background: #4b2e83; color: #fff; padding-top: 10px; display: none; }
             
-            .mdot-feature { 
+            .mdot-feature { margin-bottom: 2em; 
+                
                  h2 { font-size: 18px; color: #b7a57a; }
                  
-                .item { margin-bottom: 1em;
-                    span { font-size: 12px; }
-                    a { display:block; background: #ccc; padding: 10px; height: 130px; color: #222; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
-                        span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
-                    }
-                }             
+                .mdot-feature-group { margin-bottom: 0; }
+                                          
+                .mdot-resource-link { display:block; background: #333; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                    .mdot-resource-type { color: lime; position: absolute; bottom:5px; right:5px; font-size: 11px; }
+                }
+                
+                .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; height: 60px; overflow: hidden; }
+                             
             }
-            
+        
         </style>
         {% endcompress %}
         
@@ -125,14 +126,14 @@
     <body>
        
         <nav class="navbar navbar-fixed-top mdot-navbar">
-          <div class="container">
-              <h1><i class="fa fa-mobile"></i> Mobile</h1>
-              <p class="text-muted" style="position:absolute; right:15px; top:0; line-height:80px;"><a href="" id="mdot_user_button">javerage</a></p>
+            <div class="container" style="position:relative;">
+              <h1 class="mdot-logo"><i class="fa fa-mobile"></i> Mobile</h1>
+              <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
             </div>
         </nav>
         
-        <div class="mdot-user">
-            <div class="container" style="padding-top:10px;position:relative;">
+        <div class="mdot-user-info">
+            <div class="container" style="position:relative;">
                 <p style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
                 <p style="position:absolute; right:15px; bottom:0;">New student | International</p>
             </div>
@@ -176,6 +177,7 @@
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
         <script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>
         <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
+        <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
         <!-- app js goes here -->
         <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
