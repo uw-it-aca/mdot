@@ -12,32 +12,64 @@
             <h2>FOR EVERYONE</h2>
             
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">                    
+                    <a href="//my.uw.edu" target="_blank" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW</a>
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas <span class="mdot-resource-type">Android</span></a>
+                
+                <!-- This is the featured template -->
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                   
+                    <!-- NOTE: we will need to check if a device link exists as well -->
+                    <a href="
+                        
+                    {% if request.is_ios %}
+                    https://geo.itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8      
+                    {% elif request.is_android %}
+                    https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en        
+                    {% elif request.is_windows_phone %}
+                    {% else %}
+                    https://canvas.uw.edu
+                    {% endif %}
+                                        
+                    " target="_blank" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas
+                    
+                    <span class="mdot-resource-type">
+                    {% if request.is_ios %}<i class="fa fa-apple"></i> iOS
+                    {% elif request.is_android %}<i class="fa fa-android"></i> android
+                    {% elif request.is_windows_phone %}<i class="fa fa-windows"></i> windows
+                    {% else %}&nbsp;
+                    {% endif %}
+                     </span>
+                         
+                    </a>
+                                        
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    
+                    {% if not request.is_mobile and not request.is_tablet %}<span class="mdot-resource-desktop"><i class="fa fa-apple"></i> IOS | <i class="fa fa-android"></i> ANDROID</span>{% endif %}
+                    
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <!-- end template -->
+                
+                
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library </a> 
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link" >Scout <span class="mdot-resource-type">iOS</span></a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link" >Scout</a>
                     <span class="mdot-resource-desc">Find anything on campus... buildings, study spaces, restaurants and coffee!</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link">Directory </a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link">Directory</a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link">UW Today </a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link">UW Today</a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link">One Bus Away <span class="mdot-resource-type">iOs</span></a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link">One Bus Away</a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
             </div>
@@ -50,20 +82,20 @@
           
             <h2>STUDENTS</h2>
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas <span class="mdot-resource-type">Android</span></a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas</a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link">Library </a> 
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link">Library</a> 
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link">Scout <span class="mdot-resource-type">iOS</span></a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link">Scout</a>
                     <span class="mdot-resource-desc">Find anything on campus... buildings, study spaces, restaurants and coffee!</span>
                 </div>
             </div>
@@ -76,23 +108,23 @@
           
             <h2>FACULTY</h2>
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
-                    <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas <span class="mdot-resource-type">Android</span></a>
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                    <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas</a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library </a> 
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Directory </a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">UW Today </a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
@@ -106,19 +138,19 @@
           
             <h2>STAFF</h2>
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library </a> 
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Directory </a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 ">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link" >UW Today </a>
                     <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                 </div>
@@ -286,7 +318,8 @@
             <div class="col-md-3 col-lg-4 mdot-resource-group">
                 <h3><i class="fa fa-apple"></i> Apple iTunes Store</h3>
                 <ul>    
-                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" class="mdot-resource-link">University of Washington Apps</a></li>
+                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" target="_blank" class="mdot-resource-link">University of Washington</a></li>
+                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" target="_blank" class="mdot-resource-link">UW Alumni Association</a></li>
                 </ul>
             </div>
             {% endif %}
@@ -295,7 +328,8 @@
             <div class="col-md-3 col-lg-4 mdot-resource-group">
                 <h3><i class="fa fa-android"></i> Google Play Store</h3>
                 <ul>    
-                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" class="mdot-resource-link">University of Washington Apps</a></li>
+                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" target="_blank" class="mdot-resource-link">University of Washington</a></li>
+                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" target="_blank" class="mdot-resource-link">UW Alumni Association</a></li>
                 </ul>
             </div>
             {% endif %}
@@ -304,7 +338,7 @@
             <div class="col-md-3 col-lg-4 mdot-resource-group">
                 <h3><i class="fa fa-windows"></i> Windows App Store</h3>
                 <ul>    
-                    <li class="text-muted">Not available!</li>
+                    <li class="text-muted">None available!</li>
                 </ul>
             </div>
             {% endif %}
