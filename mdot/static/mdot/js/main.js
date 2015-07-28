@@ -22,6 +22,13 @@ $(function() {
     })
     */
     
+    // truncate feature descriptions
+    $(function(){
+        $('.mdot-resource-desc').succinct({
+            size: 85
+        });
+    });
+    
     $(window).scroll(function(){
         
         var nav_container = $(".sp-thumbnails-container");
