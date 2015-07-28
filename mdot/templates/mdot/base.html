@@ -7,7 +7,8 @@
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+
         <meta http-equiv="cleartype" content="on">
         
         {% load staticfiles %}
@@ -23,21 +24,27 @@
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57-precomposed.png" %}"> 
         <link rel="shortcut icon" href="{% static "vendor/ico/favicon.ico" %}">
         
+        {% if request.is_windows_phone %}           
         <!-- windows8 - tile icon  & color -->
         <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
         <meta name="msapplication-TileColor" content="#222222">
+        {% endif %}
         
-        <!-- ios homescreen webapps - delete if not needed -->
+        {% if request.is_android %}
+        <!-- android homescreen webapps -->
+        <meta name="mobile-web-app-capable" content="yes">
+        {% endif %}
+        
+        {% if request.is_ios %}
+        <!-- ios homescreen webapps -->
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
+        <meta name="apple-mobile-web-app-title" content="MDOT">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
-        <!-- android homescreen webapps -->
-        <meta name="mobile-web-app-capable" content="yes">
-        
+        {% endif %}
+                
         <!-- critical css (above the fold styles) -->
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
@@ -76,7 +83,7 @@
                             .mdot-resource-type { color: lime; position: absolute; bottom:5px; right:5px; font-size: 14px; }
                         }
                         
-                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; height: 60px; overflow: hidden; }
+                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 60px; overflow: hidden; }
                     }
                 }
                              
