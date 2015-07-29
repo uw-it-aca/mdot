@@ -12,13 +12,15 @@
             <h2>FOR EVERYONE</h2>
             
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">                    
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">                    
                     <a href="//my.uw.edu" target="_blank" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW</a>
+                    {% if not request.is_mobile and not request.is_tablet %}
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
                 
                 <!-- This is the featured template -->
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                    
                     <!-- NOTE: we will need to check if a device link exists as well -->
                     <a href="
@@ -43,39 +45,48 @@
                      </span>
                          
                     </a>
-                                        
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
                     
-                    {% if not request.is_mobile and not request.is_tablet %}
-                        <span class="mdot-resource-desktop">
-                            <a href="https://geo.itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8" target="_blank"><i class="fa fa-apple"></i> IOS</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
-                        </span>
+                    {% if not request.is_mobile and not request.is_tablet %}                    
+                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    <span class="mdot-resource-desktop">
+                        <a href="https://geo.itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
+                    </span>
                     {% endif %}
                     
                 </div>
                 <!-- end template -->
                 
                 
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library </a> 
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link" >Scout</a>
-                    <span class="mdot-resource-desc">Find anything on campus... buildings, study spaces, restaurants and coffee!</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Directory</a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">UW Today</a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">One Bus Away</a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
             </div>
                     
@@ -87,21 +98,29 @@
           
             <h2>STUDENTS</h2>
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
+                    {% if not request.is_mobile and not request.is_tablet %}
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas</a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library</a> 
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Scout</a>
-                    <span class="mdot-resource-desc">Find anything on campus... buildings, study spaces, restaurants and coffee!</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
             </div>
                       
@@ -113,25 +132,35 @@
           
             <h2>FACULTY</h2>
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
+                    {% if not request.is_mobile and not request.is_tablet %}
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/3/2745/4167112238_922952effd_b.jpg'); background-size:cover;">Canvas</a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library </a> 
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Directory </a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">UW Today </a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
             </div>
                         
@@ -143,21 +172,29 @@
           
             <h2>STAFF</h2>
             <div class="row mdot-feature-group">                      
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;">MyUW </a>
+                    {% if not request.is_mobile and not request.is_tablet %}
                     <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Library </a> 
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link">Directory </a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-2 mdot-feature-item">
                     <a href="" class="mdot-resource-link" >UW Today </a>
-                    <span class="mdot-resource-desc">Feature description... askjdf asdfkl jasdfjk</span>
+                    {% if not request.is_mobile and not request.is_tablet %}
+                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                    {% endif %}
                 </div>
             </div>
         

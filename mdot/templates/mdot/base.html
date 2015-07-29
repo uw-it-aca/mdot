@@ -49,16 +49,16 @@
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
             
-            body { padding-top: 60px; overflow-x: hidden; }
+            body { /*padding-top: 300px;*/ overflow-x: hidden; background:#8e44ad !important;  }
         
             ul { list-style: none; padding: 0; margin: 0;
                 li { padding: 0; margin: 0; }
             }
                         
-            .mdot-navbar { height: 60px; margin-bottom: 0 !important; background:#fff;   border-bottom: 1px solid #eaeaea !important;
+            .mdot-navbar { height: 200px; background: #9b59b6; margin-bottom: 0 !important; border-bottom: none;
                 
                 .mdot-logo { line-height: 60px; margin: 0; 
-                    a {color: #4b2e83; text-transform: uppercase; text-decoration: none; 
+                    a {color: #fff; text-transform: uppercase; text-decoration: none; 
                         i { font-size: 40px; }
                     } 
                    
@@ -81,11 +81,9 @@
                     
                     
                         
-                    .mdot-feature-item { height: 210px; margin-bottom: 10px;
+                    .mdot-feature-item { height: 80px; margin-bottom: 10px;
                         
-                        
-              
-                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 80px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative; overflow: hidden;
                             .mdot-resource-type { color: lime; position: absolute; bottom:5px; right:5px; font-size: 14px; }
                         }
                         
@@ -158,7 +156,7 @@
     </head>
     <body>
        
-        <nav class="navbar navbar-fixed-top mdot-navbar">
+        <nav class="navbar mdot-navbar">
             <div class="container" style="position:relative;">
               <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
               <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
