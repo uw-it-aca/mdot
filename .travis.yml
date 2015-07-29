@@ -2,16 +2,16 @@ sudo: false
 language: python
 python:
   - "2.7"
-install: 
+install:
   - pip install .
   - pip install pep8
   - pip install coverage
   - pip install python-coveralls
-before_script: 
+before_script:
   - cp travis-ci/manage.py manage.py
   - python manage.py syncdb --noinput
 script:
   - pep8 mdot/ --exclude=migrations
-  - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot_rest
+  - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot
 after_script:
   - coveralls
