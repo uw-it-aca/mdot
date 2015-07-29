@@ -1,10 +1,12 @@
 from django.conf import settings
 
+
 def less_compiled(request):
     """ See if django-compressor is being used to precompile less
     """
     key = getattr(settings, "COMPRESS_PRECOMPILERS", None)
     return {'less_compiled': key != ()}
+
 
 def google_analytics(request):
 
@@ -14,8 +16,9 @@ def google_analytics(request):
         'google_analytics': ga_key
     }
 
+
 def devtools_bar(request):
-    
+
     devtools = getattr(settings, 'ACA_DEVTOOLS_ENABLED', False)
     return {
         'devtools_bar': devtools
