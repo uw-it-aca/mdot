@@ -7,7 +7,8 @@
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+
         <meta http-equiv="cleartype" content="on">
         
         {% load staticfiles %}
@@ -23,57 +24,96 @@
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57-precomposed.png" %}"> 
         <link rel="shortcut icon" href="{% static "vendor/ico/favicon.ico" %}">
         
+        {% if request.is_windows_phone %}           
         <!-- windows8 - tile icon  & color -->
         <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
         <meta name="msapplication-TileColor" content="#222222">
+        {% endif %}
         
-        <!-- ios homescreen webapps - delete if not needed -->
+        {% if request.is_android %}
+        <!-- android homescreen webapps -->
+        <meta name="mobile-web-app-capable" content="yes">
+        {% endif %}
+        
+        {% if request.is_ios %}
+        <!-- ios homescreen webapps -->
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
+        <meta name="apple-mobile-web-app-title" content="MDOT">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
-        <!-- android homescreen webapps -->
-        <meta name="mobile-web-app-capable" content="yes">
-        
+        {% endif %}
+                
         <!-- critical css (above the fold styles) -->
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
             
-            body {
-              padding-top: 80px;
-              overflow-x: hidden;
-            }
-            
+            body { padding-top: 60px; overflow-x: hidden; }
+        
             ul { list-style: none; padding: 0; margin: 0;
                 li { padding: 0; margin: 0; }
             }
-            
-            .jumbotron { padding-bottom: 0 !important; padding-top: 0 !important; }
-            
-            .mdot-navbar { height: 80px; margin-bottom: 0 !important; background:#fff; border-bottom:solid 3px #ecf0f1 !important;
-                h1 { line-height: 80px; margin: 0; color: #4b2e83; text-transform: uppercase;
-                    i { font-size: 40px; }
+                        
+            .mdot-navbar { height: 60px; margin-bottom: 0 !important; background:#fff;   border-bottom: 1px solid #eaeaea !important;
+                
+                .mdot-logo { line-height: 60px; margin: 0; 
+                    a {color: #4b2e83; text-transform: uppercase; text-decoration: none; 
+                        i { font-size: 40px; }
+                    } 
+                   
                 }
-                a { color: #333; }
-                .container { position: relative; }
+                
+                .mdot-netid { position:absolute; right:15px; top:0; line-height:80px; display: none;
+                    a { color: #666; text-decoration: none; }
+                }
+                
             }
             
-            .mdot-user { background: #4b2e83; color: #fff; }
+            .mdot-dev-link {width: 200px; margin: auto;
+                a {float:left; color:#70aefa; padding:10px; margin-bottom:10px; text-transform:uppercase; }
+                a:focus, a:hover {color:white; background-color:#555;}
+                }
             
-            .mdot-feature { 
+            .mdot-user-info { background: #4b2e83; color: #fff; padding-top: 10px; display: none; }
+            
+            .mdot-feature { margin-bottom: 2em; 
+                
                  h2 { font-size: 18px; color: #b7a57a; }
                  
-                .item { margin-bottom: 1em;
-                    span { font-size: 12px; }
-                    a { display:block; background: #ccc; padding: 10px; height: 130px; color: #222; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
-                        span { color: yellow; position: absolute; bottom:5px; right:5px; font-size: 11px; }
+                .mdot-feature-group { 
+                    
+                    margin-bottom: 0; 
+                    
+                    
+                        
+                    .mdot-feature-item { height: 210px; margin-bottom: 10px;
+                        
+                        
+              
+                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                            .mdot-resource-type { color: lime; position: absolute; bottom:5px; right:5px; font-size: 14px; }
+                        }
+                        
+                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; }
                     }
-                }             
+                    
+                }
+                             
             }
             
+            /** override bootstrap grid **/
+            .row {
+                margin-right: -5px !important;
+                margin-left: -5px !important;
+                
+                & > [class^="col-"],
+                & > [class*=" col-"] {
+                  padding-right: 5px !important;
+                  padding-left: 5px !important;
+                }           
+            }/** end grid override **/ 
+                    
         </style>
         {% endcompress %}
         
@@ -125,14 +165,15 @@
     <body>
        
         <nav class="navbar navbar-fixed-top mdot-navbar">
-          <div class="container">
-              <h1><i class="fa fa-mobile"></i> Mobile</h1>
-              <p class="text-muted" style="position:absolute; right:15px; top:0; line-height:80px;"><a href="" id="mdot_user_button">javerage</a></p>
+            <div class="container" style="position:relative;">
+              <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
+              <p class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
             </div>
+            
         </nav>
         
-        <div class="mdot-user">
-            <div class="container" style="padding-top:10px;position:relative;">
+        <div class="mdot-user-info">
+            <div class="container" style="position:relative;">
                 <p style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
                 <p style="position:absolute; right:15px; bottom:0;">New student | International</p>
             </div>
@@ -142,13 +183,12 @@
             {% block content %}{% endblock %}
         </div>            
         
+        {% block subcontent %}{% endblock %}
+        
         <div id="footer" class="mdot-footer">
             
             <div class="container" style="position:relative;">
                 <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
-                <div style="position:absolute; right:10px; top: 0; text-transform:uppercase;">
-                    <a href="/developers">For developers</a>
-                </div>
             </div>
             
         </div>
@@ -176,6 +216,7 @@
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
         <script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>
         <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
+        <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
         <!-- app js goes here -->
         <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
