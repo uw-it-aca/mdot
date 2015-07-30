@@ -55,22 +55,23 @@
                 li { padding: 0; margin: 0; }
             }
                         
-            .mdot-navbar { height: 200px; margin-bottom: 0 !important; border-bottom: none; background:#4b2e83; border-radius: 0 !important;
+            .mdot-navbar { margin-bottom: 0 !important; border-bottom: none !important; background:#4b2e83; border-radius: 0 !important; position: relative; font-size: 18px;
                 
-                .mdot-logo { line-height: 60px; margin: 0; 
-                    a {color: #fff; text-transform: uppercase; text-decoration: none; 
+                .mdot-logo { line-height: 60px; margin: 0; position: absolute; bottom: 20px;
+                    a { color: #fff; text-transform: uppercase; text-decoration: none; 
                         i { font-size: 40px; }
                     } 
-                   
                 }
                 
-                .mdot-netid { position:absolute; right:15px; top:0; line-height:80px; display: none;
-                    a { color: #666; text-decoration: none; }
+                .mdot-netid { line-height:80px; 
+                    a { color: #fff; text-decoration: none; }
                 }
+                
+                .mdot-uw-patch { font-size: 100px; position: absolute; top:-20px; right: 0; color: #fff; }
+                
+                .mdot-user-info { color: #fff; padding-top: 10px; }
             }
-            
-            .mdot-user-info { background: #4b2e83; color: #fff; padding-top: 10px; display: none; }
-            
+                    
             .mdot-feature { background:#4b2e83;
                 
                  h2 { font-size: 18px; color: #b7a57a; }
@@ -155,19 +156,20 @@
     </head>
     <body>
        
-        <nav class="navbar mdot-navbar">
-            <div class="container" style="position:relative;">
-              <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
-              <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
+        <nav class="navbar mdot-navbar" style="background: linear-gradient(rgba(51, 0, 111, 0.60), rgba(51, 0, 111, 0.80)), url('//farm8.staticflickr.com/7178/6903314606_7a2467b098_b.jpg'); background-size:cover; background-position-y: 30%; height:350px;">
+            <div class="mdot-uw-patch">W</div>
+            <div class="container" style="position:relative; height:350px;">
+                
+                <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
+                
+                <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></div>
+                <div class="mdot-user-info">
+                    <p>John Average #09873645<br/>
+                    Freshman | Undeclared</p>
+                </div>
+        
             </div>
         </nav>
-        
-        <div class="mdot-user-info">
-            <div class="container" style="position:relative;">
-                <p style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
-                <p style="position:absolute; right:15px; bottom:0;">New student | International</p>
-            </div>
-        </div>
         
         <div id="content">
             {% block content %}{% endblock %}
