@@ -58,7 +58,7 @@
             .mdot-navbar { margin-bottom: 0 !important; border: none !important; background:#4b2e83; border-radius: 0 !important; position: relative;
                 
                 .mdot-logo { line-height: 60px; margin: 0; position: absolute; bottom: 20px;
-                    a { color: #4b2e83; text-transform: uppercase; text-decoration: none; 
+                    a { color: #fff; text-transform: uppercase; text-decoration: none; 
                         i { font-size: 40px; }
                     } 
                 }
@@ -67,7 +67,9 @@
                     a { color: #fff; text-decoration: none; }
                 }
                 
-                .mdot-uw-patch { font-size: 100px; position: absolute; top:-20px; right: 0; color: #4b2e83; }
+                .mdot-uw-patch { position: absolute; top:10px; right: 0;
+                    img { width: 90px; }
+                }
                 
                 .mdot-user-info { color: #fff; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px;}
             }
@@ -156,9 +158,9 @@
     </head>
     <body>
        
-        <nav class="navbar mdot-navbar" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .2)), url('//farm8.staticflickr.com/7178/6903314606_7a2467b098_b.jpg'); background-size:cover; background-position-y: 30%; height:300px;">
-            <div class="mdot-uw-patch">W</div>
-            <div class="container" style="position:relative; height:300px;">
+        <nav class="navbar mdot-navbar" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .2)), url('/static/mdot/img/fountain-mountain.jpg'); background-size:cover; height:350px;">
+            <div class="mdot-uw-patch"><img src="/static/mdot/img/uw-logo.png"></div>
+            <div class="container" style="position:relative; height:350px;">
                 
                 <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
                 
