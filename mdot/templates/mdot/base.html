@@ -3,38 +3,111 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>MDOT: {% block title %}{% endblock %}</title>
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+
         <meta http-equiv="cleartype" content="on">
         
         {% load staticfiles %}
         {% load compress %}
         
         <!-- favicon and mobile device icons-->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "vendor/ico/apple-touch-icon-144x144-precomposed.png" %}">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "vendor/ico/apple-touch-icon-114x114-precomposed.png" %}">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "vendor/ico/apple-touch-icon-72x72-precomposed.png" %}">
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57x57-precomposed.png" %}"> 
+        <link rel="icon" sizes="192x192" href="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
+        <link rel="icon" sizes="128x128" href="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
+        
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "vendor/ico/apple-touch-icon-114-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "vendor/ico/apple-touch-icon-72-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57-precomposed.png" %}"> 
         <link rel="shortcut icon" href="{% static "vendor/ico/favicon.ico" %}">
         
+        {% if request.is_windows_phone %}           
         <!-- windows8 - tile icon  & color -->
-        <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144x144-precomposed.png" %}">
+        <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144-precomposed.png" %}">
         <meta name="msapplication-TileColor" content="#222222">
+        {% endif %}
         
-        <!-- ios webapps - delete if not needed -->
-        <!--
+        {% if request.is_android %}
+        <!-- android homescreen webapps -->
+        <meta name="mobile-web-app-capable" content="yes">
+        {% endif %}
+        
+        {% if request.is_ios %}
+        <!-- ios homescreen webapps -->
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
-        -->
+        <meta name="apple-mobile-web-app-title" content="MDOT">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        {% endif %}
+                
         <!-- critical css (above the fold styles) -->
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
-            body { }
+            
+            body { padding-top: 60px; overflow-x: hidden; }
+        
+            ul { list-style: none; padding: 0; margin: 0;
+                li { padding: 0; margin: 0; }
+            }
+                        
+            .mdot-navbar { height: 60px; margin-bottom: 0 !important; background:#fff;   border-bottom: 1px solid #eaeaea !important;
+                
+                .mdot-logo { line-height: 60px; margin: 0; 
+                    a {color: #4b2e83; text-transform: uppercase; text-decoration: none; 
+                        i { font-size: 40px; }
+                    } 
+                   
+                }
+                
+                .mdot-netid { position:absolute; right:15px; top:0; line-height:80px; display: none;
+                    a { color: #666; text-decoration: none; }
+                }
+            }
+            
+            .mdot-user-info { background: #4b2e83; color: #fff; padding-top: 10px; display: none; }
+            
+            .mdot-feature { margin-bottom: 2em; 
+                
+                 h2 { font-size: 18px; color: #b7a57a; }
+                 
+                .mdot-feature-group { 
+                    
+                    margin-bottom: 0; 
+                    
+                    
+                        
+                    .mdot-feature-item { height: 210px; margin-bottom: 10px;
+                        
+                        
+              
+                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
+                            .mdot-resource-type { color: lime; position: absolute; bottom:5px; right:5px; font-size: 14px; }
+                        }
+                        
+                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; }
+                    }
+                    
+                }
+                             
+            }
+            
+            /** override bootstrap grid **/
+            .row {
+                margin-right: -5px !important;
+                margin-left: -5px !important;
+                
+                & > [class^="col-"],
+                & > [class*=" col-"] {
+                  padding-right: 5px !important;
+                  padding-left: 5px !important;
+                }           
+            }/** end grid override **/ 
+                    
         </style>
         {% endcompress %}
         
@@ -85,83 +158,37 @@
     </head>
     <body>
        
-        <div id="header"> 
-            <h1>Mobile Resources @ UW</h1>
-        </div>
+        <nav class="navbar navbar-fixed-top mdot-navbar">
+            <div class="container" style="position:relative;">
+              <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
+              <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
+            </div>
+        </nav>
         
-        <div id="navigation">
-            <ul>
-                <li><a data-pjax href="/">Example</a></li>
-                <li><a data-pjax href="/test/">Test</a></li>
-            </ul>             
+        <div class="mdot-user-info">
+            <div class="container" style="position:relative;">
+                <p style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
+                <p style="position:absolute; right:15px; bottom:0;">New student | International</p>
+            </div>
         </div>
         
         <div id="content">
-            
-            <div style="font-weight:bold; color:gray;">
-                <h2>Device Info (done)</h2>
-                <ul>
-                    <li>Type: {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}</li>
-                    <li>Device: {% if request.is_ios %}iOS{% elif request.is_android %}Android{% elif request.is_windows_phone %}Windows Mobile{% else %}Web Browser{% endif %}</li>
-                </ul>
-            </div>
-            
-            <div style="font-weight:bold; color:purple;">
-                <h2>User Info</h2>
-                <ul>    
-                    <li>Name: --undefined--</li>
-                    <li>NetID: </li>
-                    <li>School: </li>
-                    <li>Department: </li>
-                    <li>Major: </li>
-                    <li>Class Standing: </li>
-                    <li>Role: [student, staff, faculty]</li>
-                    <li>International?: </li>
-                    <li>A11y?: </li>
-                </ul>
-            </div>
-
-            <div style="font-weight:bold; color:green;">
-                <h2>Mobile Resource Info</h2>
-                <ul>    
-                    <li>Name: </li>
-                    <li>Image: </li>
-                    <li>Short Description: </li>
-                    <li>Feature description: </li>
-                    <li>Part of bundle? [new student, staff essentials, research, etc.]</li>
-                    <li>Web URL:</li>
-                    <li>iTunes URL:</li>
-                    <li>Play URL:</li>
-                    <li>Windows URL:</li>
-                    <li>Role focus: [student, staff, faculty, etc]</li>
-                    <li>School focus:</li>
-                    <li>Major focus:</li>
-                    <li>Class Standing focus:</li>
-                    <li>App Type: [academic, research, third-party?]</li>
-                    <li>Supporting URL:</li>
-                    <li>Date added:</li>
-                </ul>
-            </div>
-            
-            <!-- pjax loading -->
-            <div id="pjax-loading" style="display:none;">loading...</div>
-            
-            <!-- all pjax content will render inside of this id -->
-            <div id="pjax-container">
-                {% block content %}{% endblock %}
-            </div>            
-                        
-        </div>
-                     
-        <div id="footer">
-            <!-- example of request.is_mobile and request.is_tablet usage in templates -->    
-            {% if request.is_mobile %}
-            <p class="text-muted credit">Courtesy of <a href="">Charlon</a> and <a href="">Craig</a>. UW-IT ACA</p>
-            {% else %}
-            <p class="text-muted credit">Courtesy of <a href="">Charlon Palacay</a> and <a href="">Craig Stimmel</a>. UW-IT ACA</p>
-            {% endif %}
-        </div>
+            {% block content %}{% endblock %}
+        </div>            
         
+        {% block subcontent %}{% endblock %}
+        
+        <div id="footer" class="mdot-footer">
+            
+            <div class="container" style="position:relative;">
+                <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
+                <div style="position:absolute; right:10px; top: 0; text-transform:uppercase;">
+                    <a href="/developers">Building a mobile app?</a>
+                </div>
+            </div>
+            
+        </div>
+                    
         {% if devtools_bar %}
         <!-- devtools bar -->
         <div id="dev_toolbar">
@@ -183,11 +210,11 @@
         <!-- javascript -->
         {% compress js %}
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
-        <script src="{% static "vendor/js/jquery-pjax.min.js" %}"></script>
         <script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>
         <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
+        <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
         <!-- app js goes here -->
-        <script src="{% static "mdot/js/example.js" %}"></script>
+        <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
         
         {% if google_analytics %}
@@ -202,6 +229,6 @@
             ga('send', 'pageview');        
         </script>
         {% endif %}
-        
+                
     </body>
 </html>
