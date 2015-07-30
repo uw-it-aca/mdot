@@ -67,8 +67,13 @@
                 .mdot-netid { position:absolute; right:15px; top:0; line-height:80px; display: none;
                     a { color: #666; text-decoration: none; }
                 }
-                .mdot-dev-link {position:absolute; right:10px; top: 0; text-transform:uppercase; line-height:80px;}
+                
             }
+            
+            .mdot-dev-link {width: 200px; margin: auto;
+                a {float:left; color:#70aefa; padding:10px; margin-bottom:10px; text-transform:uppercase; }
+                a:focus, a:hover {color:white; background-color:#555;}
+                }
             
             .mdot-user-info { background: #4b2e83; color: #fff; padding-top: 10px; display: none; }
             
@@ -163,9 +168,6 @@
             <div class="container" style="position:relative;">
               <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
               <p class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
-              <div class="mdot-dev-link">
-                    <a href="/developers">Building a mobile app?</a>
-                </div>
             </div>
             
         </nav>
