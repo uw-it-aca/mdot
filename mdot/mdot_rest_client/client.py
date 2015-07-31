@@ -1,5 +1,6 @@
 from restclients.dao import MY_DAO
 from restclients.dao_implementation.mock import get_mockdata_url
+import json
 
 
 class MDOT_DAO(object):
@@ -19,7 +20,12 @@ class MDOT(MY_DAO):
     """
     def get_resources(self):
         response = self.getURL('/api/v1/uwresources', {'Accept': 'application/json'})
-        return response
+        resources = self._json_to_resources_list(response)
+        return resources
+
+    def _json_to_resources_list(self, response):
+        resources = json.loads(response.data)
+        return resources
 
     def getURL(self, url, headers):
         return self._getURL('mdot', url, headers)
