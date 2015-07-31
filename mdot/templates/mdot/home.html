@@ -5,11 +5,12 @@
 {% block content %}
 
 <div class="mdot-feature">
+    <h2 class="sr-only" id="page_header">Featured applications and resources</h2>
             
     <div class="sp-slide" id="you_slide">
         <div class="container">
            
-            <h2>FOR EVERYONE</h2>
+            <h3>FOR EVERYONE</h3>
             
             <div class="row mdot-feature-group">                      
                 <div class="col-xs-4 col-lg-2 mdot-feature-item">                    
@@ -96,7 +97,7 @@
     <div class="sp-slide" id="student_slide">
         <div class="container">
           
-            <h2>STUDENTS</h2>
+            <h3>FOR STUDENTS</h3>
             <div class="row mdot-feature-group">                      
                 <div class="col-xs-4 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
@@ -130,7 +131,7 @@
     <div class="sp-slide" id="faculty_slide">
         <div class="container">
           
-            <h2>FACULTY</h2>
+            <h3>FOR FACULTY</h3>
             <div class="row mdot-feature-group">                      
                 <div class="col-xs-4 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
@@ -170,7 +171,7 @@
     <div class="sp-slide" id="staff_slide">
         <div class="container">
           
-            <h2>STAFF</h2>
+            <h3>FOR STAFF</h3>
             <div class="row mdot-feature-group">                      
                 <div class="col-xs-4 col-lg-2 mdot-feature-item">
                     <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
@@ -202,196 +203,200 @@
     </div>
         
 </div><!-- end feature -->
-
-<div class="mdot-sub-content">
-
+{% endblock %}
+{% block subcontent %}
+<div class="mdot-sub-content" >
+    <h2 id="page_subheader" class="sr-only">Discover UW Apps</h2>
     <div class="container">
-        
-        <!-- Example row of columns -->
-        <div class="row">
-    	      
-    	    <h2 class="sr-only">Categories</h3>
-            <div class="col-md-12">
-        	    <select class="form-control">
-                  <option value="All" selected="selected">All</option>
-                  <option value="Category 1">Category 1</option>
-                  <option value="Category 2">Category 2</option>
-                  <option value="Category 3">Category 3</option>
-                  <option value="Category 4">Category 4</option>
-                </select>
+        <div role="complementary" aria-labelledby="page_subheader">
+            
+            <!-- Example row of columns -->
+            <div class="row">
+        	      
+        	    <h3 class="sr-only">By Category</h3>
+                <div class="col-md-12">
+            	    <select class="form-control">
+                      <option value="All" selected="selected">All</option>
+                      <option value="Category 1">Category 1</option>
+                      <option value="Category 2">Category 2</option>
+                      <option value="Category 3">Category 3</option>
+                      <option value="Category 4">Category 4</option>
+                    </select>
+                </div>
+                    
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                    <h4>Category 1</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Category 2</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Category 3</h4>
+                    <ul> 
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Category 4</h4>
+                    <ul> 
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <hr>
+            
+            <div class="row">
+        	    
+        	    <h3 class="sr-only">By Topic</h3>
+                <div class="col-md-12">
+            	    <select class="form-control">
+                      <option value="All" selected="selected">All</option>
+                      <option value="Category 1">Topic 1</option>
+                      <option value="Category 2">Topic 2</option>
+                      <option value="Category 3">Topic 3</option>
+                      <option value="Category 4">Topic 4</option>
+                    </select>
+                </div>
+                
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                    <h4>Topic 1</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Topic 2</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Topic 3</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Topic 4</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                    <h4>Topic 5</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Topic 6</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Topic 7</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                  <h4>Topic 8</h4>
+                    <ul>    
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                        <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
+                        <li><a href="" >Mobile Resource </a></li>
+                    </ul>
+                </div>
+                       
+            </div>
+            
+            <hr>      
+            
+            <div class="row" style="margin-bottom:2em;">
+        	    
+        	    <h3 class="sr-only">By UW App Store</h3>
+                
+                {% if request.is_ios or not request.is_mobile %}
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                    <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
+                    <ul>    
+                        <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" target="_blank" >University of Washington</a></li>
+                        <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" target="_blank" >UW Alumni Association</a></li>
+                    </ul>
+                </div>
+                {% endif %}
+                
+                {% if request.is_android or not request.is_mobile %}
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                    <h4><i class="fa fa-android"></i> Google Play Store</h4>
+                    <ul>    
+                        <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" target="_blank" >University of Washington</a></li>
+                        <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" target="_blank" >UW Alumni Association</a></li>
+                    </ul>
+                </div>
+                {% endif %}
+                
+                {% if request.is_windows_phone or not request.is_mobile %}
+                <div class="col-sm-4 col-lg-3 mdot-resource-group">
+                    <h4><i class="fa fa-windows"></i> Windows App Store</h4>
+                    <ul>    
+                        <li class="text-muted">None available!</li>
+                    </ul>
+                </div>
+                {% endif %}
             </div>
                 
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h3>Category 1</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Category 2</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Category 3</h3>
-                <ul> 
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Category 4</h3>
-                <ul> 
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            
         </div>
         
-        <hr>
-        
-        <div class="row">
-    	    
-    	    <h2 class="sr-only">Topics</h3>
-            <div class="col-md-12">
-        	    <select class="form-control">
-                  <option value="All" selected="selected">All</option>
-                  <option value="Category 1">Topic 1</option>
-                  <option value="Category 2">Topic 2</option>
-                  <option value="Category 3">Topic 3</option>
-                  <option value="Category 4">Topic 4</option>
-                </select>
-            </div>
-            
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h3>Topic 1</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Topic 2</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Topic 3</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Topic 4</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h3>Topic 5</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Topic 6</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Topic 7</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-              <h3>Topic 8</h3>
-                <ul>    
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                    <li><a href="" >Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                    <li><a href="" >Mobile Resource </a></li>
-                </ul>
-            </div>
-                   
+        <div class="mdot-dev-link" role="complementary" aria-labelledby="dev_header">
+            <h2 id="dev_header"><a href="/developers">Building a mobile app?</a></h2>
         </div>
-        
-        <hr>      
-        
-        <div class="row" style="margin-bottom:2em;">
-    	    
-    	    <h2 class="sr-only">App Stores</h3>
-            
-            {% if request.is_ios or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h3><i class="fa fa-apple"></i> Apple iTunes Store</h3>
-                <ul>    
-                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" target="_blank" >University of Washington</a></li>
-                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" target="_blank" >UW Alumni Association</a></li>
-                </ul>
-            </div>
-            {% endif %}
-            
-            {% if request.is_android or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h3><i class="fa fa-android"></i> Google Play Store</h3>
-                <ul>    
-                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" target="_blank" >University of Washington</a></li>
-                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" target="_blank" >UW Alumni Association</a></li>
-                </ul>
-            </div>
-            {% endif %}
-            
-            {% if request.is_windows_phone or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h3><i class="fa fa-windows"></i> Windows App Store</h3>
-                <ul>    
-                    <li class="text-muted">None available!</li>
-                </ul>
-            </div>
-            {% endif %}
-            
-        </div>
-        
-        <div class="mdot-dev-link">
-            <a href="/developers">Building a mobile app?</a>
-        </div>
-        
     </div>
+    
+    
     
 </div>
     
