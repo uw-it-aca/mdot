@@ -49,44 +49,49 @@
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
             
-            body { padding-top: 60px; overflow-x: hidden; }
+            body { overflow-x: hidden; }
         
             ul { list-style: none; padding: 0; margin: 0;
                 li { padding: 0; margin: 0; }
             }
                         
-            .mdot-navbar { height: 60px; margin-bottom: 0 !important; background:#fff;   border-bottom: 1px solid #eaeaea !important;
+            .mdot-navbar { margin-bottom: 0 !important; border: none !important; background:#4b2e83; border-radius: 0 !important; position: relative;
                 
-                .mdot-logo { line-height: 60px; margin: 0; 
-                    a {color: #4b2e83; text-transform: uppercase; text-decoration: none; 
-                        i { font-size: 40px; }
+                .mdot-logo { line-height: 65px; margin: 0; position: absolute; bottom: 0; 
+                    a { color: #b7a57a; text-transform: uppercase; text-decoration: none; font-size: 30px;
+                        i { color: #fff; }
                     } 
-                   
                 }
                 
-                .mdot-netid { position:absolute; right:15px; top:0; line-height:80px; display: none;
-                    a { color: #666; text-decoration: none; }
+                .mdot-netid { line-height:80px; font-size: 20px; display: none;
+                    a { color: #fff; text-decoration: none; }
                 }
+            
+                .mdot-uw-patch { position: absolute; bottom:0px; right: 0;
+                    img { width: 80px; }
+                }
+                
+                .mdot-user-info { color: #fff; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px; display: none; }
             }
             
-            .mdot-user-info { background: #4b2e83; color: #fff; padding-top: 10px; display: none; }
-            
-            .mdot-feature { margin-bottom: 2em; 
+            .mdot-dev-link {width: 200px; margin: auto;
+                a {float:left; color:#70aefa; padding:10px; margin-bottom:10px; text-transform:uppercase; }
+                a:focus, a:hover {color:white; background-color:#555;}
+            }
+                    
+            .mdot-feature { /*background:#e8e3d3;*/
                 
-                 h2 { font-size: 18px; color: #b7a57a; }
+                 h2 { font-size: 16px; color: #85754d; }
                  
-                .mdot-feature-group { 
-                    
-                    margin-bottom: 0; 
-                    
-                    
+                .mdot-feature-group { margin-bottom: 0; 
                         
-                    .mdot-feature-item { height: 210px; margin-bottom: 10px;
-                        
-                        
-              
-                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 130px; color: #fff; font-size: 20px; text-transform: uppercase; text-decoration: none; position: relative;
-                            .mdot-resource-type { color: lime; position: absolute; bottom:5px; right:5px; font-size: 14px; }
+                    .mdot-feature-item { height: 120px; margin-bottom: 10px;
+            
+                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 90px; color: #222;  text-decoration: none; position: relative; 
+                            
+                            .mdot-resource-name { font-size: 12px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; }
+                            
+                            .mdot-resource-type { color: lime; position: absolute; top:5px; right:5px; font-size: 14px; }
                         }
                         
                         .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; }
@@ -157,20 +162,21 @@
         
     </head>
     <body>
-       
-        <nav class="navbar navbar-fixed-top mdot-navbar">
-            <div class="container" style="position:relative;">
-              <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
-              <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></p>
+        <nav class="navbar mdot-navbar" style="/*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .2)), url('/static/mdot/img/uw-texture.png');background-size:cover;*/ height:65px;">
+            
+            <div class="container" style="position:relative; height:65px;">
+                <div class="mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
+                <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
+                
+                <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></div>
+                <div class="mdot-user-info">
+                    <p>John Average #09873645<br/>
+                    Freshman | Undeclared</p>
+                </div>
+                
             </div>
+            
         </nav>
-        
-        <div class="mdot-user-info">
-            <div class="container" style="position:relative;">
-                <p style="display:inline-block;">John Average #09873645<br/>Freshman | Undeclared</p>
-                <p style="position:absolute; right:15px; bottom:0;">New student | International</p>
-            </div>
-        </div>
         
         <div id="content">
             {% block content %}{% endblock %}
@@ -182,9 +188,6 @@
             
             <div class="container" style="position:relative;">
                 <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
-                <div style="position:absolute; right:10px; top: 0; text-transform:uppercase;">
-                    <a href="/developers">Building a mobile app?</a>
-                </div>
             </div>
             
         </div>
