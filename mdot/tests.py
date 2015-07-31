@@ -6,11 +6,13 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from mdot.mdot_rest_client.client import MDOT
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
+class MdotClientTest(TestCase):
+    def test_mdot_client(self):
         """
-        Tests that 1 + 1 always equals 2.
+        Tests the client that retrieves data from the mdot API.
         """
-        self.assertEqual(1 + 1, 2)
+        resources = MDOT().get_resources()
+        self.assertEqual(resources.status, 200)
