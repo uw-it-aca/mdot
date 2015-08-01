@@ -17,7 +17,8 @@ class MdotClientTest(TestCase):
         """
         Tests the client that retrieves data from the mdot API.
         """
-        #TODO: make sure to patch settings to always use file based for unit tests
+        # TODO: make sure to patch settings to always use file based for unit
+        # tests
         resources = MDOT().get_resources()
         # Make sure what we get back is a list
         self.assertEqual(type(resources), type([]))

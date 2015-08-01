@@ -8,7 +8,8 @@ class MDOT_DAO(object):
         """
         The File DAO implementation returns generally static content.  Use this
         DAO with this configuration:
-        RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOT_DAO.File'
+        RESTCLIENTS_MDOT_DAO_CLASS = \
+        'mdot.mdot_rest_client.client.MDOT_DAO.File'
         """
         def getURL(self, url, headers):
             return get_mockdata_url("mdot", "file", url, headers)
@@ -19,7 +20,8 @@ class MDOT(MY_DAO):
     Put a comment here.
     """
     def get_resources(self):
-        response = self.getURL('/api/v1/uwresources', {'Accept': 'application/json'})
+        response = self.getURL('/api/v1/uwresources',
+                               {'Accept': 'application/json'})
         resources = self._json_to_resources_list(response)
         return resources
 
