@@ -67,9 +67,7 @@
                     a { color: #fff; text-decoration: none; }
                 }
                 
-                .mdot-uw-patch { position: absolute; bottom:0px; right: 0;
-                    img { width: 80px; }
-                }
+                
                 
                 .mdot-user-info { color: #fff; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px; display: none; }
             }
@@ -92,6 +90,10 @@
                         .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; color: #eee; }
                     }
                     
+                }
+                
+                .mdot-uw-patch { position: absolute; bottom:0; right: 0;
+                    img { width: 90px; }
                 }
                              
             }
@@ -161,7 +163,7 @@
         <nav class="navbar mdot-navbar" style="/*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .2)), url('/static/mdot/img/uw-texture.png');background-size:cover;*/ height:65px;">
             
             <div class="container" style="position:relative; height:65px;">
-                <div class="mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
+                
                 <h1 class="mdot-logo"><a href="/"><i class="fa fa-mobile"></i> Mobile</a></h1>
                 
                 <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></div>
@@ -181,7 +183,8 @@
         <div id="footer" class="mdot-footer">
             
             <div class="container" style="position:relative;">
-                <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
+                <hr/>
+                <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></div>
                 <div style="position:absolute; right:10px; top: 0; text-transform:uppercase;">
                     <a href="/developers">Building a mobile app?</a>
                 </div>
