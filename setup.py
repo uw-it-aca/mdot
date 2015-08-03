@@ -11,15 +11,16 @@ setup(
     version='0.1',
     packages=['mdot'],
     include_package_data=True,
-    install_requires = [
+    install_requires=[
         'setuptools',
         'django',
         'django-compressor',
         'django_mobileesp',
         'django-easy-pjax',
         'django-templatetag-handlebars',
+        'uw-restclients',
     ],
-    license='Apache License, Version 2.0',  # example license
+    license='Apache License, Version 2.0',
     description='A Django app to ...',
     long_description=README,
     url='http://www.example.com/',
@@ -29,7 +30,7 @@ setup(
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: Apache Software License', # example license
+        'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
