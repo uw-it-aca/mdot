@@ -66,11 +66,7 @@
                 .mdot-netid { line-height:80px; font-size: 20px; display: none;
                     a { color: #fff; text-decoration: none; }
                 }
-            
-                .mdot-uw-patch { position: absolute; bottom:0px; right: 0;
-                    img { width: 80px; }
-                }
-                
+
                 .mdot-user-info { color: #fff; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px; display: none; }
             }
             
@@ -79,7 +75,7 @@
                 a:focus, a:hover {color:white; background-color:#555;}
             }
                     
-            .mdot-feature { /*background:#e8e3d3;*/
+            .mdot-feature { background:#4b2e83;
                 
                  h3 { font-size: 18px; color: #85754d; }
                  
@@ -87,16 +83,20 @@
                         
                     .mdot-feature-item { height: 120px; margin-bottom: 10px;
             
-                        .mdot-resource-link { display:block; background: #333; padding: 10px; height: 90px; color: #222;  text-decoration: none; position: relative; 
+                        .mdot-resource-link { display:block; background: #aaa; padding: 10px; height: 90px; color: #fff;  text-decoration: none; position: relative; 
                             
                             .mdot-resource-name { font-size: 12px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; }
                             
                             .mdot-resource-type { color: lime; position: absolute; top:5px; right:5px; font-size: 14px; }
                         }
                         
-                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; }
+                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; color: #eee; }
                     }
                     
+                }
+                
+                .mdot-uw-patch { position: absolute; bottom:0; right: 0;
+                    img { width: 90px; }
                 }
                              
             }
@@ -165,7 +165,7 @@
         <nav class="navbar mdot-navbar" style="/*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .2)), url('/static/mdot/img/uw-texture.png');background-size:cover;*/ height:65px;">
             
             <div class="container" style="position:relative; height:65px;">
-                <div class="mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
+
                 <h1 class="mdot-logo"><a href="/" title="UW Mobile Resources"><i class="fa fa-mobile"></i> Mobile UW</a></h1>
                 
                 <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></div>
@@ -187,7 +187,12 @@
         <div id="footer" class="mdot-footer" role="contentinfo" aria-label="Copyright & Legal Info">
             
             <div class="container" style="position:relative;">
-                <p>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></p>
+                <hr/>
+                <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></div>
+                
+                <div class="mdot-dev-link" role="complementary" aria-labelledby="dev_header">
+                    <h2 id="dev_header"><a href="/developers">Building a mobile app?</a></h2>
+                </div>
             </div>
             
         </div>
