@@ -14,6 +14,7 @@ This README documents whatever steps are necessary to get your application up an
 **Install Mdot app**  
     
     $ (yourenv) pip install -e git+https://github.com/uw-it-aca/mdot/#egg=mdot
+    $ (yourenv) pip install -e git+https://github.com/uw-it-aca/mdot-developers/#egg=mdotdevs
 
 **Create an empty Django project**
     
@@ -24,6 +25,7 @@ This README documents whatever steps are necessary to get your application up an
     
     urlpatterns = patterns('',
         ...
+        url(r'^developers', include('mdotdevs.urls')),
         url(r'^', include('mdot.urls')),
     )
     
@@ -35,6 +37,7 @@ This README documents whatever steps are necessary to get your application up an
         'templatetag_handlebars',
         'easy_pjax',
         'mdot',
+        'mdotdevs',
     )
 
     MIDDLEWARE_CLASSES = (
