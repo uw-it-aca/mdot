@@ -29,9 +29,12 @@ class MDOT(MY_DAO):
     def _python_list_to_resources_model_list(self, resources):
         client_resources = []
         for resource in resources:
-            client_resource = ClientResource(resource['title'], resource['feature_desc'], resource['image'])
+            client_resource = ClientResource(resource['title'],
+                                             resource['feature_desc'],
+                                             resource['image'])
             for link in resource['resource_links']:
-                client_resource.add_resource_link(link['link_type'], link['url'])
+                client_resource.add_resource_link(link['link_type'],
+                                                  link['url'])
             client_resources.append(client_resource)
         return client_resources
 
