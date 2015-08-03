@@ -17,13 +17,16 @@ class MdotClientTest(TestCase):
         """
         Tests the client that retrieves data from the mdot API.
         """
-        # TODO: make sure to patch settings to always use file based for unit tests
+        # TODO: make sure to patch settings to always use file
+        # based for unit tests
         resources = MDOT().get_resources()
         # Make sure what we get back is a list
         self.assertEqual(type(resources), type([]))
-        # Make sure that the first object in the list is of object type ClientResource
+        # Make sure that the first object in the list is of object
+        # type ClientResource
 
-        # -> Make sure that we get back the bare minimum fields that we need to make mdot work
+        # -> Make sure that we get back the bare minimum fields
+        # that we need to make mdot work
 
         # title: Make sure that the title is unicode
         self.assertEqual(type(resources[0].title), type(u'string'))
@@ -42,7 +45,8 @@ class MdotClientTest(TestCase):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'IT goodness for the UW',
                       u'title': 234,
-                      u'image': u'http://localhost:8000/media/uploads/screenshot_CprR5Dk.jpg',
+                      u'image': u'http://localhost:8000/\
+                      media/uploads/screenshot_CprR5Dk.jpg',
                       u'created_date': u'2015-07-31T19:18:43.771637Z',
                       u'campus_seattle': True,
                       u'campus_bothell': False,
@@ -53,8 +57,9 @@ class MdotClientTest(TestCase):
                                               {u'audience': u'staff'},
                                               {u'audience': u'faculty'},
                                               {u'audience': u'freshman'}],
-                      u'resource_links': [{u'url': u'http://www.washington.edu/itconnect',
-                                           u'link_type': u'WEB'}],
+                      u'resource_links':
+                          [{u'url': u'http://www.washington.edu/itconnect',
+                            u'link_type': u'WEB'}],
                       u'id': 1,
                       u'campus_tacoma': False}]
 
@@ -65,7 +70,8 @@ class MdotClientTest(TestCase):
         fake_list = [{u'accessible': False,
                       u'feature_desc': 1234,
                       u'title': u'ITConnect',
-                      u'image': u'http://localhost:8000/media/uploads/screenshot_CprR5Dk.jpg',
+                      u'image': u'http://localhost:8000/media/\
+                      uploads/screenshot_CprR5Dk.jpg',
                       u'created_date': u'2015-07-31T19:18:43.771637Z',
                       u'campus_seattle': True,
                       u'campus_bothell': False,
@@ -76,8 +82,9 @@ class MdotClientTest(TestCase):
                                               {u'audience': u'staff'},
                                               {u'audience': u'faculty'},
                                               {u'audience': u'freshman'}],
-                      u'resource_links': [{u'url': u'http://www.washington.edu/itconnect',
-                                           u'link_type': u'WEB'}],
+                      u'resource_links':
+                          [{u'url': u'http://www.washington.edu/itconnect',
+                            u'link_type': u'WEB'}],
                       u'id': 1,
                       u'campus_tacoma': False}]
 
@@ -88,7 +95,8 @@ class MdotClientTest(TestCase):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
                       u'title': u'ITConnect',
-                      u'image': 'http://localhost:8000/media/uploads/screenshot_CprR5Dk.jpg',
+                      u'image': 'http://localhost:8000/media/\
+                      uploads/screenshot_CprR5Dk.jpg',
                       u'created_date': u'2015-07-31T19:18:43.771637Z',
                       u'campus_seattle': True,
                       u'campus_bothell': False,
@@ -99,8 +107,9 @@ class MdotClientTest(TestCase):
                                               {u'audience': u'staff'},
                                               {u'audience': u'faculty'},
                                               {u'audience': u'freshman'}],
-                      u'resource_links': [{u'url': u'http://www.washington.edu/itconnect',
-                                           u'link_type': u'WEB'}],
+                      u'resource_links':
+                          [{u'url': u'http://www.washington.edu/itconnect',
+                            u'link_type': u'WEB'}],
                       u'id': 1,
                       u'campus_tacoma': False}]
 
@@ -111,7 +120,8 @@ class MdotClientTest(TestCase):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
                       u'title': u'ITConnect',
-                      u'image': u'http://localhost:8000/media/uploads/screenshot_CprR5Dk.jpg',
+                      u'image': u'http://localhost:8000/media/\
+                      uploads/screenshot_CprR5Dk.jpg',
                       u'created_date': u'2015-07-31T19:18:43.771637Z',
                       u'campus_seattle': True,
                       u'campus_bothell': False,
@@ -122,8 +132,9 @@ class MdotClientTest(TestCase):
                                               {u'audience': u'staff'},
                                               {u'audience': u'faculty'},
                                               {u'audience': u'freshman'}],
-                      u'resource_links': [{u'url': 'http://www.washington.edu/itconnect',
-                                           u'link_type': u'WEB'}],
+                      u'resource_links':
+                          [{u'url': 'http://www.washington.edu/itconnect',
+                            u'link_type': u'WEB'}],
                       u'id': 1,
                       u'campus_tacoma': False}]
 
@@ -134,7 +145,8 @@ class MdotClientTest(TestCase):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
                       u'title': u'ITConnect',
-                      u'image': u'http://localhost:8000/media/uploads/screenshot_CprR5Dk.jpg',
+                      u'image': u'http://localhost:8000/media/\
+                      uploads/screenshot_CprR5Dk.jpg',
                       u'created_date': u'2015-07-31T19:18:43.771637Z',
                       u'campus_seattle': True,
                       u'campus_bothell': False,
@@ -145,8 +157,9 @@ class MdotClientTest(TestCase):
                                               {u'audience': u'staff'},
                                               {u'audience': u'faculty'},
                                               {u'audience': u'freshman'}],
-                      u'resource_links': [{u'url': u'http://www.washington.edu/itconnect',
-                                           u'link_type': 'WEB'}],
+                      u'resource_links':
+                          [{u'url': u'http://www.washington.edu/itconnect',
+                            u'link_type': 'WEB'}],
                       u'id': 1,
                       u'campus_tacoma': False}]
 
