@@ -55,7 +55,9 @@
                 li { padding: 0; margin: 0; }
             }
                         
-            .mdot-navbar { margin-bottom: 0 !important; border: none !important; background:#4b2e83; border-radius: 0 !important; position: relative;
+            .mdot-navbar { margin-bottom: 0 !important; border: none !important; background:#4b2e83; border-radius: 0 !important; position: relative; height:65px;
+                
+                .container { position:relative; height:65px; }
                 
                 .mdot-logo { line-height: 65px; margin: 0; position: absolute; bottom: 0; 
                     a { color: #b7a57a; text-transform: uppercase; text-decoration: none; font-size: 30px;
@@ -70,11 +72,6 @@
                 .mdot-user-info { color: #fff; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px; display: none; }
             }
             
-            .mdot-dev-link {width: 200px; margin: auto;
-                a {float:left; color:#70aefa; padding:10px; margin-bottom:10px; text-transform:uppercase; }
-                a:focus, a:hover {color:white; background-color:#555;}
-            }
-                    
             .mdot-feature { background:#4b2e83;
                 
                  h3 { font-size: 18px; color: #85754d; }
@@ -95,8 +92,8 @@
                     
                 }
                 
-                .mdot-uw-patch { position: absolute; bottom:0; right: 0;
-                    img { width: 90px; }
+                .mdot-uw-patch {position:relative; height:50px;
+                    img {position: absolute; bottom:0; right: 0; width: 90px; }
                 }
                              
             }
@@ -162,9 +159,10 @@
         
     </head>
     <body>
-        <nav class="navbar mdot-navbar" style="/*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, .2)), url('/static/mdot/img/uw-texture.png');background-size:cover;*/ height:65px;">
+        
+        <div class="navbar mdot-navbar">
             
-            <div class="container" style="position:relative; height:65px;">
+            <div class="container">
 
                 <h1 class="mdot-logo"><a href="/" title="UW Mobile Resources"><i class="fa fa-mobile"></i> Mobile UW</a></h1>
                 
@@ -176,7 +174,7 @@
                 
             </div>
             
-        </nav>
+        </div>
         
         <div id="content" role="main" aria-labelledby="page_header">
             {% block content %}{% endblock %}
@@ -185,16 +183,10 @@
         {% block subcontent %}{% endblock %}
         
         <div id="footer" class="mdot-footer" role="contentinfo" aria-label="Copyright & Legal Info">
-            
-            <div class="container" style="position:relative;">
+            <div class="container">
                 <hr/>
-                <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a href="http://www.washington.edu/online/terms/">Terms</a></span></div>
-                
-                <div class="mdot-dev-link" role="complementary" aria-labelledby="dev_header">
-                    <h2 id="dev_header"><a href="/developers">Building a mobile app?</a></h2>
-                </div>
+                <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a target="_blank" href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a target="_blank" href="http://www.washington.edu/online/terms/">Terms</a></span></div>
             </div>
-            
         </div>
                     
         {% if devtools_bar %}

@@ -202,9 +202,7 @@
         </div>
     </div>
     
-    <div class="container" style="position:relative; height:50px;">
-        <div class="mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
-    </div>
+    <div class="container mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
         
 </div><!-- end feature -->
 
@@ -388,6 +386,7 @@
             </div>
             {% endif %}
             
+            <!--
             {% if request.is_windows_phone or not request.is_mobile %}
             <div class="col-sm-4 col-lg-3 mdot-resource-group">
                 <h4><i class="fa fa-windows"></i> Windows App Store</h4>
@@ -396,7 +395,12 @@
                 </ul>
             </div>
             {% endif %}
+            -->
             
+            <div class="col-sm-4 col-lg-6 mdot-dev-link"role="complementary" aria-labelledby="dev_header">
+                <h2 id="dev_header"><a href="/developers">Building a mobile app?</a></h2>
+            </div>
+                
         </div>
     </div>
 </div>
