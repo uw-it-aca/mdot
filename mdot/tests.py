@@ -191,7 +191,8 @@ class MdotClientTest(TestCase):
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         self.assertTrue(resources[0].has_ios())
 
-    # Make sure that has_ios returns false if the resource doesn't have an iOS link
+    # Make sure that has_ios returns false if the resource doesn't
+    # have an iOS link
     def test_if_has_ios_false(self):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
@@ -241,7 +242,8 @@ class MdotClientTest(TestCase):
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         self.assertTrue(resources[0].has_and())
 
-    # Make sure that has_and returns false if the resource doesn't have an android link
+    # Make sure that has_and returns false if the resource doesn't
+    # have an android link
     def test_if_has_and_false(self):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
@@ -266,7 +268,8 @@ class MdotClientTest(TestCase):
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         self.assertFalse(resources[0].has_and())
 
-    # Make sure that has_wip returns true if the resource has a windows phone link
+    # Make sure that has_wip returns true if the resource has a
+    # windows phone link
     def test_if_has_wip_true(self):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
@@ -291,7 +294,8 @@ class MdotClientTest(TestCase):
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         self.assertTrue(resources[0].has_wip())
 
-    # Make sure that has_wip returns false if the resource doesn't have a windows phone link
+    # Make sure that has_wip returns false if the resource
+    # doesn't have a windows phone link
     def test_if_has_wip_false(self):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'This is a test',
