@@ -23,7 +23,7 @@ class MDOT(MY_DAO):
         response = self.getURL('/api/v1/uwresources',
                                {'Accept': 'application/json'})
         resources = json.loads(response.data)
-        resources = self._python_list_to_resources_model_list(resources)        
+        resources = self._python_list_to_resources_model_list(resources)
         return resources
 
     def _python_list_to_resources_model_list(self, resources):
