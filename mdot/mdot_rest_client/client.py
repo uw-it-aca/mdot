@@ -1,18 +1,39 @@
+from django.conf import settings
 from restclients.dao import MY_DAO
 from restclients.dao_implementation.mock import get_mockdata_url
+from restclients.dao_implementation.live import get_con_pool, get_live_url
 import json
 
 
-class MDOT_DAO(object):
-    class File(object):
-        """
-        The File DAO implementation returns generally static content.  Use this
-        DAO with this configuration:
-        RESTCLIENTS_MDOT_DAO_CLASS = \
-        'mdot.mdot_rest_client.client.MDOT_DAO.File'
-        """
-        def getURL(self, url, headers):
-            return get_mockdata_url("mdot", "file", url, headers)
+class MDOTFile(object):
+    """
+    The File DAO implementation returns generally static content.  Use this
+    DAO with this configuration:
+    RESTCLIENTS_MDOT_DAO_CLASS = \
+    'mdot.mdot_rest_client.client.MDOTFile'
+    """
+    def getURL(self, url, headers):
+        return get_mockdata_url("mdot", "file", url, headers)
+
+
+class MDOTLive(object):
+    """
+    This DAO provides real data.  It requires further configuration, e.g.
+    RESTCLIENTS_MDOT_DAO_CLASS = \
+    'mdot.mdot_rest_client.client.MDOTLive',
+    RESTCLIENTS_MDOT_HOST = 'http://yourhost/'
+    """
+    pool = None
+
+    def getURL(self, url, headers):
+        if MDOTLive.pool is None:
+            MDOTLive.pool = get_con_pool(settings.RESTCLIENTS_MDOT_HOST)
+
+        return get_live_url(MDOTLive.pool, 'GET',
+                            settings.RESTCLIENTS_MDOT_HOST,
+                            url,
+                            headers=headers,
+                            service_name='mdot')
 
 
 class MDOT(MY_DAO):
@@ -20,7 +41,7 @@ class MDOT(MY_DAO):
     Put a comment here.
     """
     def get_resources(self):
-        response = self.getURL('/api/v1/uwresources',
+        response = self.getURL('/api/v1/uwresources/',
                                {'Accept': 'application/json'})
         resources = json.loads(response.data)
         resources = self._python_list_to_resources_model_list(resources)
@@ -40,7 +61,7 @@ class MDOT(MY_DAO):
         return self._getURL('mdot', url, headers)
 
     def _getDAO(self):
-        return self._getModule('RESTCLIENTS_MDOT_DAO_CLASS', MDOT_DAO.File)
+        return self._getModule('RESTCLIENTS_MDOT_DAO_CLASS', MDOTFile)
 
 
 class ClientResource(object):
@@ -53,15 +74,17 @@ class ClientResource(object):
         if isinstance(title, unicode):
             self.title = title
         else:
-            raise TypeError
+            raise TypeError("title is not unicode: {0}".format(title))
         if isinstance(feature_desc, unicode):
             self.feature_desc = feature_desc
         else:
-            raise TypeError
+            raise TypeError("feature_desc is not unicode: {0}".format(feature_desc))
         if isinstance(image, unicode):
             self.image = image
+        elif image is None:
+            self.image = ''
         else:
-            raise TypeError
+            raise TypeError("image is not unicode: {0}".format(image))
         self.add_resource_link(links)
 
     def add_resource_link(self, links):
@@ -71,7 +94,7 @@ class ClientResource(object):
                isinstance(link['url'], unicode):
                 self.resource_links[link['link_type']] = link['url']
             else:
-                raise TypeError
+                raise TypeError("Error with resource_links: {0}".format(links))
 
     def has_ios(self):
         for link in self.resource_links:
