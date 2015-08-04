@@ -78,7 +78,8 @@ class ClientResource(object):
         if isinstance(feature_desc, unicode):
             self.feature_desc = feature_desc
         else:
-            raise TypeError("feature_desc is not unicode: {0}".format(feature_desc))
+            raise TypeError("feature_desc is not unicode: {0}".format(
+                            feature_desc))
         if isinstance(image, unicode):
             self.image = image
         elif image is None:
