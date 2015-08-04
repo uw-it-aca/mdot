@@ -9,6 +9,7 @@
     <h2 class="sr-only" id="page_header">Featured applications and resources</h2>
     
     <div id="slider_container">
+        
         <div class="sp-slide" id="you_slide">
             <div class="container">
     
@@ -20,17 +21,19 @@
                     <!-- This is the featured template -->
                     <div class="col-xs-4 col-lg-2 mdot-feature-item">
                         <!-- NOTE: we will need to check if a device link exists as well -->
+                        
                         <a href="
-    
+                            
                         {% if request.is_ios and resource.has_ios %}
                         {{ resource.resource_links.IOS }}
                         {% elif request.is_android and resource.has_and %}
                         {{ resource.resource_links.AND }}
                         {% elif request.is_windows_phone and resource.has_wip %}
+                        {{ resource.resource_links.WIP }}
                         {% else %}
                         {{ resource.resource_links.WEB }}
                         {% endif %}
-    
+                        
                         " target="_blank" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
     
                         <span class="mdot-resource-type">
@@ -47,14 +50,14 @@
                         <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                         <span class="mdot-resource-desktop">
                             {% if resource.has_ios %}
-                            <a href="https://geo.itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                            <a href="{{ resource.resource_links.IOS }}" target="_blank"><i class="fa fa-apple"></i> IOS</a>
                             {% endif %}
                             {% if resource.has_and %}
-                            <a href="https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
+                            <a href="{{ resource.resource_links.AND }}" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
                             {% endif %}
                         </span>
                         {% endif %}
-    
+                    
                     </div>
                     <!-- end template -->
                     {% endfor %}
@@ -179,7 +182,7 @@
     
     </div><!--end slider container -->
     
-    <div class="container mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
+    <div class="container mdot-uw-patch"><img src="/static/mdot/img/uw-logo.png"></div>
 
 
 </div><!-- end feature -->
