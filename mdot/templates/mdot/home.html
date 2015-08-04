@@ -7,171 +7,178 @@
 <div class="mdot-feature">
 
     <h2 class="sr-only" id="page_header">Featured applications and resources</h2>
-
-    <div class="sp-slide" id="you_slide">
-        <div class="container">
-
-            <h3>FOR EVERYONE</h3>
-
-            <div class="row mdot-feature-group">
-
-                {% for resource in resources %}
-                <!-- This is the featured template -->
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <!-- NOTE: we will need to check if a device link exists as well -->
-                    <a href="
-
-                    {% if request.is_ios and resource.has_ios %}
-                    {{ resource.resource_links.IOS }}
-                    {% elif request.is_android and resource.has_and %}
-                    {{ resource.resource_links.AND }}
-                    {% elif request.is_windows_phone and resource.has_wip %}
-                    {% else %}
-                    {{ resource.resource_links.WEB }}
-                    {% endif %}
-
-                    " target="_blank" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
-
-                    <span class="mdot-resource-type">
-                    {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i> iOS
-                    {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i> android
-                    {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i> windows
-                    {% else %}&nbsp;
-                    {% endif %}
-                     </span>
-
-                    </a>
-
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
-                    <span class="mdot-resource-desktop">
-                        {% if resource.has_ios %}
-                        <a href="https://geo.itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+    
+    <div id="slider_container">
+        <div class="sp-slide" id="you_slide">
+            <div class="container">
+    
+                <h3>FOR EVERYONE</h3>
+    
+                <div class="row mdot-feature-group">
+    
+                    {% for resource in resources %}
+                    <!-- This is the featured template -->
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <!-- NOTE: we will need to check if a device link exists as well -->
+                        <a href="
+    
+                        {% if request.is_ios and resource.has_ios %}
+                        {{ resource.resource_links.IOS }}
+                        {% elif request.is_android and resource.has_and %}
+                        {{ resource.resource_links.AND }}
+                        {% elif request.is_windows_phone and resource.has_wip %}
+                        {% else %}
+                        {{ resource.resource_links.WEB }}
                         {% endif %}
-                        {% if resource.has_and %}
-                        <a href="https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
+    
+                        " target="_blank" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
+    
+                        <span class="mdot-resource-type">
+                        {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i> iOS
+                        {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i> android
+                        {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i> windows
+                        {% else %}&nbsp;
                         {% endif %}
-                    </span>
-                    {% endif %}
-
+                         </span>
+    
+                        </a>
+    
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
+                        <span class="mdot-resource-desktop">
+                            {% if resource.has_ios %}
+                            <a href="https://geo.itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                            {% endif %}
+                            {% if resource.has_and %}
+                            <a href="https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
+                            {% endif %}
+                        </span>
+                        {% endif %}
+    
+                    </div>
+                    <!-- end template -->
+                    {% endfor %}
                 </div>
-                <!-- end template -->
-                {% endfor %}
+    
             </div>
-
         </div>
-    </div>
-
-    <div class="sp-slide" id="student_slide">
-        <div class="container">
-
-            <h3>FOR STUDENTS</h3>
-
-            <div class="row mdot-feature-group">
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
+        
+        <!--
+        
+        <div class="sp-slide" id="student_slide">
+            <div class="container">
+    
+                <h3>FOR STUDENTS</h3>
+    
+                <div class="row mdot-feature-group">
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">Canvas</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Library</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-spacescout.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">Scout</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">Canvas</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Library</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-spacescout.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">Scout</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
+    
             </div>
-
         </div>
-    </div>
-
-    <div class="sp-slide" id="faculty_slide">
-        <div class="container">
-
-            <h3>FOR FACULTY</h3>
-            <div class="row mdot-feature-group">
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
+    
+        <div class="sp-slide" id="faculty_slide">
+            <div class="container">
+    
+                <h3>FOR FACULTY</h3>
+                <div class="row mdot-feature-group">
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">Canvas</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Library</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Directory</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link"><span class="mdot-resource-name">UW Today</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link img-rounded" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">Canvas</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Library</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Directory</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link"><span class="mdot-resource-name">UW Today</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
+    
             </div>
-
         </div>
-    </div>
-
-    <div class="sp-slide" id="staff_slide">
-        <div class="container">
-
-            <h3>FOR STAFF</h3>
-
-            <div class="row mdot-feature-group">
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
+    
+        <div class="sp-slide" id="staff_slide">
+            <div class="container">
+    
+                <h3>FOR STAFF</h3>
+    
+                <div class="row mdot-feature-group">
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Library</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Directory</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-4 col-lg-2 mdot-feature-item">
+                        <a href="" class="mdot-resource-link" ><span class="mdot-resource-name">UW Today</span></a>
+                        {% if not request.is_mobile and not request.is_tablet %}
+                        <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Library</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link"><span class="mdot-resource-name">Directory</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
-                <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                    <a href="" class="mdot-resource-link" ><span class="mdot-resource-name">UW Today</span></a>
-                    {% if not request.is_mobile and not request.is_tablet %}
-                    <span class="mdot-resource-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et consectetur orci, ut tincidunt velit. Sed vitae lacus et quam commodo iaculis sit amet interdum quam.</span>
-                    {% endif %}
-                </div>
+    
             </div>
-
         </div>
-    </div>
-
+        
+        -->
+    
+    </div><!--end slider container -->
+    
     <div class="container mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
 
 
