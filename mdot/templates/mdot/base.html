@@ -48,20 +48,29 @@
         <!-- critical css (above the fold styles) -->
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
-
+            
+            @uwpurple: #4b2e83;
+            @gold: #b7a57a;
+            @lightgold: #e8e3d3;
+            @metgold: #85754d;
+            @lightgray: #d9d9d9;
+            @darkgray: #444;
+            @white: #fff;
+            @black: #000;
+            
             body { overflow-x: hidden; }
 
             ul { list-style: none; padding: 0; margin: 0;
                 li { padding: 0; margin: 0; }
             }
 
-            .mdot-navbar { margin-bottom: 0 !important; border: none !important; background:#4b2e83; border-radius: 0 !important; position: relative; height:65px;
+            .mdot-navbar { margin-bottom: 0 !important; border-bottom: solid 1px @lightgold !important; background:@uwpurple; border-radius: 0 !important; position: relative; height:65px;
 
                 .container { position:relative; height:65px; }
 
                 .mdot-logo { line-height: 65px; margin: 0; position: absolute; bottom: 0;
-                    a { color: #b7a57a; text-transform: uppercase; text-decoration: none; font-size: 30px;
-                        i { color: #fff; }
+                    a { color: @gold; text-transform: uppercase; text-decoration: none; font-size: 30px;
+                        i { color: @white; }
                     }
                 }
 
@@ -69,32 +78,34 @@
                     a { color: #fff; text-decoration: none; }
                 }
 
-                .mdot-user-info { color: #fff; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px; display: none; }
+                .mdot-user-info { color: @white; padding-top: 10px;  position: absolute; top: 40%; font-size: 14px; display: none; }
+                
+                .mdot-uw-patch { height:50px;
+                    img {position: absolute; bottom:0; right: 0; width: 80px; }
+                }
             }
 
             .mdot-feature { /*background:#4b2e83;*/
 
-                 h3 { font-size: 18px; color: #85754d; }
+                 h3 { font-size: 18px; color: @gold; }
 
                 .mdot-feature-group { margin-bottom: 0; min-height: 350px;
 
-                    .mdot-feature-item { height: 120px; margin-bottom: 10px;
+                    .mdot-feature-item { height: 110px; margin-bottom: 10px;
 
-                        .mdot-resource-link { display:block; background: #aaa; padding: 10px; height: 90px; color: #333;  text-decoration: none; position: relative;
+                        .mdot-resource-link { display:block; background: @lightgray; padding: 10px; height: 80px; color: @darkgray;  text-decoration: none; position: relative;
 
                             .mdot-resource-name { font-size: 12px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; }
 
-                            .mdot-resource-type { color: lime; position: absolute; top:5px; right:5px; font-size: 14px; }
+                            .mdot-resource-type { color: @lightgray; position: absolute; top:2px; right:4px; font-size: 16px; }
                         }
 
-                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; color: #aaa; }
+                        .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; }
                     }
 
                 }
 
-                .mdot-uw-patch {position:relative; height:50px;
-                    img {position: absolute; bottom:0; right: 0; width: 90px; }
-                }
+                
 
             }
 
@@ -171,7 +182,9 @@
                     <p>John Average #09873645<br/>
                     Freshman | Undeclared</p>
                 </div>
-
+                
+                <div class="mdot-uw-patch"><img src="/static/mdot/img/uw-logo-white.png"></div>
+                
             </div>
 
         </div>
