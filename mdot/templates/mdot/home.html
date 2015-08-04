@@ -16,55 +16,63 @@
                 <h3>FOR EVERYONE</h3>
     
                 <div class="row mdot-feature-group">
-    
-                    {% for resource in resources %}
                     
-                    <!-- This is the featured template -->
-                    <div class="col-xs-3 col-lg-2 mdot-feature-item">
-                        <!-- NOTE: we will need to check if a device link exists as well -->
-                         
-                        <a href="
+                    {% if resources %}
+                    
+                        {% for resource in resources %}
+                        
+                        <!-- This is the featured template -->
+                        <div class="col-xs-3 col-lg-2 mdot-feature-item">
+                            <!-- NOTE: we will need to check if a device link exists as well -->
+                             
+                            <a href="
+                                
+                            {% if request.is_ios and resource.has_ios %}
+                            {{ resource.resource_links.IOS }}
+                            {% elif request.is_android and resource.has_and %}
+                            {{ resource.resource_links.AND }}
+                            {% elif request.is_windows_phone and resource.has_wip %}
+                            {{ resource.resource_links.WIP }}
+                            {% else %}
+                            {{ resource.resource_links.WEB }}
+                            {% endif %}
                             
-                        {% if request.is_ios and resource.has_ios %}
-                        {{ resource.resource_links.IOS }}
-                        {% elif request.is_android and resource.has_and %}
-                        {{ resource.resource_links.AND }}
-                        {% elif request.is_windows_phone and resource.has_wip %}
-                        {{ resource.resource_links.WIP }}
-                        {% else %}
-                        {{ resource.resource_links.WEB }}
-                        {% endif %}
-                        
-                        " target="_blank" class="mdot-resource-link" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
-    
-                        <span class="mdot-resource-type">
-                        {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
-                        {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
-                        {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
-                        {% else %}&nbsp;
-                        {% endif %}
-                         </span>
-    
-                        </a>
-    
-                        {% if not request.is_mobile and not request.is_tablet %}
-                        <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
-                        <span class="mdot-resource-desktop">
-                            {% if resource.has_ios %}
-                            <a href="{{ resource.resource_links.IOS }}" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                            " target="_blank" class="mdot-resource-link" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
+        
+                            <span class="mdot-resource-type">
+                            {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
+                            {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
+                            {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
+                            {% else %}&nbsp;
                             {% endif %}
-                            {% if resource.has_and %}
-                            <a href="{{ resource.resource_links.AND }}" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
+                             </span>
+        
+                            </a>
+        
+                            {% if not request.is_mobile and not request.is_tablet %}
+                            <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
+                            <span class="mdot-resource-desktop">
+                                {% if resource.has_ios %}
+                                <a href="{{ resource.resource_links.IOS }}" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                                {% endif %}
+                                {% if resource.has_and %}
+                                <a href="{{ resource.resource_links.AND }}" target="_blank"><i class="fa fa-android"></i> ANDROID</a>
+                                {% endif %}
+                            </span>
                             {% endif %}
-                        </span>
-                        {% endif %}
-                        
-                       
-                        
-                    </div>
-                    <!-- end template -->
-                    {% endfor %}
+                            
+                            <p style="font-size:10px; word-wrap: break-word;">{{ resource.image }}</p>
+                            
+                        </div>
+                        <!-- end template -->
+                        {% endfor %}
                     
+                    {% else %}
+                    
+                    <p>No resources available</p>
+                    
+                    {% endif %}
+                     
                 </div>
     
             </div>
