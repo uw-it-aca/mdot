@@ -38,7 +38,7 @@ class MDOTLive(object):
 
 class MDOT(MY_DAO):
     """
-    Put a comment here.
+    DAO with methods for getting uwresources from the mdot-rest API.
     """
     def get_resources(self):
         response = self.getURL('/api/v1/uwresources/',
@@ -65,6 +65,9 @@ class MDOT(MY_DAO):
 
 
 class ClientResource(object):
+    """
+    A class object to be used in the mdot client views.
+    """
     title = None
     feature_desc = None
     image_url = None

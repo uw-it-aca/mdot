@@ -1,8 +1,5 @@
 """
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
+Tests for the mdot client app.
 """
 
 from django.test import TestCase
@@ -16,7 +13,8 @@ class MdotClientTest(TestCase):
 
     def test_get_resources(self):
         """
-        Tests the client that retrieves data from the mdot API.
+        Tests getting JSON from the uwresources API and converting it into a
+        class object for use in our templates.
         """
         with self.settings(
             RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
@@ -31,13 +29,13 @@ class MdotClientTest(TestCase):
             # that we need to make mdot work
 
             # title: Make sure that the title is unicode
-            self.assertEqual(type(resources[0].title), type(u'string'))
+            self.assertEqual(type(resources[0].title), type(u'unicode string'))
 
             # feature_desc: Make sure that the description is unicode
-            self.assertEqual(type(resources[0].feature_desc), type(u'string'))
+            self.assertEqual(type(resources[0].feature_desc), type(u'unicode'))
 
             # image: Make sure that the url is unicode
-            self.assertEqual(type(resources[0].image_url), type(u'string'))
+            self.assertEqual(type(resources[0].image_url), type(u'unicode'))
 
             # resource_links: Make sure that the resource links are in a dict
             self.assertEqual(type(resources[0].resource_links), type({}))
