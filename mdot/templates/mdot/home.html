@@ -18,10 +18,11 @@
                 <div class="row mdot-feature-group">
     
                     {% for resource in resources %}
+                    
                     <!-- This is the featured template -->
                     <div class="col-xs-3 col-lg-2 mdot-feature-item">
                         <!-- NOTE: we will need to check if a device link exists as well -->
-                        
+                         
                         <a href="
                             
                         {% if request.is_ios and resource.has_ios %}
@@ -57,10 +58,13 @@
                             {% endif %}
                         </span>
                         {% endif %}
-                    
+                        
+                       
+                        
                     </div>
                     <!-- end template -->
                     {% endfor %}
+                    
                 </div>
     
             </div>
