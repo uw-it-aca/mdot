@@ -31,10 +31,8 @@ class MDOT(MY_DAO):
         for resource in resources:
             client_resource = ClientResource(resource['title'],
                                              resource['feature_desc'],
-                                             resource['image'])
-            for link in resource['resource_links']:
-                client_resource.add_resource_link(link['link_type'],
-                                                  link['url'])
+                                             resource['image'],
+                                             resource['resource_links'])
             client_resources.append(client_resource)
         return client_resources
 
@@ -51,7 +49,7 @@ class ClientResource(object):
     image = None
     resource_links = {}
 
-    def __init__(self, title, feature_desc, image):
+    def __init__(self, title, feature_desc, image, links):
         if isinstance(title, unicode):
             self.title = title
         else:
@@ -64,9 +62,31 @@ class ClientResource(object):
             self.image = image
         else:
             raise TypeError
+        self.add_resource_link(links)
 
-    def add_resource_link(self, link_type, url):
-        if isinstance(url, unicode) and isinstance(link_type, unicode):
-            self.resource_links['link_type'] = url
-        else:
-            raise TypeError
+    def add_resource_link(self, links):
+        self.resource_links.clear()
+        for link in links:
+            if isinstance(link['link_type'], unicode) and\
+               isinstance(link['url'], unicode):
+                self.resource_links[link['link_type']] = link['url']
+            else:
+                raise TypeError
+
+    def has_ios(self):
+        for link in self.resource_links:
+            if link == 'IOS':
+                return True
+        return False
+
+    def has_and(self):
+        for link in self.resource_links:
+            if link == 'AND':
+                return True
+        return False
+
+    def has_wip(self):
+        for link in self.resource_links:
+            if link == 'WIP':
+                return True
+        return False
