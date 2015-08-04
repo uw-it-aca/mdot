@@ -10,6 +10,7 @@ from mdot.mdot_rest_client.client import MDOT
 
 
 class MdotClientTest(TestCase):
+
     def setUp(self):
         pass
 
@@ -17,29 +18,30 @@ class MdotClientTest(TestCase):
         """
         Tests the client that retrieves data from the mdot API.
         """
-        # TODO: make sure to patch settings to always use file
-        # based for unit tests
-        resources = MDOT().get_resources()
-        # Make sure what we get back is a list
-        self.assertEqual(type(resources), type([]))
-        # Make sure that the first object in the list is of object
-        # type ClientResource
+        with self.settings(
+            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+        ):
+            resources = MDOT().get_resources()
+            # Make sure what we get back is a list
+            self.assertEqual(type(resources), type([]))
+            # Make sure that the first object in the list is of object
+            # type ClientResource
 
-        # -> Make sure that we get back the bare minimum fields
-        # that we need to make mdot work
+            # -> Make sure that we get back the bare minimum fields
+            # that we need to make mdot work
 
-        # title: Make sure that the title is unicode
-        self.assertEqual(type(resources[0].title), type(u'string'))
+            # title: Make sure that the title is unicode
+            self.assertEqual(type(resources[0].title), type(u'string'))
 
-        # feature_desc: Make sure that the description is unicode
-        self.assertEqual(type(resources[0].feature_desc), type(u'string'))
+            # feature_desc: Make sure that the description is unicode
+            self.assertEqual(type(resources[0].feature_desc), type(u'string'))
 
-        # image: Make sure that the url is unicode
-        self.assertEqual(type(resources[0].image), type(u'string'))
+            # image: Make sure that the url is unicode
+            self.assertEqual(type(resources[0].image), type(u'string'))
 
-        # resource_links: Make sure that the resource links are in a dict
-        self.assertEqual(type(resources[0].resource_links), type({}))
-        self.assertEqual(len(resources), 2)
+            # resource_links: Make sure that the resource links are in a dict
+            self.assertEqual(type(resources[0].resource_links), type({}))
+            self.assertEqual(len(resources), 2)
 
     def test_python_list_conversion_bad_title(self):
         fake_list = [{u'accessible': False,
@@ -58,8 +60,8 @@ class MdotClientTest(TestCase):
                                               {u'audience': u'faculty'},
                                               {u'audience': u'freshman'}],
                       u'resource_links':
-                          [{u'url': u'http://www.washington.edu/itconnect',
-                            u'link_type': u'WEB'}],
+                      [{u'url': u'http://www.washington.edu/itconnect',
+                        u'link_type': u'WEB'}],
                       u'id': 1,
                       u'campus_tacoma': False}]
 
