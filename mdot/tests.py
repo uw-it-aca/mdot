@@ -37,7 +37,7 @@ class MdotClientTest(TestCase):
             self.assertEqual(type(resources[0].feature_desc), type(u'string'))
 
             # image: Make sure that the url is unicode
-            self.assertEqual(type(resources[0].image), type(u'string'))
+            self.assertEqual(type(resources[0].image_url), type(u'string'))
 
             # resource_links: Make sure that the resource links are in a dict
             self.assertEqual(type(resources[0].resource_links), type({}))
