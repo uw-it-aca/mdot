@@ -68,7 +68,7 @@
 
                 .container { position:relative; min-height:65px; }
 
-                .mdot-logo {  margin: 0; /*position: absolute; bottom: 0;*/
+                .mdot-logo {  margin: 0;
                     a { color: @gold; text-transform: uppercase; text-decoration: none; font-size: 28px; display: inline-block; line-height: 65px;
                         i { color: @white; }
                         img { width: 35px; margin-bottom: 8px; }
@@ -92,6 +92,8 @@
                     .mdot-feature-item { height: 110px; margin-bottom: 10px;
 
                         .mdot-resource-link { display:block; background: @lightgray; padding: 10px; height: 80px; color: @darkgray;  text-decoration: none; position: relative; white-space: nowrap;
+                        
+                            &:after { content: "No image"; }
 
                             .mdot-resource-name { font-size: 11px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; }
 
@@ -102,7 +104,6 @@
                     }
 
                 }
-
 
             }
 

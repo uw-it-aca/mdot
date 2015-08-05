@@ -37,7 +37,7 @@
                             {{ resource.resource_links.WEB }}
                             {% endif %}
 
-                            " target="_blank" class="mdot-resource-link" style="background: url({{ resource.image_url }}) 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
+                            " target="_blank" class="mdot-resource-link" style="background: #eee url({{ resource.image_url }}) 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
 
                             <span class="mdot-resource-type">
                             {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
