@@ -7,26 +7,26 @@
 <div class="mdot-feature">
 
     <h2 class="sr-only" id="page_header">Featured applications and resources</h2>
-    
+
     <div id="slider_container">
-        
+
         <div class="sp-slide" id="you_slide">
             <div class="container">
-    
+
                 <h3>FOR EVERYONE</h3>
-    
+
                 <div class="row mdot-feature-group">
-                    
+
                     {% if resources %}
-                    
+
                         {% for resource in resources %}
-                        
+
                         <!-- This is the featured template -->
                         <div class="col-xs-3 col-lg-2 mdot-feature-item">
                             <!-- NOTE: we will need to check if a device link exists as well -->
-                             
+
                             <a href="
-                                
+
                             {% if request.is_ios and resource.has_ios %}
                             {{ resource.resource_links.IOS }}
                             {% elif request.is_android and resource.has_and %}
@@ -36,9 +36,9 @@
                             {% else %}
                             {{ resource.resource_links.WEB }}
                             {% endif %}
-                            
-                            " target="_blank" class="mdot-resource-link" style="background: url('/static/mdot/img/icon-canvas.png') 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
-        
+
+                            " target="_blank" class="mdot-resource-link" style="background: url({{ resource.image_url }}) 50% 50%; background-size:contain;"><span class="mdot-resource-name">{{ resource.title }}</span>
+
                             <span class="mdot-resource-type">
                             {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
                             {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
@@ -46,9 +46,9 @@
                             {% else %}&nbsp;
                             {% endif %}
                              </span>
-        
+
                             </a>
-        
+
                             {% if not request.is_mobile and not request.is_tablet %}
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                             <span class="mdot-resource-desktop">
@@ -60,31 +60,31 @@
                                 {% endif %}
                             </span>
                             {% endif %}
-                            
+
                             <p style="font-size:10px; word-wrap: break-word;">{{ resource.image }}</p>
-                            
+
                         </div>
                         <!-- end template -->
                         {% endfor %}
-                    
+
                     {% else %}
-                    
+
                     <p>No resources available</p>
-                    
+
                     {% endif %}
-                     
+
                 </div>
-    
+
             </div>
         </div>
-        
+
         <!--
-        
+
         <div class="sp-slide" id="student_slide">
             <div class="container">
-    
+
                 <h3>FOR STUDENTS</h3>
-    
+
                 <div class="row mdot-feature-group">
                     <div class="col-xs-4 col-lg-2 mdot-feature-item">
                         <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
@@ -111,13 +111,13 @@
                         {% endif %}
                     </div>
                 </div>
-    
+
             </div>
         </div>
-    
+
         <div class="sp-slide" id="faculty_slide">
             <div class="container">
-    
+
                 <h3>FOR FACULTY</h3>
                 <div class="row mdot-feature-group">
                     <div class="col-xs-4 col-lg-2 mdot-feature-item">
@@ -151,15 +151,15 @@
                         {% endif %}
                     </div>
                 </div>
-    
+
             </div>
         </div>
-    
+
         <div class="sp-slide" id="staff_slide">
             <div class="container">
-    
+
                 <h3>FOR STAFF</h3>
-    
+
                 <div class="row mdot-feature-group">
                     <div class="col-xs-4 col-lg-2 mdot-feature-item">
                         <a href="//my.uw.edu" class="mdot-resource-link" style="background:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('//c1.staticflickr.com/1/189/444881000_bba92e585c_b.jpg'); background-size:cover;"><span class="mdot-resource-name">MyUW</span></a>
@@ -186,15 +186,15 @@
                         {% endif %}
                     </div>
                 </div>
-    
+
             </div>
         </div>
-        
+
         -->
-    
+
     </div><!--end slider container -->
-    
-    
+
+
 
 
 </div><!-- end feature -->
