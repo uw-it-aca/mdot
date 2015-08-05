@@ -347,7 +347,7 @@ class MdotClientTest(TestCase):
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         image = resources[0].image_url
         # assert that image_url is a string
-        self.assertEquals(type('string'), type(image))
+        self.assertEquals(type(u'string'), type(image))
         # assert that image_url is an empty string
         self.assertEquals('', image)
 
