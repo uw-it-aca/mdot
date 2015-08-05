@@ -375,7 +375,9 @@ class MdotClientTest(TestCase):
                       u'campus_tacoma': False}]
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         dict = resources[0].resource_links
-        self.assertEqual({u'WEB': u'http://www.washington.edu/itconnect'}, dict)
+        self.assertEqual(
+            {u'WEB': u'http://www.washington.edu/itconnect'},
+            dict)
 
     # Make sure that the dict of resource links in the ClientResource
     # is correct when there is more than one resource
