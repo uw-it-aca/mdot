@@ -38,7 +38,7 @@ class MDOTLive(object):
 
 class MDOT(MY_DAO):
     """
-    Put a comment here.
+    DAO with methods for getting uwresources from the mdot-rest API.
     """
     def get_resources(self):
         response = self.getURL('/api/v1/uwresources/',
@@ -65,9 +65,12 @@ class MDOT(MY_DAO):
 
 
 class ClientResource(object):
+    """
+    A class object to be used in the mdot client views.
+    """
     title = None
     feature_desc = None
-    image = None
+    image_url = None
     resource_links = {}
 
     def __init__(self, title, feature_desc, image, links):
@@ -81,11 +84,11 @@ class ClientResource(object):
             raise TypeError("feature_desc is not unicode: {0}".format(
                             feature_desc))
         if isinstance(image, unicode):
-            self.image = image
+            self.image_url = image
         elif image is None:
-            self.image = ''
+            self.image_url = ''
         else:
-            raise TypeError("image is not unicode: {0}".format(image))
+            raise TypeError("image_url is not unicode: {0}".format(image))
         self.add_resource_link(links)
 
     def add_resource_link(self, links):
