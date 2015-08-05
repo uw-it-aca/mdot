@@ -86,7 +86,7 @@ class ClientResource(object):
         if isinstance(image, unicode):
             self.image_url = image
         elif image is None:
-            self.image_url = ''
+            self.image_url = u''
         else:
             raise TypeError("image_url is not unicode: {0}".format(image))
         self.resource_links = self.add_resource_link(links)
