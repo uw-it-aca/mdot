@@ -130,6 +130,8 @@
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
+        <!-- app styles -->
+        {% block app_css_mobile %}{% endblock %}
         {% endcompress %}
         {% endif %}
 
@@ -143,6 +145,8 @@
         <!-- mobile + tablet -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
+        <!-- app styles -->
+        {% block app_css_tablet %}{% endblock %}
         {% endcompress %}
         {% endif %}
 
@@ -157,6 +161,8 @@
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/desktop.less" %}" type="text/less">
+        <!-- app styles -->
+        {% block app_css_desktop %}{% endblock %}
         {% endcompress %}
         {% endif %}
 
