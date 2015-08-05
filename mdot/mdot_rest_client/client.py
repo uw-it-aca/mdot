@@ -89,16 +89,17 @@ class ClientResource(object):
             self.image_url = ''
         else:
             raise TypeError("image_url is not unicode: {0}".format(image))
-        self.add_resource_link(links)
+        self.resource_links = self.add_resource_link(links)
 
     def add_resource_link(self, links):
-        self.resource_links.clear()
+        resource_links = {}
         for link in links:
             if isinstance(link['link_type'], unicode) and\
                isinstance(link['url'], unicode):
-                self.resource_links[link['link_type']] = link['url']
+                resource_links[link['link_type']] = link['url']
             else:
                 raise TypeError("Error with resource_links: {0}".format(links))
+        return resource_links
 
     def has_ios(self):
         for link in self.resource_links:
