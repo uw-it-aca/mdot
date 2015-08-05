@@ -122,6 +122,8 @@
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile -->  
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
+        <!-- app css -->  
+        {% block app_css_mobile %}{% endblock %}
         {% endcompress %}
         {% endif %}
         
@@ -132,9 +134,11 @@
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
         <!-- devtools -->
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
-        <!-- mobile + tablet -->  
+        <!-- mobile + tablet -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
+        <!-- app css -->  
+        {% block app_css_tablet %}{% endblock %} 
         {% endcompress %}
         {% endif %}
         
@@ -149,6 +153,8 @@
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/desktop.less" %}" type="text/less">
+        <!-- app css -->  
+        {% block app_css_desktop %}{% endblock %} 
         {% endcompress %}
         {% endif %}
         
@@ -156,6 +162,7 @@
             <!-- less.js -->
             <script src="{% static 'vendor/js/less-2.0.0.min.js' %}" type="text/javascript"></script>
         {% endif %}
+        
         
     </head>
     <body>
