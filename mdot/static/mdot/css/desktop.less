@@ -18,11 +18,20 @@
         .mdot-feature-item { height: 280px;
 
             .mdot-resource-link { height: 160px;
-
+                
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-transition-duration: 0.2s;
+                transition-duration: 0.2s;
+                -webkit-transition-property: transform;
+                transition-property: transform;
+  
+                &:hover {  -webkit-transform: scale(1.03); transform: scale(1.03); }
+                
                 .mdot-resource-name { bottom: -30px; font-size: 18px; }
             }
             .mdot-resource-desktop { font-size: 12px; display: block; border-top:solid 1px @lightgray; padding-top: 5px;
-                a { color:red; text-decoration: none; margin-left: 8px; }
+                a { color:red; text-decoration: none; margin-left: 10px; display: inline-block; line-height: 20px; }
                 a:nth-child(1) { margin-left: 0; }
             }
 
