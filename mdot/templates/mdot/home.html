@@ -23,8 +23,8 @@
 
                         <!-- This is the featured template -->
                         <div class="col-xs-4 col-lg-2 mdot-feature-item">
-                            <!-- NOTE: we will need to check if a device link exists as well -->
 							
+							<!-- TODO: char needs to refactor this display logic.. break out desktop vs mobile logic -->	
 							{% if resource.has_native and resource.has_web %}
                             <a href='
 
@@ -65,7 +65,7 @@
 	
 	                        {% if resource.has_native and resource.has_web %}</a>{% elif resource.has_native and not resource.has_web and not request.is_mobile and not request.is_tablet %}</span>{% else %}</a>{% endif %}   
                             
-							
+							<!-- desktop only: show all possible native app urls -->
                             {% if not request.is_mobile and not request.is_tablet %}
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                             <span class="mdot-resource-desktop">
@@ -80,8 +80,6 @@
                                 {% endif %}
                             </span>
                             {% endif %}
-
-                            <p style="font-size:10px; word-wrap: break-word;">{{ resource.image }}</p>
 
                         </div>
                         <!-- end template -->
