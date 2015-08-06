@@ -40,8 +40,13 @@ class MDOT(MY_DAO):
     """
     DAO with methods for getting uwresources from the mdot-rest API.
     """
-    def get_resources(self):
-        response = self.getURL('/api/v1/uwresources/',
+    def get_resources(self, **kwargs):
+        url = "/api/v1/uwresources/"
+        if kwargs:
+            url += "?"
+            for key, value in kwargs.items():
+                url += "{0}={1}".format(key, value)
+        response = self.getURL(url,
                                {'Accept': 'application/json'})
         resources = json.loads(response.data)
         resources = self._python_list_to_resources_model_list(resources)
@@ -50,7 +55,8 @@ class MDOT(MY_DAO):
     def _python_list_to_resources_model_list(self, resources):
         client_resources = []
         for resource in resources:
-            client_resource = ClientResource(resource['title'],
+            client_resource = ClientResource(resource['id'],
+                                             resource['title'],
                                              resource['feature_desc'],
                                              resource['image'],
                                              resource['resource_links'])
@@ -68,12 +74,18 @@ class ClientResource(object):
     """
     A class object to be used in the mdot client views.
     """
+    resource_id = None
     title = None
     feature_desc = None
     image_url = None
     resource_links = {}
 
-    def __init__(self, title, feature_desc, image, links):
+    def __init__(self, resource_id, title, feature_desc, image, links):
+        if isinstance(resource_id, int):
+            self.resource_id = resource_id
+        else:
+            raise TypeError("resource_id is not an int: {0}".format(
+                            resource_id))
         if isinstance(title, unicode):
             self.title = title
         else:
