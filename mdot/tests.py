@@ -88,15 +88,6 @@ class MdotClientTest(TestCase):
         ):
             pass
 
-    def test_get_ios_link_from_resource(self):
-        """
-        WILL TEST that retrieving an iOS link works correctly.
-        """
-        with self.settings(
-            RESTCLIENTS_MDOT_HOST='mdot.mdot_rest_client.client.MDOTFile'
-        ):
-            pass
-
     def test_python_list_conversion_bad_id(self):
         fake_list = [{u'accessible': False,
                       u'feature_desc': u'IT goodness for the UW',
