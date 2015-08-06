@@ -63,7 +63,7 @@
                             {% endif %}
                             </span>
 	
-	                        {% if resource.has_native and resource.has_web %}</a>{% else %}</span>{% endif %}   
+	                        {% if resource.has_native and resource.has_web %}</a>{% elif resource.has_native and not resource.has_web and not request.is_mobile and not request.is_tablet %}</span>{% else %}</a>{% endif %}   
                             
 							
                             {% if not request.is_mobile and not request.is_tablet %}
