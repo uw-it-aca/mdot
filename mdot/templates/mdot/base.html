@@ -84,9 +84,11 @@
 
             }
             
-            .mdot-user-info { color: @darkgray; padding-top: 2em; }
+            .mdot-user-info { color: @darkgray; padding-top: 2em; 
+	            hr { margin-bottom: 0; }
+            }
             
-            .mdot-feature {
+            .mdot-feature { margin-top: 1em;
 
                  h3 { font-size: 18px; color: @gold; }
 
@@ -94,7 +96,7 @@
 
                     .mdot-feature-item { height: 140px; margin-bottom: 10px;
 
-                        .mdot-resource-link { display:block; background: @lightgray; padding: 10px; height: 110px; color: @darkgray;  text-decoration: none; position: relative; white-space: nowrap; border: solid 1px @lightgray;
+                        .mdot-resource-link { display:block; background: @lightgray; width: 100%; height: 0; padding-bottom: 100%; color: @darkgray;  text-decoration: none; position: relative; white-space: nowrap; border: solid 1px @lightgray;
                         
                             .mdot-resource-name { font-size: 11px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; }
 
