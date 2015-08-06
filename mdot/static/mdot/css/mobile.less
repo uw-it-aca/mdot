@@ -17,29 +17,29 @@
 
     select { margin: 2em 0; }
 
-    h4 { text-transform: uppercase; color: @gold; font-size: 13px; letter-spacing: 1px; }
-    hr { border-style: dotted; border-color: @lightgray; }
+    h4 { font-size: 13px; letter-spacing: 1px; color: @gold; text-transform: uppercase; }
+    hr { border-color: @lightgray; border-style: dotted;  }
     
     .mdot-resource-group {
 
-        .mdot-resource-link  { text-decoration: none; display: inline-block; line-height: 30px;
-            .mdot-resource-type { color: red; text-transform: uppercase; font-size: 11px; }
+        .mdot-resource-link  { display: inline-block; line-height: 30px; text-decoration: none; 
+            .mdot-resource-type { font-size: 11px; color: red; text-transform: uppercase; }
         }
     }
 }
 
-.mdot-sub-content { background: @lightgray; color: @darkgray; min-height: 100px; padding-top: 2em;
+.mdot-sub-content { min-height: 100px; padding-top: 2em; color: @darkgray; background: @lightgray; 
 
-    h3, h4 { text-transform: uppercase; color: @darkgray; font-size: 13px; letter-spacing: 1px; }
+    h3, h4 {  font-size: 13px; letter-spacing: 1px; color: @darkgray; text-transform: uppercase; }
 
     .mdot-resource-group {
-        .mdot-resource-link  { text-decoration: none;  display: inline-block; line-height: 30px;
-            .mdot-resource-type { color: lime; text-transform: uppercase; font-size: 11px; }
+        .mdot-resource-link  { display: inline-block; line-height: 30px; text-decoration: none; 
+            .mdot-resource-type { font-size: 11px; color: lime; text-transform: uppercase;  }
         }
     }
 
-    .mdot-dev-link { text-align: center; margin-top: 3em; margin-left: -10px; margin-right: -10px;
-        a { color:#4b2e83; padding:10px; margin-bottom:10px; text-transform:uppercase; text-decoration: none; }
+    .mdot-dev-link { margin-top: 3em; margin-right: -10px; margin-left: -10px; text-align: center;
+        a {  padding:10px; margin-bottom:10px; color:#4b2e83; text-decoration: none; text-transform:uppercase;}
         a:focus, a:hover { color: @white; }
     }
 }
@@ -47,24 +47,17 @@
 .mdot-developers {
 
     h2 { font-size: 18px; color: @darkgray; text-transform: uppercase; }
-    h3 { text-transform: uppercase; color: @gold; font-size: 13px; letter-spacing: 1px; }
+    h3 { font-size: 13px; letter-spacing: 1px; color: @gold; text-transform: uppercase; }
 }
 
 
-.mdot-footer { background: @lightgray; color: @darkgray; font-size: 12px; line-height: 60px;
+.mdot-footer { font-size: 12px; line-height: 60px; color: @darkgray; background: @lightgray;
     .container { position:relative; }
     span { margin-left: 10px;
         a { display: inline-block; }
     }
-    hr { border-style: dotted; border-color: @white; margin-bottom: 0; }
+    hr { margin-bottom: 0; border-color: @white; border-style: dotted; }
 }
 
 /*** sticky navigation ***/
-.stuck {
-    position: fixed !important;
-    top: 80px;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-
-}
+.stuck { position: fixed !important; top: 80px; right: 0; left: 0; z-index: 9999; }
