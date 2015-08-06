@@ -24,7 +24,8 @@
                         <!-- This is the featured template -->
                         <div class="col-xs-4 col-lg-2 mdot-feature-item">
                             <!-- NOTE: we will need to check if a device link exists as well -->
-
+							
+							{% if resource.resource_links.WEB %}
                             <a href="
 
                             {% if request.is_ios and resource.has_ios %}
@@ -37,7 +38,12 @@
                             {{ resource.resource_links.WEB }}
                             {% endif %}
 
-                            " target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
+                            " target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+		                    {% else %}
+                            <span class="mdot-resource-nolink" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+                            {% endif %}        
+	                        
+	                        <span class="mdot-resource-name">{{ resource.title }}</span>
 
                             <span class="mdot-resource-type">
                             {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
@@ -45,10 +51,11 @@
                             {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
                             {% else %}&nbsp;
                             {% endif %}
-                             </span>
-
-                            </a>
-
+                            </span>
+	
+	                        {% if resource.resource_links.WEB %}</a>{% else %}</span>{% endif %}   
+                            
+							
                             {% if not request.is_mobile and not request.is_tablet %}
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                             <span class="mdot-resource-desktop">
