@@ -25,22 +25,32 @@
                         <div class="col-xs-4 col-lg-2 mdot-feature-item">
                             <!-- NOTE: we will need to check if a device link exists as well -->
 							
-							{% if resource.resource_links.WEB %}
-                            <a href="
+							{% if resource.has_native and resource.has_web %}
+                            <a href='
 
-                            {% if request.is_ios and resource.has_ios %}
-                            {{ resource.resource_links.IOS }}
-                            {% elif request.is_android and resource.has_and %}
-                            {{ resource.resource_links.AND }}
-                            {% elif request.is_windows_phone and resource.has_wip %}
-                            {{ resource.resource_links.WIP }}
-                            {% else %}
-                            {{ resource.resource_links.WEB }}
+                            {% if request.is_ios and resource.has_ios %}{{ resource.resource_links.IOS }}
+                            {% elif request.is_android and resource.has_and %}{{ resource.resource_links.AND }}
+                            {% elif request.is_windows_phone and resource.has_wip %}{{ resource.resource_links.WIP }}
+	                        {% else %}{{ resource.resource_links.WEB }}    
                             {% endif %}
 
-                            " target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+                            ' target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+
+		                    {% elif resource.has_native and not resource.has_web and not request.is_mobile and not request.is_tablet %}
+		                    
+		                    <span class="mdot-resource-nolink" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+		                    
 		                    {% else %}
-                            <span class="mdot-resource-nolink" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+	                        
+	                        <a href='
+
+                            {% if request.is_ios and resource.has_ios %}{{ resource.resource_links.IOS }}
+                            {% elif request.is_android and resource.has_and %}{{ resource.resource_links.AND }}
+                            {% elif request.is_windows_phone and resource.has_wip %}{{ resource.resource_links.WIP }}
+                            {% endif %}
+
+                            ' target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
+	                                
                             {% endif %}        
 	                        
 	                        <span class="mdot-resource-name">{{ resource.title }}</span>
@@ -53,7 +63,7 @@
                             {% endif %}
                             </span>
 	
-	                        {% if resource.resource_links.WEB %}</a>{% else %}</span>{% endif %}   
+	                        {% if resource.has_native and resource.has_web %}</a>{% else %}</span>{% endif %}   
                             
 							
                             {% if not request.is_mobile and not request.is_tablet %}
