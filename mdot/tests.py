@@ -77,7 +77,25 @@ class MdotClientTest(TestCase):
         with self.settings(
             RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
         ):
-            pass
+            resources = MDOT().get_resources(featured=True, audience='alumni')
+            # make a request separately to ?featured=true&audience=alumni
+            url = '/api/v1/uwresources/?featured=True&audience=alumni'
+            response = MDOT().getURL(url,
+                                     {'Accept': 'application/json'})
+            # assert a 200 status
+            self.assertEqual(response.status, 200)
+            comparison_data = json.loads(response.data)
+
+            # assert that the two retrieved resources have the same id as the
+            # ones in the response
+            id_list = []
+            for item in comparison_data:
+                id_list.append(item['id'])
+            for resource in resources:
+                self.assertTrue(resource.resource_id in id_list)
+
+            # assert the same number of items are returned (and no extras)
+            self.assertEqual(comparison_data.__len__(), resources.__len__())
 
     def test_get_resource_by_id(self):
         """

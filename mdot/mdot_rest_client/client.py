@@ -42,10 +42,15 @@ class MDOT(MY_DAO):
     """
     def get_resources(self, **kwargs):
         url = "/api/v1/uwresources/"
+        i = kwargs.__len__()
         if kwargs:
             url += "?"
             for key, value in kwargs.items():
                 url += "{0}={1}".format(key, value)
+                if i > 1:
+                    url += "&"
+                i = i - 1
+
         response = self.getURL(url,
                                {'Accept': 'application/json'})
         resources = json.loads(response.data)
