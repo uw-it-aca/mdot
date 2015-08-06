@@ -384,6 +384,30 @@ class MdotClientTest(TestCase):
         resources = MDOT()._python_list_to_resources_model_list(fake_list)
         self.assertTrue(resources[0].has_wip())
 
+    def test_if_has_web_true(self):
+        fake_list = [{u'accessible': False,
+                      u'feature_desc': u'This is a test',
+                      u'title': u'ITConnect',
+                      u'image': u'http://localhost:8000/media/\
+                      uploads/screenshot_CprR5Dk.jpg',
+                      u'created_date': u'2015-07-31T19:18:43.771637Z',
+                      u'campus_seattle': True,
+                      u'campus_bothell': False,
+                      u'responsive_web': False,
+                      u'featured': True,
+                      u'last_modified': u'2015-07-31T19:21:07.562924Z',
+                      u'intended_audiences': [{u'audience': u'student'},
+                                              {u'audience': u'staff'},
+                                              {u'audience': u'faculty'},
+                                              {u'audience': u'freshman'}],
+                      u'resource_links':
+                          [{u'url': u'http://www.washington.edu/itconnect',
+                            u'link_type': u'WEB'}],
+                      u'id': 1,
+                      u'campus_tacoma': False}]
+        resources = MDOT()._python_list_to_resources_model_list(fake_list)
+        self.assertTrue(resources[0].has_web())
+
     # Make sure that has_wip returns false if the resource
     # doesn't have a windows phone link
     def test_if_has_wip_false(self):
