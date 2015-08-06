@@ -7,7 +7,7 @@ import json
 
 
 def home(request):
-    params = {'resources': MDOT().get_resources()}
+    params = {'resources': MDOT().get_resources(featured=True)}
     return render_to_response('mdot/home.html', params,
                               context_instance=RequestContext(request)
                               )

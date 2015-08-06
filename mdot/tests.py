@@ -6,6 +6,7 @@ from django.test import TestCase
 from django.test import Client
 from django.core.urlresolvers import resolve
 from mdot.mdot_rest_client.client import MDOT, ClientResource
+import json
 
 
 class MdotClientTest(TestCase):
@@ -13,7 +14,7 @@ class MdotClientTest(TestCase):
     def setUp(self):
         pass
 
-    def test_get_resources(self):
+    def test_get_all_resources(self):
         """
         Tests getting JSON from the uwresources API and converting it into a
         class object for use in our templates.
@@ -41,7 +42,85 @@ class MdotClientTest(TestCase):
 
             # resource_links: Make sure that the resource links are in a dict
             self.assertEqual(type(resources[0].resource_links), type({}))
-            self.assertEqual(len(resources), 2)
+            self.assertEqual(len(resources), 3)
+
+    def test_get_resources_by_featured(self):
+        """
+        Tests retrieval of resources by filtering on attributes.
+        """
+        with self.settings(
+            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+        ):
+            resources = MDOT().get_resources(featured=True)
+            # make a request separately to ?featured=true
+            response = MDOT().getURL('/api/v1/uwresources/?featured=True',
+                                     {'Accept': 'application/json'})
+            # assert a 200 status
+            self.assertEqual(response.status, 200)
+            comparison_data = json.loads(response.data)
+
+            # assert that the two retrieved resources have the same id as the
+            # ones in the response
+            id_list = []
+            for item in comparison_data:
+                id_list.append(item['id'])
+            for resource in resources:
+                self.assertTrue(resource.resource_id in id_list)
+
+            # assert the same number of items are returned (and no extras)
+            self.assertEqual(comparison_data.__len__(), resources.__len__())
+
+    def test_get_resources_by_multiple_attrs(self):
+        """
+        WILL TEST retrieval of resources filtered by more than one attribute.
+        """
+        with self.settings(
+            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+        ):
+            pass
+
+    def test_get_resource_by_id(self):
+        """
+        WILL TEST retrieval of a resource by it's id.
+        """
+        with self.settings(
+            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+        ):
+            pass
+
+    def test_get_ios_link_from_resource(self):
+        """
+        WILL TEST that retrieving an iOS link works correctly.
+        """
+        with self.settings(
+            RESTCLIENTS_MDOT_HOST='mdot.mdot_rest_client.client.MDOTFile'
+        ):
+            pass
+
+    def test_python_list_conversion_bad_id(self):
+        fake_list = [{u'accessible': False,
+                      u'feature_desc': u'IT goodness for the UW',
+                      u'title': 234,
+                      u'image': u'http://localhost:8000/\
+                      media/uploads/screenshot_CprR5Dk.jpg',
+                      u'created_date': u'2015-07-31T19:18:43.771637Z',
+                      u'campus_seattle': True,
+                      u'campus_bothell': False,
+                      u'responsive_web': False,
+                      u'featured': True,
+                      u'last_modified': u'2015-07-31T19:21:07.562924Z',
+                      u'intended_audiences': [{u'audience': u'student'},
+                                              {u'audience': u'staff'},
+                                              {u'audience': u'faculty'},
+                                              {u'audience': u'freshman'}],
+                      u'resource_links':
+                      [{u'url': u'http://www.washington.edu/itconnect',
+                        u'link_type': u'WEB'}],
+                      u'id': 'some string not an int',
+                      u'campus_tacoma': False}]
+
+        with self.assertRaises(TypeError):
+            MDOT()._python_list_to_resources_model_list(fake_list)
 
     def test_python_list_conversion_bad_title(self):
         fake_list = [{u'accessible': False,
@@ -438,6 +517,7 @@ class MdotClientTest(TestCase):
                       {u'url': u'http://apple.com',
                        u'link_type': u'IOS'}]
         resource = ClientResource(
+            1,
             u'SpaceScout',
             u'This is a test.',
             None,
