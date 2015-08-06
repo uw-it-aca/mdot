@@ -135,3 +135,6 @@ class ClientResource(object):
             if link == 'WIP':
                 return True
         return False
+
+    def has_native(self):
+        return self.has_ios or self.has_and or self.has_wip
