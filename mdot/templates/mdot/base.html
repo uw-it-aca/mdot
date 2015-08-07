@@ -90,7 +90,7 @@
             
             .mdot-feature { margin-top: 1em;
 
-                 .container {margin-top:15px; border-top: grey solid 1px;}
+                 .container {margin-top:15px; border-top: grey solid 1px; margin-bottom:0; padding-bottom:15px; border-bottom: grey solid 1px;}
                  
                  h3 { font-size: 18px; color: @gold; font-family: 'Kreon', sans-serif; }
 
@@ -119,6 +119,8 @@
 
             }
             
+            .container.sub-content {padding-left:0; padding-right:0;}
+            
             .mdot-categories { display: none; }
 
             /** override bootstrap grid **/
@@ -132,7 +134,8 @@
                   padding-left: 5px !important;
                 }
             }/** end grid override **/
-
+            
+            {% block app_css_inline %}{% endblock %}
         </style>
         {% endcompress %}
 
