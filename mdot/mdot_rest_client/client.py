@@ -66,7 +66,9 @@ class MDOT(MY_DAO):
                                              resource['image'],
                                              resource['resource_links'])
             client_resources.append(client_resource)
-            client_resources = sorted(client_resources, key=lambda client_resource: client_resource.title)
+            client_resources = sorted(
+                client_resources,
+                key=lambda client_resource: client_resource.title)
         return client_resources
 
     def getURL(self, url, headers):
