@@ -27,7 +27,7 @@
                         {% if not request.is_mobile and not request.is_tablet %}
                         	<!-- desktop only -->
                             {% if resource.has_native and not resource.has_web %}
-		                    <span class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+		                    <span class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
 		                    {% else %}
 	                        
 	                        <a href='{{ resource.resource_links.WEB }}' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
