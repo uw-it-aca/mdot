@@ -38,9 +38,14 @@
         }
     }
 
-    .mdot-dev-link { margin-top: 3em; margin-right: -10px; margin-left: -10px; text-align: center;
-        a {  padding:10px; margin-bottom:10px; color:#4b2e83; text-decoration: none; text-transform:uppercase;}
-        a:focus, a:hover { color: @white; }
+    .mdot-dev-link { min-height:200px; margin-top: 3em; margin-right: -10px; margin-bottom: -20px; margin-left: -10px; color: #fff; text-align: left;  background: url('//farm3.staticflickr.com/2896/14518939096_77335be4ce_b.jpg') 50% 50%; background-size:cover; 
+        
+        .mdot-dev-callout { position:absolute; bottom:20px; left:0; width: 80%; padding: 15px 20px; background-color: rgba(51, 0, 111, .9);  
+            
+            h2 { margin: 0 0 10px; font-size: 16px; color:@gold; text-decoration: none; text-transform:uppercase;}
+            a { color: @gold; text-decoration: underline; }
+            a:focus, a:hover { color: @white; }
+        }
     }
 }
 
