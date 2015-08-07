@@ -358,5 +358,50 @@ class MdotClientMethodsTest(TestCase):
             {u'WEB': u'http://spacescout.uw.edu', u'IOS': u'http://apple.com'},
             links)
 
+    def test_resource_order(self):
+        fake_list = [{u'accessible': False,
+                      u'feature_desc': u'This is a second test.',
+                      u'title': u'SpaceScout',
+                      u'image': None,
+                      u'created_date': u'2015-07-31T19:18:43.771637Z',
+                      u'campus_seattle': True,
+                      u'campus_bothell': True,
+                      u'responsive_web': True,
+                      u'featured': True,
+                      u'last_modified': u'2015-07-31T19:21:07.562924Z',
+                      u'intended_audiences': [{u'audience': u'student'},
+                                              {u'audience': u'staff'},
+                                              {u'audience': u'faculty'},
+                                              {u'audience': u'freshman'}],
+                      u'resource_links':
+                          [{u'url': u'http://spacescout.uw.edu',
+                            u'link_type': u'WEB'},
+                           {u'url': u'http://apple.com',
+                            u'link_type': u'IOS'}],
+                      u'id': 2,
+                      u'campus_tacoma': True},
+                     {u'accessible': False,
+                      u'feature_desc': u'AThis is a test',
+                      u'title': u'ITConnect',
+                      u'image': None,
+                      u'created_date': u'2015-07-31T19:18:43.771637Z',
+                      u'campus_seattle': True,
+                      u'campus_bothell': False,
+                      u'responsive_web': False,
+                      u'featured': True,
+                      u'last_modified': u'2015-07-31T19:21:07.562924Z',
+                      u'intended_audiences': [{u'audience': u'student'},
+                                              {u'audience': u'staff'},
+                                              {u'audience': u'faculty'},
+                                              {u'audience': u'freshman'}],
+                      u'resource_links':
+                          [{u'url': u'http://www.washington.edu/itconnect',
+                            u'link_type': u'WEB'}],
+                      u'id': 1,
+                      u'campus_tacoma': False}]
+        resources = MDOT()._python_list_to_resources_model_list(fake_list)
+        self.assertEqual(resources[0].title, u'ITConnect')
+        self.assertEqual(resources[1].title, u'SpaceScout')
+
     def tearDown(self):
         pass
