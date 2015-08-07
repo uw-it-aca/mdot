@@ -30,14 +30,7 @@
 		                    <span class="mdot-resource-nolink" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;">
 		                    {% else %}
 	                        
-	                        <a href='
-
-                            {% if request.is_ios and resource.has_ios %}{{ resource.resource_links.IOS }}
-                            {% elif request.is_android and resource.has_and %}{{ resource.resource_links.AND }}
-                            {% elif request.is_windows_phone and resource.has_wip %}{{ resource.resource_links.WIP }}
-                            {% endif %}
-
-                            ' target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
+	                        <a href='{{ resource.resource_links.WEB }}' target="_blank" class="mdot-resource-link" style="background: #eee url('{{ resource.image_url }}') center; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
 	                                
                             {% endif %}    
 							
