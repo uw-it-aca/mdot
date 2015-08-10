@@ -24,7 +24,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57-precomposed.png" %}">
         <link rel="shortcut icon" href="{% static "vendor/ico/favicon.ico" %}">
         
-        <link href='http://fonts.googleapis.com/css?family=Hind|Kreon|Patua+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Hind|Kreon' rel='stylesheet' type='text/css'>
 
         {% if request.is_windows_phone %}
         <!-- windows8 - tile icon  & color -->
@@ -60,7 +60,7 @@
             @white: #fff;
             @black: #000;
             
-            body { overflow-x: hidden; font-family: 'Hind', sans-serif !important; background-color: @uwpurple !important;
+            body { overflow-x: hidden; font-family: 'Hind', sans-serif !important; background-color: @white !important;
 	            h1,h2,h3,h4,h5 {font-family: 'Kreon', serif; color: @uwpurple;}
 	            p {font-family: 'Hind', sans-serif; color: @darkgray;}
             }
@@ -69,20 +69,22 @@
                 li { padding: 0; margin: 0; }
             }
 
-            .mdot-navbar {
+            .mdot-navbar { 
 
-                .container { position:relative; min-height:48px; background-color: @white;}
+                .container-fluid { position:relative; min-height:50px;}
 
                 .mdot-logo {  background: transparent url("{% static "mdot/img/w-mini_wht.png" %}") no-repeat; position: absolute; bottom: -7px; left: -2px; z-index:99; margin:0;
-                    a { font-family: 'Patua One', serif; color: @uwpurple; text-decoration: none; text-transform:uppercase; font-size: 36px; display: inline-block; padding-left:72px; line-height:.95; font-style:italic;
+                    a { font-family: 'Kreon', serif; color: @uwpurple; text-decoration: none; text-transform:uppercase; font-size: 36px; display: inline-block; padding-left:72px; line-height:.95; font-style:italic;
 	                    .slogan {font-size:13px; margin-left: -3px;}
                         i { color: @white; }
                         img { width: 35px; margin-bottom: 8px; }
                     }
                 }
 
-                .mdot-netid { display: none; font-size: 16px;  position: absolute; right: 15px; top:0;
-                    a { color: #fff; text-decoration: none; display: inline-block;  line-height:65px; }
+                .mdot-netid { position: absolute; right:0; padding-right: 15px; bottom: 3px; z-index:99; font-size:14px;
+                    span { color: #fff; text-decoration: none; display: inline-block;  
+                        a {text-transform: uppercase; text-decoration: underline;}
+                    }
                 }
 
             }
@@ -93,7 +95,7 @@
             
             .mdot-feature { 
 
-                 .container {margin-bottom:0; padding-bottom:15px; border-bottom: grey solid 1px; background-color: white;}
+                 .container-fluid {margin-bottom:0; padding-bottom:15px; border-bottom: grey solid 1px; background-color: white;}
                  
                  h3 { font-size: 18px; }
 
@@ -123,7 +125,7 @@
             
             .mdot-categories { display: none; }
 
-            /** override bootstrap grid */
+            /** override bootstrap grid 
             .row {
                 margin-right: -7px !important;
                 margin-left: -7px !important;
@@ -193,16 +195,17 @@
     <body>
 
         <div class="mdot-navbar" role="banner" aria-labelledby="app_header">
-            <div class="container">
+            <div class="container-fluid">
                 <!--<h1 id="app_header" class="mdot-logo"><a href="/" title="UW Mobile Resources"><i class="fa fa-mobile"></i> Mobile UW</a></h1>-->
-                <h1 id="app_header" class="mdot-logo"><a href="/" title="UW Mobile Resources">Mobile <span class="sr-only">UW</span><div class="slogan">UW at your fingertips</div></a></h1>
-                <div class="title-border" style="position: absolute; z-index:1; left:0; width: 75px; border-right: transparent solid 13px; border-top: #4b2e83 solid 48px;"></div>
-                <div class="mdot-netid"><a href="" id="mdot_user_button">javerage</a></div>                                
-            </div>
+                <h1 id="app_header" class="mdot-logo"><a href="/" title="UW Mobile Resources">Mobile <span class="sr-only">UW</span><div class="slogan">At your fingertips</div></a></h1>
+                <div class="title-border" style="position: absolute; z-index:1; left:0; width: 75px; border-right: transparent solid 14px; border-top: #4b2e83 solid 51px;"></div>   
+                <div class="mdot-netid"><span id="mdot_user_button">javerage</span></div> 
+            <div class="title-border" style="position: absolute; z-index:1; right:0; bottom: 0; width: 90px; border-left: transparent solid 8px; border-bottom: #b7a57a solid 28px;"></div>                             
+            </div> 
         </div>
         
         <div class="mdot-user-info">
-            <div class="container">    
+            <div class="container-fluid">    
                 <p>John Average #09873645<br/>
                 Freshman | Undeclared</p>
                 <hr />
@@ -213,11 +216,11 @@
             {% block content %}{% endblock %}
         </div>
 
-    <div class="container sub-content">
+    <div class="container-fluid sub-content">
         {% block subcontent %}{% endblock %}
 
         <div id="footer" class="mdot-footer" role="contentinfo" aria-label="Copyright & Legal Info">
-            <div class="container">
+            <div class="container-fluid">
                 <hr/>
                 <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a target="_blank" href="http://www.washington.edu/online/privacy/">Privacy</a></span> <span><a target="_blank" href="http://www.washington.edu/online/terms/">Terms</a></span></div>
             </div>
