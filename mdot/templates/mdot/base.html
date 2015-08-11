@@ -101,7 +101,7 @@
 	            hr { margin-bottom: 0; }
             }
             
-            .mdot-feature { 
+            .mdot-feature { padding: 1em 0;
 
                  .container-fluid {margin-bottom:0; padding-bottom:15px; border-bottom: grey solid 1px; background-color: white;}
                  
@@ -109,7 +109,7 @@
 
                 .mdot-feature-group { margin-bottom: 0; min-height: 350px;
 
-                    .mdot-feature-item { height: 130px; margin-bottom: 10px;
+                    .mdot-feature-item { height: 125px; margin-bottom: 10px;
 						
 						.mdot-resource-nolink { display:block; background: @lightgray; width: 100%; height: 0; padding-bottom: 100%; color: @darkgray;  text-decoration: none; position: relative; white-space: nowrap; border: solid 1px @lightgray; 
 							
@@ -119,9 +119,10 @@
 
                         .mdot-resource-link { display:block; background: @lightgray; width: 100%; height: 0; padding-bottom: 99%; color: @darkgray;  text-decoration: none; position: relative; white-space: nowrap; border: solid 1px @lightgray;
                         
-                            .mdot-resource-name { font-size: 11px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; }
-
-                            .mdot-resource-type { color: @white; position: absolute; top:0; right:0; font-size: 18px; background: rgba(0, 0, 0, .5); width: 27px; line-height: 27px; text-align: center; }
+                            .mdot-resource-name { font-size: 12px; text-transform: uppercase; position: absolute; left: 0; right: 0; bottom: -22px; z-index: 1; text-align: center; 
+                                
+                                i { color: @lightgray; }
+                            }
                         }
 
                         .mdot-resource-desc { margin-top: 5px; font-size: 12px; display: inline-block; max-height: 70px; overflow: hidden; }
@@ -132,18 +133,6 @@
             }
             
             .mdot-categories { display: none; }
-
-            /** override bootstrap grid 
-            .row {
-                margin-right: -7px !important;
-                margin-left: -7px !important;
-
-                & > [class^="col-"],
-                & > [class*=" col-"] {
-                  padding-right: 7px !important;
-                  padding-left: 7px !important;
-                }
-            }/** end grid override **/
             
             {% block app_css_inline %}{% endblock %}
         </style>

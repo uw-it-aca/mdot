@@ -60,15 +60,11 @@
 	                        {% else %}{{ resource.resource_links.WEB }}    
 	                        {% endif %}
 	
-	                        ' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
-	
-	                        <span class="mdot-resource-type">
-	                        {% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
+	                        ' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
 	                        {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
 	                        {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
-	                        {% endif %}
-	                        </span>
-	                        
+	                        {% endif %}{{ resource.title }}</span>
+	                  
 	                        </a>
                         {% endif %}
 
