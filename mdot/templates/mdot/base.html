@@ -59,34 +59,38 @@
             @darkgray: #444;
             @white: #fff;
             @black: #000;
+            @text: #565656;
             
-            body { overflow-x: hidden; font-family: 'Hind', sans-serif !important; background-color: @white !important;
-	            h1,h2,h3,h4,h5 {font-family: 'Kreon', serif; color: @uwpurple;}
-	            p {font-family: 'Hind', sans-serif; color: @darkgray;}
+            body { overflow-x: hidden; font-family: 'Hind', sans-serif !important; background-color: @white !important; 
+	            h1,h2,h3,h4,h5 {font-family: 'Kreon', serif;  color: @metgold; margin-top:0;}
+	            .mdot-developers {
+                h2 { font-size: 31px; margin-top: 28px; margin-bottom: 18px; text-transform: uppercase;  }
+                h3 { font-size: 20px; letter-spacing: 1px; text-transform: uppercase; margin-top: 13px; margin-bottom:13px; }
+                h4 {font-size: 19px; margin-bottom: 10px; color:@darkgray;  }
+            }
+	            p {color: @text; font-size: 16px;}
+	            a {font-size: 15px; color:#2A90BC;}
+	            .content-block {margin-bottom:22px;}
             }
 
             ul { list-style: none; padding: 0; margin: 0;
-                li { padding: 0; margin: 0; }
+                li { padding: 0; margin: 0; line-height:1.8em; }
             }
 
             .mdot-navbar { 
 
                 .container-fluid { 
 	                position:relative; 
-	                min-height:51px; 
-	                -webkit-box-shadow: 0px 4px 9px -6px rgba(0,0,0,0.75);
-	                -moz-box-shadow: 0px 4px 9px -6px rgba(0,0,0,0.75);
-	                box-shadow: 0px 4px 9px -6px rgba(0,0,0,0.75);
+	                min-height:51px;
 	                }
 	            
-	            .uw-background {position: absolute; z-index:1; left:0; width: 78px; border-right: transparent solid 14px; border-top: @gold solid 51px;}
+	            .uw-background {position: absolute; z-index:1; left:0; width: 78px; border-right: transparent solid 14px; border-top: @darkgray solid 51px;}
 
-		        .netid-background {position: absolute; z-index:1; right:0; bottom: 0; width: 90px; border-left: transparent solid 8px; border-bottom: #676767 solid 28px; margin-bottom:0;}
+		        .netid-background {position: absolute; z-index:1; right:0; bottom: 0; width: 90px; border-left: transparent solid 8px; border-bottom: @uwpurple solid 28px; margin-bottom:0;}
 		        
 				.uw-icon {background: transparent url("{% static "mdot/img/w-mini_wht.png" %}") no-repeat; position: absolute; bottom: -4px; left: -2px; z-index:99; margin:0; width:70px; height:50px;}
-                .mdot-logo {position: absolute; bottom: -3px; left: -8px; margin:0;
-                    a { font-family: 'Kreon', serif; color: @gold; text-decoration: none; display: inline-block; padding-left:80px; padding-right: 6px; font-style:italic;  
-                    }
+                .mdot-logo {position: absolute; bottom: -3px; left: -8px; margin:0; font-family: 'Kreon', serif; display: inline-block; padding-left:80px; padding-right: 6px; font-style:italic;  
+                    a {color: @darkgray; text-decoration: none; font-size:inherit;}
                 }
 
                 .mdot-netid { position: absolute; right:0; padding-right: 15px; bottom: 3px; z-index:99; font-size:14px;
