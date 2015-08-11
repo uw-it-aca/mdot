@@ -144,8 +144,6 @@
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.3.5.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
-        <!-- devtools -->
-        <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <!-- app styles -->
@@ -158,8 +156,6 @@
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.3.5.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
-        <!-- devtools -->
-        <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile + tablet -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
@@ -173,8 +169,6 @@
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.3.5.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
-        <!-- devtools -->
-        <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
         <!-- mobile + tablet + desktop -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
@@ -183,10 +177,15 @@
         {% block app_css_desktop %}{% endblock %}
         {% endcompress %}
         {% endif %}
-
+        
+        {% if devtools_bar %}
+        <!-- devtools -->
+        <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
+        {% endif %}
+        
         {% if not less_compiled %}
-            <!-- less.js -->
-            <script src="{% static 'vendor/js/less-2.0.0.min.js' %}" type="text/javascript"></script>
+        <!-- less.js -->
+        <script src="{% static 'vendor/js/less-2.0.0.min.js' %}" type="text/javascript"></script>
         {% endif %}
 
     </head>
