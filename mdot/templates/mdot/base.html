@@ -62,11 +62,13 @@
             @text: #565656;
             
             body { overflow-x: hidden; font-family: 'Hind', sans-serif !important; background-color: @white !important; 
-	            h1,h2,h3,h4,h5 {font-family: 'Kreon', serif;  color: @metgold; margin-top:0;}
-                h2 { font-size: 31px; margin-top: 28px; margin-bottom: 0; text-transform: uppercase; font-weight:bold; }
-                h3 { font-size: 20px; letter-spacing: 1px; text-transform: uppercase; margin-top: 10px; margin-bottom:13px; }
-                h4 {font-size: 19px; margin-bottom: 10px; color:@darkgray; }
-	            p {color: @text; font-size: 16px;}
+	            h1,h2,h3,h4,h5 {font-family: 'Kreon', serif;   margin-top:0; color:@darkgray;}
+                h2 { font-size: 31px; margin-top: 0; margin-bottom: 5px; text-transform: uppercase; font-weight:bold; 
+                    &#page_header {border-top:1px solid @gold; margin-right:-17px; margin-left:-17px; padding: 12px 15px 4px;}
+                }
+                h3 { font-size: 21px; letter-spacing: 1px; text-transform: uppercase; margin-top: 20px; margin-bottom:11px; font-weight: bold; color: @metgold; }
+                h4 {font-size: 20px; margin-bottom: 10px;  }
+	            p {color: @text; font-size: 16px; line-height:1.5em;}
 	            a {font-size: 15px; color:#2A90BC;}
 	            .content-block {margin-bottom:22px;}
             }
@@ -82,12 +84,12 @@
 	                min-height:51px;
 	                }
 	            
-	            .uw-background {position: absolute; z-index:1; left:0; width: 78px; border-right: transparent solid 14px; border-top: @darkgray solid 51px;}
-		        .netid-background {position: absolute; z-index:1; right:0; bottom: 0; width: 90px; border-left: transparent solid 8px; border-bottom: @gold solid 28px; margin-bottom:0;}
+	            .uw-background {position: absolute; z-index:1; left:0; width: 78px; border-right: transparent solid 14px; border-top: @gold solid 51px;}
+		        .netid-background {position: absolute; z-index:1; right:0; bottom: 0; width: 90px; border-left: transparent solid 8px; border-bottom: #676767 solid 28px; margin-bottom:0;}
 
 				.uw-icon {background: transparent url("{% static "mdot/img/w-mini_wht.png" %}") no-repeat; position: absolute; bottom: -4px; left: -2px; z-index:99; margin:0; width:70px; height:50px;}
                 .mdot-logo {position: absolute; bottom: -3px; left: -8px; margin:0; font-family: 'Kreon', serif; display: inline-block; padding-left:84px; padding-right: 6px; 
-                    a {color: @darkgray; text-decoration: none; font-size:inherit;}
+                    a {color: @gold; text-decoration: none; font-size:inherit;}
                 }
 
                 .mdot-netid { position: absolute; right:0; padding-right: 15px; bottom: 3px; z-index:99; font-size:14px;
