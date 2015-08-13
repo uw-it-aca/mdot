@@ -9,10 +9,18 @@
 @text:#565656;
 @altgray: #676767;
 
+/*** landscape ***/
+@landscape: ~"only screen and (orientation : landscape)";
+
 /*** mobile ***/
 
 .mdot-feature {
-
+    
+    .mdot-feature-group { 
+        .mdot-feature-item { 
+            @media @landscape { height: 230px; }
+        }
+    }
 }
 
 .mdot-developers {
