@@ -1,6 +1,9 @@
 MDOT APP
 ========
 
+Coveralls:
+[![Coverage Status](https://coveralls.io/repos/uw-it-aca/mdot/badge.svg?branch=master&service=github)](https://coveralls.io/github/uw-it-aca/mdot?branch=master)
+
 This README documents whatever steps are necessary to get your application up and running.
 
 ## Installing the application ##
