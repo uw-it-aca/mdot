@@ -107,7 +107,7 @@
     <body>
 
         <div class="mdot-navbar" role="banner" aria-labelledby="app_header">
-            <div class="container-fluid">
+            <div class="container-fluid">                
                 <div class="uw-icon" style="background: transparent url('{% static "mdot/img/w-mini_wht.png" %}') no-repeat;"></div>
                 <div class="uw-background"></div>
                 <div class="brand-title"><h1 id="app_header" class="mdot-logo">
@@ -128,7 +128,7 @@
             </div>
         </div>
                 
-        <div id="content" role="main" aria-labelledby="page_header">
+        <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
             {% block content %}{% endblock %}
         </div>
 
