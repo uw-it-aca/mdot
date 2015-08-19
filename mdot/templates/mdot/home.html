@@ -17,39 +17,40 @@
 
                 <h3>FOR EVERYONE</h3>
 
-                <div class="row mdot-feature-group">
+                <ol class="row mdot-feature-group">
+                    
 
                     {% if resources %}
 
                         {% for resource in resources %}
 
                         <!-- This is the featured template -->
-                        <div class="col-xs-4 col-sm-3 col-lg-2  mdot-feature-item">
+                        <li class="col-xs-4 col-sm-3 col-lg-2  mdot-feature-item">
 							
                         {% if not request.is_mobile and not request.is_tablet %}
                         	<!-- desktop only -->
                             {% if resource.has_native and not resource.has_web %}
-		                    <span class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
+		                    <h4 class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</h4>
 		                    {% else %}
 	                        
-	                        <a href='{{ resource.resource_links.WEB }}' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
+	                        <a href='{{ resource.resource_links.WEB }}' target="_blank" title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
 	                                
                             {% endif %}    
 							
 							{% if resource.has_native and not resource.has_web %}</span>{% else %}</a> {% endif %}
 							
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
-                            <span class="mdot-resource-desktop">
+                            <ul class="mdot-resource-desktop">
                                 {% if resource.has_ios %}
-                                <a href="{{ resource.resource_links.IOS }}" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                                <li><a href="{{ resource.resource_links.IOS }}" title="Go to {{ resource.title }} IOS app" target="_blank"><i class="fa fa-apple"></i> IOS</a></li>
                                 {% endif %}
                                 {% if resource.has_and %}
-                                <a href="{{ resource.resource_links.AND }}" target="_blank"><i class="fa fa-android"></i> AND</a>
+                                <li><a href="{{ resource.resource_links.AND }}" title="Go to {{ resource.title }} Android app" target="_blank"><i class="fa fa-android"></i> AND</a></li>
                                 {% endif %}
                                 {% if resource.has_wip %}
-                                <a href="{{ resource.resource_links.WIP }}" target="_blank"><i class="fa fa-windows"></i> WIN</a>
+                                <li><a href="{{ resource.resource_links.WIP }}" title="Go to {{ resource.title }} Windows app" target="_blank"><i class="fa fa-windows"></i> WIN</a></li>
                                 {% endif %}
-                            </span>
+                            </ul>
                         {% else %}
 	                        <!-- mobile only -->
 	                        <a href='
@@ -60,15 +61,15 @@
 	                        {% else %}{{ resource.resource_links.WEB }}    
 	                        {% endif %}
 	
-	                        ' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
+	                        ' title="Go to {{ resource.title }}" target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
 	                        {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
 	                        {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
-	                        {% endif %}{{ resource.title }}</span>
+	                        {% endif %}{{ resource.title }}</h4>
 	                  
 	                        </a>
                         {% endif %}
 
-                        </div>
+                        </li>
                         <!-- end template -->
                         {% endfor %}
 
@@ -78,7 +79,7 @@
 
                     {% endif %}
 
-                </div>
+                </ol>
                 
             </div>
         </div>
@@ -257,8 +258,8 @@
                 <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
 				<div class="app-store-article">
 	                <ul>
-	                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" class="mdot-resource-link" target="_blank" >University of Washington</a></li>
-	                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" class="mdot-resource-link" target="_blank" >UW Alumni Association</a></li>
+	                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" title="Go to UW iTunes store" class="mdot-resource-link" target="_blank" >University of Washington</a></li>
+	                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" title="Go to UW Alumni Association iTunes store" class="mdot-resource-link" target="_blank" >UW Alumni Association</a></li>
 	                </ul>
 				</div>
             </div>
@@ -270,8 +271,8 @@
                 <h4><i class="fa fa-android"></i> Google Play Store</h4>
                 <div class="app-store-article">
 	                <ul>
-	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" class="mdot-resource-link" target="_blank" >University of Washington</a></li>
-	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" class="mdot-resource-link" target="_blank" >UW Alumni Association</a></li>
+	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" title="Go to UW Play store" class="mdot-resource-link" target="_blank" >University of Washington</a></li>
+	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" class="mdot-resource-link" title="Go to UW Alumni Association Play store" target="_blank" >UW Alumni Association</a></li>
 	                </ul>
                 </div>
             </div>
