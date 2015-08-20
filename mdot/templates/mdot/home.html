@@ -61,11 +61,13 @@
 	                        {% else %}{{ resource.resource_links.WEB }}    
 	                        {% endif %}
 	
-	                        ' title="Go to {{ resource.title }}" target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
+	                        ' title="Go to {{ resource.title }}" target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
+                            
+                            {% if request.is_ios and resource.has_ios %}<span class="mdot-native"><i class="fa fa-apple"></i></span>
 	                        {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
 	                        {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
-	                        {% endif %}{{ resource.title }}</h4>
-	                  
+	                        {% endif %}
+	                        
 	                        </a>
                         {% endif %}
 
