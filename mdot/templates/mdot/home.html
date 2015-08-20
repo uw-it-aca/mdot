@@ -42,13 +42,13 @@
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                             <ul class="mdot-resource-desktop">
                                 {% if resource.has_ios %}
-                                <li><a href="{{ resource.resource_links.IOS }}" aria-label="{{ resource.title }} IOS app" title="Go to {{ resource.title }} IOS app" target="_blank"><i class="fa fa-apple"></i> IOS</a></li>
+                                <li><a href="{{ resource.resource_links.IOS }}" aria-label="{{ resource.title }} IOS app" title="{{ resource.title }} IOS app" target="_blank"><i class="fa fa-apple"></i> IOS</a></li>
                                 {% endif %}
                                 {% if resource.has_and %}
-                                <li><a href="{{ resource.resource_links.AND }}" aria-label="{{ resource.title }} Android app" title="Go to {{ resource.title }} Android app" target="_blank"><i class="fa fa-android"></i> AND</a></li>
+                                <li><a href="{{ resource.resource_links.AND }}" aria-label="{{ resource.title }} Android app" title="{{ resource.title }} Android app" target="_blank"><i class="fa fa-android"></i> AND</a></li>
                                 {% endif %}
                                 {% if resource.has_wip %}
-                                <li><a href="{{ resource.resource_links.WIP }}" aria-label="{{ resource.title }} Windows app" title="Go to {{ resource.title }} Windows app" target="_blank"><i class="fa fa-windows"></i> WIN</a></li>
+                                <li><a href="{{ resource.resource_links.WIP }}" aria-label="{{ resource.title }} Windows app" title="{{ resource.title }} Windows app" target="_blank"><i class="fa fa-windows"></i> WIN</a></li>
                                 {% endif %}
                             </ul>
                         {% else %}
