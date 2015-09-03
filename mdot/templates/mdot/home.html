@@ -252,7 +252,7 @@
         <div class="row">
     	    <h3 id="stores_header" class="sr-only">By UW App Store</h3>
 
-            {% if request.is_ios or not request.is_mobile %}
+            {% if request.is_ios or not request.is_mobile and not request.is_tablet %}
             <div class="col-sm-4 col-lg-3 mdot-resource-group">
                 <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
 				<div class="app-store-article">
@@ -265,7 +265,7 @@
 
             {% endif %}
 
-            {% if request.is_android or not request.is_mobile %}
+            {% if request.is_android or not request.is_mobile and not request.is_tablet  %}
             <div class="col-sm-4 col-lg-3 mdot-resource-group">
                 <h4><i class="fa fa-android"></i> Google Play Store</h4>
                 <div class="app-store-article">
@@ -277,17 +277,6 @@
             </div>
             {% endif %}
 
-            <!--
-            {% if request.is_windows_phone or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h4><i class="fa fa-windows"></i> Windows App Store</h4>
-                <ul>
-
-                    <li >None available!</li>
-                </ul>
-            </div>
-            {% endif %}
-            -->
             <div class="col-sm-4 col-lg-6 mdot-dev-link" role="complementary" aria-labelledby="dev_header" style="background: url('{% static  "mdot/img/android-nexus.jpg" %}') 50% 50%; background-size:cover; ">
                 <div class="mdot-dev-callout">
                     <h2 id="dev_header"><i class="fa fa-mobile"></i> Building a mobile app?</h2>
