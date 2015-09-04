@@ -16,8 +16,6 @@ setup(
         'django',
         'django-compressor',
         'django_mobileesp',
-        'django-easy-pjax',
-        'django-templatetag-handlebars',
         'uw-restclients',
     ],
     license='Apache License, Version 2.0',
