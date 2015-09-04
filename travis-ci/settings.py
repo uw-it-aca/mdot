@@ -39,8 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
-    'templatetag_handlebars',
-    'easy_pjax',
     # 'rest_framework',
     # 'mdotdevs',
     # 'mdot_rest',
