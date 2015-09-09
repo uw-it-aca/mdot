@@ -6,7 +6,7 @@
 
 {% block content %}
 <h2 class="mdot-subhead" id="page_header">UW at your fingertips</h2>
-<div class="mdot-feature" class="">
+<div class="mdot-feature">
     <div id="slider_container">
 
         <div class="sp-slide" id="you_slide">
@@ -52,15 +52,19 @@
                             {% endif %}
                         {% else %}
 	                        <!-- mobile only -->
-	                        <a href="
-
-	                        {% if request.is_ios and resource.has_ios %}{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}
-	                        {% elif request.is_android and resource.has_and %}{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}
-	                        {% elif request.is_windows_phone and resource.has_wip %}{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}
-	                        {% else %}{{ resource.resource_links.WEB }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
+	                        <a href={% if request.is_ios and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}
+	                        
+	                        {% elif request.is_android and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}
+	                        
+	                        {% elif request.is_windows_phone and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}
+	                        
+	                        {% else %}"{{ resource.resource_links.WEB }}" 
+    	                        {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
 	                        {% endif %}
 
-	                         title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
+	                         title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+	                         
+	                         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
 
                             {% if request.is_ios and resource.has_ios %}<span class="mdot-native"><i class="fa fa-apple"><span class="sr-only">IOS App</span></i></span>
 	                        {% elif request.is_android and resource.has_and %}<span class="mdot-native"><i class="fa fa-android"><span class="sr-only">Android App</span></i></span>
@@ -90,9 +94,12 @@
 </div><!-- end feature -->
 
 {% endblock %}
+
 {% block subcontent %}
 <h2 id="page_subheader" class="sr-only">Discover UW Apps</h2>
+
 <div role="complementary" aria-labelledby="page_subheader">
+
 <div class="mdot-categories" aria-hidden="true">
 
     <div class="container">
@@ -287,6 +294,7 @@
         </div>
     </div>
 
+</div>
 </div>
 
 {% endblock %}

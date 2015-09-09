@@ -8,7 +8,7 @@
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, minimal-ui">
-        <meta http-equiv="cleartype" content="on">
+       
 
         {% load staticfiles %}
         {% load compress %}
@@ -50,6 +50,7 @@
         {% endif %}
 
         {% if request.is_windows_phone %}
+        <meta http-equiv="cleartype" content="on">
         <!-- windows phone tiled webapps -->
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{% static "mdot/ico/ms-icon-144x144.png" %}">
@@ -60,9 +61,25 @@
         <meta name="msapplication-config" content="none"/>
         {% endif %}
 
-		<!-- webfonts -->
-		<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,800,600' rel='stylesheet' type='text/css'>
 
+        {% compress js inline %}
+        <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: [ 'Open+Sans:400,700,800,600:latin' ] }
+            };
+            (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); 
+        </script>
+        <script src="{% static "vendor/js/loadCSS.js" %}"></script>
+        {% endcompress %}
+        
         {% compress css inline %}
         <!-- inline css (critical above the fold) -->
         <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
@@ -177,9 +194,7 @@
         <!-- javascript -->
         {% compress js %}
         <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
-        <!--<script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>-->
         <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
-        <!-- app js goes here -->
         <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
 
