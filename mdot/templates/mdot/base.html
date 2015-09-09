@@ -8,7 +8,7 @@
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, minimal-ui">
-        <meta http-equiv="cleartype" content="on">
+       
 
         {% load staticfiles %}
         {% load compress %}
@@ -50,6 +50,7 @@
         {% endif %}
 
         {% if request.is_windows_phone %}
+        <meta http-equiv="cleartype" content="on">
         <!-- windows phone tiled webapps -->
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{% static "mdot/ico/ms-icon-144x144.png" %}">
