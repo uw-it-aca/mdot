@@ -29,13 +29,8 @@
                             {% if resource.has_native and not resource.has_web %}
 		                    <h4 class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</h4>
 		                    {% else %}
-
 	                        <a href='{{ resource.resource_links.WEB }}' {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %} title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
-
-                            {% endif %}
-
-							{% if resource.has_native and not resource.has_web %}</span>{% else %}</a> {% endif %}
-
+                            {% endif %}{% if resource.has_native and not resource.has_web %}</span>{% else %}</a>{% endif %}
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                             {% if resource.has_ios or resource.has_and or resource.has_wip %}
                             <ul class="mdot-resource-desktop">
@@ -52,17 +47,8 @@
                             {% endif %}
                         {% else %}
 	                        <!-- mobile only -->
-	                        <a href={% if request.is_ios and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}
-	                        
-	                        {% elif request.is_android and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}
-	                        
-	                        {% elif request.is_windows_phone and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}
-	                        
-	                        {% else %}"{{ resource.resource_links.WEB }}" 
-    	                        {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
-	                        {% endif %}
-
-	                         title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+	                        <a href={% if request.is_ios and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}{% elif request.is_android and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}{% elif request.is_windows_phone and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}{% else %}"{{ resource.resource_links.WEB }}"{% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
+	                        {% endif %}title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
 	                         
 	                         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
 
@@ -99,13 +85,12 @@
 <h2 id="page_subheader" class="sr-only">Discover UW Apps</h2>
 
 <div role="complementary" aria-labelledby="page_subheader">
-
+<!--
 <div class="mdot-categories" aria-hidden="true">
 
     <div class="container">
         <div >
 
-            <!-- Example row of categories -->
             <div class="row">
 
         	    <h3 class="sr-only">By Category</h3>
@@ -160,7 +145,6 @@
 
             <hr />
 
-            <!-- Example row of topics -->
             <div class="row">
                 <h3 class="sr-only">By Topic</h3>
                 <div class="col-md-12">
@@ -252,8 +236,7 @@
     </div>
 
 </div>
-
-
+-->
 <div class="mdot-sub-content">
     <div class="container">
         <div class="row">
@@ -296,5 +279,4 @@
 
 </div>
 </div>
-
 {% endblock %}
