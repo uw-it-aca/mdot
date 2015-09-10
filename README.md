@@ -33,16 +33,18 @@ This README documents whatever steps are necessary to get your application up an
     
     INSTALLED_APPS = (
         ...
-        'compressor',
         'templatetag_handlebars',
         'easy_pjax',
         'mdot',
         'mdotdevs',
+        'compressor',
     )
 
     MIDDLEWARE_CLASSES = (
         ...
         'django_mobileesp.middleware.UserAgentDetectionMiddleware',
+        'htmlmin.middleware.HtmlMinifyMiddleware',
+        'htmlmin.middleware.MarkRequestMiddleware',
     )
 
     TEMPLATES = [
@@ -90,6 +92,9 @@ This README documents whatever steps are necessary to get your application up an
         'is_tablet' : agent.detectTierTablet,
         'is_mobile': agent.detectMobileQuick,
     }
+    
+    # htmlmin
+    HTML_MINIFY = True
 
 **Create your database**
     $ (yourenv) python manage.py syncdb

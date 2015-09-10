@@ -8,28 +8,9 @@
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, minimal-ui">
-        <meta http-equiv="cleartype" content="on">
-
+       
         {% load staticfiles %}
         {% load compress %}
-
-        <!-- favicon and mobile device icons-->
-		<link rel="apple-touch-icon" sizes="57x57" href="{% static "mdot/ico/apple-icon-57x57.png" %}">
-        <link rel="apple-touch-icon" sizes="60x60" href="{% static "mdot/ico/apple-icon-60x60.png" %}">
-        <link rel="apple-touch-icon" sizes="72x72" href="{% static "mdot/ico/apple-icon-72x72.png" %}">
-        <link rel="apple-touch-icon" sizes="76x76" href="{% static "mdot/ico/apple-icon-76x76.png" %}">
-        <link rel="apple-touch-icon" sizes="114x114" href="{% static "mdot/ico/apple-icon-114x114.png" %}">
-        <link rel="apple-touch-icon" sizes="120x120" href="{% static "mdot/ico/apple-icon-120x120.png" %}">
-        <link rel="apple-touch-icon" sizes="144x144" href="{% static "mdot/ico/apple-icon-144x144.png" %}">
-        <link rel="apple-touch-icon" sizes="152x152" href="{% static "mdot/ico/apple-icon-152x152.png" %}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{% static "mdot/ico/apple-icon-180x180.png" %}">
-
-        <link rel="icon" type="image/png" sizes="36x36"  href="{% static "mdot/ico/android-icon-36x36.png" %}">
-        <link rel="icon" type="image/png" sizes="48x48"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
-        <link rel="icon" type="image/png" sizes="72x72"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
-        <link rel="icon" type="image/png" sizes="96x96"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
-        <link rel="icon" type="image/png" sizes="144x144"  href="{% static "mdot/ico/android-icon-144x144.png" %}">
-        <link rel="icon" type="image/png" sizes="192x192"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
 
         <link rel="icon" type="image/png" sizes="32x32" href="{% static "mdot/ico/favicon-32x32.png" %}">
         <link rel="icon" type="image/png" sizes="96x96" href="{% static "mdot/ico/favicon-96x96.png" %}">
@@ -42,15 +23,33 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="Mobile UW">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static "mdot/ico/apple-icon-57x57.png" %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static "mdot/ico/apple-icon-60x60.png" %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static "mdot/ico/apple-icon-72x72.png" %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static "mdot/ico/apple-icon-76x76.png" %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static "mdot/ico/apple-icon-114x114.png" %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static "mdot/ico/apple-icon-120x120.png" %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static "mdot/ico/apple-icon-144x144.png" %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static "mdot/ico/apple-icon-152x152.png" %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static "mdot/ico/apple-icon-180x180.png" %}">
         {% endif %}
 
 		{% if request.is_android %}
         <!-- android homescreen webapps -->
         <meta name="mobile-web-app-capable" content="yes">
+        
+        <link rel="icon" type="image/png" sizes="36x36"  href="{% static "mdot/ico/android-icon-36x36.png" %}">
+        <link rel="icon" type="image/png" sizes="48x48"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
+        <link rel="icon" type="image/png" sizes="72x72"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
+        <link rel="icon" type="image/png" sizes="96x96"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
+        <link rel="icon" type="image/png" sizes="144x144"  href="{% static "mdot/ico/android-icon-144x144.png" %}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
         {% endif %}
 
         {% if request.is_windows_phone %}
         <!-- windows phone tiled webapps -->
+        <meta http-equiv="cleartype" content="on">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{% static "mdot/ico/ms-icon-144x144.png" %}">
         <meta name="msapplication-square70x70logo" content="{% static "mdot/ico/ms-icon-70x70.png" %}">
@@ -60,9 +59,12 @@
         <meta name="msapplication-config" content="none"/>
         {% endif %}
 
-		<!-- webfonts -->
-		<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,800,600' rel='stylesheet' type='text/css'>
-
+        {% compress js inline %}
+        <script type="text/javascript">
+        WebFontConfig={google:{families:["Open+Sans:400,700,800,600:latin"]}},function(){var t=document.createElement("script");t.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",t.type="text/javascript",t.async="true";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();</script>
+        <script src="{% static "vendor/js/loadCSS.min.js" %}"></script>
+        {% endcompress %}
+        
         {% compress css inline %}
         <!-- inline css (critical above the fold) -->
         <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
@@ -176,10 +178,8 @@
 
         <!-- javascript -->
         {% compress js %}
-        <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
-        <!--<script src="{% static "vendor/js/bootstrap-3.3.5.min.js" %}"></script>-->
+        <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>        
         <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
-        <!-- app js goes here -->
         <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
 
