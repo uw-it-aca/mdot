@@ -38,11 +38,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
     # 'rest_framework',
     # 'mdotdevs',
     # 'mdot_rest',
     'mdot',
+    'compressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +55,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django_mobileesp.middleware.UserAgentDetectionMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 )
 
 ROOT_URLCONF = 'travis-ci.urls'
@@ -153,3 +155,6 @@ REST_FRAMEWORK = {
 
 # RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
 RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
+
+# htmlmin
+HTML_MINIFY = True
