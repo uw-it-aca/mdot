@@ -17,6 +17,7 @@ setup(
         'django-compressor',
         'django_mobileesp',
         'uw-restclients',
+        'django-htmlmin',
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
