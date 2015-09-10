@@ -1,9 +1,11 @@
 // document.ready shorthand
 $(function() {
     
+    console.log("ready!");
+    
     // truncate feature descriptions
     $('.mdot-resource-desc').succinct({
-        size: 85
+        size: 65
     });
     
 });
