@@ -9,6 +9,6 @@ import json
 
 def home(request):
     params = {'resources': MDOT().get_resources(featured=True)}
-    return render_to_response('mdot/home.html', params,
+    return render_to_response('mdot/home.jinja', params,
                               context_instance=RequestContext(request)
                               )
