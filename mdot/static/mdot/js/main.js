@@ -6,7 +6,7 @@ $(function() {
     
     // truncate feature descriptions
     $('.mdot-resource-desc').succinct({
-        size: 65
+        size: 100
     });
     
 });
