@@ -68,10 +68,10 @@
         {% if request.is_mobile %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
-        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}" media="foo">
-        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}" media="foo">
+        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
         <!-- mobile -->
-        <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less" media="foo">
+        <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <!-- app styles -->
         {% block app_css_mobile %}{% endblock %}
         {% endcompress %}
@@ -80,11 +80,11 @@
         {% if request.is_tablet %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
-        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}" media="foo">
-        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}" media="foo">
+        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
         <!-- mobile + tablet -->
-        <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less" media="foo">
-        <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less" media="foo">
+        <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
+        <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
         <!-- app styles -->
         {% block app_css_tablet %}{% endblock %}
         {% endcompress %}
@@ -93,12 +93,12 @@
         {% if not request.is_mobile and not request.is_tablet %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
-        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}" media="foo">
-        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}" media="foo">
+        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
         <!-- mobile + tablet + desktop -->
-        <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less" media="foo">
-        <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less" media="foo">
-        <link rel="stylesheet" href="{% static "mdot/css/desktop.less" %}" type="text/less" media="foo">
+        <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
+        <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
+        <link rel="stylesheet" href="{% static "mdot/css/desktop.less" %}" type="text/less">
         <!-- app styles -->
         {% block app_css_desktop %}{% endblock %}
         {% endcompress %}
@@ -177,9 +177,9 @@
 
         <!-- javascript -->
         {% compress js %}
-        <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}" defer="defer"></script>        
-        <script src="{% static "vendor/js/jquery.succinct.min.js" %}" defer="defer"></script>
-        <script src="{% static "mdot/js/main.js" %}" defer="defer"></script>
+        <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>        
+        <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
+        <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
 
         {% if google_analytics %}
