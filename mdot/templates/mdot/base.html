@@ -58,26 +58,26 @@
         <meta name="theme-color" content="#ffffff">
         <meta name="msapplication-config" content="none"/>
         {% endif %}
-
+        
+        {% if request.is_mobile %}
         {% compress css inline %}
         <!-- inline css (critical above the fold) -->
         <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
-        {% block app_css_inline %}{% endblock %}
         {% endcompress %}
-        
-        {% if request.is_mobile %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
         <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.3.0.min.css" %}">
         <!-- mobile -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
-        <!-- app styles -->
-        {% block app_css_mobile %}{% endblock %}
         {% endcompress %}
         {% endif %}
 
         {% if request.is_tablet %}
+        {% compress css inline %}
+        <!-- inline css (critical above the fold) -->
+        <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
+        {% endcompress %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
@@ -85,12 +85,14 @@
         <!-- mobile + tablet -->
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
-        <!-- app styles -->
-        {% block app_css_tablet %}{% endblock %}
         {% endcompress %}
         {% endif %}
 
         {% if not request.is_mobile and not request.is_tablet %}
+        {% compress css inline %}
+        <!-- inline css (critical above the fold) -->
+        <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
+        {% endcompress %}
         {% compress css %}
         <!-- bootstrap & font awesome -->
         <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
@@ -99,8 +101,6 @@
         <link rel="stylesheet" href="{% static "mdot/css/mobile.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/tablet.less" %}" type="text/less">
         <link rel="stylesheet" href="{% static "mdot/css/desktop.less" %}" type="text/less">
-        <!-- app styles -->
-        {% block app_css_desktop %}{% endblock %}
         {% endcompress %}
         {% endif %}
         
