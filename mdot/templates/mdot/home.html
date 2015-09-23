@@ -1,5 +1,6 @@
 {% extends "mdot/base.html" %}
 
+{% load mdot_filters %}
 {% load staticfiles %}
 
 {% block title %}Home{% endblock %}
@@ -27,9 +28,9 @@
                         {% if not request.is_mobile and not request.is_tablet %}
                         	<!-- desktop only -->
                             {% if resource.has_native and not resource.has_web %}
-		                    <h4 class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</h4>
+		                    <h4 class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url | strip_protocol }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</h4>
 		                    {% else %}
-	                        <a href='{{ resource.resource_links.WEB }}' {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %} title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
+	                        <a href='{{ resource.resource_links.WEB }}' {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %} title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url | strip_protocol }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
                             {% endif %}{% if resource.has_native and not resource.has_web %}</span>{% else %}</a>{% endif %}
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
                             {% if resource.has_ios or resource.has_and or resource.has_wip %}
@@ -49,7 +50,7 @@
 	                        <!-- mobile only -->
 	                        <a href={% if request.is_ios and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}{% elif request.is_android and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}{% elif request.is_windows_phone and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}{% else %}"{{ resource.resource_links.WEB }}"{% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
 	                        {% endif %}title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
-	                         
+
 	                         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
 
                             {% if request.is_ios and resource.has_ios %}<span class="mdot-native"><i class="fa fa-apple"><span class="sr-only">IOS App</span></i></span>
@@ -89,7 +90,7 @@
         <div class="container">
             <div class="row">
         	    <h3 id="stores_header" class="sr-only">By UW App Store</h3>
-    
+
                 {% if request.is_ios or not request.is_mobile and not request.is_tablet %}
                 <div class="col-sm-5 col-lg-3 mdot-resource-group">
                     <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
@@ -100,9 +101,9 @@
     	                </ul>
     				</div>
                 </div>
-    
+
                 {% endif %}
-    
+
                 {% if request.is_android or not request.is_mobile and not request.is_tablet  %}
                 <div class="col-sm-5 col-lg-3 mdot-resource-group">
                     <h4><i class="fa fa-android"></i> Google Play Store</h4>
@@ -114,14 +115,14 @@
                     </div>
                 </div>
                 {% endif %}
-    
+
                 <div class="col-sm-7 col-lg-6 mdot-dev-link" role="complementary" aria-labelledby="dev_header" style="background: url('{% static  "mdot/img/android-nexus.jpg" %}') 50% 50%; background-size:cover; ">
                     <div class="mdot-dev-callout">
                         <h2 id="dev_header"><i class="fa fa-mobile"></i> Building a mobile app?</h2>
                         <p>Browse our curated <a href="/developers/">developer resources</a> on building mobile websites and applications here at UW.</p>
                     </div>
                 </div>
-    
+
             </div>
         </div>
     </div>
