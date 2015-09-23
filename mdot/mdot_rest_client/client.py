@@ -147,9 +147,3 @@ class ClientResource(object):
 
     def has_native(self):
         return self.has_ios or self.has_and or self.has_wip
-
-    def strip_http(self):
-        if 'http' in self:
-            return self[4:]
-        else:
-            return self
