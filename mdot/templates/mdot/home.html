@@ -1,74 +1,67 @@
 {% extends "mdot/base.html" %}
 
+{% load mdot_filters %}
 {% load staticfiles %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
+<h2 class="mdot-subhead" id="page_header">UW at your fingertips</h2>
 <div class="mdot-feature">
-
-    <h2 class="sr-only" id="page_header">Featured applications and resources</h2>
-
     <div id="slider_container">
 
         <div class="sp-slide" id="you_slide">
             <div class="container">
 
-                <h3>FOR EVERYONE</h3>
+                <h3 class="sr-only">Campus Resources</h3>
 
-                <div class="row mdot-feature-group">
+                <ol class="row mdot-feature-group">
+
 
                     {% if resources %}
 
                         {% for resource in resources %}
 
                         <!-- This is the featured template -->
-                        <div class="col-xs-4 col-sm-3 col-lg-2  mdot-feature-item">
-							
+                        <li class="col-xs-4 col-sm-3 col-lg-2  mdot-feature-item">
+
                         {% if not request.is_mobile and not request.is_tablet %}
                         	<!-- desktop only -->
                             {% if resource.has_native and not resource.has_web %}
-		                    <span class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
+		                    <h4 class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url | strip_protocol }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</h4>
 		                    {% else %}
-	                        
-	                        <a href='{{ resource.resource_links.WEB }}' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</span>
-	                                
-                            {% endif %}    
-							
-							{% if resource.has_native and not resource.has_web %}</span>{% else %}</a> {% endif %}
-							
+	                        <a href='{{ resource.resource_links.WEB }}' {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %} title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url | strip_protocol }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
+                            {% endif %}{% if resource.has_native and not resource.has_web %}</span>{% else %}</a>{% endif %}
                             <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
-                            <span class="mdot-resource-desktop">
+                            {% if resource.has_ios or resource.has_and or resource.has_wip %}
+                            <ul class="mdot-resource-desktop">
                                 {% if resource.has_ios %}
-                                <a href="{{ resource.resource_links.IOS }}" target="_blank"><i class="fa fa-apple"></i> IOS</a>
+                                <li><a href="{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resources.resource_links.IOS }}')"{% endif %} aria-label="{{ resource.title }} IOS app" title="{{ resource.title }} IOS app"><i class="fa fa-apple"></i> IOS</a></li>
                                 {% endif %}
                                 {% if resource.has_and %}
-                                <a href="{{ resource.resource_links.AND }}" target="_blank"><i class="fa fa-android"></i> AND</a>
+                                <li><a href="{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND}}')"{% endif %} aria-label="{{ resource.title }} Android app" title="{{ resource.title }} Android app"><i class="fa fa-android"></i> AND</a></li>
                                 {% endif %}
                                 {% if resource.has_wip %}
-                                <a href="{{ resource.resource_links.WIP }}" target="_blank"><i class="fa fa-windows"></i> WIN</a>
+                                <li><a href="{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %} aria-label="{{ resource.title }} Windows app" title="{{ resource.title }} Windows app"><i class="fa fa-windows"></i> WIN</a></li>
                                 {% endif %}
-                            </span>
+                            </ul>
+                            {% endif %}
                         {% else %}
 	                        <!-- mobile only -->
-	                        <a href='
-	
-	                        {% if request.is_ios and resource.has_ios %}{{ resource.resource_links.IOS }}
-	                        {% elif request.is_android and resource.has_and %}{{ resource.resource_links.AND }}
-	                        {% elif request.is_windows_phone and resource.has_wip %}{{ resource.resource_links.WIP }}
-	                        {% else %}{{ resource.resource_links.WEB }}    
+	                        <a href={% if request.is_ios and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}{% elif request.is_android and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}{% elif request.is_windows_phone and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}{% else %}"{{ resource.resource_links.WEB }}"{% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
+	                        {% endif %}title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+
+	                         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
+
+                            {% if request.is_ios and resource.has_ios %}<span class="mdot-native"><i class="fa fa-apple"><span class="sr-only">IOS App</span></i></span>
+	                        {% elif request.is_android and resource.has_and %}<span class="mdot-native"><i class="fa fa-android"><span class="sr-only">Android App</span></i></span>
+	                        {% elif request.is_windows_phone and resource.has_wip %}<span class="mdot-native"><i class="fa fa-windows"><span class="sr-only">Windows App</span></i></span>
 	                        {% endif %}
-	
-	                        ' target="_blank" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{% if request.is_ios and resource.has_ios %}<i class="fa fa-apple"></i>
-	                        {% elif request.is_android and resource.has_and %}<i class="fa fa-android"></i>
-	                        {% elif request.is_windows_phone and resource.has_wip %}<i class="fa fa-windows"></i>
-	                        {% endif %}{{ resource.title }}</span>
-	                  
+
 	                        </a>
                         {% endif %}
 
-                        </div>
+                        </li>
                         <!-- end template -->
                         {% endfor %}
 
@@ -78,230 +71,60 @@
 
                     {% endif %}
 
-                </div>
-                
+                </ol>
+
             </div>
         </div>
-        
+
     </div><!--end slider container -->
-
-
-
 
 </div><!-- end feature -->
 
 {% endblock %}
 
 {% block subcontent %}
-<div class="mdot-categories">
+<h2 id="page_subheader" class="sr-only">Discover UW Apps</h2>
 
-    <h2 id="page_subheader" class="sr-only">Discover UW Apps</h2>
-
-    <div class="container">
-        <div role="complementary" aria-labelledby="page_subheader">
-
-            <!-- Example row of categories -->
+<div role="complementary" aria-labelledby="page_subheader">
+    <div class="mdot-sub-content">
+        <div class="container">
             <div class="row">
+        	    <h3 id="stores_header" class="sr-only">By UW App Store</h3>
 
-        	    <h3 class="sr-only">By Category</h3>
-                <div class="col-md-12">
-            	    <select class="form-control">
-                      <option value="All" selected="selected">All</option>
-                      <option value="Category 1">Category 1</option>
-                      <option value="Category 2">Category 2</option>
-                      <option value="Category 3">Category 3</option>
-                      <option value="Category 4">Category 4</option>
-                    </select>
+                {% if request.is_ios or not request.is_mobile and not request.is_tablet %}
+                <div class="col-sm-5 col-lg-3 mdot-resource-group">
+                    <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
+    				<div class="app-store-article">
+    	                <ul>
+    	                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" {% if google_analytics %}onclick="ga('send','event','outbound','https://itunes.apple.com/us/artist/university-of-washington/id328228464')"{% endif %} title="Go to UW iTunes store" aria-label="UW iTunes store" >University of Washington</a></li>
+    	                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" {% if google_analytics %}onclick="ga('send','event','outbound','https://itunes.apple.com/us/artist/university-washington-alumni/id682824304')"{% endif %} title="Go to UW Alumni Association iTunes store" aria-label="UW Alumni Association iTunes store" >UW Alumni Association</a></li>
+    	                </ul>
+    				</div>
                 </div>
 
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                    <h4>Category 1</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
+                {% endif %}
+
+                {% if request.is_android or not request.is_mobile and not request.is_tablet  %}
+                <div class="col-sm-5 col-lg-3 mdot-resource-group">
+                    <h4><i class="fa fa-android"></i> Google Play Store</h4>
+                    <div class="app-store-article">
+    	                <ul>
+    	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" {% if google_analytics %}onclick="ga('send','event','outbound','https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en')"{% endif %} title="Go to UW Play store" aria-label="UW Play store" >University of Washington</a></li>
+    	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" {% if google_analytics %}onclick="ga('send','event','outbound','https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en')"{% endif %} aria-label="UW Alumni Association Play store" title="Go to UW Alumni Association Play store" >UW Alumni Association</a></li>
+    	                </ul>
+                    </div>
                 </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Category 2</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Category 3</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Category 4</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
+                {% endif %}
+
+                <div class="col-sm-7 col-lg-6 mdot-dev-link" role="complementary" aria-labelledby="dev_header" style="background: url('{% static  "mdot/img/android-nexus.jpg" %}') 50% 50%; background-size:cover; ">
+                    <div class="mdot-dev-callout">
+                        <h2 id="dev_header"><i class="fa fa-mobile"></i> Building a mobile app?</h2>
+                        <p>Browse our curated <a href="/developers/">developer resources</a> on building mobile websites and applications here at UW.</p>
+                    </div>
                 </div>
 
             </div>
-
-            <hr />
-
-            <!-- Example row of topics -->
-            <div class="row">
-                <h3 class="sr-only">By Topic</h3>
-                <div class="col-md-12">
-            	    <select class="form-control">
-                      <option value="All" selected="selected">All</option>
-                      <option value="Category 1">Topic 1</option>
-                      <option value="Category 2">Topic 2</option>
-                      <option value="Category 3">Topic 3</option>
-                      <option value="Category 4">Topic 4</option>
-                    </select>
-                </div>
-
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                    <h4>Topic 1</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Topic 2</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Topic 3</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Topic 4</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                    <h4>Topic 5</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Topic 6</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Topic 7</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">ios</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                  <h4>Topic 8</h4>
-                    <ul>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource <span class="mdot-resource-type">android</span></a></li>
-                        <li><a href="" class="mdot-resource-link">Mobile Resource </a></li>
-                    </ul>
-                </div>
-
-            </div>
-
         </div>
     </div>
-
 </div>
-
-
-<div class="mdot-sub-content">
-    <div class="container">
-        <div class="row">
-
-    	    <h3 class="sr-only">By UW App Store</h3>
-
-            {% if request.is_ios or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
-				<div class="app-store-article">
-	                <ul>
-	                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" class="mdot-resource-link" target="_blank" >University of Washington</a></li>
-	                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" class="mdot-resource-link" target="_blank" >UW Alumni Association</a></li>
-	                </ul>
-				</div>
-            </div>
-            
-            {% endif %}
-
-            {% if request.is_android or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h4><i class="fa fa-android"></i> Google Play Store</h4>
-                <div class="app-store-article">
-	                <ul>
-	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" class="mdot-resource-link" target="_blank" >University of Washington</a></li>
-	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" class="mdot-resource-link" target="_blank" >UW Alumni Association</a></li>
-	                </ul>
-                </div>
-            </div>
-            {% endif %}
-
-            <!--
-            {% if request.is_windows_phone or not request.is_mobile %}
-            <div class="col-sm-4 col-lg-3 mdot-resource-group">
-                <h4><i class="fa fa-windows"></i> Windows App Store</h4>
-                <ul>
-
-                    <li >None available!</li>
-                </ul>
-            </div>
-            {% endif %}
-            -->
-                
-            <div class="col-sm-4 col-lg-6 mdot-dev-link" role="complementary" aria-labelledby="dev_header" style="background: url('{% static  "mdot/img/android-nexus.jpg" %}') 50% 50%; background-size:cover; ">
-                <div class="mdot-dev-callout">
-                    <h2 id="dev_header"><i class="fa fa-mobile"></i> Building a mobile app?</h2>
-                    <p>Browse our curated <a href="/developers">developer resources</a> on building mobile websites and applications here at UW.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
 {% endblock %}
