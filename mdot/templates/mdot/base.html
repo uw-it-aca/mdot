@@ -132,19 +132,21 @@
 	            </h1></div>
 
                 {% if request.user.is_authenticated %}
-                    <div class="mdot-netid" aria-hidden="true"><span id="mdot_user_button">{{ person.uwnetid }}</span></div>
-                <div class="netid-background"></div>
+                    <div class="mdot-netid" aria-hidden="true"><span        id="mdot_user_button">{{ person.uwnetid }}</span></div>
+                    <div class="netid-background"></div>
                 {% endif %}
             </div>
         </div>
 
-        <div class="mdot-user-info" aria-hidden="true">
-            <div class="container-fluid">
-                <p>John Average #09873645<br/>
-                Freshman | Undeclared</p>
-                <hr />
+        {% if request.user.is_authenticated %}
+            <div class="mdot-user-info" aria-hidden="true">
+                <div class="container-fluid">
+                    <p>{{ person.display_name }} #09873645<br/>
+                    Freshman | Undeclared</p>
+                    <hr />
+                </div>
             </div>
-        </div>
+        {% endif %}
 
         <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
             {% block content %}{% endblock %}
