@@ -36,9 +36,11 @@ class MDOTPersonTest(TestCase):
             # assert that the DAO can return affiliation information
             person = get_person_by_netid('javerage')
 
-            # expected_affiliations = ["member","student","alum","staff","employee"]
+            # expected_affiliations =
+            # ["member","student","alum","staff","employee"]
             self.assertTrue(person.is_student)
             # TODO: WHY is this coming back None?
+            # Won't return true until uw-restclients is fixed
             # self.assertTrue(person.is_alum)
             self.assertTrue(person.is_staff)
             self.assertTrue(person.is_employee)

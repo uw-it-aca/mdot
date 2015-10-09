@@ -132,7 +132,7 @@
 	            </h1></div>
 
                 {% if request.user.is_authenticated %}
-                <div class="mdot-netid" aria-hidden="true"><span id="mdot_user_button">{{ request.user.username }}</span></div>
+                    <div class="mdot-netid" aria-hidden="true"><span id="mdot_user_button">{{ person.uwnetid }}</span></div>
                 <div class="netid-background"></div>
                 {% endif %}
             </div>
