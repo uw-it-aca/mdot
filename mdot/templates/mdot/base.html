@@ -149,8 +149,16 @@
         {% if request.user.is_authenticated %}
             <div class="mdot-user-info" aria-hidden="true">
                 <div class="container-fluid">
-                    <p>{{ person.display_name }} #{{ student_number }}<br/>
-                    Freshman | Undeclared</p>
+                    <p>{{ person.display_name }}
+                    {% if person.student_number %}
+                        | Student #{{ person.student_number }}
+                    {% endif %}
+                    {% if person.employee_id %}
+                        | Employee #{{ person.employee_id }}
+                    {% endif %}<br/>
+                    {% if False %}
+                        Freshman | Undeclared
+                    {% endif %}</p>
                     <hr />
                 </div>
             </div>
