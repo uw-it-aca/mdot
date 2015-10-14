@@ -8,7 +8,7 @@
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, minimal-ui">
-       
+
         {% load staticfiles %}
         {% load compress %}
 
@@ -23,7 +23,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="Mobile UW">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
+
         <link rel="apple-touch-icon" sizes="57x57" href="{% static "mdot/ico/apple-icon-57x57.png" %}">
         <link rel="apple-touch-icon" sizes="60x60" href="{% static "mdot/ico/apple-icon-60x60.png" %}">
         <link rel="apple-touch-icon" sizes="72x72" href="{% static "mdot/ico/apple-icon-72x72.png" %}">
@@ -38,7 +38,7 @@
 		{% if request.is_android %}
         <!-- android homescreen webapps -->
         <meta name="mobile-web-app-capable" content="yes">
-        
+
         <link rel="icon" type="image/png" sizes="36x36"  href="{% static "mdot/ico/android-icon-36x36.png" %}">
         <link rel="icon" type="image/png" sizes="48x48"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
         <link rel="icon" type="image/png" sizes="72x72"  href="{% static "mdot/ico/android-icon-192x192.png" %}">
@@ -58,7 +58,7 @@
         <meta name="theme-color" content="#ffffff">
         <meta name="msapplication-config" content="none"/>
         {% endif %}
-        
+
         {% if request.is_mobile %}
         {% compress css inline %}
         <!-- inline css (critical above the fold) -->
@@ -103,7 +103,7 @@
         <link rel="stylesheet" href="{% static "mdot/css/desktop.less" %}" type="text/less">
         {% endcompress %}
         {% endif %}
-        
+
         {% if devtools_bar %}
         <!-- aca-ux devtools -->
         <link rel="stylesheet" href="{% static "vendor/css/aca-devtools.min.css" %}">
@@ -113,7 +113,7 @@
         <!-- less.js -->
         <script src="{% static 'vendor/js/less-2.0.0.min.js' %}" type="text/javascript"></script>
         {% endif %}
-        
+
         {% compress js inline %}
         <script type="text/javascript">
         WebFontConfig={google:{families:["Open+Sans:400,700,800,600:latin"]}},function(){var t=document.createElement("script");t.src=("https:"==document.location.protocol?"https":"http")+"://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",t.type="text/javascript",t.async="true";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}();</script>
@@ -121,7 +121,7 @@
 
     </head>
     <body>
-        
+
         <div class="mdot-navbar" role="banner" aria-labelledby="app_header">
             <div class="container-fluid">
                 <div class="uw-icon" style="background: transparent url('{% static "mdot/img/w-mini_wht.png" %}') no-repeat;"></div>
@@ -131,18 +131,30 @@
     	                <span aria-hidden="true"><span>M</span><i class="fa fa-mobile"><span class="sr-only">o</span></i><span>bile</span></span><span class="sr-only">Mobile UW</span></a>
 	            </h1></div>
 
-                <div class="mdot-netid" aria-hidden="true"><span id="mdot_user_button">javerage</span></div>
+
+                <div class="mdot-netid" aria-hidden="true">
+                    <span id="mdot_user_button">
+                    {% if request.user.is_authenticated %}
+                        {{ person.uwnetid }}
+                    {% else %}
+                        <a href='/login/?next=/'>Log in</a>
+                    {% endif %}
+                    </span>
+                </div>
                 <div class="netid-background"></div>
+
             </div>
         </div>
 
-        <div class="mdot-user-info" aria-hidden="true">
-            <div class="container-fluid">
-                <p>John Average #09873645<br/>
-                Freshman | Undeclared</p>
-                <hr />
+        {% if request.user.is_authenticated %}
+            <div class="mdot-user-info" aria-hidden="true">
+                <div class="container-fluid">
+                    <p>{{ person.display_name }} #{{ student_number }}<br/>
+                    Freshman | Undeclared</p>
+                    <hr />
+                </div>
             </div>
-        </div>
+        {% endif %}
 
         <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
             {% block content %}{% endblock %}
@@ -177,7 +189,7 @@
 
         <!-- javascript -->
         {% compress js %}
-        <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>        
+        <script src="{% static "vendor/js/jquery-1.11.3.min.js" %}"></script>
         <script src="{% static "vendor/js/jquery.succinct.min.js" %}"></script>
         <script src="{% static "mdot/js/main.js" %}"></script>
         {% endcompress %}
