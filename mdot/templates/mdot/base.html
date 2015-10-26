@@ -156,8 +156,17 @@
                     {% if person.employee_id %}
                         | Employee #{{ person.employee_id }}
                     {% endif %}<br/>
-                    {% if False %}
-                        Freshman | Undeclared
+                    {% if person.student_class %}
+                        {{ person.student_class }}
+                    {% endif %}
+                    {% if person.student_department1 %}
+                        | {{ person.student_department1 }}
+                    {% endif %}
+                    {% if person.student_department2 %}
+                        | {{ person.student_department2 }}
+                    {% endif %}
+                    {% if person.student_department3 %}
+                        | {{ person.student_department3 }}
                     {% endif %}</p>
                     <hr />
                 </div>

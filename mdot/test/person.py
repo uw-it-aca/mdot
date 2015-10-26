@@ -43,6 +43,9 @@ class MDOTPersonTest(TestCase):
             self.assertTrue(person.is_staff)
             self.assertTrue(person.is_employee)
             self.assertEqual(None, person.is_faculty)
+            self.assertEqual(person.student_class, "Junior")
+            self.assertEqual(person.student_department1, "Informatics")
+            self.assertEqual(person.student_department2, None)
 
     def tearDown(self):
         pass
