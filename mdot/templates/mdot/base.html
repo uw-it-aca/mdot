@@ -133,6 +133,11 @@
 
 
                 <div class="mdot-netid" aria-hidden="true">
+	                {% if request.user.is_authenticated %}
+	                <div class="logout">
+                        <a href="/logout">log out</a>
+	                </div>
+	                {% endif %}
                     <span id="mdot_user_button">
                     {% if request.user.is_authenticated %}
                         {{ person.uwnetid }}
@@ -145,7 +150,7 @@
 
             </div>
         </div>
-
+<!----
         {% if request.user.is_authenticated %}
             <div class="mdot-user-info" aria-hidden="true">
                 <div class="container-fluid">
@@ -155,6 +160,9 @@
                     {% endif %}
                     {% if person.employee_id %}
                         | Employee #{{ person.employee_id }}
+                    {% endif %}<br/>
+                    {% if person.home_department %}
+                        | Home Dept:{{ person.home_department }}
                     {% endif %}<br/>
                     {% if person.student_class %}
                         {{ person.student_class }}
@@ -172,6 +180,8 @@
                 </div>
             </div>
         {% endif %}
+        
+        ---->
 
         <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
             {% block content %}{% endblock %}
