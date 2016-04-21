@@ -13,7 +13,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
-        'django',
+        'djangoi<1.9',
         'django-compressor',
         'django_mobileesp',
         'uw-restclients',
