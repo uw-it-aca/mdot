@@ -1,8 +1,10 @@
-from django.test import TestCase
-from django.test import Client
+from django.test import Client, TestCase, override_settings
 from django.core.urlresolvers import resolve
 
+DAO = 'mdot.mdot_rest_client.client.MDOTFile'
 
+
+@override_settings(RESTCLIENTS_MDOT_DAO_CLASS=DAO)
 class MdotTest(TestCase):
 
     # Test that given url calls correct view
