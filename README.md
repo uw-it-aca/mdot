@@ -6,31 +6,31 @@ This README documents whatever steps are necessary to get your application up an
 ## Installing the application ##
 
 **Create a virtualenv for your project**
-    
+
     $ virutualenv yourenv
     $ cd yourenv
     $ source bin/activate
-    
+
 **Install Mdot app**  
-    
+
     $ (yourenv) pip install -e git+https://github.com/uw-it-aca/mdot/#egg=mdot
     $ (yourenv) pip install -e git+https://github.com/uw-it-aca/mdot-developers/#egg=mdotdevs
 
 **Create an empty Django project**
-    
+
     $ (yourenv) django-admin.py startproject yourproj .
     $ (yourenv) cd yourproj
-    
+
 **Update your urls.py**
-    
+
     urlpatterns = patterns('',
         ...
-        url(r'^developers', include('mdotdevs.urls')),
+        url(r'^developers/', include('mdotdevs.urls')),
         url(r'^', include('mdot.urls')),
     )
-    
+
 **Update your settings.py**
-    
+
     INSTALLED_APPS = (
         ...
         'templatetag_handlebars',
@@ -78,13 +78,13 @@ This README documents whatever steps are necessary to get your application up an
     COMPRESS_JS_FILTERS = [
         'compressor.filters.jsmin.JSMinFilter',
     ]
-    
+
     # devtools
     ACA_DEVTOOLS_ENABLED = True
-    
+
     # mobileesp
     from django_mobileesp.detector import mobileesp_agent as agent
-    
+
     DETECT_USER_AGENTS = {
         'is_android': agent.detectAndroid,
         'is_ios': agent.detectIos,
@@ -92,18 +92,18 @@ This README documents whatever steps are necessary to get your application up an
         'is_tablet' : agent.detectTierTablet,
         'is_mobile': agent.detectMobileQuick,
     }
-    
+
     # htmlmin
     HTML_MINIFY = True
 
 **Create your database**
-    $ (yourenv) python manage.py syncdb
+    $ (yourenv) python manage.py migrate
 
 **Run your server:**
-    
+
     $ (yourenv) python manage.py runserver 0:8000
-    
-    
-**It worked!** 
-    
+
+
+**It worked!**
+
     You should see the Django server running when viewing http://localhost:8000
