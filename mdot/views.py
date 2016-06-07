@@ -13,6 +13,7 @@ def home(request):
                               context_instance=RequestContext(request)
                               )
 
+
 # hybrid views
 def hybrid_home(request):
     params = {'resources': MDOT().get_resources(featured=True)}
