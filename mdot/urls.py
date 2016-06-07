@@ -14,4 +14,8 @@ urlpatterns = patterns(
 
     # include applications
     # url(r'^', include('app_name.urls')),
+
+    # hybrid urls
+    url(r'^h/$', 'mdot.views.hybrid_home',
+        name='hybrid_home'),
 )

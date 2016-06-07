@@ -12,3 +12,10 @@ def home(request):
     return render_to_response('mdot/home.html', params,
                               context_instance=RequestContext(request)
                               )
+
+# hybrid views
+def hybrid_home(request):
+    params = {'resources': MDOT().get_resources(featured=True)}
+    return render_to_response('hybridize/home.html', params,
+                              context_instance=RequestContext(request)
+                              )

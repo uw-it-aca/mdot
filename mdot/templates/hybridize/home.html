@@ -1,0 +1,24 @@
+{% extends "hybridize/base.html" %}
+{% load staticfiles %}
+
+{% block title %}hybrid home{% endblock %}
+
+{% block hybrid_content %}
+
+
+{% if resources %}
+
+    <ul>
+
+
+    {% for resource in resources %}
+
+    <li>{{ resource.title }}</li>
+
+    {% endfor %}
+
+    </ul>
+
+{% endif %}
+
+{% endblock %}
