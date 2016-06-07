@@ -5,7 +5,7 @@
 
 {% block hybrid_content %}
 
-<ol class="row mdot-feature-group">
+<ul class="soc">
 
 {% if resources %}
 
@@ -18,7 +18,7 @@
         <a href={% if request.is_ios and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.IOS }}')"{% endif %}{% elif request.is_android and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.AND }}')"{% endif %}{% elif request.is_windows_phone and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WIP }}')"{% endif %}{% else %}"{{ resource.resource_links.WEB }}"{% if google_analytics %}onclick="ga('send','event','outbound','{{ resource.resource_links.WEB }}')"{% endif %}
         {% endif %}title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
 
-         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
+
 
         {% if request.is_ios and resource.has_ios %}<span class="mdot-native"><i class="fa fa-apple"><span class="sr-only">IOS App</span></i></span>
         {% elif request.is_android and resource.has_and %}<span class="mdot-native"><i class="fa fa-android"><span class="sr-only">Android App</span></i></span>
@@ -26,7 +26,8 @@
         {% endif %}
 
         </a>
-
+         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
+         
     </li>
     <!-- end template -->
     {% endfor %}
