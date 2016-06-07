@@ -37,6 +37,7 @@ This README documents whatever steps are necessary to get your application up an
         'easy_pjax',
         'mdot',
         'mdotdevs',
+        'hybridize',
         'compressor',
     )
 
@@ -68,7 +69,11 @@ This README documents whatever steps are necessary to get your application up an
     )
 
     COMPRESS_ROOT = "/tmp/some/path/for/files"
-    COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
+    COMPRESS_PRECOMPILERS = (
+        ('text/less', 'lessc {infile} {outfile}'),
+        ('text/x-sass', 'pyscss {infile} > {outfile}'),
+        ('text/x-scss', 'pyscss {infile} > {outfile}'),
+    )
     COMPRESS_ENABLED = False # True if you want to compress your development build
     COMPRESS_OFFLINE = False # True if you want to compress your build offline
     COMPRESS_CSS_FILTERS = [
@@ -91,6 +96,8 @@ This README documents whatever steps are necessary to get your application up an
         'is_windows_phone': agent.detectWindowsPhone,
         'is_tablet' : agent.detectTierTablet,
         'is_mobile': agent.detectMobileQuick,
+        'is_and': agent.detectAndroid,
+        'is_win': agent.detectWindowsPhone,
     }
 
     # htmlmin
