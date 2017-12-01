@@ -6,9 +6,11 @@ from mdot_rest_client.client import MDOT
 import urllib
 import json
 
+from django.views.generic.base import TemplateView, TemplateResponse
 
-def home(request):
-    params = {'resources': MDOT().get_resources(featured=True)}
-    return render_to_response('mdot/home.html', params,
-                              context_instance=RequestContext(request)
-                              )
+# home
+class HomeView(TemplateView):
+
+    def get_context_data(self, **kwargs):
+        context = {'resources': MDOT().get_resources(featured=True)}
+        return context
