@@ -11,7 +11,7 @@ urlpatterns = patterns(
     '',
     # Examples:
 
-    #url(r'^$', 'mdot.views.home', name='home'),
+    # url(r'^$', 'mdot.views.home', name='home'),
     url(r'^$', HomeView.as_view(template_name="mdot/home.html")),
 
     # url(r'^blog/', include('blog.urls')),

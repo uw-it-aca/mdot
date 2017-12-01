@@ -8,13 +8,14 @@ import json
 
 from django.views.generic.base import TemplateView, TemplateResponse
 
+
 # home
 class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
 
-        #hybrid = self.request.GET.get('h') == 'blah',
-        #print hybrid
+        # hybrid = self.request.GET.get('h') == 'blah',
+        # print hybrid
 
         context = {
             "resources": MDOT().get_resources(featured=True),
