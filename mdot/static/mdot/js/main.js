@@ -1,5 +1,7 @@
 // document.ready shorthand
-$(function() {
+$(document).on('turbolinks:load', function() {
+
+    console.log("turbolinks fired!");
 
     // async load css by flipping the media attribute to all
     $('link[rel="stylesheet"]').attr('media', 'all');
