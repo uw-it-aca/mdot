@@ -15,11 +15,3 @@ def google_analytics(request):
         'GOOGLE_ANALYTICS_KEY': ga_key,
         'google_analytics': ga_key
     }
-
-
-def devtools_bar(request):
-
-    devtools = getattr(settings, 'ACA_DEVTOOLS_ENABLED', False)
-    return {
-        'devtools_bar': devtools
-    }

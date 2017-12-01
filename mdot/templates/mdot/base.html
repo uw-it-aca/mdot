@@ -39,26 +39,5 @@
         </div>
         {% endif %}
 
-        {% if devtools_bar %}
-        <!-- devtools bar -->
-        <div id="dev_toolbar">
-            <span class="label label-device">
-                {% if request.is_mobile %}Mobile:
-                    {% if request.is_ios %}iOS
-                    {% elif request.is_android %}Android
-                    {% elif request.is_windows_phone %}Windows{% endif %}
-                {% elif request.is_tablet %}Tablet:
-                    {% if request.is_ios %}iOS
-                    {% elif request.is_android %}Android
-                    {% elif request.is_windows_phone %}Windows{% endif %}
-                {% else %}Desktop{%endif %}
-            </span>
-            <span class="label label-fold">The fold</span>
-        </div>
-        <script src="{% static "vendor/js/aca-devtools.min.js" %}"></script>
-        {% endif %}
-
-
-
     </body>
 </html>
