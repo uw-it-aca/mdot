@@ -18,6 +18,6 @@ class HomeView(TemplateView):
 
         context = {
             "resources": MDOT().get_resources(featured=True),
-            "hybrid": self.request.GET.get('h') == 'blah',
+            "hybrid": self.request.GET.get('hybrid') == 'true',
         }
         return context
