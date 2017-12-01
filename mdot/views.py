@@ -12,5 +12,12 @@ from django.views.generic.base import TemplateView, TemplateResponse
 class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
-        context = {'resources': MDOT().get_resources(featured=True)}
+
+        #hybrid = self.request.GET.get('h') == 'blah',
+        #print hybrid
+
+        context = {
+            "resources": MDOT().get_resources(featured=True),
+            "hybrid": self.request.GET.get('h') == 'blah',
+        }
         return context
