@@ -3,11 +3,11 @@ language: python
 python:
   - "2.7"
 install:
-  - npm install recess
   - pip install .
   - pip install pep8
   - pip install coverage
   - pip install python-coveralls
+  - npm install -g recess
   - npm install -g less
 before_script:
   - cp travis-ci/manage.py manage.py
