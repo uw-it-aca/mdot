@@ -10,7 +10,7 @@ class MdotTest(TestCase):
     # Test that given url calls correct view
     def test_home_url(self):
         resolver = resolve('/')
-        self.assertEqual('HomeView', resolver.view_name)
+        self.assertEqual('mdot.views.HomeView', resolver.view_name)
 
     # Test that given url returns a 200 status code
     def test_home_view(self):
