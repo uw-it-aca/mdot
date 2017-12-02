@@ -74,7 +74,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'mdot.context_processors.less_compiled',
                 'mdot.context_processors.google_analytics',
-                'mdot.context_processors.devtools_bar',
             ],
         },
     },
@@ -135,9 +134,6 @@ COMPRESS_JS_FILTERS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# devtools
-ACA_DEVTOOLS_ENABLED = True
 
 # mobileesp
 
