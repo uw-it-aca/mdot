@@ -16,7 +16,7 @@ setup(
         'django<1.9rc1',
         'django-compressor',
         'django_mobileesp',
-        'uw-restclients<2.0',
+        'uw-restclients==1.1.dev7',
         'django-htmlmin',
     ],
     license='Apache License, Version 2.0',
