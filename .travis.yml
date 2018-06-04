@@ -8,14 +8,15 @@ install:
   - pip install pep8
   - pip install coverage
   - pip install python-coveralls
+
 before_script:
   - cp travis-ci/manage.py manage.py
   - python manage.py syncdb --noinput
 script:
   - pep8 mdot/ --exclude=migrations
   - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot
-  - recess mdot/static/mdot/css/*.less --noIds false
+  # - recess mdot/static/mdot/css/*.less --noIds false
   # This actually fails the test if there are recess errors :(
-  - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
+  # - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
 after_script:
   - coveralls
