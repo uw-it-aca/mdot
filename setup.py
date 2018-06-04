@@ -18,6 +18,7 @@ setup(
         'django_mobileesp',
         'uw-restclients',
         'django-htmlmin',
+        'lesscpy'
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
