@@ -123,7 +123,7 @@ MEDIA_ROOT = '/vagrant/'
 MEDIA_URL = '/media/'
 
 COMPRESS_ROOT = "/tmp/some/path/for/files"
-COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
+COMPRESS_PRECOMPILERS = (('text/less', 'lesscpy {infile} {outfile}'),)
 COMPRESS_ENABLED = False  # True if you want to compress your development build
 COMPRESS_OFFLINE = False  # True if you want to compress your build offline
 COMPRESS_CSS_FILTERS = [
