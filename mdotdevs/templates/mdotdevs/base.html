@@ -1,42 +1,22 @@
 {% extends "mdot/base.html" %}
 {% load staticfiles %}
 
-{% block app_css_mobile %}
-<link rel="stylesheet" href="{% static "mdotdevs/css/mobile.less" %}" type="text/less" media="foo">
+{% block content %}
 {% endblock %}
-
-{% block app_css_tablet %}
-<link rel="stylesheet" href="{% static "mdotdevs/css/mobile.less" %}" type="text/less" media="foo">
-<link rel="stylesheet" href="{% static "mdotdevs/css/tablet.less" %}" type="text/less" media="foo">
-{% endblock %}
-
-{% block app_css_desktop %}
-<link rel="stylesheet" href="{% static 'mdotdevs/css/mobile.less' %}" type="text/less" media="foo">
-<link rel="stylesheet" href="{% static 'mdotdevs/css/tablet.less' %}" type="text/less" media="foo">
-<link rel="stylesheet" href="{% static 'mdotdevs/css/desktop.less' %}" type="text/less" media="foo">
-{% endblock %}
-
- <!-- critical css (above the fold styles) -->
-{% block app_css_inline %}
-<link rel="stylesheet" href="{% static 'mdotdevs/css/inline.less' %}" type="text/less">
-{% endblock %}
-
-
-{% block content %}{% endblock %}
 
 {% block subcontent %}
 <div class="mdot-sub-content" >
 
     <div class="container">
-        
+
         <!-- Example row of columns -->
         <div class="row" >
-        	    
+
             <div class="col-md-8 mdot-resource-group" role="complementary" aria-labelledby="publish_header" style="margin-bottom: 1.5em;">
                 <h2 class="sub-content-header" id="publish_header">Publishing native apps at UW</h2>
                 <div class="sub-content-article">
                 <p>If your native app is intended for broad UW use, consider publication in the UW Developer App Store.</p>
-                <ul>    
+                <ul>
                     <li><a href="/developers/guidelines">Guidelines</a></li>
                     <li><a href="/developers/process" >Process Overview</a></li>
                     <li><a href="/developers/review">Submit your application</a></li>
@@ -46,7 +26,7 @@
             <div class="col-md-4 mdot-resource-group" role="complementary" aria-labelledby="help_header">
               <h2 class="sub-content-header" id="help_header">Get Help</h2>
               <div class="sub-content-article">
-                <ul>    
+                <ul>
                     <li><div class="sub-content-category">Resources:</div>
                     	<ul>
 							<li><a href="/developers">Building a Mobile App</a></li>
@@ -57,15 +37,14 @@
 							<li><a href="mailto:help@uw.edu">Publishing Your App</a></li>
 							<li><a href="mailto:help@uw.edu">Creating an App Store</a></li>
 							<li><a href="mailto:ux@uw.edu">User Experience/Usability Consultation</a></li>
-                    	</ul></li>                  
-                </ul> 
-              </div>           
-            </div>            
+                    	</ul></li>
+                </ul>
+              </div>
+            </div>
         </div>
-        
-        
+
+
     </div>
 </div>
-        
-{% endblock %}
 
+{% endblock %}

@@ -39,9 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'rest_framework',
-    'mdotdevs',
     # 'mdot_rest',
     'mdot',
+    'mdotdevs',
     'compressor',
 )
 
