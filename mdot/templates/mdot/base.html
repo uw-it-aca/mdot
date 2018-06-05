@@ -24,17 +24,17 @@
       </div>
     </div>
 
-      <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
-        {% block content %}{% endblock %}
-      </div>
+    <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
+      {% block content %}{% endblock %}
+    </div>
 
-      {% block subcontent %}{% endblock %}
+    {% block subcontent %}{% endblock %}
 
-      <div id="footer" class="mdot-footer" role="contentinfo" aria-label="Copyright & Legal Info">
-        <div class="container">
-          <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a target="_blank" href="http://www.washington.edu/online/privacy/" {% if google_analytics %}onclick="ga('send','event','outbound','http://www.washington.edu/online/privacy/')"{% endif %} title="UW Privacy Policy">Privacy</a></span> <span><a target="_blank" href="http://www.washington.edu/online/terms/" {% if google_analytics %}onclick="ga('send','event','outbound','http://www.washington.edu/online/terms/')"{% endif %} title="UW Terms of Use">Terms</a></span></div>
-        </div>
+    <div id="footer" class="mdot-footer" role="contentinfo" aria-label="Copyright & Legal Info">
+      <div class="container">
+        <div>Copyright &copy; {% now "Y" %} UW-IT ACA <span><a target="_blank" href="http://www.washington.edu/online/privacy/" {% if google_analytics %}onclick="ga('send','event','outbound','http://www.washington.edu/online/privacy/')"{% endif %} title="UW Privacy Policy">Privacy</a></span> <span><a target="_blank" href="http://www.washington.edu/online/terms/" {% if google_analytics %}onclick="ga('send','event','outbound','http://www.washington.edu/online/terms/')"{% endif %} title="UW Terms of Use">Terms</a></span></div>
       </div>
+    </div>
 
   </body>
 </html>
