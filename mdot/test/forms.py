@@ -1,8 +1,8 @@
 from django.test import Client, TestCase
-from mdotdevs.forms import ReviewForm
+from mdot.forms import ReviewForm
 
 
-class MdotdevsFormTest(TestCase):
+class MdotFormTest(TestCase):
     """
     Tests that cover the fuctionality of the
     Review Form.

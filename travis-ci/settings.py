@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     # 'rest_framework',
     # 'mdot_rest',
     'mdot',
-    'mdotdevs',
     'compressor',
 )
 

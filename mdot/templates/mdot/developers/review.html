@@ -1,19 +1,19 @@
-{% extends "mdotdevs/base.html" %}
+{% extends "mdot/developers/base.html" %}
 
 {% block title %}Building Apps Home{% endblock %}
 
 {% block content %}
 
 <div class="mdot-developers">
-    
+
     <div class="container" >
-        
+
         <h2 class="mdot-subhead" id="page_header">Submit your App for Review</h2>
         <p class="article intro">Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>? </p>
         <p class="article intro">If so, please fill out the form below. We will review your app and let you know the next steps.</p>
 
         <form method="post">
-            
+
             {% csrf_token %}
             {{ form.non_field_errors }}
                 <p>
@@ -135,7 +135,7 @@
                     {% endif %}</label>
                     {{ form.app_documentation }}
                 </p>
-                
+
                 <p>
                     <label for="{{ form.app_code.id_for_label }}">{{ form.app_code.label }}
                     {% if form.app_code.errors %}
@@ -152,11 +152,11 @@
                     {{ form.anything_else }}
                 </p>
 
-                
-                
-            <p class="btn-container"><a href="/developers/" class="btn">Cancel</a>  
+
+
+            <p class="btn-container"><a href="/developers/" class="btn">Cancel</a>
             <input type="submit" class="btn btn-primary" name="submit" value="Submit for Review"></p>
-             
+
         </form>
     </div>
 </div>
