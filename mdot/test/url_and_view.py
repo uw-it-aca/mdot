@@ -73,10 +73,6 @@ class MdotTest(TestCase):
         resolver = resolve('/developers/review/')
         self.assertEqual('review', resolver.view_name)
 
-
-
-
-
     def test_view_process(self):
         """
         Test that request to process url returns a status code

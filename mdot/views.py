@@ -11,6 +11,7 @@ import urllib
 import json
 from forms import ReviewForm
 
+
 def home(request):
     params = {'resources': MDOT().get_resources(featured=True)}
     return render_to_response('mdot/home.html', params,
@@ -81,9 +82,11 @@ def review(request):
                 send_mail(
                     sponsor_name,
                     get_template(
-                        'mdot/developers/email_plain.html').render(email_context),
+                        'mdot/developers/email_plain.html')
+                    .render(email_context),
                     sponsor_email, ['jcivjan@uw.edu'],
-                    html_message=get_template('mdot/developers/email_html.html')
+                    html_message=get_template(
+                        'mdot/developers/email_html.html')
                     .render(email_context),
                 ),
             except BadHeaderError:

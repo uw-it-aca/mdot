@@ -9,7 +9,8 @@ urlpatterns = patterns(
 
     url(r'^$', 'mdot.views.home', name='home'),
     url(r'^developers/$', 'mdot.views.developers', name='developers'),
-    url(r'^developers/guidelines/$', 'mdot.views.guidelines', name='guidelines'),
+    url(r'^developers/guidelines/$', 'mdot.views.guidelines',
+        name='guidelines'),
     url(r'^developers/process/$', 'mdot.views.process', name='process'),
     url(r'^developers/review/$', 'mdot.views.review', name='review'),
 
