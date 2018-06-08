@@ -1,5 +1,5 @@
 import os
-from setuptools import setup
+from setuptools import find_packages, setup
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
@@ -7,9 +7,9 @@ README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='mdot',
+    name='mdot-modern',
     version='0.1',
-    packages=['mdot'],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=[
         'setuptools',
