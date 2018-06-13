@@ -52,11 +52,6 @@ coverage.xml
 *.pyc
 .DS_Store
 
-# Django settings
-local_settings.py
-local.py
-production.py
-
 # Sphinx documentation
 docs/_build/
 
