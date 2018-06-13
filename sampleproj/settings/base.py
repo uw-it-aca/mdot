@@ -110,6 +110,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # htmlmin
-HTML_MINIFY = True
+HTML_MINIFY = False
