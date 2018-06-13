@@ -105,25 +105,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
 
-# mobileesp
-
-DETECT_USER_AGENTS = {
-    'is_android': agent.detectAndroid,
-    'is_ios': agent.detectIos,
-    'is_windows_phone': agent.detectWindowsPhone,
-    'is_tablet': agent.detectTierTablet,
-    'is_mobile': agent.detectMobileQuick,
-}
-
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
-}
 
 # htmlmin
 HTML_MINIFY = True

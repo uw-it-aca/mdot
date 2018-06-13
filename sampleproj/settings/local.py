@@ -44,5 +44,15 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.JSMinFilter',
 ]
 
+# mobileesp
+
+DETECT_USER_AGENTS = {
+    'is_android': agent.detectAndroid,
+    'is_ios': agent.detectIos,
+    'is_windows_phone': agent.detectWindowsPhone,
+    'is_tablet': agent.detectTierTablet,
+    'is_mobile': agent.detectMobileQuick,
+}
+
 # RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
 RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
