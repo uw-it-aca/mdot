@@ -1,5 +1,5 @@
 """
-Django settings for travis-ci builds.
+Django settings for local builds.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.8/topics/settings/
@@ -14,14 +14,12 @@ from .base import *
 from django_mobileesp.detector import mobileesp_agent as agent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'travis-xxxxxxxxxxxxxxxx'
+SECRET_KEY = 'replaceme-xxxxxxxxxxxxxxxx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
-
-STATIC_URL = '/static/'
+ALLOWED_HOSTS = ['*']
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -34,4 +32,5 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTFile'
+# RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
+RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
