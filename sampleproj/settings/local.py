@@ -32,7 +32,7 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-COMPRESS_ROOT = ""
+COMPRESS_ROOT = "compress_files"
 COMPRESS_PRECOMPILERS = (('text/less', 'lesscpy {infile} {outfile}'),)
 COMPRESS_ENABLED = False  # True if you want to compress your development build
 COMPRESS_OFFLINE = False  # True if you want to compress your build offline
@@ -53,6 +53,8 @@ DETECT_USER_AGENTS = {
     'is_tablet': agent.detectTierTablet,
     'is_mobile': agent.detectMobileQuick,
 }
+
+# MDOT RestClient
 
 # RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
 RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
