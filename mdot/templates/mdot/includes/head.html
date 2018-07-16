@@ -116,5 +116,6 @@
 
     ga('create', '{{ google_analytics }}', {% if devtools_bar %}{'cookieDomain': 'none'}{% else %}'auto'{% endif %});
     ga('send', 'pageview');
+    ga('set', 'anonymizeIp', true);`
 </script>
 {% endif %}
