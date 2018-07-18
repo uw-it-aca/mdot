@@ -126,3 +126,8 @@ COMPRESS_JS_FILTERS = [
 
 # htmlmin
 HTML_MINIFY = False
+
+#Emails
+MDOT_HELP_EMAIL = "help@uw.edu"
+MDOT_UX_EMAIL = "ux@uw.edu"
+MDOT_FORM_EMAIL = "jcivjan@uw.edu"
