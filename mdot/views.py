@@ -84,7 +84,7 @@ def review(request):
                     get_template(
                         'mdot/developers/email_plain.html')
                     .render(email_context),
-                    sponsor_email, [getattr(settings, "MDOT_FORM_EMAIL")],
+                    sponsor_email, [getattr(settings, "MDOT_SERVICE_EMAIL")],
                     html_message=get_template(
                         'mdot/developers/email_html.html')
                     .render(email_context),

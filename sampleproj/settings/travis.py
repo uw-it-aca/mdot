@@ -16,4 +16,4 @@ SECRET_KEY = 'travis-xxxxxxxxxxxxxxxx'
 #Emails
 MDOT_HELP_EMAIL = 'test@testcase.edu' # String for help desk email address
 MDOT_UX_EMAIL = 'test@testcase.edu' # String for UX team email address
-MDOT_FORM_EMAIL = 'test@testcase.edu' # String to email app publishing requests
+MDOT_SERVICE_EMAIL = 'test@testcase.edu' # String to email app publishing requests

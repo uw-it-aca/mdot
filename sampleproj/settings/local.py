@@ -50,4 +50,4 @@ RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
 #Emails
 MDOT_HELP_EMAIL = 'help@example.edu' # String for help desk email address
 MDOT_UX_EMAIL = 'ux@example.edu' # String for UX team email address
-MDOT_FORM_EMAIL = 'serviceteam@example.edu' # String to email app publishing requests
+MDOT_SERVICE_EMAIL = 'serviceteam@example.edu' # String to email app publishing requests
