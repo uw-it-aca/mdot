@@ -46,3 +46,8 @@ DETECT_USER_AGENTS = {
 
 # RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
 RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
+
+#Emails
+MDOT_HELP_EMAIL = None  # String for help desk email address
+MDOT_UX_EMAIL = None  # String for UX team email address
+MDOT_FORM_EMAIL = None  # String to email app publishing requests
