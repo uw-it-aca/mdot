@@ -128,6 +128,6 @@ COMPRESS_JS_FILTERS = [
 HTML_MINIFY = False
 
 #Emails
-MDOT_HELP_EMAIL = "help@uw.edu"
-MDOT_UX_EMAIL = "ux@uw.edu"
-MDOT_FORM_EMAIL = "jcivjan@uw.edu"
+MDOT_HELP_EMAIL = None  # String for help desk email address
+MDOT_UX_EMAIL = None  # String for UX team email address
+MDOT_FORM_EMAIL = None  # String to email app publishing requests
