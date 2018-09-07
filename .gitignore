@@ -58,6 +58,7 @@ docs/_build/
 # project specific
 static/CACHE
 *.sqlite3
+.env
 
 # Django/virtualenv
 /project
