@@ -10,8 +10,8 @@ install:
   - pip install python-coveralls
 
 before_script:
-  - cp travis-ci/manage.py manage.py
-  - python manage.py syncdb --noinput
+  - cp sampleproj/manage.py manage.py
+  - python manage.py syncdb --noinput --settings=sampleproj.settings.travis
 script:
   - pep8 mdot/ --exclude=migrations
   - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot --settings=sampleproj.settings.travis

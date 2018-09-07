@@ -75,6 +75,7 @@ TEMPLATES = [
                 'mdot.context_processors.less_compiled',
                 'mdot.context_processors.google_analytics',
                 'mdot.context_processors.devtools_bar',
+                'mdot.context_processors.get_emails',
             ],
         },
     },
