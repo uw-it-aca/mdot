@@ -51,6 +51,7 @@ coverage.xml
 *.pot
 *.pyc
 .DS_Store
+sampleproj/settings/local.py
 
 # Sphinx documentation
 docs/_build/
