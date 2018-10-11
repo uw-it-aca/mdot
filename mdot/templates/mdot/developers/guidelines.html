@@ -1,4 +1,4 @@
-{% extends "mdot/developers/base.html" %}
+{% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
 
 {% block title %}Building Apps Home{% endblock %}
 
