@@ -11,8 +11,6 @@ from __future__ import absolute_import
 import os
 from .base import *
 
-from django_mobileesp.detector import mobileesp_agent as agent
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'replaceme-xxxxxxxxxxxxxxxx'
 
@@ -20,6 +18,31 @@ SECRET_KEY = 'replaceme-xxxxxxxxxxxxxxxx'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+INSTALLED_APPS += (
+    # 'django.contrib.admin',
+    # 'django.contrib.messages',
+)
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'mdot.context_processors.less_compiled',
+                'mdot.context_processors.google_analytics',
+                'mdot.context_processors.devtools_bar',
+                'mdot.context_processors.get_emails',
+            ],
+        },
+    },
+]
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -30,10 +53,13 @@ STATICFILES_FINDERS = (
 MEDIA_ROOT = ''
 MEDIA_URL = '/media/'
 
+# django compressor
+COMPRESS_PRECOMPILERS = (('text/less', 'lesscpy {infile} {outfile}'),)
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # mobileesp
-
+from django_mobileesp.detector import mobileesp_agent as agent
 DETECT_USER_AGENTS = {
     'is_android': agent.detectAndroid,
     'is_ios': agent.detectIos,
@@ -43,9 +69,8 @@ DETECT_USER_AGENTS = {
 }
 
 # MDOT RestClient
-
 # RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
-RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
+# RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
 
 #Emails
 MDOT_HELP_EMAIL = 'help@example.edu' # String for help desk email address
