@@ -54,7 +54,20 @@ MEDIA_ROOT = ''
 MEDIA_URL = '/media/'
 
 # django compressor
-COMPRESS_PRECOMPILERS = (('text/less', 'lesscpy {infile} {outfile}'),)
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lesscpy {infile} {outfile}'),
+    ('text/x-scss', 'django_pyscss.compressor.DjangoScssFilter'),
+)
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = False
+COMPRESS_OUTPUT_DIR = ''
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
