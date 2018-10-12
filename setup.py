@@ -15,7 +15,6 @@ setup(
         'setuptools',
         'django<1.9rc1',
         'django-compressor',
-        'django_mobileesp',
         'uw-restclients',
         'django-htmlmin',
         'lesscpy',

@@ -71,16 +71,6 @@ COMPRESS_JS_FILTERS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# mobileesp
-from django_mobileesp.detector import mobileesp_agent as agent
-DETECT_USER_AGENTS = {
-    'is_android': agent.detectAndroid,
-    'is_ios': agent.detectIos,
-    'is_windows_phone': agent.detectWindowsPhone,
-    'is_tablet': agent.detectTierTablet,
-    'is_mobile': agent.detectMobileQuick,
-}
-
 # MDOT RestClient
 # RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
 # RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
