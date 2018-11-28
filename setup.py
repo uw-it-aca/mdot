@@ -13,7 +13,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
-        'django<1.9rc1',
+        'django<1.10',
         'django-compressor',
         'uw-restclients',
         'django-htmlmin',
