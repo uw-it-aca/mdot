@@ -5,7 +5,7 @@ python:
 install:
   # - npm install recess
   - pip install .
-  - pip install pep8
+  - pip install pycodestyle
   - pip install coverage
   - pip install python-coveralls
 
@@ -13,7 +13,7 @@ before_script:
   - cp sampleproj/manage.py manage.py
   - python manage.py migrate --noinput --settings=sampleproj.settings.travis
 script:
-  - pep8 mdot/ --exclude=migrations
+  - pycodestyle mdot/ --exclude=migrations
   - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot --settings=sampleproj.settings.travis
   # - recess mdot/static/mdot/css/*.less --noIds false
   # This actually fails the test if there are recess errors :(
