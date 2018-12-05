@@ -55,6 +55,15 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATIC_URL = '/static/'
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+        ],
+        'APP_DIRS': True,
+    },
+]
+
 # django_compressor
 
 COMPRESS_ROOT = "compress_files"
