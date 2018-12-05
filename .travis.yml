@@ -4,6 +4,7 @@ python:
   - "2.7"
 install:
   # - npm install recess
+  - export BOTO_CONFIG=/dev/null  #workaround for ImportError, probably not needed after upgrading to restclients core
   - pip install .
   - pip install pycodestyle
   - pip install coverage
