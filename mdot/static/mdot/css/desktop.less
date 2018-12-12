@@ -6,7 +6,7 @@
 @darkgray: #444;
 @white: #fff;
 @black: #000;
-            
+
 /*** desktop ***/
 
 .mdot-navbar {  }
@@ -18,23 +18,23 @@
         .mdot-feature-item { height: 332px;
 
             .mdot-resource-link {
-                
+
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
                 -webkit-transition-duration: 0.2s;
                 transition-duration: 0.2s;
                 -webkit-transition-property: transform;
                 transition-property: transform;
-  
+
                 &:hover {  -webkit-transform: scale(1.05); transform: scale(1.05); }
-                
+
                 .mdot-resource-name { bottom: -40px; font-size: 18px; font-weight: 400; }
             }
-            
+
             .mdot-resource-nolink {
                 .mdot-resource-name { bottom: -40px; font-size: 18px; font-weight: 400;}
             }
-            
+
             .mdot-resource-desktop { display: block; padding-top: 5px; font-size: 12px; border-top:solid 1px #eee;
                 a { display: inline-block; margin-right: 8px;  line-height: 20px; color:@uwpurple; text-decoration: none; }
                 a:nth-child(1) { margin-left: 0; }
@@ -49,7 +49,7 @@
 
 .mdot-categories {
     select { width: auto; }
-    
+
     .mdot-resource-group {
         .mdot-resource-link  { line-height: 20px; }
     }
@@ -57,21 +57,32 @@
 }
 
 .mdot-sub-content {
-    
+
      .mdot-resource-group {
         .mdot-resource-link  { line-height: 20px; }
     }
-        
-    .mdot-dev-link { margin: 0; 
-        
+
+    .mdot-dev-link { margin: 0;
+
         .mdot-dev-callout {
             h2 { font-size: 22px; }
-            
+
         }
-        
+
     }
 }
 
 .mdot-footer {
     hr { margin-top: 2em; visibility: visible; }
+}
+
+/*** mdotdevs ***/
+body {
+    h3 {font-weight:800;}
+}
+
+.mdot-developers {
+    &.pub-guidelines {
+        .mdot-subhead {padding-bottom: inherit;}
+    }
 }
