@@ -18,18 +18,15 @@ def home(request):
 
 
 def developers(request):
-    return render(request,
-        'mdot/developers/home.html')
+    return render(request, 'mdot/developers/home.html')
 
 
 def guidelines(request):
-    return render(request,
-        'mdot/developers/guidelines.html')
+    return render(request, 'mdot/developers/guidelines.html')
 
 
 def process(request):
-    return render(request,
-        'mdot/developers/process.html')
+    return render(request, 'mdot/developers/process.html')
 
 
 def review(request):
