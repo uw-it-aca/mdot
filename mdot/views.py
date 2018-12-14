@@ -14,21 +14,21 @@ from forms import ReviewForm
 
 def home(request):
     params = {'resources': MDOT().get_resources(featured=True)}
-    return render_to_response('mdot/home.html', params)
+    return render(request, 'mdot/home.html', params)
 
 
 def developers(request):
-    return render_to_response(
+    return render(request,
         'mdot/developers/home.html')
 
 
 def guidelines(request):
-    return render_to_response(
+    return render(request,
         'mdot/developers/guidelines.html')
 
 
 def process(request):
-    return render_to_response(
+    return render(request,
         'mdot/developers/process.html')
 
 
