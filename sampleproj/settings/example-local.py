@@ -66,5 +66,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #Emails
 MDOT_HELP_EMAIL = 'help@example.edu' # String for help desk email address
-MDOT_UX_EMAIL = 'ux@example.edu' # String for UX team email address
+MDOT_UX_CONTACT = 'https://uw.service-now.com/uwc.do?sysparm_direct=true#/catalog_order/3494e9951385a3c0c20bb9004244b073' # String for UX team contact url
 MDOT_SERVICE_EMAIL = 'serviceteam@example.edu' # String to email app publishing requests
