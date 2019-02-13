@@ -7,6 +7,5 @@ ADD . /app/
 WORKDIR /app
 
 # install python dependency packages (via setup.py) on container
-RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 COPY sampleproj/manage.py /app/manage.py
