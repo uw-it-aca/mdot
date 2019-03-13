@@ -14,26 +14,19 @@ from forms import ReviewForm
 
 def home(request):
     params = {'resources': MDOT().get_resources(featured=True)}
-    return render_to_response('mdot/home.html', params,
-                              context_instance=RequestContext(request))
+    return render(request, 'mdot/home.html', params)
 
 
 def developers(request):
-    return render_to_response(
-        'mdot/developers/home.html',
-        context_instance=RequestContext(request))
+    return render(request, 'mdot/developers/home.html')
 
 
 def guidelines(request):
-    return render_to_response(
-        'mdot/developers/guidelines.html',
-        context_instance=RequestContext(request))
+    return render(request, 'mdot/developers/guidelines.html')
 
 
 def process(request):
-    return render_to_response(
-        'mdot/developers/process.html',
-        context_instance=RequestContext(request))
+    return render(request, 'mdot/developers/process.html')
 
 
 def review(request):
@@ -60,7 +53,7 @@ def review(request):
             app_code = form.cleaned_data['app_code']
             anything_else = form.cleaned_data['anything_else']
 
-            email_context = Context({
+            email_context = {
                 'campus_audience': campus_audience,
                 'campus_need': campus_need,
                 'sponsor_name': sponsor_name,
@@ -77,14 +70,14 @@ def review(request):
                 'app_documentation': app_documentation,
                 'app_code': app_code,
                 'anything_else': anything_else
-            })
+            }
             try:
                 send_mail(
                     sponsor_name,
                     get_template(
                         'mdot/developers/email_plain.html')
                     .render(email_context),
-                    sponsor_email, ['jcivjan@uw.edu'],
+                    sponsor_email, [getattr(settings, "MDOT_SERVICE_EMAIL")],
                     html_message=get_template(
                         'mdot/developers/email_html.html')
                     .render(email_context),
@@ -92,8 +85,7 @@ def review(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return render_to_response(
-                'mdot/developers/thanks.html',
-                context_instance=RequestContext(request))
+                'mdot/developers/thanks.html')
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ReviewForm()

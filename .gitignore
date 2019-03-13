@@ -51,6 +51,7 @@ coverage.xml
 *.pot
 *.pyc
 .DS_Store
+sampleproj/settings/local.py
 
 # Sphinx documentation
 docs/_build/
@@ -58,6 +59,7 @@ docs/_build/
 # project specific
 static/CACHE
 *.sqlite3
+.env
 
 # Django/virtualenv
 /project

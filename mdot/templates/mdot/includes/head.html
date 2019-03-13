@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load compress %}
-
+{% load user_agents %}
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,7 +57,7 @@
 {% block app_css_inline %}{% endblock %}
 {% endcompress %}
 
-{% if request.is_mobile %}
+{% if request|is_mobile %}
 {% compress css inline %}
 <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
 <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
@@ -68,7 +68,7 @@
 {% endcompress %}
 {% endif %}
 
-{% if request.is_tablet %}
+{% if request|is_tablet %}
 {% compress css inline %}
 <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
 <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
@@ -80,7 +80,7 @@
 {% endcompress %}
 {% endif %}
 
-{% if not request.is_mobile and not request.is_tablet %}
+{% if not request|is_mobile and not request|is_tablet %}
 {% compress css inline %}
 <link rel="stylesheet" href="{% static "mdot/css/inline.less" %}" type="text/less">
 <link rel="stylesheet" href="{% static "vendor/css/bootstrap-mdot.min.css" %}">
@@ -115,6 +115,7 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', '{{ google_analytics }}', {% if devtools_bar %}{'cookieDomain': 'none'}{% else %}'auto'{% endif %});
+    ga('set', 'anonymizeIp', true);
     ga('send', 'pageview');
 </script>
 {% endif %}
