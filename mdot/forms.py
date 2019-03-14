@@ -31,8 +31,8 @@ class ReviewForm(forms.Form):
         required=False,
         label=mark_safe(
             ('Usability review with '
-             '<a href="http://depts.washington.edu/ux/consultation/" '
-             'title="ACA User Experience Team">ACA UX team</a>')),
+             '<a href="http://uxdesign.uw.edu/consultations.html" '
+             'title="AXDD User Experience Team">AXDD UX team</a>')),
         label_suffix='')
     brand_review = forms.BooleanField(
         required=False,
