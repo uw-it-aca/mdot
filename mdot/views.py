@@ -84,8 +84,13 @@ def review(request):
                 ),
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+            params = {
+                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
+                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
+            }
             return render_to_response(
-                'mdot/developers/thanks.html')
+                'mdot/developers/thanks.html',
+                params)
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ReviewForm()
