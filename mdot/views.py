@@ -45,10 +45,19 @@ def review(request):
             app.app_manager = manager
             app.save()
             # create and save agreement model
-            agreement = Agreement()
-            agreement.sponsor = sponsor
-            agreement.app = app
+            agreement = Agreement(
+                sponsor=sponsor,
+                app=app,
+            )
             agreement.save()
+
+            params = {
+                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
+                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
+            }
+            return render_to_response(
+                'mdot/developers/thanks.html',
+                params)
 
     else:
         # create forms with appropriate prefixes to
@@ -57,11 +66,11 @@ def review(request):
         managerForm = ManagerForm(prefix = 'manager')
         appForm = AppForm(prefix = 'app')
 
-    forms = {
-        'sponsorform': sponsorForm,
-        'managerform': managerForm,
-        'appform': appForm,
-    }
+        forms = {
+            'sponsorform': sponsorForm,
+            'managerform': managerForm,
+            'appform': appForm,
+        }
 
     # return forms to review page
     return render(request, 'mdot/developers/review.html', forms)
