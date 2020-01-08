@@ -20,21 +20,13 @@ class Manager(models.Model):
 
 
 class App(models.Model):
-    # define platforms
-    PLATFORM_TYPES = (
-        ("Apple", "Apple"),
-        ("Android", "Android"),
-        ("Windows", "Windows"),
-    )
-
-    # allows one to be selected    ---make migrations
-    # platform = models.CharField(max_length=10, choices=PLATFORM_TYPES)
-
     name = models.CharField(max_length=50)
     primary_language = models.CharField(max_length=20)  # abbreviations?
-    request_date = models.DateTimeField(auto_now_add=True)
+    ios_platform = models.BooleanField(default=False)
+    android_platform = models.BooleanField(default=False)
     app_manager = models.ForeignKey(Manager)
     app_sponsor = models.ForeignKey(Sponsor)
+    request_date = models.DateTimeField(auto_now_add=True)
     app_sponser_agreed_date = models.DateTimeField(auto_now=True)
     app_sponser_agreed = models.BooleanField(default=False)
 
@@ -76,7 +68,8 @@ class ManagerForm(ModelForm):
 class AppForm(ModelForm):
     class Meta:
         model = App
-        fields = ['name', 'primary_language']
+        fields = ['name', 'primary_language', 'ios_platform',
+            'android_platform']
         labels = {
         }
         help_texts = {
