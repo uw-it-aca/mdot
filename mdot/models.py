@@ -33,6 +33,7 @@ class App(models.Model):
 class Agreement(models.Model):
     app = models.ForeignKey(App)
     agree_time = models.DateTimeField(auto_now_add = True)
+    sponsor = models.ForeignKey(Sponsor)
 
 
 class SponsorForm(ModelForm):
