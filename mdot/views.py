@@ -57,17 +57,25 @@ def request(request):
                 'mdot/developers/thanks.html',
                 params)
 
+            params = {
+                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
+                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
+            }
+            return render_to_response(
+                'mdot/developers/thanks.html',
+                params)
+
     else:
         # use prefixes to avoid duplicate field names
         sponsorForm = SponsorForm(prefix='sponsor')
         managerForm = ManagerForm(prefix='manager')
         appForm = AppForm(prefix='app')
 
-    forms = {
-        'sponsorform': sponsorForm,
-        'managerform': managerForm,
-        'appform': appForm,
-    }
+        forms = {
+            'sponsorform': sponsorForm,
+            'managerform': managerForm,
+            'appform': appForm,
+        }
 
     # return forms to request page
     return render(request, 'mdot/developers/request.html', forms)
