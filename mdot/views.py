@@ -33,14 +33,17 @@ def process(request):
 
 def review(request):
     if request.method == 'POST':
-        # investigate how to separate diff forms
         sponsorForm = SponsorForm(request.POST, prefix = 'sponsor')
         managerForm = ManagerForm(request.POST, prefix = 'manager')
         appForm = AppForm(request.POST, prefix = 'app')
-        # if sponserForm.is_valid():
-        #     # validate
-
-        #     # save models
+        if (sponsorForm.is_valid() and managerForm.is_valid()
+                and appForm.is_valid()):
+            sponsor = sponsorForm.save()
+            manager = managerForm.save()
+            app = appForm.save(commit=False)
+            app.app_sponsor = sponsor
+            app.app_manager = manager
+            # app.save()
 
     else:
         # create forms with appropriate prefixes to
@@ -55,8 +58,12 @@ def review(request):
         'appform': appForm,
     }
 
+    # return forms to review page
     return render(request, 'mdot/developers/review.html', forms)
 
+
+
+# -----old form commented out-----
 
 # def review(request):
 #     # if this is a POST request we need to process the form data
