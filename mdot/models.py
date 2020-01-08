@@ -23,7 +23,6 @@ class App(models.Model):
     name = models.CharField(max_length = 50)
     primary_language = models.CharField(max_length = 20)  # are we using abbreviations?
     request_date = models.DateTimeField(auto_now_add = True)
-    requester = models.ForeignKey(User)
     app_manager = models.ForeignKey(Manager)
     app_sponsor = models.ForeignKey(Sponsor)
     app_sponser_agreed_date = models.DateTimeField(auto_now = True)
