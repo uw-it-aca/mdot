@@ -10,7 +10,7 @@ from mdot_rest_client.client import MDOT
 import urllib
 import json
 from forms import ReviewForm
-from models import SponsorForm, ManagerForm, AppForm
+from models import SponsorForm, ManagerForm, AppForm, Agreement
 
 
 def home(request):
@@ -42,7 +42,12 @@ def review(request):
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
-            # app.save()
+            app.save()
+            # create and save agreement model
+            agreement = Agreement()
+            agreement.sponsor = sponsor
+            agreement.app = app
+            agreement.save()
 
     else:
         # create forms with appropriate prefixes to
