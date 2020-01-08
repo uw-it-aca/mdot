@@ -32,9 +32,9 @@ def process(request):
 
 def review(request):
     if request.method == 'POST':
-        sponsorForm = SponsorForm(request.POST, prefix = 'sponsor')
-        managerForm = ManagerForm(request.POST, prefix = 'manager')
-        appForm = AppForm(request.POST, prefix = 'app')
+        sponsorForm = SponsorForm(request.POST, prefix='sponsor')
+        managerForm = ManagerForm(request.POST, prefix='manager')
+        appForm = AppForm(request.POST, prefix='app')
         if (sponsorForm.is_valid() and managerForm.is_valid()
                 and appForm.is_valid()):
             sponsor = sponsorForm.save()
@@ -61,9 +61,9 @@ def review(request):
     else:
         # create forms with appropriate prefixes to
         # avoid duplicate field names
-        sponsorForm = SponsorForm(prefix = 'sponsor')
-        managerForm = ManagerForm(prefix = 'manager')
-        appForm = AppForm(prefix = 'app')
+        sponsorForm = SponsorForm(prefix='sponsor')
+        managerForm = ManagerForm(prefix='manager')
+        appForm = AppForm(prefix='app')
 
         forms = {
             'sponsorform': sponsorForm,
@@ -73,7 +73,6 @@ def review(request):
 
     # return forms to review page
     return render(request, 'mdot/developers/review.html', forms)
-
 
 
 # -----old form commented out-----
