@@ -42,6 +42,7 @@ class SponsorForm(ModelForm):
         model = Sponsor
         fields = '__all__'
         labels = {
+
         }
         help_texts = {
 
@@ -56,6 +57,7 @@ class ManagerForm(ModelForm):
         model = Manager
         fields = '__all__'
         labels = {
+
         }
         help_texts = {
 
@@ -69,11 +71,13 @@ class AppForm(ModelForm):
     class Meta:
         model = App
         fields = ['name', 'primary_language', 'ios_platform',
-            'android_platform']
+                  'android_platform']
         labels = {
+            'android_platform': 'Android app',
+            'ios_platform': 'iOS app',
         }
         help_texts = {
-
+            'primary_language': '(ENG for English)',
         }
         error_messages = {
 
