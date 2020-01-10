@@ -30,7 +30,7 @@ def process(request):
     return render(request, 'mdot/developers/process.html')
 
 
-def review(request):
+def request(request):
     if request.method == 'POST':
         sponsorForm = SponsorForm(request.POST, prefix='sponsor')
         managerForm = ManagerForm(request.POST, prefix='manager')
@@ -71,4 +71,4 @@ def review(request):
         }
 
     # return forms to review page
-    return render(request, 'mdot/developers/review.html', forms)
+    return render(request, 'mdot/developers/request.html', forms)

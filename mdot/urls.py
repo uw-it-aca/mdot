@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^developers/guidelines/$', views.guidelines,
         name='guidelines'),
     url(r'^developers/process/$', views.process, name='process'),
-    url(r'^developers/review/$', views.review, name='review'),
+    url(r'^developers/request/$', views.request, name='request'),
 
     # url(r'^blog/', include('blog.urls')),
     # url(r'^admin/', include(admin.site.urls)),
