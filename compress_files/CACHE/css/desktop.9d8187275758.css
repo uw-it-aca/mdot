@@ -1,0 +1,76 @@
+.mdot-feature {
+  padding: 2em 0;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item {
+  height: 332px;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-link {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-link:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-link .mdot-resource-name {
+  bottom: -40px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-nolink .mdot-resource-name {
+  bottom: -40px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-desktop {
+  display: block;
+  padding-top: 5px;
+  font-size: 12px;
+  border-top: solid 1px #eeeeee;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-desktop a {
+  display: inline-block;
+  margin-right: 8px;
+  line-height: 20px;
+  color: #4b2e83;
+  text-decoration: none;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-desktop a:nth-child(1) {
+  margin-left: 0;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-desktop li {
+  display: inline;
+}
+.mdot-feature .mdot-feature-group .mdot-feature-item .mdot-resource-desc {
+  margin-top: 40px;
+  color: #444444;
+}
+.mdot-categories select {
+  width: auto;
+}
+.mdot-categories .mdot-resource-group .mdot-resource-link {
+  line-height: 20px;
+}
+.mdot-sub-content .mdot-resource-group .mdot-resource-link {
+  line-height: 20px;
+}
+.mdot-sub-content .mdot-dev-link {
+  margin: 0;
+}
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout h2 {
+  font-size: 22px;
+}
+.mdot-footer hr {
+  margin-top: 2em;
+  visibility: visible;
+}
+body h3 {
+  font-weight: 800;
+}
+.mdot-developers.pub-guidelines .mdot-subhead {
+  padding-bottom: inherit;
+}

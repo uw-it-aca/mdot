@@ -27,6 +27,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=50)),
                 ('primary_language', models.CharField(max_length=20)),
+                ('ios_platform', models.BooleanField(default=False)),
+                ('android_platform', models.BooleanField(default=False)),
                 ('request_date', models.DateTimeField(auto_now_add=True)),
             ],
         ),
