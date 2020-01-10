@@ -1,0 +1,233 @@
+.mdot-categories {
+  padding-bottom: 2em;
+  background: #fafafa;
+}
+.mdot-categories select {
+  margin: 2em 0;
+}
+.mdot-categories h4 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #4b2e83;
+  text-transform: uppercase;
+}
+.mdot-categories hr {
+  border-color: #d9d9d9;
+  border-style: dotted;
+}
+.mdot-categories .mdot-resource-group .mdot-resource-link {
+  display: inline-block;
+  line-height: 30px;
+  text-decoration: none;
+}
+.mdot-categories .mdot-resource-group .mdot-resource-link .mdot-resource-type {
+  font-size: 11px;
+  color: red;
+  text-transform: uppercase;
+}
+.mdot-sub-content {
+  min-height: 100px;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background: #efefef;
+  border: 1px #bbbbbb;
+  border-style: solid none;
+}
+.mdot-sub-content a {
+  color: #00669b;
+}
+.mdot-sub-content ul {
+  margin-bottom: 0;
+}
+.mdot-sub-content h3,
+.mdot-sub-content h4 {
+  margin-bottom: 7px;
+  font-size: 19px;
+  letter-spacing: 1px;
+  color: #444444;
+  text-transform: uppercase;
+}
+.mdot-sub-content .app-store-article {
+  margin-bottom: 25px;
+  margin-left: 25px;
+}
+.mdot-sub-content .mdot-resource-group .mdot-resource-link {
+  display: inline-block;
+  line-height: 30px;
+  text-decoration: none;
+}
+.mdot-sub-content .mdot-resource-group .mdot-resource-link .mdot-resource-type {
+  font-size: 11px;
+  color: lime;
+  text-transform: uppercase;
+}
+.mdot-sub-content .mdot-dev-link {
+  min-height: 200px;
+  margin-top: 3em;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  color: #ffffff;
+  text-align: left;
+}
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 80%;
+  padding: 15px 20px;
+  background-color: rgba(51,0,111,.9);
+}
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout p {
+  color: #e8e3d3;
+}
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout a:focus,
+.mdot-sub-content .mdot-dev-link .mdot-dev-callout a:hover {
+  color: #ffffff;
+}
+.mdot-footer {
+  font-size: 12px;
+}
+.mdot-footer .container {
+  position: relative;
+  margin: 15px 0;
+}
+.mdot-footer span {
+  margin-left: 10px;
+}
+.mdot-footer span a {
+  display: inline-block;
+  font-size: 12px;
+}
+.mdot-footer hr {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-color: #b7a57a;
+  border-style: dotted;
+  visibility: hidden;
+}
+.stuck {
+  position: fixed !important;
+  top: 80px;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+}
+.intro {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.trad-list {
+  padding-left: 0;
+  list-style: none;
+}
+.trad-list li {
+  font-size: 17px;
+  line-height: 1.6;
+}
+.trad-list li h3 {
+  margin-bottom: 3px;
+}
+.trad-list li ol,
+.trad-list li ul {
+  list-style: disc;
+  margin-left: 15px;
+}
+.trad-list li ol li,
+.trad-list li ul li {
+  margin: 10px 0 10px 20px;
+}
+form p {
+  margin-bottom: 2.5em;
+}
+form label {
+  margin-bottom: 6px;
+  display: block;
+  color: #4b2e83;
+  font-family: 'Open Sans', serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+form fieldset {
+  margin-bottom: 2.5em;
+}
+form fieldset legend {
+  color: #4b2e83;
+  font-family: 'Open Sans', serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+form fieldset label {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+}
+form fieldset.checkbox-list label {
+  display: inline-block;
+  padding-left: 7px;
+}
+form fieldset.checkbox-list div {
+  margin-bottom: 10px;
+}
+form fieldset input,
+form fieldset textarea {
+  margin-bottom: 25px;
+}
+form textarea,
+form .url-field input {
+  width: 100%;
+}
+form textarea,
+form input {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+form .btn-container {
+  text-align: center;
+  padding: 50px 0 20px;
+}
+form .btn-container input {
+  margin-left: 30px;
+  padding: 15px 20px;
+  font-size: 18px;
+}
+form .btn-container a {
+  font-size: 18px;
+}
+.required {
+  color: #565656;
+  font-size: 90%;
+}
+.required.invalid {
+  color: red;
+}
+.required.invalid strong {
+  white-space: nowrap;
+  font-weight: normal;
+  display: block;
+}
+.mdot-sub-content .sub-content-header {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  margin-bottom: 0;
+  color: #4b2e83;
+}
+.mdot-sub-content .sub-content-category {
+  font-weight: 600;
+}
+.mdot-sub-content .sub-content-article {
+  margin-left: 2px;
+}
