@@ -16,20 +16,6 @@
 
             {% csrf_token %}
             {{ form.non_field_errors }}
-            
-            <h3>Sponsor Form: </h3>
-
-            {{sponsorform}}
-            
-            <h3>Manager Form: </h3>
-
-            {{managerform}}
-
-            <h3>App Form: </h3>
-
-            {{appform}}
-
-            <!--
                 <p>
                     <label for="{{ form.campus_audience.id_for_label }}">{{ form.campus_audience.label }}
                     {% if form.campus_audience.errors %}
@@ -166,8 +152,7 @@
                     {{ form.anything_else }}
                 </p>
 
-
-            -->
+                
             <p class="btn-container"><a href="/developers/" class="btn">Cancel</a>
             <input type="submit" class="btn btn-primary" name="submit" value="Submit for Review"></p>
         
