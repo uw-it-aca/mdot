@@ -9,7 +9,7 @@ class Sponsor(models.Model):
     name = models.CharField(max_length=50)
     netid = models.CharField(max_length=8)
     title = models.CharField(max_length=50)
-    email = models.EmailField(max_length=30)
+    email = models.EmailField(max_length=40)
     department = models.CharField(max_length=30)
     unit = models.CharField(max_length=30)
 
@@ -17,6 +17,7 @@ class Sponsor(models.Model):
 class Manager(models.Model):
     name = models.CharField(max_length=50)
     netid = models.CharField(max_length=8)
+    email = models.EmailField(max_length=40)
 
 
 class App(models.Model):
@@ -26,6 +27,7 @@ class App(models.Model):
     android_platform = models.BooleanField(default=False)
     app_manager = models.ForeignKey(Manager)
     app_sponsor = models.ForeignKey(Sponsor)
+    requestor = models.ForeignKey(User)
     request_date = models.DateTimeField(auto_now_add=True)
     app_sponser_agreed_date = models.DateTimeField(auto_now=True)
     app_sponser_agreed = models.BooleanField(default=False)
@@ -73,8 +75,10 @@ class AppForm(ModelForm):
         fields = ['name', 'primary_language', 'ios_platform',
                   'android_platform']
         labels = {
-            'android_platform': 'Android app',
-            'ios_platform': 'iOS app',
+            'android_platform':
+                'Add to the University of Washington Google Play Store',
+            'ios_platform':
+                'Add to the University of Washington Apple Store',
         }
         help_texts = {
             'primary_language': '(ENG for English)',
