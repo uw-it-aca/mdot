@@ -1,0 +1,38 @@
+{% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+
+{% block title %}Building Apps Home{% endblock %}
+
+{% block content %}
+
+<div class="mdot-developers">
+
+    <div class="container" >
+
+        <h2 class="mdot-subhead" id="page_header">Submit your App for Review</h2>
+        <p class="article intro">Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>? </p>
+        <p class="article intro">If so, please fill out the form below. We will review your app and let you know the next steps.</p>
+
+        <form method="post">
+
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <h3>Sponsor Form: </h3>
+
+            {{sponsorform}}
+            
+            <h3>Manager Form: </h3>
+
+            {{managerform}}
+
+            <h3>App Form: </h3>
+
+            {{appform}}
+
+            <p class="btn-container"><a href="/developers/" class="btn">Cancel</a>
+            <input type="submit" class="btn btn-primary" name="submit" value="Request Review"></p>
+        
+        </form>
+    </div>
+</div>
+{% endblock %}
