@@ -65,13 +65,13 @@ class MdotTest(TestCase):
         resolver = resolve('/developers/process/')
         self.assertEqual('process', resolver.view_name)
 
-    def test_url_review(self):
+    def test_url_request(self):
         """
-        Test that request to review url sends the user to
+        Test that request to request url sends the user to
         guidelines view.
         """
-        resolver = resolve('/developers/review/')
-        self.assertEqual('review', resolver.view_name)
+        resolver = resolve('/developers/request/')
+        self.assertEqual('request', resolver.view_name)
 
     def test_view_process(self):
         """
@@ -81,12 +81,12 @@ class MdotTest(TestCase):
         response = self.client.get('/developers/process/')
         self.assertEqual(response.status_code, 200)
 
-    def test_view_review(self):
+    def test_view_request(self):
         """
-        Test that request to review url returns a status code
+        Test that request to request url returns a status code
         of 200.
         """
-        response = self.client.get('/developers/review/')
+        response = self.client.get('/developers/request/')
         self.assertEqual(response.status_code, 200)
 
     def tearDown(self):
