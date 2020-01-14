@@ -9,7 +9,6 @@ from .forms import ReviewForm
 
 import urllib
 import json
-from forms import ReviewForm
 from models import SponsorForm, ManagerForm, AppForm, Agreement
 
 
