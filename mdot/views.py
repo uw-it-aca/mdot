@@ -32,6 +32,7 @@ def guidelines(request):
 def process(request):
     return render(request, "mdot/developers/process.html")
 
+
 # @method_decorator(login_required(), name="dispatch")
 def request(request):
     if request.method == 'POST':

@@ -76,7 +76,7 @@ class MdotFormTest(TestCase):
         Test that when given a complete, valid form the view
         sends the user to the thank you page.
         """
-        
+
         sponsor_prefix = 'sponsor-'
         manager_prefix = 'manager-'
         app_prefix = 'app-'
