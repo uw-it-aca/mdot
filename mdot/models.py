@@ -27,10 +27,9 @@ class App(models.Model):
     android_platform = models.BooleanField(default=False)
     app_manager = models.ForeignKey(Manager)
     app_sponsor = models.ForeignKey(Sponsor)
-    requestor = models.ForeignKey(User)
+    # requestor = models.OneToOneField(User)    # problem saving this
     request_date = models.DateTimeField(auto_now_add=True)
-    app_sponser_agreed_date = models.DateTimeField(auto_now=True)
-    app_sponser_agreed = models.BooleanField(default=False)
+    app_sponsor_agreed = models.BooleanField(default=False)
 
 
 class Agreement(models.Model):
