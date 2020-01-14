@@ -71,11 +71,11 @@ def request(request):
         managerForm = ManagerForm(prefix='manager')
         appForm = AppForm(prefix='app')
 
-        forms = {
-            'sponsorform': sponsorForm,
-            'managerform': managerForm,
-            'appform': appForm,
-        }
+    forms = {
+        'sponsorform': sponsorForm,
+        'managerform': managerForm,
+        'appform': appForm,
+    }
 
     # return forms to request page
     return render(request, 'mdot/developers/request.html', forms)
