@@ -30,7 +30,6 @@ def guidelines(request):
 def process(request):
     return render(request, "mdot/developers/process.html")
 
-
 def request(request):
     if request.method == 'POST':
         sponsorForm = SponsorForm(request.POST, prefix='sponsor')
@@ -43,13 +42,8 @@ def request(request):
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
+            # app.requestor = request.user
             app.save()
-            # create and save agreement model
-            agreement = Agreement(
-                sponsor=sponsor,
-                app=app,
-            )
-            agreement.save()
 
             params = {
                 'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
@@ -65,11 +59,11 @@ def request(request):
         managerForm = ManagerForm(prefix='manager')
         appForm = AppForm(prefix='app')
 
-        forms = {
-            'sponsorform': sponsorForm,
-            'managerform': managerForm,
-            'appform': appForm,
-        }
+    forms = {
+        'sponsorform': sponsorForm,
+        'managerform': managerForm,
+        'appform': appForm,
+    }
 
     # return forms to review page
     return render(request, 'mdot/developers/request.html', forms)
