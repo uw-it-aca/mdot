@@ -29,6 +29,7 @@ def guidelines(request):
 def process(request):
     return render(request, 'mdot/developers/process.html')
 
+
 def request(request):
     if request.method == 'POST':
         sponsorForm = SponsorForm(request.POST, prefix='sponsor')
