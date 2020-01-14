@@ -7,7 +7,7 @@ from django.forms import ModelForm
 
 class Sponsor(models.Model):
     name = models.CharField(max_length=50)
-    netid = models.CharField(max_length=8)
+    netid = models.CharField(max_length=16)
     title = models.CharField(max_length=50)
     email = models.EmailField(max_length=40)
     department = models.CharField(max_length=30)
@@ -16,7 +16,7 @@ class Sponsor(models.Model):
 
 class Manager(models.Model):
     name = models.CharField(max_length=50)
-    netid = models.CharField(max_length=8)
+    netid = models.CharField(max_length=16)
     email = models.EmailField(max_length=40)
 
 
