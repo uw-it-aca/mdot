@@ -67,7 +67,7 @@ class MdotFormTest(TestCase):
         }
         response = self.client.post('/developers/request/', forms)
         self.assertEqual(response.status_code, 200)
-        
+
         # Make sure the user is sent to the thank you
         # page after submitting valid form
         self.assertTrue(b'Thank you' in response.content)
@@ -77,7 +77,7 @@ class MdotFormTest(TestCase):
         Test that when given a complete, valid form the view
         sends the user to the thank you page.
         """
-        
+
         sponsor_prefix = 'sponsor-'
         manager_prefix = 'manager-'
         app_prefix = 'app-'
@@ -98,7 +98,7 @@ class MdotFormTest(TestCase):
         }
         response = self.client.post('/developers/request/', forms)
         self.assertEqual(response.status_code, 200)
-        
+
         # Make sure the user is sent to the thank you
         # page after submitting valid form
         self.assertTrue(b'Thank you' in response.content)
