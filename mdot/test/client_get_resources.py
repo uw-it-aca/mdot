@@ -14,7 +14,7 @@ class MdotClientRequestTest(TestCase):
         class object for use in our templates.
         """
         with self.settings(
-            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+            RESTCLIENTS_MDOT_DAO_CLASS='Mock'
         ):
             resources = MDOT().get_resources()
             # Make sure what we get back is a list
@@ -43,7 +43,7 @@ class MdotClientRequestTest(TestCase):
         Tests retrieval of resources by filtering on attributes.
         """
         with self.settings(
-            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+            RESTCLIENTS_MDOT_DAO_CLASS='Mock'
         ):
             resources = MDOT().get_resources(featured=True)
             # make a request separately to ?featured=true
@@ -69,7 +69,7 @@ class MdotClientRequestTest(TestCase):
         WILL TEST retrieval of resources filtered by more than one attribute.
         """
         with self.settings(
-            RESTCLIENTS_MDOT_DAO_CLASS='mdot.mdot_rest_client.client.MDOTFile'
+            RESTCLIENTS_MDOT_DAO_CLASS='Mock'
         ):
             resources = MDOT().get_resources(featured=True, audience='alumni')
             # make a request separately to ?featured=true&audience=alumni
