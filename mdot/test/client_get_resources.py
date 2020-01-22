@@ -45,7 +45,7 @@ class MdotClientRequestTest(TestCase):
         resources = MDOT().get_resources(featured=True)
         # make a request separately to ?featured=true
         response = MDOT().getURL('/api/v1/uwresources/?featured=True',
-                                    {'Accept': 'application/json'})
+                                 {'Accept': 'application/json'})
         # assert a 200 status
         self.assertEqual(response.status, 200)
         comparison_data = json.loads(response.data)
@@ -69,7 +69,7 @@ class MdotClientRequestTest(TestCase):
         # make a request separately to ?featured=true&audience=alumni
         url = '/api/v1/uwresources/?featured=True&audience=alumni'
         response = MDOT().getURL(url,
-                                    {'Accept': 'application/json'})
+                                 {'Accept': 'application/json'})
         # assert a 200 status
         self.assertEqual(response.status, 200)
         comparison_data = json.loads(response.data)
