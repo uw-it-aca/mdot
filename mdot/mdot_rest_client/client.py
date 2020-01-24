@@ -1,7 +1,6 @@
-from django.conf import settings
+from commonconf import settings
 
 from restclients_core.dao import DAO
-from restclients_core.dao import MockDAO
 
 from os.path import abspath, dirname
 import os
@@ -11,6 +10,8 @@ import json
 class MDOT(DAO):
     """
     DAO with methods for getting uwresources from the mdot-rest API.
+    Uses Mock DAO with following configuration:
+    RESTCLIENTS_MDOT_DAO_CLASS='Mock'
     """
     def get_resources(self, **kwargs):
         url = "/api/v1/uwresources/"
