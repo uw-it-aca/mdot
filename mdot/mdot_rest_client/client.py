@@ -48,7 +48,7 @@ class MDOT(DAO):
         return 'mdot'
 
     def service_mock_paths(self):
-        path = [abspath(os.path.join(dirname(__file__), "../resources"))]
+        path = [abspath(os.path.join(dirname(__file__), "resources"))]
         return path
 
 
