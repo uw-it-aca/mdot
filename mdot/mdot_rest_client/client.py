@@ -1,44 +1,17 @@
-from django.conf import settings
-from restclients.dao import MY_DAO
-from restclients.dao_implementation.mock import get_mockdata_url
-from restclients.dao_implementation.live import get_con_pool, get_live_url
+from commonconf import settings
+
+from restclients_core.dao import DAO
+
+from os.path import abspath, dirname
+import os
 import json
 
 
-class MDOTFile(object):
-    """
-    The File DAO implementation returns generally static content.  Use this
-    DAO with this configuration:
-    RESTCLIENTS_MDOT_DAO_CLASS = \
-    'mdot.mdot_rest_client.client.MDOTFile'
-    """
-    def getURL(self, url, headers):
-        return get_mockdata_url("mdot", "file", url, headers)
-
-
-class MDOTLive(object):
-    """
-    This DAO provides real data.  It requires further configuration, e.g.
-    RESTCLIENTS_MDOT_DAO_CLASS = \
-    'mdot.mdot_rest_client.client.MDOTLive',
-    RESTCLIENTS_MDOT_HOST = 'http://yourhost/'
-    """
-    pool = None
-
-    def getURL(self, url, headers):
-        if MDOTLive.pool is None:
-            MDOTLive.pool = get_con_pool(settings.RESTCLIENTS_MDOT_HOST)
-
-        return get_live_url(MDOTLive.pool, 'GET',
-                            settings.RESTCLIENTS_MDOT_HOST,
-                            url,
-                            headers=headers,
-                            service_name='mdot')
-
-
-class MDOT(MY_DAO):
+class MDOT(DAO):
     """
     DAO with methods for getting uwresources from the mdot-rest API.
+    Uses Mock DAO with following configuration:
+    RESTCLIENTS_MDOT_DAO_CLASS='Mock'
     """
     def get_resources(self, **kwargs):
         url = "/api/v1/uwresources/"
@@ -71,11 +44,12 @@ class MDOT(MY_DAO):
                 key=lambda client_resource: client_resource.title)
         return client_resources
 
-    def getURL(self, url, headers):
-        return self._getURL('mdot', url, headers)
+    def service_name(self):
+        return 'mdot'
 
-    def _getDAO(self):
-        return self._getModule('RESTCLIENTS_MDOT_DAO_CLASS', MDOTFile)
+    def service_mock_paths(self):
+        path = [abspath(os.path.join(dirname(__file__), "../resources"))]
+        return path
 
 
 class ClientResource(object):
