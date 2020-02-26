@@ -51,6 +51,10 @@ class MDOT(DAO):
         path = [abspath(os.path.join(dirname(__file__), "../resources"))]
         return path
 
+    def get_default_service_setting(self, key):
+        if key == "HOST":
+            return settings.RESTCLIENTS_MDOT_HOST
+
 
 class ClientResource(object):
     """
