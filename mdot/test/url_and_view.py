@@ -1,7 +1,7 @@
 from django.test import Client, TestCase, override_settings
 from django.core.urlresolvers import resolve
 
-DAO = 'mdot.mdot_rest_client.client.MDOTFile'
+DAO = 'Mock'
 
 
 @override_settings(RESTCLIENTS_MDOT_DAO_CLASS=DAO)
