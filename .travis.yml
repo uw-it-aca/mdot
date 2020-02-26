@@ -3,20 +3,21 @@ language: python
 python:
   - "2.7"
 install:
-  - npm install recess
+  # - npm install recess
+  - export BOTO_CONFIG=/dev/null  #workaround for ImportError, probably not needed after upgrading to restclients core
   - pip install .
-  - pip install pep8
+  - pip install pycodestyle
   - pip install coverage
-  - pip install python-coveralls
-  - npm install -g less
+  - pip install coveralls
+
 before_script:
-  - cp travis-ci/manage.py manage.py
-  - python manage.py syncdb --noinput
+  - cp sampleproj/manage.py manage.py
+  - python manage.py migrate --noinput --settings=sampleproj.settings.travis
 script:
-  - pep8 mdot/ --exclude=migrations
-  - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot
-  - recess mdot/static/mdot/css/*.less --noIds false
+  - pycodestyle mdot/ --exclude=migrations
+  - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot --settings=sampleproj.settings.travis
+  # - recess mdot/static/mdot/css/*.less --noIds false
   # This actually fails the test if there are recess errors :(
-  - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
+  # - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
 after_script:
   - coveralls

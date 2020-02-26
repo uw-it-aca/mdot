@@ -23,3 +23,14 @@ def devtools_bar(request):
     return {
         'devtools_bar': devtools
     }
+
+
+def get_emails(request):
+    help_email = getattr(settings, "MDOT_HELP_EMAIL", None)
+    ux_contact = getattr(settings, "MDOT_UX_CONTACT", None)
+    service_email = getattr(settings, "MDOT_SERVICE_EMAIL", None)
+    return {
+        "ux_contact": ux_contact,
+        "help_email": help_email,
+        "service_email": service_email
+    }
