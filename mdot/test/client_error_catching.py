@@ -165,11 +165,10 @@ class MdotClientErrorTest(TestCase):
             with self.assertRaises(TypeError):
                 MDOT()._python_list_to_resources_model_list(fake_list)
 
-
     def use_unicode(self):
         ''' returns true if unicode is a valid type '''
         try:
             str = unicode
             return True
-        except(NameError):
+        except NameError:
             return False
