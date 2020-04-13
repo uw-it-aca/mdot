@@ -66,22 +66,28 @@ class ClientResource(object):
     image_url = None
     resource_links = {}
 
+    # python 2 and 3 compatibility
+    try:
+        str_type = unicode
+    except NameError:
+        str_type = str
+
     def __init__(self, resource_id, title, feature_desc, image, links):
         if isinstance(resource_id, int):
             self.resource_id = resource_id
         else:
             raise TypeError("resource_id is not an int: {0}".format(
                             resource_id))
-        if isinstance(title, unicode):
+        if isinstance(title, self.str_type):
             self.title = title
         else:
             raise TypeError("title is not unicode: {0}".format(title))
-        if isinstance(feature_desc, unicode):
+        if isinstance(feature_desc, self.str_type):
             self.feature_desc = feature_desc
         else:
             raise TypeError("feature_desc is not unicode: {0}".format(
                             feature_desc))
-        if isinstance(image, unicode):
+        if isinstance(image, self.str_type):
             self.image_url = image
         elif image is None:
             self.image_url = u''
@@ -92,8 +98,8 @@ class ClientResource(object):
     def add_resource_link(self, links):
         resource_links = {}
         for link in links:
-            if isinstance(link['link_type'], unicode) and\
-               isinstance(link['url'], unicode):
+            if isinstance(link['link_type'], self.str_type) and\
+               isinstance(link['url'], self.str_type):
                 resource_links[link['link_type']] = link['url']
             else:
                 raise TypeError("Error with resource_links: {0}".format(links))
