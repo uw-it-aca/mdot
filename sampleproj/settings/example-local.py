@@ -61,7 +61,7 @@ COMPRESS_PRECOMPILERS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # MDOT RestClient
-# RESTCLIENTS_MDOT_DAO_CLASS = 'mdot.mdot_rest_client.client.MDOTLive'
+# RESTCLIENTS_MDOT_DAO_CLASS = 'Live'
 # RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
 
 #Emails
