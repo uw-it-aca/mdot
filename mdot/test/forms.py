@@ -51,7 +51,7 @@ class MdotFormTest(TestCase):
         self.assertEqual(response.status_code, 200)
         # Make sure the user is sent to the thank you
         # page after submitting valid form
-        self.assertTrue('Thank you' in response.content)
+        self.assertTrue(b'Thank you' in response.content)
 
     def test_full_valid_form_post(self):
         """
@@ -81,7 +81,7 @@ class MdotFormTest(TestCase):
         self.assertEqual(response.status_code, 200)
         # Make sure the user is sent to the thank you
         # page after submitting valid form
-        self.assertTrue('Thank you' in response.content)
+        self.assertTrue(b'Thank you' in response.content)
 
     def test_bad_header(self):
         """
@@ -120,7 +120,7 @@ class MdotFormTest(TestCase):
         """
         response = self.client.get('/developers/review/')
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('Submit your App for Review' in response.content)
+        self.assertTrue(b'Submit your App for Review' in response.content)
 
     def tearDown(self):
         pass
