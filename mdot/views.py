@@ -21,7 +21,8 @@ def developers(request):
 
 
 def guidelines(request):
-    return render(request, 'mdot/developers/guidelines.html')
+    params = {'ux_contact': getattr(settings, 'MDOT_UX_CONTACT')}
+    return render(request, 'mdot/developers/guidelines.html', params)
 
 
 def process(request):
