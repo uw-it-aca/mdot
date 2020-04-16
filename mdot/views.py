@@ -21,7 +21,7 @@ def developers(request):
 
 
 def guidelines(request):
-    params = {'ux_contact': getattr(settings, 'MDOT_UX_CONTACT')}
+    params = {'ux_contact': getattr(settings, 'MDOT_UX_CONTACT', None)}
     return render(request, 'mdot/developers/guidelines.html', params)
 
 
@@ -77,7 +77,7 @@ def review(request):
                     get_template(
                         'mdot/developers/email_plain.html')
                     .render(email_context),
-                    sponsor_email, [getattr(settings, "MDOT_SERVICE_EMAIL")],
+                    sponsor_email, [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
                     html_message=get_template(
                         'mdot/developers/email_html.html')
                     .render(email_context),
@@ -85,8 +85,8 @@ def review(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             params = {
-                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
-                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
+                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL', None),
+                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT', None),
             }
             return render_to_response(
                 'mdot/developers/thanks.html',
