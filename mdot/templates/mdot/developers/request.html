@@ -12,21 +12,26 @@
         <p class="article intro">Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>? </p>
         <p class="article intro">If so, please fill out the form below. We will review your app and let you know the next steps.</p>
 
-        <form method="post">
+        <form method="post" class="request-form">
 
             {% csrf_token %}
             {{ form.non_field_errors }}
             
-            <h3>Sponsor Form: </h3>
-
-            {{ sponsorform }}
+            <h3 class="form-heading">Sponsor Contact: </h3>
+            <p class="form-description">
+                This portion of the form should be filled out with the details of the person who will be serving as the App Sponsor. 
+                The Campus Sponsor is a director or above (or equivalent) at unit level.
+            </p>
+            <p class="form-description">The App Sponsor will be responsible for adhering to the conditions set out in the UW app developer terms and conditions.</p>
+            <div class="mdot-form">{{ sponsorform }}</div>
             
-            <h3>Manager Form: </h3>
-
+            <h3 class="form-heading">Manager Contact: </h3>
+            <p class="form-description">This portion of the form should be filled out witht he details of the person who will be serving as the App Manager.</p>
+            <p class="form-description">The App Manager will be responsible for code maintenance and app distribution.</p>
             {{ managerform }}
 
-            <h3>App Form: </h3>
-
+            <h3 class="form-heading">App Information: </h3>
+            <p class="form-description">This portion of the form should be filled out with the details of the app you would like to submit to the UW app store.</p>
             {{ appform }}
 
             <p class="btn-container"><a href="/developers/" class="btn">Cancel</a>
