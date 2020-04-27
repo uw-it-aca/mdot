@@ -1,0 +1,19 @@
+[
+    {
+        "model": "mdot.Platform",
+        "pk": 1,
+        "fields": {
+            "name": "android",
+            "app_store": "Google Play Store"
+        }
+    },
+    {
+        "model": "mdot.Platform",
+        "pk": 2,
+        "fields": {
+            "name": "ios",
+            "app_store": "Apple Store"
+        }
+    }
+]
+    
