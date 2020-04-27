@@ -1,0 +1,50 @@
+{% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+
+{% block title %}Building Apps Home{% endblock %}
+
+{% block content %}
+
+<div class="mdot-developers">
+
+    <div class="container" >
+
+        <h2 class="mdot-subhead" id="page_header">Review App Request</h2>
+        <section>
+            <p class="article intro">You have been designated as the sponsor for {{ app_name }}.</p>
+            <div class="details-container">
+                <h3>App Details</h3>
+                <ul>
+                    <li><strong>App Name: </strong>{{ app_name }}</li>
+                    <li><strong>Primary Language: </strong>{{ primary_lang }}</li>
+                    <li><strong>App will be added to: </strong>
+                        {% for p in platforms %}
+                            {{ p }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </li>
+                    <li><strong>App Manager: </strong>{{ manager }}</li>
+                    <li><strong>App Sponsor: </strong>{{ sponsor }}</li>
+                </ul>
+            </div>
+        </section>
+
+        <form method="post">
+
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <h3>Sponsor Agreement</h3>
+            <p class="article intro">As the App Sponsor, you will be responsible for adhering to the conditions set out in the UW app developer terms and conditions.</p>
+            <p>If you agree to be the App Sponsor for {{ app_name }}, please click Agree. After that, we will proceed with the process of adding {{app_name}} into the UW app store.</p>
+
+            <!-- REQUIRED: ONE HAS TO BE SELECTED-->
+            <input id="agree" required type="radio" name="agree" value=true><label for="agree" class="checkbox-label"> I agree</label>
+            <input id="decline" required type="radio" name="agree" value=false><label for="decline" class="checkbox-label"> I decline</label>
+
+            <!-- rethink where the 'cancel' button redirects to and what it does -->
+            <p class="btn-container"> <!-- <a href="/developers/decline/{{app_id}}" class="btn">Decline</a>  -->
+            <input type="submit" class="btn btn-primary" name="submit" value="Submit"></p>
+        
+        </form>
+    </div>
+</div>
+{% endblock %}
