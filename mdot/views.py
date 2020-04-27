@@ -5,7 +5,6 @@ from django.shortcuts import render_to_response, render
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .mdot_rest_client.client import MDOT
-from .forms import ReviewForm
 
 import urllib
 import json
