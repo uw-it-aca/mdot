@@ -1,11 +1,11 @@
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from django.template import RequestContext, Context
 from django.shortcuts import render_to_response, render
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 from htmlmin.decorators import minified_response
 from mdot_rest_client.client import MDOT
 
@@ -33,7 +33,7 @@ def process(request):
     return render(request, "mdot/developers/process.html")
 
 
-# @method_decorator(login_required(), name="dispatch")
+# @login_required
 def request(request):
     if request.method == 'POST':
         sponsorForm = SponsorForm(request.POST, prefix='sponsor')
@@ -94,44 +94,37 @@ def sponsor(request, pk):
     sponsor_netid = 'spon'
     user_netid = sponsor_netid
     if app_sponsor.netid == user_netid:
+        # sponsor has agreed
         if request.method == "POST":
-            sponsor_agree = request.POST["agree"]
-            if sponsor_agree == "true":
-                # create agree object
-                agreement = Agreement.objects.create(
-                    app = app
-                )
-                agreement.save()
+            # create agree object
+            agreement = Agreement.objects.create(
+                app = app
+            )
+            agreement.save()
 
-                # TODO: send email to service now
-                # try:
-                #     send_mail(
-                #         sponsor_name,
-                #         get_template("mdot/developers/email_plain.html").render(
-                #             email_context
-                #         ),
-                #         sponsor_email,
-                #         [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
-                #         html_message=get_template(
-                #             "mdot/developers/email_html.html"
-                #         ).render(email_context),
-                #     ),
-                # except BadHeaderError:
-                #     return HttpResponse("Invalid header found.")
+            # TODO: send email to service now
+            # try:
+            #     send_mail(
+            #         sponsor_name,
+            #         get_template("mdot/developers/email_plain.html").render(
+            #             email_context
+            #         ),
+            #         sponsor_email,
+            #         [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
+            #         html_message=get_template(
+            #             "mdot/developers/email_html.html"
+            #         ).render(email_context),
+            #     ),
+            # except BadHeaderError:
+            #     return HttpResponse("Invalid header found.")
 
-                params = {
-                    'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
-                    'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
-                }
-                return render_to_response(
-                    'mdot/developers/agree.html',
-                    params)
-
-            # sponsor declines
             params = {
-                "app": app.name
+                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
+                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
             }
-            return render_to_response("mdot/developers/decline.html", params)
+            return render_to_response(
+                'mdot/developers/agree.html',
+                params)
 
         # GET request
         else:
@@ -146,7 +139,7 @@ def sponsor(request, pk):
                     "sponsor": sponsor_name,
                     "primary_lang": app.primary_language,
                     "platforms": list(app.platform.all()),
-                    "app_id": pk
+                    "ux_contact": getattr(settings, 'MDOT_UX_CONTACT')
                 }
                 return render(request, "mdot/developers/sponsor.html", params)
             else:
@@ -159,4 +152,5 @@ def sponsor(request, pk):
                     "mdot/developers/agree.html",
                     params)
 
+    #TODO: render template with correct http code
     return render_to_response("mdot/developers/forbidden.html")
