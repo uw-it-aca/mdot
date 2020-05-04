@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<div class="mdot-developers">
+<div class="mdot-sponsor">
 
     <div class="container" >
 
-        <h2 class="mdot-subhead" id="page_header">Review App Request</h2>
+        <h2 class="mdot-subhead" id="page_header">Sponsor Agreement</h2>
         <section>
             <p class="article intro">You have been designated as the sponsor for {{ app_name }}.</p>
             <div class="details-container">
@@ -18,7 +18,7 @@
                     <li><strong>Primary Language: </strong>{{ primary_lang }}</li>
                     <li><strong>App will be added to: </strong>
                         {% for p in platforms %}
-                            {{ p }}{% if not loop.last %}, {% endif %}
+                            {{ p }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </li>
                     <li><strong>App Manager: </strong>{{ manager }}</li>
@@ -31,14 +31,89 @@
 
             {% csrf_token %}
             {{ form.non_field_errors }}
-            
-            <h3>Sponsor Agreement</h3>
-            <p class="article intro">As the App Sponsor, you will be responsible for adhering to the conditions set out in the UW app developer terms and conditions.</p>
-            <p>If you agree to be the App Sponsor for {{ app_name }}, please click Agree. After that, we will proceed with the process of adding {{app_name}} into the UW app store.</p>
+
+            <section class="sponsor-requirements">
+                <h3>App Sponsor Responsibilities</h3>
+                <ul>
+                    <li>
+                        <strong>UW Terms and Conditions</strong>
+                        <p>You will be responsible for adhering to the conditions set out in the UW app developer <a href="https://www.washington.edu/online/terms/">terms and conditions.</a></p>
+                    </li>
+                    <li>
+                        <strong>Apple and/or Google Play Store terms and conditions</strong>
+                        <p>You will be responsible for adhering to the conditions set out in the <a href="https://developer.apple.com/terms/">Apple</a> and/or <a href="https://play.google.com/about/play-terms/index.html">Google Play</a> Store terms and conditions</p>
+                    </li>
+                    <li> 
+                        <strong>Usability(User Experience)</strong>
+                        <p>The UW is committed to prividing good user experiences for our audiences. For assistence, free <a href= {{ux_contact}}>UX consultations</a> are available with the AXDD Design team.</p>
+                    </li>
+                    <li>
+                        <strong>Accessibility</strong>
+                        <p>It is UW policy that all software is <a href="https://www.washington.edu/accessibility/guidelines/">accessible</a>. For assitance, UW-IT's Accessible Technology team offers <a href="https://www.washington.edu/accessibility/help/">accessiblity consulations/reviews</a>.</p>
+                    </li>
+                    <li>
+                        <strong>UW Privacy Policy</strong>
+                        <p>You will be responsible for adhering to the <a href="https://www.washington.edu/online/privacy/">UW Privacy Policy</a></p>
+                    </li>
+                    <li>
+                        <strong>UW Branding</strong>
+                        <p>If applicable, adhere to the use of <a href="http://www.washington.edu/brand/">UW logo and brand guidelines</a></p>
+                    </li>
+                    <li>
+                        <strong>Due Dilegence</strong>
+                        <p>I agree to undertake the due diligence to adhere to the UW values and demonstrate compliance with all UW policies mentioned and/or may otherwise be relevant.</p>
+                    </li>
+                </ul>
+                <label for="sponsor-requirements"><input id="sponsor-requirements" required type="checkbox"> I agree to the App Sponsor responsibilities</input></label>
+            </section>
+
+            <section class="sponsor-requirements">
+                <h3>Services Offered by UW-IT</h3>
+                <ul>
+                    <li>
+                        <strong>Application ID creation and App Manger provisioning</strong>
+                        <p>UW-IT shall create a single application ID and assign an App Manger. (specified above)</p>
+                    </li>
+                    <li>
+                        <strong>Audit</strong>
+                        <p>UW-IT may perform audits to ensure taht accounts are up to data and applications are in good standing. We are also responsible to audit any apps if we have received any formal complaints and/or requests from Apple/Google.</p>
+                    </li>
+                    <li>
+                        <strong>App Suspension and or removal</strong>
+                        <p>UW-IT reserves the right to suspend or remove apps in the store that violate any of the terms and conditions described above.</p>
+                    </li>
+                    <li>
+                        <strong>Support</strong>
+                        <p>UW-IT provides minimal technical support in the form of technical advice/guidance and knowledge expertise - for application distribution only. 'help@uw.edu' NO SUPPORT PROVIDED FOR APPLICATION DEVELOPMENT.</p>
+                    </li>
+                </ul>
+                <label for="understand-agreements"><input id="understand-agreements" required type="checkbox"> I understand the Services offered by UW-IT</input></label>
+            </section>
+
+            <section class="sponsor-requirements">
+                <h3>App Manager Responsibilities</h3>
+                <ul>
+                    <li>
+                        <strong>Developer account invitations</strong>
+                        <p>The App Manger is responsible for inviting users to their specific applicaiton team as well as maintaining their team in good standing = removing members who are no longer part of their team. AXDD reserves the right to remove or update membership for members not added to a specific application team or 
+                        that are no longer actively participating on development.
+                        </p>
+                    </li>
+                    <li>
+                        <strong>Publishing application</strong>
+                        <p>The App Manger is responsible for overall publishing of the app.</p>
+                    </li>
+                </ul>
+                <label for="understand-manager"><input id="understand-manager" required type="checkbox"> I understand the App Manager responsibilities</label></label>
+            </section>
 
             <!-- REQUIRED: ONE HAS TO BE SELECTED-->
-            <input id="agree" required type="radio" name="agree" value=true><label for="agree" class="checkbox-label"> I agree</label>
-            <input id="decline" required type="radio" name="agree" value=false><label for="decline" class="checkbox-label"> I decline</label>
+            
+            <section class="sponsor-requirements">
+                <h3>Agreement</h3>
+                <p>I certify that this form has been completed by the Campus Sponsor listed above and that my answers are true and complete to the best of my knowledge.</p>
+                <label for="agree"><input id="agree" required type="checkbox"> I agree to the policies and conditions listed in this form.</input></label>
+            </section>
 
             <!-- rethink where the 'cancel' button redirects to and what it does -->
             <p class="btn-container"> <!-- <a href="/developers/decline/{{app_id}}" class="btn">Decline</a>  -->
