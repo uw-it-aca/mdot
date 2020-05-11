@@ -11,7 +11,7 @@ from mdot_rest_client.client import MDOT
 
 import urllib
 import json
-from models import SponsorForm, ManagerForm, AppForm,\
+from .models import SponsorForm, ManagerForm, AppForm,\
     App, Agreement
 
 
@@ -33,7 +33,7 @@ def process(request):
     return render(request, "mdot/developers/process.html")
 
 
-# @login_required
+@login_required
 def request(request):
     if request.method == 'POST':
         sponsorForm = SponsorForm(request.POST, prefix='sponsor')
@@ -46,7 +46,7 @@ def request(request):
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
-            # app.requestor = request.user
+            app.requestor = request.user
             app.save()
             appForm.save_m2m()
 
@@ -54,6 +54,9 @@ def request(request):
                 'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
                 'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
             }
+
+            # TODO: send email to sponsor
+
             return render_to_response(
                 'mdot/developers/thanks.html',
                 params)
@@ -81,7 +84,8 @@ def request(request):
     # return forms to request page
     return render(request, 'mdot/developers/request.html', forms)
 
-# @login_required
+
+@login_required
 def sponsor(request, pk):
     try:
         app = App.objects.get(pk=pk)
@@ -89,11 +93,8 @@ def sponsor(request, pk):
     except App.DoesNotExist:
         return render_to_response('mdot/developers/forbidden.html')
 
-    # TODO: check against loggedin user netid
-    # temp: checks against 'spon' netid
-    sponsor_netid = 'spon'
-    user_netid = sponsor_netid
-    if app_sponsor.netid == user_netid:
+    # check that logged in user is the sponsor
+    if app_sponsor.netid == request.user.username:
         # sponsor has agreed
         if request.method == "POST":
             # create agree object
@@ -128,7 +129,7 @@ def sponsor(request, pk):
 
         # GET request
         else:
-            agreement = Agreement.objects.filter(app=app, app__app_sponsor__netid=sponsor_netid)
+            agreement = Agreement.objects.filter(app=app, app__app_sponsor__netid=request.user.username)
             if agreement.count() == 0:
                 # serve agreement form
                 sponsor_name = " ".join((app_sponsor.first_name, app_sponsor.last_name))

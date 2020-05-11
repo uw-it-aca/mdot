@@ -1,5 +1,6 @@
 from django.test import Client, TestCase, override_settings
-from django.urls import resolve
+from django.core.urlresolvers import resolve
+from django.contrib.auth.models import User
 
 DAO = 'Mock'
 
@@ -12,6 +13,11 @@ class MdotTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(
+            username="javerage",
+            email="javerage@uw.edu",
+            password="p@ssTest1"
+        )
         pass
 
     # test "/" url and view
@@ -81,11 +87,20 @@ class MdotTest(TestCase):
         response = self.client.get('/developers/process/')
         self.assertEqual(response.status_code, 200)
 
-    def test_view_request(self):
+    def test_view_request_not_logged_in(self):
         """
         Test that request to request url returns a status code
-        of 200.
+        of 302 when user is not logged in.
         """
+        response = self.client.get('/developers/request/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_view_request_logged_in(self):
+        """
+        Test that request to request url returns a status code
+        of 200 when user is logged in.
+        """
+        self.client.force_login(self.user)
         response = self.client.get('/developers/request/')
         self.assertEqual(response.status_code, 200)
 

@@ -1,5 +1,6 @@
 from django.test import Client, TestCase
-from mdot.models import SponsorForm, ManagerForm, AppForm
+from django.contrib.auth.models import User
+from mdot.models import SponsorForm, ManagerForm, AppForm, Platform, App
 
 
 class MdotFormTest(TestCase):
@@ -10,14 +11,27 @@ class MdotFormTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(
+            username="javerage",
+            email="javerage@uw.edu",
+            password="p@ssTest1"
+        )
+        self.platform = Platform.objects.create(
+            name='Android',
+            app_store='Google Play Store'
+        )
 
     def test_form_input_consumption(self):
         """
         Test that the forms are valid when passed
         all required values.
         """
+
+        
+
         sponsor_form_data = {
-            'name': 'Sponsor',
+            'first_name': 'Sponsor',
+            'last_name': 'lname',
             'netid': 'SponTest',
             'title': 'Sponsor Test Case',
             'email': 'spontestcase@uw.edu',
@@ -27,17 +41,17 @@ class MdotFormTest(TestCase):
         self.assertTrue(sponsor_form.is_valid())
 
         manager_form_data = {
-            'name': 'Sponsor',
-            'netid': 'SponTest',
-            'email': 'spontestcase@uw.edu'}
+            'first_name': 'Manager',
+            'last_name': 'lname',
+            'netid': 'ManTest'}
         manager_form = ManagerForm(data=manager_form_data)
         self.assertTrue(manager_form.is_valid())
 
         app_form_data = {
-            'name': 'Sponsor',
+            'name': 'App',
             'primary_language': 'Test Lang',
-            'app_manager': manager_form,
-            'app_sponsor': sponsor_form}
+            'platform': [self.platform.pk]
+        }
         app_form = AppForm(data=app_form_data)
         self.assertTrue(app_form.is_valid())
 
@@ -51,25 +65,30 @@ class MdotFormTest(TestCase):
         manager_prefix = 'manager-'
         app_prefix = 'app-'
         forms = {
-            '{}name'.format(sponsor_prefix): 'Sponsor',
+            '{}first_name'.format(sponsor_prefix): 'Sponsor',
+            '{}last_name'.format(sponsor_prefix): 'lname',
             '{}netid'.format(sponsor_prefix): 'SponTest',
             '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
             '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
             '{}department'.format(sponsor_prefix): 'sponsor testcase',
             '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
 
-            '{}name'.format(manager_prefix): 'Manager',
+            '{}first_name'.format(manager_prefix): 'Manager',
+            '{}last_name'.format(manager_prefix): 'lname',
             '{}netid'.format(manager_prefix): 'manager',
-            '{}email'.format(manager_prefix): 'managertestcase@uw.edu',
 
             '{}name'.format(app_prefix): 'app',
-            '{}primary_language'.format(app_prefix): 'Test Lang'
+            '{}primary_language'.format(app_prefix): 'Test Lang',
+            '{}platform'.format(app_prefix): [self.platform.pk]
         }
+
+        # login user
+        self.client.force_login(self.user)
         response = self.client.post('/developers/request/', forms)
         self.assertEqual(response.status_code, 200)
         # Make sure the user is sent to the thank you
         # page after submitting valid form
-        self.assertTrue(b'Thank you' in response.content)
+        self.assertTrue(b'Thank You' in response.content)
 
     def test_full_valid_form_post(self):
         """
@@ -81,16 +100,17 @@ class MdotFormTest(TestCase):
         manager_prefix = 'manager-'
         app_prefix = 'app-'
         forms = {
-            '{}name'.format(sponsor_prefix): 'Sponsor',
+            '{}first_name'.format(sponsor_prefix): 'Sponsor',
+            '{}last_name'.format(sponsor_prefix): 'lname',
             '{}netid'.format(sponsor_prefix): 'SponTest',
             '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
             '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
             '{}department'.format(sponsor_prefix): 'sponsor testcase',
             '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
 
-            '{}name'.format(manager_prefix): 'Manager',
+            '{}first_name'.format(manager_prefix): 'Manager',
+            '{}last_name'.format(manager_prefix): 'lname',
             '{}netid'.format(manager_prefix): 'manager',
-            '{}email'.format(manager_prefix): 'managertestcase@uw.edu',
 
         sponsor_prefix = 'sponsor-'
         manager_prefix = 'manager-'
@@ -108,22 +128,16 @@ class MdotFormTest(TestCase):
             '{}email'.format(manager_prefix): 'managertestcase@uw.edu',
 
             '{}name'.format(app_prefix): 'app',
+            '{}platform'.format(app_prefix): [self.platform.pk],
             '{}primary_language'.format(app_prefix): 'Test Lang'
         }
+        # login user
+        self.client.force_login(self.user)
         response = self.client.post('/developers/request/', forms)
         self.assertEqual(response.status_code, 200)
         # Make sure the user is sent to the thank you
         # page after submitting valid form
-        self.assertTrue(b'Thank you' in response.content)
-
-    def test_request_get(self):
-        """
-        Test that a get request to the url will send the user
-        to the form.
-        """
-        response = self.client.get('/developers/request/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('Request Review' in response.content)
+        self.assertTrue(b'Thank You' in response.content)
 
     def tearDown(self):
         pass

@@ -34,7 +34,7 @@ class App(models.Model):
     platform = models.ManyToManyField(Platform)
     app_manager = models.ForeignKey(Manager)
     app_sponsor = models.ForeignKey(Sponsor)
-    # requestor = models.OneToOneField(User)    # problem saving this
+    requestor = models.ForeignKey(User)
     request_date = models.DateTimeField(auto_now_add=True)
 
 
