@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'django_user_agents',
     'mdot',
     'compressor',
+    'uw_saml'
 )
 
 MIDDLEWARE = (
@@ -39,6 +40,15 @@ MIDDLEWARE = (
     'htmlmin.middleware.MarkRequestMiddleware',
     'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
 )
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.RemoteUserBackend',
+    # use for mock saml
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL  = reverse_lazy('saml_login')
 
 ROOT_URLCONF = 'sampleproj.urls'
 
