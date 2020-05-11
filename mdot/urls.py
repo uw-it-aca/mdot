@@ -13,6 +13,9 @@ urlpatterns = [
     url(r'^developers/process/$', views.process, name='process'),
     url(r'^developers/review/$', views.review, name='review'),
 
+    # SAML login url
+    url(r'^saml/', include('uw_saml.urls')),
+
     # url(r'^blog/', include('blog.urls')),
     # url(r'^admin/', include(admin.site.urls)),
 

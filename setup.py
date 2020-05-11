@@ -23,7 +23,8 @@ setup(
         'ua-parser',
         'user-agents',
         'django-user-agents',
-        'django-appconf==1.0.2'
+        'django-appconf==1.0.2',
+        'UW-Django-SAML2<1.5',
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
