@@ -14,7 +14,7 @@ setup(
     install_requires=[
         'setuptools',
         'django>2.0,<2.2',
-        'django-compressor<2.4',
+        'django-compressor',
         'UW-RestClients-Core<1.0,>=0.9',
         'django-htmlmin',
         'lesscpy',
@@ -23,7 +23,7 @@ setup(
         'ua-parser',
         'user-agents',
         'django-user-agents',
-        'django-appconf==1.0.2'
+        'django-appconf'
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
@@ -38,8 +38,6 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
