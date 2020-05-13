@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 
 # from django.contrib import admin
 # admin.autodiscover()
@@ -6,16 +6,16 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^developers/$', views.developers, name='developers'),
-    url(r'^developers/guidelines/$', views.guidelines,
+    path('', views.home, name='home'),
+    path('developers/', views.developers, name='developers'),
+    path('developers/guidelines/', views.guidelines,
         name='guidelines'),
-    url(r'^developers/process/$', views.process, name='process'),
-    url(r'^developers/review/$', views.review, name='review'),
+    path('developers/process/', views.process, name='process'),
+    path('developers/review/', views.review, name='review'),
 
-    # url(r'^blog/', include('blog.urls')),
-    # url(r'^admin/', include(admin.site.urls)),
+    # re_path(r'^blog/', include('blog.urls')),
+    # re_path(r'^admin/', include(admin.site.urls)),
 
     # include applications
-    # url(r'^', include('app_name.urls')),
+    # re_path(r'^', include('app_name.urls')),
 ]

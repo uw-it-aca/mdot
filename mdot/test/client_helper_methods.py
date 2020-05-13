@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.test import Client
-from django.core.urlresolvers import resolve
+from django.urls import resolve
 from mdot.mdot_rest_client.client import MDOT, ClientResource
 import json
 
