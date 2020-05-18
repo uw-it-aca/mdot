@@ -55,7 +55,29 @@ def request(request):
                 'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
             }
 
+            email_context = {
+                "sponsor_name": "{0} {1}".format(sponsor.first_name, sponsor.last_name),
+                "app_name": app.name,
+                "agreement_link": "https://mobile.uw.edu/developers/request/{}/".format(app.pk)
+            }
+            app_requestor_email = '{}@uw.edu'.format(app.requestor.username)
+            sponsor_email = "{}@uw.edu".format(sponsor.netid)
+
             # TODO: send email to sponsor
+            try:
+                send_mail(
+                    'App Sponsorship',
+                    get_template("mdot/developers/sponsor_plain_email.html").render(
+                        email_context
+                    ),
+                    app_requestor_email,    # what is this field?
+                    [sponsor_email],  # recipients?
+                    html_message=get_template(
+                        "mdot/developers/sponsor_email.html"
+                    ).render(email_context),
+                ),
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
 
             return render_to_response(
                 'mdot/developers/thanks.html',
@@ -86,7 +108,7 @@ def request(request):
 
 
 @login_required
-def sponsor(request, pk):
+def request_detail(request, pk):
     try:
         app = App.objects.get(pk=pk)
         app_sponsor = app.app_sponsor
@@ -103,21 +125,37 @@ def sponsor(request, pk):
             )
             agreement.save()
 
+            app_manager = app.app_manager
+            sponsor_email = "{}@uw.edu".format(app_sponsor.netid)
+            email_context = {
+                "sponsor_netid": app_sponsor.netid,
+                "sponsor_name": "{0} {1}".format(app_sponsor.first_name, app_sponsor.last_name),
+                "sponsor_email": sponsor_email,
+                "sponsor_dept": app_sponsor.department,
+                "sponsor_unit": app_sponsor.unit,
+                "manager_name": "{0} {1}".format(app_manager.first_name, app_manager.last_name),
+                "manager_netid": app_manager.netid,
+                "manager_email": "{}@uw.edu".format(app_manager.netid),
+                "app_name": app.name,
+                "app_lang": app.primary_language,
+                "app_store": list(app.platform.all())
+            }
+
             # TODO: send email to service now
-            # try:
-            #     send_mail(
-            #         sponsor_name,
-            #         get_template("mdot/developers/email_plain.html").render(
-            #             email_context
-            #         ),
-            #         sponsor_email,
-            #         [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
-            #         html_message=get_template(
-            #             "mdot/developers/email_html.html"
-            #         ).render(email_context),
-            #     ),
-            # except BadHeaderError:
-            #     return HttpResponse("Invalid header found.")
+            try:
+                send_mail(
+                    email_context['sponsor_name'],
+                    get_template("mdot/developers/email_plain.html").render(
+                        email_context
+                    ),
+                    sponsor_email,
+                    [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
+                    html_message=get_template(
+                        "mdot/developers/email_html.html"
+                    ).render(email_context),
+                ),
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
 
             params = {
                 'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
