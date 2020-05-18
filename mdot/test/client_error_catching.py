@@ -109,9 +109,8 @@ class MdotClientErrorTest(TestCase):
                       u'id': 1,
                       u'campus_tacoma': False}]
 
-        if self.use_unicode():
-            with self.assertRaises(TypeError):
-                MDOT()._python_list_to_resources_model_list(fake_list)
+        with self.assertRaises(TypeError):
+            MDOT()._python_list_to_resources_model_list(fake_list)
 
     def test_python_list_conversion_bad_link_url(self):
         fake_list = [{u'accessible': False,
@@ -135,9 +134,8 @@ class MdotClientErrorTest(TestCase):
                       u'id': 1,
                       u'campus_tacoma': False}]
 
-        if self.use_unicode():
-            with self.assertRaises(TypeError):
-                MDOT()._python_list_to_resources_model_list(fake_list)
+        with self.assertRaises(TypeError):
+            MDOT()._python_list_to_resources_model_list(fake_list)
 
     def test_python_list_conversion_bad_link_type(self):
         fake_list = [{u'accessible': False,
@@ -161,14 +159,5 @@ class MdotClientErrorTest(TestCase):
                       u'id': 1,
                       u'campus_tacoma': False}]
 
-        if self.use_unicode():
-            with self.assertRaises(TypeError):
-                MDOT()._python_list_to_resources_model_list(fake_list)
-
-    def use_unicode(self):
-        ''' returns true if unicode is a valid type '''
-        try:
-            str = unicode
-            return True
-        except NameError:
-            return False
+        with self.assertRaises(TypeError):
+            MDOT()._python_list_to_resources_model_list(fake_list)
