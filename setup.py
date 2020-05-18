@@ -22,8 +22,7 @@ setup(
         'pyyaml',
         'ua-parser',
         'user-agents',
-        'django-user-agents',
-        'django-appconf'
+        'django-user-agents'
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
