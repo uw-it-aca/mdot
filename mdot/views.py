@@ -60,15 +60,15 @@ def request(request):
             app_requestor_email = '{}@uw.edu'.format(app.requestor.username)
             sponsor_email = "{}@uw.edu".format(sponsor.netid)
 
-            # TODO: send email to sponsor
             try:
                 send_mail(
-                    'App Sponsorship',
+                    'App Sponsorship Agreement Required: {}'.format(app.name),
                     get_template("mdot/developers/sponsor_plain_email.html").render(
                         email_context
                     ),
-                    app_requestor_email,    # what is this field?
-                    [sponsor_email],  # recipients?
+                    # TODO: decide on sender email
+                    app_requestor_email,
+                    [sponsor_email],
                     html_message=get_template(
                         "mdot/developers/sponsor_email.html"
                     ).render(email_context),
@@ -129,9 +129,9 @@ def request_detail(request, pk):
                 "app_store": list(app.platform.all())
             }
 
-            # TODO: send email to service now
             try:
                 send_mail(
+                    "Mobile App Request Submitted: {}".format(app.name),
                     email_context['sponsor_name'],
                     get_template("mdot/developers/email_plain.html").render(
                         email_context
