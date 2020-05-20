@@ -13,9 +13,9 @@ urlpatterns = [
     path('developers/process/', views.process, name='process'),
     path('developers/review/', views.review, name='review'),
 
-    # path(r'^blog/', include('blog.urls')),
-    # path(r'^admin/', include(admin.site.urls)),
+    # path('blog/', include('blog.urls')),
+    # path('admin/', include(admin.site.urls)),
 
     # include applications
-    # path(r'^', include('app_name.urls')),
+    # path('', include('app_name.urls')),
 ]
