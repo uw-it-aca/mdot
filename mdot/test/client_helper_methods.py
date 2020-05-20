@@ -1,5 +1,4 @@
-from django.test import TestCase
-from django.test import Client
+from django.test import TestCase, Client
 from django.urls import resolve
 from mdot.mdot_rest_client.client import MDOT, ClientResource
 import json
