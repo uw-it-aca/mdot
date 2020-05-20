@@ -47,7 +47,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 LOGIN_URL  = reverse_lazy('saml_login')
 
 # uw saml dict
