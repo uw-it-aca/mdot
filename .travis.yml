@@ -4,6 +4,8 @@ python:
   - "3.6"
 install:
   # - npm install recess
+  - apt-get update
+  - apt-get install libxmlsec1
   - export BOTO_CONFIG=/dev/null  #workaround for ImportError, probably not needed after upgrading to restclients core
   - pip install .
   - pip install pycodestyle
