@@ -24,7 +24,7 @@ INSTALLED_APPS = (
     'django_user_agents',
     'mdot',
     'compressor',
-    'uw_saml'
+    'uw_saml',
 )
 
 MIDDLEWARE = (
@@ -32,19 +32,18 @@ MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
-    'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
+    
 )
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.RemoteUserBackend',
-    # use for mock saml
-    'django.contrib.auth.backends.ModelBackend',
 ]
 
 from django.urls import reverse_lazy
