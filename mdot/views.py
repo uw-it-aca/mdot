@@ -3,8 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from django.template import RequestContext, Context
 from django.shortcuts import render_to_response, render
+from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .mdot_rest_client.client import MDOT
 
 import urllib
@@ -101,83 +102,82 @@ def request_detail(request, pk):
         app = App.objects.get(pk=pk)
         app_sponsor = app.app_sponsor
     except App.DoesNotExist:
-        return render_to_response('mdot/developers/forbidden.html')
+        raise Http404("App does not exist")
 
     # check that logged in user is the sponsor
-    if app_sponsor.netid == request.user.username:
-        # sponsor has agreed
-        if request.method == "POST":
-            # create agree object
-            agreement = Agreement.objects.create(
-                app = app
-            )
-            agreement.save()
+    if app_sponsor.netid != request.user.username:
+        raise PermissionDenied()
 
-            app_manager = app.app_manager
-            sponsor_email = "{}@uw.edu".format(app_sponsor.netid)
-            email_context = {
-                "sponsor_netid": app_sponsor.netid,
-                "sponsor_name": "{0} {1}".format(app_sponsor.first_name, app_sponsor.last_name),
-                "sponsor_email": sponsor_email,
-                "sponsor_dept": app_sponsor.department,
-                "sponsor_unit": app_sponsor.unit,
-                "manager_name": "{0} {1}".format(app_manager.first_name, app_manager.last_name),
-                "manager_netid": app_manager.netid,
-                "manager_email": "{}@uw.edu".format(app_manager.netid),
-                "app_name": app.name,
-                "app_lang": app.primary_language,
-                "app_store": list(app.platform.all())
-            }
+    # sponsor has agreed
+    if request.method == "POST":
+        # create agree object
+        agreement = Agreement.objects.create(
+            app = app
+        )
+        agreement.save()
 
-            try:
-                send_mail(
-                    "Mobile App Request Submitted: {}".format(app.name),
-                    email_context['sponsor_name'],
-                    get_template("mdot/developers/email_plain.html").render(
-                        email_context
-                    ),
-                    sponsor_email,
-                    [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
-                    html_message=get_template(
-                        "mdot/developers/email_html.html"
-                    ).render(email_context),
+        app_manager = app.app_manager
+        sponsor_email = "{}@uw.edu".format(app_sponsor.netid)
+        email_context = {
+            "sponsor_netid": app_sponsor.netid,
+            "sponsor_name": "{0} {1}".format(app_sponsor.first_name, app_sponsor.last_name),
+            "sponsor_email": sponsor_email,
+            "sponsor_dept": app_sponsor.department,
+            "sponsor_unit": app_sponsor.unit,
+            "manager_name": "{0} {1}".format(app_manager.first_name, app_manager.last_name),
+            "manager_netid": app_manager.netid,
+            "manager_email": "{}@uw.edu".format(app_manager.netid),
+            "app_name": app.name,
+            "app_lang": app.primary_language,
+            "app_store": list(app.platform.all())
+        }
+
+        try:
+            send_mail(
+                "Mobile App Request Submitted: {}".format(app.name),
+                email_context['sponsor_name'],
+                get_template("mdot/developers/email_plain.html").render(
+                    email_context
                 ),
-            except BadHeaderError:
-                return HttpResponse("Invalid header found.")
+                sponsor_email,
+                [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
+                html_message=get_template(
+                    "mdot/developers/email_html.html"
+                ).render(email_context),
+            ),
+        except BadHeaderError:
+            return HttpResponse("Invalid header found.")
 
+        params = {
+            'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
+            'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
+        }
+        return render_to_response(
+            'mdot/developers/agree.html',
+            params)
+
+    # GET request
+    else:
+        agreement = Agreement.objects.filter(app=app, app__app_sponsor__netid=request.user.username)
+        if agreement.count() == 0:
+            # serve agreement form
+            sponsor_name = " ".join((app_sponsor.first_name, app_sponsor.last_name))
+            manager_name = " ".join((app.app_manager.first_name, app.app_manager.last_name))
+            params = {
+                "app_name": app.name,
+                "manager": manager_name,
+                "sponsor": sponsor_name,
+                "primary_lang": app.primary_language,
+                "platforms": list(app.platform.all()),
+                "ux_contact": getattr(settings, 'MDOT_UX_CONTACT')
+            }
+            return render(request, "mdot/developers/sponsor.html", params)
+        else:
+            # serve thank you page -- sponsor has already agreed to this app
             params = {
                 'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
                 'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
             }
             return render_to_response(
-                'mdot/developers/agree.html',
+                "mdot/developers/agree.html",
                 params)
-
-        # GET request
-        else:
-            agreement = Agreement.objects.filter(app=app, app__app_sponsor__netid=request.user.username)
-            if agreement.count() == 0:
-                # serve agreement form
-                sponsor_name = " ".join((app_sponsor.first_name, app_sponsor.last_name))
-                manager_name = " ".join((app.app_manager.first_name, app.app_manager.last_name))
-                params = {
-                    "app_name": app.name,
-                    "manager": manager_name,
-                    "sponsor": sponsor_name,
-                    "primary_lang": app.primary_language,
-                    "platforms": list(app.platform.all()),
-                    "ux_contact": getattr(settings, 'MDOT_UX_CONTACT')
-                }
-                return render(request, "mdot/developers/sponsor.html", params)
-            else:
-                # serve thank you page -- sponsor has already agreed to this app
-                params = {
-                    'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
-                    'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
-                }
-                return render_to_response(
-                    "mdot/developers/agree.html",
-                    params)
-
-    #TODO: render template with correct http code
-    return render_to_response("mdot/developers/forbidden.html")
