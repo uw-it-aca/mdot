@@ -67,4 +67,3 @@ class AppForm(forms.ModelForm):
         super(AppForm, self).__init__(*args, **kwargs)
         self.fields['platform'].widget = forms.CheckboxSelectMultiple()
         self.fields['platform'].queryset = Platform.objects.all()
-    

@@ -27,8 +27,6 @@ class MdotFormTest(TestCase):
         all required values.
         """
 
-        
-
         sponsor_form_data = {
             'first_name': 'Sponsor',
             'last_name': 'lname',

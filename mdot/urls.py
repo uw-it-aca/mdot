@@ -12,7 +12,9 @@ urlpatterns = [
         name='guidelines'),
     url(r'^developers/process/$', views.process, name='process'),
     url(r'^developers/request/$', views.request, name='request'),
-    url(r'^developers/request/(?P<pk>[0-9]+)/$', views.request_detail, name='request detail'),
+    url(r'^developers/request/(?P<pk>[0-9]+)/$', views.request_detail,
+        name='request detail'),
+
     # url(r'^blog/', include('blog.urls')),
     # url(r'^admin/', include(admin.site.urls)),
 
