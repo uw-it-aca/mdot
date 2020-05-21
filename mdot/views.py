@@ -5,6 +5,7 @@ from django.template import RequestContext, Context
 from django.shortcuts import render_to_response, render
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail, BadHeaderError
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 from htmlmin.decorators import minified_response
@@ -57,9 +58,13 @@ def request(request):
             }
 
             email_context = {
-                "sponsor_name": "{0} {1}".format(sponsor.first_name, sponsor.last_name),
+                "sponsor_name": " ".join(
+                    (sponsor.first_name, sponsor.last_name)),
                 "app_name": app.name,
-                "agreement_link": "https://mobile.uw.edu/developers/request/{}/".format(app.pk)
+                "agreement_link": "{}{}".format(
+                    request.META['HTTP_HOST'],
+                    reverse('request detail', args=(app.pk,))
+                )
             }
             app_requestor_email = '{}@uw.edu'.format(app.requestor.username)
             sponsor_email = "{}@uw.edu".format(sponsor.netid)
@@ -67,7 +72,8 @@ def request(request):
             try:
                 send_mail(
                     'App Sponsorship Agreement Required: {}'.format(app.name),
-                    get_template("mdot/developers/sponsor_plain_email.html").render(
+                    get_template(
+                        "mdot/developers/sponsor_plain_email.html").render(
                         email_context
                     ),
                     # TODO: decide on sender email
@@ -124,7 +130,7 @@ def request_detail(request, pk):
     if request.method == "POST":
         # create agree object
         agreement = Agreement.objects.create(
-            app = app
+            app=app
         )
         agreement.save()
 
@@ -132,11 +138,13 @@ def request_detail(request, pk):
         sponsor_email = "{}@uw.edu".format(app_sponsor.netid)
         email_context = {
             "sponsor_netid": app_sponsor.netid,
-            "sponsor_name": "{0} {1}".format(app_sponsor.first_name, app_sponsor.last_name),
+            "sponsor_name": " ".join(
+                (app_sponsor.first_name, app_sponsor.last_name)),
             "sponsor_email": sponsor_email,
             "sponsor_dept": app_sponsor.department,
             "sponsor_unit": app_sponsor.unit,
-            "manager_name": "{0} {1}".format(app_manager.first_name, app_manager.last_name),
+            "manager_name": " ".join(
+                (app_manager.first_name, app_manager.last_name)),
             "manager_netid": app_manager.netid,
             "manager_email": "{}@uw.edu".format(app_manager.netid),
             "app_name": app.name,
@@ -170,15 +178,16 @@ def request_detail(request, pk):
 
     # GET request
     else:
-        agreement = Agreement.objects.filter(app=app, app__app_sponsor__netid=request.user.username)
+        agreement = Agreement.objects.filter(
+            app=app, app__app_sponsor__netid=request.user.username)
         if agreement.count() == 0:
             # serve agreement form
-            sponsor_name = " ".join((app_sponsor.first_name, app_sponsor.last_name))
-            manager_name = " ".join((app.app_manager.first_name, app.app_manager.last_name))
             params = {
                 "app_name": app.name,
-                "manager": manager_name,
-                "sponsor": sponsor_name,
+                "manager": " ".join(
+                    (app.app_manager.first_name, app.app_manager.last_name)),
+                "sponsor": " ".join(
+                    (app_sponsor.first_name, app_sponsor.last_name)),
                 "primary_lang": app.primary_language,
                 "platforms": list(app.platform.all()),
                 "ux_contact": getattr(settings, 'MDOT_UX_CONTACT')
