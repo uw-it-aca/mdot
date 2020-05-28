@@ -155,7 +155,6 @@ def request_detail(request, pk):
         try:
             send_mail(
                 "Mobile App Request Submitted: {}".format(app.name),
-                email_context['sponsor_name'],
                 get_template("mdot/developers/email_plain.html").render(
                     email_context
                 ),
