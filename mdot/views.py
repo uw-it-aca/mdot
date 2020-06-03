@@ -52,19 +52,15 @@ def request(request):
             app.save()
             appForm.save_m2m()
 
-            params = {
-                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
-                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
-            }
+            # send email to sponsor
+            root_url = request.build_absolute_uri("/").strip("/")
+            request_detail_url = reverse('request detail', args=(app.pk,))
 
             email_context = {
                 "sponsor_name": " ".join(
                     (sponsor.first_name, sponsor.last_name)),
                 "app_name": app.name,
-                "agreement_link": "{}{}".format(
-                    request.META['HTTP_HOST'],
-                    reverse('request detail', args=(app.pk,))
-                )
+                "agreement_link": "{}{}".format(root_url, request_detail_url)
             }
             app_requestor_email = '{}@uw.edu'.format(app.requestor.username)
             sponsor_email = "{}@uw.edu".format(sponsor.netid)
@@ -86,6 +82,11 @@ def request(request):
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
 
+            params = {
+                'service_email': getattr(settings, 'MDOT_SERVICE_EMAIL'),
+                'ux_contact': getattr(settings, 'MDOT_UX_CONTACT'),
+            }
+            
             return render_to_response(
                 'mdot/developers/thanks.html',
                 params)
