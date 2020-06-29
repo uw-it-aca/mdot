@@ -16,6 +16,10 @@
 
             {% csrf_token %}
             {{ form.non_field_errors }}
+
+            <h3 class="form-heading">App Information: </h3>
+            <p class="form-description">This portion of the form should be filled out with the details of the app you would like to submit to the UW app store.</p>
+            {{ appform }}
             
             <h3 class="form-heading">Sponsor Contact: </h3>
             <p class="form-description">
@@ -29,10 +33,6 @@
             <p class="form-description">This portion of the form should be filled out witht he details of the person who will be serving as the App Manager.</p>
             <p class="form-description">The App Manager will be responsible for code maintenance and app distribution.</p>
             {{ managerform }}
-
-            <h3 class="form-heading">App Information: </h3>
-            <p class="form-description">This portion of the form should be filled out with the details of the app you would like to submit to the UW app store.</p>
-            {{ appform }}
 
             <p class="btn-container"><a href="/developers/" class="btn">Cancel</a>
             <input type="submit" class="btn btn-primary" name="submit" value="Request Review"></p>
