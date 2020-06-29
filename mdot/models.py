@@ -17,6 +17,7 @@ class Sponsor(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     netid = models.CharField(max_length=16)
+    email = models.EmailField(max_length=256)
     title = models.CharField(max_length=50)
     department = models.CharField(max_length=30)
     unit = models.CharField(max_length=30)
@@ -26,6 +27,7 @@ class Manager(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     netid = models.CharField(max_length=16)
+    email = models.EmailField(max_length=256)
 
 
 class App(models.Model):
@@ -46,24 +48,25 @@ class Agreement(models.Model):
 class SponsorForm(forms.ModelForm):
     class Meta:
         model = Sponsor
-        fields = '__all__'
+        fields = "__all__"
 
 
 class ManagerForm(forms.ModelForm):
     class Meta:
         model = Manager
-        fields = '__all__'
+        fields = "__all__"
 
 
 class AppForm(forms.ModelForm):
     class Meta:
         model = App
-        fields = ['name', 'primary_language', 'platform']
+        fields = ["name", "primary_language", "platform"]
         labels = {
-            'platform': "Add to the University of Washington"
+            "platform": "Add to the University of Washington"
         }
 
     def __init__(self, *args, **kwargs):
         super(AppForm, self).__init__(*args, **kwargs)
-        self.fields['platform'].widget = forms.CheckboxSelectMultiple()
-        self.fields['platform'].queryset = Platform.objects.all()
+        self.fields["primary_language"].widget.attrs["placeholder"] = "e.g. English"
+        self.fields["platform"].widget = forms.CheckboxSelectMultiple()
+        self.fields["platform"].queryset = Platform.objects.all()
