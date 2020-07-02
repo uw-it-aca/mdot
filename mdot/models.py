@@ -67,6 +67,7 @@ class AppForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AppForm, self).__init__(*args, **kwargs)
-        self.fields["primary_language"].widget.attrs["placeholder"] = "e.g. English"
+        self.fields["primary_language"] \
+            .widget.attrs["placeholder"] = "e.g. English"
         self.fields["platform"].widget = forms.CheckboxSelectMultiple()
         self.fields["platform"].queryset = Platform.objects.all()
