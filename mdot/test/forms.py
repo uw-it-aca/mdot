@@ -87,6 +87,7 @@ class MdotFormTest(TestCase):
         self.client.force_login(self.user)
         response = self.client.post('/developers/request/', forms)
         self.assertEqual(response.status_code, 200)
+
         # Make sure the user is sent to the thank you
         # page after submitting valid form
         self.assertTrue(b'Thank You' in response.content)
