@@ -5,7 +5,7 @@ from django.template import RequestContext, Context
 from django.shortcuts import render_to_response, render
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail, BadHeaderError
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 from htmlmin.decorators import minified_response
@@ -54,7 +54,7 @@ def request(request):
 
             # send email to sponsor
             root_url = request.build_absolute_uri("/").strip("/")
-            request_detail_url = reverse('request detail', args=(app.pk,))
+            request_detail_url = reverse('sponsor', args=(app.pk,))
 
             email_context = {
                 "sponsor_name": " ".join(
@@ -116,7 +116,7 @@ def request(request):
 
 
 @login_required
-def request_detail(request, pk):
+def sponsor(request, pk):
     try:
         app = App.objects.get(pk=pk)
         app_sponsor = app.app_sponsor

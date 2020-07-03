@@ -34,14 +34,14 @@ class App(models.Model):
     name = models.CharField(max_length=50)
     primary_language = models.CharField(max_length=20)
     platform = models.ManyToManyField(Platform)
-    app_manager = models.ForeignKey(Manager)
-    app_sponsor = models.ForeignKey(Sponsor)
-    requestor = models.ForeignKey(User)
+    app_manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
+    app_sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
+    requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
 
 
 class Agreement(models.Model):
-    app = models.ForeignKey(App)
+    app = models.ForeignKey(App, on_delete=models.CASCADE)
     agree_time = models.DateTimeField(auto_now_add=True)
 
 

@@ -114,21 +114,6 @@ class MdotFormTest(TestCase):
             '{}netid'.format(manager_prefix): 'manager',
             '{}email'.format(manager_prefix): 'man@uw.edu',
 
-        sponsor_prefix = 'sponsor-'
-        manager_prefix = 'manager-'
-        app_prefix = 'app-'
-        forms = {
-            '{}name'.format(sponsor_prefix): 'Sponsor',
-            '{}netid'.format(sponsor_prefix): 'SponTest',
-            '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
-            '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
-            '{}department'.format(sponsor_prefix): 'sponsor testcase',
-            '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
-
-            '{}name'.format(manager_prefix): 'Manager',
-            '{}netid'.format(manager_prefix): 'manager',
-            '{}email'.format(manager_prefix): 'managertestcase@uw.edu',
-
             '{}name'.format(app_prefix): 'app',
             '{}platform'.format(app_prefix): [self.platform.pk],
             '{}primary_language'.format(app_prefix): 'Test Lang'
