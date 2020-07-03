@@ -31,6 +31,7 @@ class MdotFormTest(TestCase):
             'first_name': 'Sponsor',
             'last_name': 'lname',
             'netid': 'SponTest',
+            'email': 'spon@uw.edu',
             'title': 'Sponsor Test Case',
             'email': 'spontestcase@uw.edu',
             'department': 'sponsor testcase',
@@ -41,7 +42,8 @@ class MdotFormTest(TestCase):
         manager_form_data = {
             'first_name': 'Manager',
             'last_name': 'lname',
-            'netid': 'ManTest'}
+            'netid': 'ManTest',
+            'email': 'manager@uw.edu'}
         manager_form = ManagerForm(data=manager_form_data)
         self.assertTrue(manager_form.is_valid())
 
@@ -74,6 +76,7 @@ class MdotFormTest(TestCase):
             '{}first_name'.format(manager_prefix): 'Manager',
             '{}last_name'.format(manager_prefix): 'lname',
             '{}netid'.format(manager_prefix): 'manager',
+            '{}email'.format(manager_prefix): 'man@uw.edu',
 
             '{}name'.format(app_prefix): 'app',
             '{}primary_language'.format(app_prefix): 'Test Lang',
@@ -109,6 +112,7 @@ class MdotFormTest(TestCase):
             '{}first_name'.format(manager_prefix): 'Manager',
             '{}last_name'.format(manager_prefix): 'lname',
             '{}netid'.format(manager_prefix): 'manager',
+            '{}email'.format(manager_prefix): 'man@uw.edu',
 
         sponsor_prefix = 'sponsor-'
         manager_prefix = 'manager-'
