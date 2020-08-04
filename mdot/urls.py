@@ -13,6 +13,7 @@ urlpatterns = [
     path('developers/process/', views.process, name='process'),
     path('developers/request/', views.request, name='request'),
     path('developers/request/<int:pk>/', views.sponsor, name='sponsor'),
+    path('developers/decline/<int:pk>/', views.decline, name='decline'),
 
     # path('blog/', include('blog.urls')),
     # path('admin/', include(admin.site.urls)),
