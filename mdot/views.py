@@ -171,7 +171,7 @@ def sponsor(request, pk):
                 app=app,
                 app__app_sponsor__netid=request.user.username
             ).latest("agree_time")
-        print(agreement)
+
         if not agreement:
             # serve agreement form
             params = {
