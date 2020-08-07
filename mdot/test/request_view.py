@@ -51,7 +51,6 @@ class MdotRequestTest(TestCase):
         )
         self.app.platform.add(self.platform)
 
-    
     def test_view_correct_sponsor(self):
         """
         Test checks that the sponsor can access the sponsor
@@ -64,7 +63,6 @@ class MdotRequestTest(TestCase):
         response = self.client.get("/developers/request/{}/".format(pk))
         self.assertEqual(response.status_code, 200)
         self.client.logout()
-
 
     def test_view_incorrect_sponsor(self):
         """
@@ -79,7 +77,6 @@ class MdotRequestTest(TestCase):
         self.assertEqual(response.status_code, 403)
         self.client.logout()
 
-    
     def test_view_accept_sponsorship(self):
         """
         Tests that the sponsor agreement page successfully submits
@@ -87,7 +84,7 @@ class MdotRequestTest(TestCase):
         a Thank You page
         """
         pk = self.app.pk
-        
+
         self.client.force_login(self.app_sponsor)
 
         # checkbox values
@@ -97,38 +94,38 @@ class MdotRequestTest(TestCase):
             "understand-manager": "on",
             "agree": "on"
         }
-        response = self.client.post("/developers/request/{}/".format(pk), params)
+        response = self.client.post("/developers/request/{}/".format(pk),
+                                    params)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Thank You" in response.content)
         # check that agreement object was created
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
 
-    
     def test_view_unchecked_accept_sponsorship(self):
         """
         Tests that the sponsor agreement object is not created if post request
         is not submitted with all checkboxes.
         """
         pk = self.app.pk
-        
+
         self.client.force_login(self.app_sponsor)
 
         # checkbox values
         params = {
             "sponsor-requirements": "on"
         }
-        response = self.client.post("/developers/request/{}/".format(pk), params)
+        response = self.client.post("/developers/request/{}/".format(pk),
+                                    params)
         # make sure agreement is not made for app
         self.assertFalse(Agreement.objects.filter(app__pk=pk).exists())
 
-    
     def test_decline_sponsorship(self):
         """
         Tests that the decline page creates an agreement object
         with 'false' as the agree value
         """
         pk = self.app.pk
-        
+
         self.client.force_login(self.app_sponsor)
 
         response = self.client.get("/developers/decline/{}/".format(pk))
@@ -136,7 +133,6 @@ class MdotRequestTest(TestCase):
         # make sure agreement object is created with 'false' for agree value
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
         self.assertFalse(Agreement.objects.get(app__pk=pk).agree)
-
 
     def tearDown(self):
         pass

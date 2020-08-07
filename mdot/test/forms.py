@@ -39,7 +39,6 @@ class MdotFormTest(TestCase):
         sponsor_form = SponsorForm(data=sponsor_form_data)
         self.assertTrue(sponsor_form.is_valid())
 
-
     def test_manager_form_input_consumption(self):
         """
         Test that the manager form is valid when passed
@@ -53,7 +52,6 @@ class MdotFormTest(TestCase):
         manager_form = ManagerForm(data=manager_form_data)
         self.assertTrue(manager_form.is_valid())
 
-
     def test_app_form_input_consumption(self):
         """
         Test that the app form is valid when passed
@@ -66,7 +64,6 @@ class MdotFormTest(TestCase):
         }
         app_form = AppForm(data=app_form_data)
         self.assertTrue(app_form.is_valid())
-
 
     def test_full_valid_form_post(self):
         """

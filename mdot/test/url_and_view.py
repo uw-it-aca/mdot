@@ -104,6 +104,5 @@ class MdotTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.client.logout()
 
-
     def tearDown(self):
         pass
