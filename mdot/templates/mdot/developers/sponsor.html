@@ -69,7 +69,7 @@
                         <p>You agree to undertake the due diligence to adhere to the UW values and demonstrate compliance with all UW policies mentioned and/or may otherwise be relevant.</p>
                     </li>
                 </ul>
-                <label for="sponsor-requirements"><input id="sponsor-requirements" required type="checkbox"> I agree to the App Sponsor responsibilities</input></label>
+                <label for="sponsor-requirements"><input id="sponsor-requirements" name="sponsor-requirements" required type="checkbox"> I agree to the App Sponsor responsibilities</input></label>
             </section>
 
             <hr>
@@ -91,10 +91,10 @@
                     </li>
                     <li>
                         <strong>Support</strong>
-                        <p>UW-IT provides minimal technical support in the form of technical advice/guidance and knowledge expertise - for application distribution only. 'help@uw.edu' NO SUPPORT PROVIDED FOR APPLICATION DEVELOPMENT.</p>
+                        <p>UW-IT provides minimal technical support in the form of technical advice/guidance and knowledge expertise. No support provided for application development.</p>
                     </li>
                 </ul>
-                <label for="understand-agreements"><input id="understand-agreements" required type="checkbox"> I understand the services offered by UW-IT</label>
+                <label for="understand-agreements"><input id="understand-agreements" name="understand-agreements" required type="checkbox"> I understand the services offered by UW-IT</label>
             </section>
 
             <hr>
@@ -113,20 +113,18 @@
                         <p>The App Manger is responsible for overall publishing of the app.</p>
                     </li>
                 </ul>
-                <label for="understand-manager"><input id="understand-manager" required type="checkbox"> I understand the App Manager responsibilities</label>
+                <label for="understand-manager"><input id="understand-manager" name="understand-manager" required type="checkbox"> I understand the App Manager responsibilities</label>
             </section>
 
             <hr>
-
-            <!-- REQUIRED: ONE HAS TO BE SELECTED-->
             
             <section class="sponsor-requirements">
                 <h3>Agreement</h3>
                 <p>I certify that this form has been completed by the App Sponsor listed above and that my answers are true and complete to the best of my knowledge.</p>
-                <label for="agree"><input id="agree" required type="checkbox"> I agree to the policies and conditions listed in this form.</label>
+                <label for="agree"><input id="agree" name="agree" required type="checkbox"> I agree to the policies and conditions listed in this form.</label>
             </section>
 
-            <!-- rethink where the 'cancel' button redirects to and what it does -->
+
             <p class="btn-container">
                 <a href="/developers/decline/{{app_id}}" class="btn">Decline Sponsorship</a>
                 <input type="submit" class="btn btn-primary" name="submit" value="Agree and Accept Sponsorship">
