@@ -21,9 +21,9 @@ class MdotFormTest(TestCase):
             app_store='Google Play Store'
         )
 
-    def test_form_input_consumption(self):
+    def test_sponsor_form_input_consumption(self):
         """
-        Test that the forms are valid when passed
+        Test that the sponsor forms is valid when passed
         all required values.
         """
 
@@ -39,6 +39,12 @@ class MdotFormTest(TestCase):
         sponsor_form = SponsorForm(data=sponsor_form_data)
         self.assertTrue(sponsor_form.is_valid())
 
+
+    def test_manager_form_input_consumption(self):
+        """
+        Test that the manager form is valid when passed
+        all required values.
+        """
         manager_form_data = {
             'first_name': 'Manager',
             'last_name': 'lname',
@@ -47,6 +53,12 @@ class MdotFormTest(TestCase):
         manager_form = ManagerForm(data=manager_form_data)
         self.assertTrue(manager_form.is_valid())
 
+
+    def test_app_form_input_consumption(self):
+        """
+        Test that the app form is valid when passed
+        all required values.
+        """
         app_form_data = {
             'name': 'App',
             'primary_language': 'Test Lang',
@@ -55,42 +67,6 @@ class MdotFormTest(TestCase):
         app_form = AppForm(data=app_form_data)
         self.assertTrue(app_form.is_valid())
 
-    def test_minimal_valid_form_post(self):
-        """
-        Test that when given a minimal but valid form the view
-        sends the user to the thank you page.
-        """
-
-        sponsor_prefix = 'sponsor-'
-        manager_prefix = 'manager-'
-        app_prefix = 'app-'
-        forms = {
-            '{}first_name'.format(sponsor_prefix): 'Sponsor',
-            '{}last_name'.format(sponsor_prefix): 'lname',
-            '{}netid'.format(sponsor_prefix): 'SponTest',
-            '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
-            '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
-            '{}department'.format(sponsor_prefix): 'sponsor testcase',
-            '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
-
-            '{}first_name'.format(manager_prefix): 'Manager',
-            '{}last_name'.format(manager_prefix): 'lname',
-            '{}netid'.format(manager_prefix): 'manager',
-            '{}email'.format(manager_prefix): 'man@uw.edu',
-
-            '{}name'.format(app_prefix): 'app',
-            '{}primary_language'.format(app_prefix): 'Test Lang',
-            '{}platform'.format(app_prefix): [self.platform.pk]
-        }
-
-        # login user
-        self.client.force_login(self.user)
-        response = self.client.post('/developers/request/', forms)
-        self.assertEqual(response.status_code, 200)
-
-        # Make sure the user is sent to the thank you
-        # page after submitting valid form
-        self.assertTrue(b'Thank You' in response.content)
 
     def test_full_valid_form_post(self):
         """

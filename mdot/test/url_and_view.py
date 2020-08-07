@@ -26,8 +26,7 @@ class MdotTest(TestCase):
         self.assertEqual('home', resolver.view_name)
 
     def test_home_view(self):
-        c = Client()
-        response = c.get('/')
+        response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
     # test "/developers" url and view
@@ -103,6 +102,8 @@ class MdotTest(TestCase):
         self.client.force_login(self.user)
         response = self.client.get('/developers/request/')
         self.assertEqual(response.status_code, 200)
+        self.client.logout()
+
 
     def tearDown(self):
         pass
