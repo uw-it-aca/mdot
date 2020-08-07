@@ -1,5 +1,7 @@
 MDOT: {{ sponsor_netid }} App for Review
 
+{{ message }}
+
 Designated App Sponsor
 Name: {{ sponsor_name }} | Netid: {{ sponsor_netid }} | Email: {{ sponsor_email }}
 Department: {{ sponsor_dept }} | Unit: {{ sponsor_unit }}
@@ -9,6 +11,6 @@ Name: {{ manager_name }} | Netid: {{ manager_netid }} | Email: {{ manager_email 
 
 App Details
 App Name: {{ app_name }} | Primary Language: {{ app_lang }}
-Include in: {{ app_store }}
+Include in: {% for p in app_store %}{{ p }}{% if not forloop.last %}, {% endif %}{% endfor %}
 
-App Sponsor Agreement form: complete
+App Sponsor Agreement form: {{ status }}

@@ -17,10 +17,20 @@
 </head>
 <body style="width:100%; margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
 
-{{ sponsor_name }},<br/>
+<p>{{ message }}</p>
 
-<p>You have been indicated as the app sponsor of {{ app_name}}.</p>
-<p>Please fill out the <a href={{ agreement_link }}>app sponsor agreement form</a> to send the application to the next stage of review.</p>
+<div><strong>Designated App Sponsor</strong><br/>
+Name: {{ sponsor_name }} | Netid: {{ sponsor_netid }} | Email: {{ sponsor_email }}<br/>
+Department: {{ sponsor_dept }} | Unit: {{ sponsor_unit }}</div>
+
+<div><strong>Designated App Manager</strong><br/>
+Name: {{ manager_name }} | Netid: {{ manager_netid }} | Email: {{ manager_email }}</div>
+
+<div><strong>App Details</strong><br/>
+App Name: {{ app_name }} | Primary Language: {{ app_lang }}
+Include in: {% for p in app_store %}{{ p }}{% if not forloop.last %}, {% endif %}{% endfor %}</div>
+
+<div>App Sponsor Agreement form: {{ status }}</div>
 
 </body>
 </html>

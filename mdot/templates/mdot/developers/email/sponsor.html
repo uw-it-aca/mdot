@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>MDOT: {{ sponsor_netid }} App for Review </title>
+<title>MDOT: Sponsorship Request </title>
 
 <style type="text/css">
 	
@@ -17,18 +17,12 @@
 </head>
 <body style="width:100%; margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
 
-<div><strong>Designated App Sponsor</strong><br/>
-Name: {{ sponsor_name }} | Netid: {{ sponsor_netid }} | Email: {{ sponsor_email }}<br/>
-Department: {{ sponsor_dept }} | Unit: {{ sponsor_unit }}</div>
+{{ sponsor_name }},<br/>
 
-<div><strong>Designated App Manager</strong><br/>
-Name: {{ manager_name }} | Netid: {{ manager_netid }} | Email: {{ manager_email }}</div>
-
-<div><strong>App Details</strong><br/>
-App Name: {{ app_name }} | Primary Language: {{ app_lang }}
-Include in: {% for p in app_store %}{{ p }}{% if not forloop.last %}, {% endif %}{% endfor %}</div>
-
-<div>App Sponsor Agreement form: complete</div>
+<p>We have received a Mobile App Request for {{ app_name }} with you listed as the sponsor.</p>
+<p>App sponsors are responsible for adhering to the conditions set in the UW app developer terms and conditions. 
+  Please fill out the <a href={{agreement_link}}>app sponsor agreement form</a> to take responsibility for the app.</p>
+<p>After filling out the agreement, UW-IT will grant developer access to the designated app manager.</p>
 
 </body>
 </html>
