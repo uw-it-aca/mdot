@@ -21,7 +21,7 @@
                 <ul>
                     <li><strong>App Name: </strong>{{ app_name }}</li>
                     <li><strong>Primary Language: </strong>{{ primary_lang }}</li>
-                    <li><strong>App will be added to: </strong>
+                    <li><strong>Distribution: </strong>
                         {% for p in platforms %}
                             {{ p }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
