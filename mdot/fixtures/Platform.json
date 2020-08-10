@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "android",
-            "app_store": "Google Play Store"
+            "app_store": "UW Google Play Store"
         }
     },
     {
@@ -12,7 +12,15 @@
         "pk": 2,
         "fields": {
             "name": "ios",
-            "app_store": "Apple Store"
+            "app_store": "UW Apple Store"
+        }
+    },
+    {
+        "model": "mdot.Platform",
+        "pk": 3,
+        "fields": {
+            "name": "private",
+            "app_store": "Private Distribution"
         }
     }
 ]

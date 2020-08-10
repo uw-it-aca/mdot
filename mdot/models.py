@@ -63,7 +63,7 @@ class AppForm(forms.ModelForm):
         model = App
         fields = ["name", "primary_language", "platform"]
         labels = {
-            "platform": "Add to the University of Washington"
+            "platform": "Distribution type"
         }
 
     def __init__(self, *args, **kwargs):
