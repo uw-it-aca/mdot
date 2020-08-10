@@ -10,18 +10,16 @@
 
         <h2 class="mdot-subhead" id="page_header">Sponsor Agreement</h2>
         <section>
-            <p class="article intro">You have been designated as the sponsor for {{ app_name }}. App sponsors are responsible for adhering to the conditions set in the UW app 
+            <p class="article intro">You have been designated as the sponsor for the app {{ app_name }}. App sponsors are responsible for adhering to the conditions set in the UW app 
                 developer terms and conditions. Please fill out the app sponsor agreement form below to take responsibility for the app.
             </p>
-            <p class="article intro">Once the form is submitted, UW-IT will grant developer access to the 
-                {% for p in platforms %}{{ p }}{% if not forloop.last %} and {% endif %}{% endfor %} 
-                to app manager {{ manager }}</p>
+            <p class="article intro">Once the form is submitted, UW-IT will grant the app manager {{ manager }} developer access to the appropriate UW App Stores</p>
             <div class="details-container">
                 <h3>App Details</h3>
                 <ul>
                     <li><strong>App Name: </strong>{{ app_name }}</li>
                     <li><strong>Primary Language: </strong>{{ primary_lang }}</li>
-                    <li><strong>Distribution: </strong>
+                    <li><strong>Distribution type: </strong>
                         {% for p in platforms %}
                             {{ p }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
