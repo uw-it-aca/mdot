@@ -90,8 +90,8 @@ def request(request):
             email_service_now(app, subject, message, "incomplete")
 
             params = {
-                "service_email": getattr(settings, "MDOT_SERVICE_EMAIL"),
-                "ux_contact": getattr(settings, "MDOT_UX_CONTACT"),
+                "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
+                "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
             }
 
             return render_to_response(
@@ -146,8 +146,8 @@ def sponsor(request, pk):
         email_service_now(app, subject, message, "complete")
 
         params = {
-            'service_email': getattr(settings, "MDOT_SERVICE_EMAIL"),
-            'ux_contact': getattr(settings, "MDOT_UX_CONTACT"),
+            'service_email': getattr(settings, "MDOT_SERVICE_EMAIL", None),
+            'ux_contact': getattr(settings, "MDOT_UX_CONTACT", None),
         }
         return render_to_response(
             'mdot/developers/agree.html',
@@ -171,15 +171,15 @@ def sponsor(request, pk):
                     (app_sponsor.first_name, app_sponsor.last_name)),
                 "primary_lang": app.primary_language,
                 "platforms": list(app.platform.all()),
-                "service_email": getattr(settings, "MDOT_SERVICE_EMAIL"),
-                "ux_contact": getattr(settings, "MDOT_UX_CONTACT")
+                "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
+                "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None)
             }
             return render(request, "mdot/developers/sponsor.html", params)
         else:
             # serve thank you page -- sponsor has already agreed to this app
             params = {
-                "service_email": getattr(settings, "MDOT_SERVICE_EMAIL"),
-                "ux_contact": getattr(settings, "MDOT_UX_CONTACT"),
+                "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
+                "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
                 "app": app.name
             }
             if agreement.latest("agree_time").agree:
@@ -241,8 +241,8 @@ def decline(request, pk):
         msg.send()
 
     params = {
-        "service_email": getattr(settings, "MDOT_SERVICE_EMAIL"),
-        "ux_contact": getattr(settings, "MDOT_UX_CONTACT"),
+        "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
+        "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
         "app": app.name
     }
     return render_to_response("mdot/developers/decline.html", params)
