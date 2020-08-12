@@ -13,9 +13,6 @@ urlpatterns = [
     path('developers/process/', views.process, name='process'),
     path('developers/review/', views.review, name='review'),
 
-    # SAML login url
-    path('saml/', include('uw_saml.urls')),
-
     # path('blog/', include('blog.urls')),
     # path('admin/', include(admin.site.urls)),
 
