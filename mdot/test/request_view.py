@@ -134,5 +134,33 @@ class MdotRequestTest(TestCase):
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
         self.assertFalse(Agreement.objects.get(app__pk=pk).agree)
 
+    def test_incorrect_sponsor_decline(self):
+        """
+        Test checks that user who is not the sponsor cannot access
+        the decline page
+        """
+        pk = self.app.pk
+
+        # login javerage and try to navigate to correct url
+        self.client.force_login(self.requestor)
+        response = self.client.get("/developers/decline/{}/".format(pk))
+        self.assertEqual(response.status_code, 403)
+        self.client.logout()
+
+    def test_app_does_not_exist(self):
+        """
+        Test check that 404 status code is returned when trying to access
+        a view for an app that does not exist
+        """
+        pk = self.app.pk
+        nonexistant_pk = pk + 1
+
+        self.client.force_login(self.app_sponsor)
+        response = self.client.get("/developers/accept/{}/".format(nonexistant_pk))
+        self.assertEqual(response.status_code, 404)
+
+        response = self.client.get("/developers/decline/{}/".format(nonexistant_pk))
+        self.assertEqual(response.status_code, 404)
+
     def tearDown(self):
         pass
