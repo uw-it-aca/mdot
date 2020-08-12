@@ -101,6 +101,11 @@ class MdotRequestTest(TestCase):
         # check that agreement object was created
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
 
+        # accessing the original request page should redirect to Thank you page
+        response = self.client.get("/developers/request/{}/".format(pk))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b"Thank You" in response.content)
+
     def test_view_unchecked_accept_sponsorship(self):
         """
         Tests that the sponsor agreement object is not created if post request
@@ -133,6 +138,11 @@ class MdotRequestTest(TestCase):
         # make sure agreement object is created with 'false' for agree value
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
         self.assertFalse(Agreement.objects.get(app__pk=pk).agree)
+
+        # accessing the original request page should redirect to Thank you page
+        response = self.client.get("/developers/request/{}/".format(pk))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(b"Thank You" in response.content)
 
     def test_incorrect_sponsor_decline(self):
         """
