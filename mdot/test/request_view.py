@@ -157,7 +157,7 @@ class MdotRequestTest(TestCase):
 
         self.client.force_login(self.app_sponsor)
         response = self.client.get(
-            "/developers/accept/{}/".format(nonexistant_pk))
+            "/developers/request/{}/".format(nonexistant_pk))
         self.assertEqual(response.status_code, 404)
 
         response = self.client.get(
