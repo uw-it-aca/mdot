@@ -8,7 +8,13 @@ This README documents whatever steps are necessary to get your application up an
 **Steps (make sure Docker & Docker Compose is installed)**
 
     $ git clone https://github.com/uw-it-aca/mdot.git
-    $ cd mdot
+
+After cloning the project, you need to create a `local.py` file within the directory `mdot/sampleproj/settings`. There already is an example of what the `local.py` file should be. To get started, simply copy the `example-local.py` file and name it `local.py`
+
+    $ cp example-local.py local.py
+
+Return to the parent (`mdot`) directory and:
+
     $ docker-compose up
 
 ## Installing the application ##
@@ -105,6 +111,7 @@ This README documents whatever steps are necessary to get your application up an
     HTML_MINIFY = True
 
 **Create your database**
+
     $ (yourenv) python manage.py syncdb
 
 **Run your server:**
