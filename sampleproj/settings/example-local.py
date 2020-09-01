@@ -24,6 +24,15 @@ INSTALLED_APPS += (
     # 'django.contrib.messages',
 )
 
+# MOCK SAML attributes
+MOCK_SAML_ATTRIBUTES = {
+    'uwnetid': ['javerage'],
+    'affiliations': ['student', 'member'],
+    'eppn': ['javerage@washington.edu'],
+    'scopedAffiliations': ['student@washington.edu', 'member@washington.edu'],
+    'isMemberOf': ['u_test_group', 'u_test_another_group'],
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -64,7 +73,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # RESTCLIENTS_MDOT_DAO_CLASS = 'Live'
 # RESTCLIENTS_MDOT_HOST = 'http://localhost:8000/'
 
-#Emails
-MDOT_HELP_EMAIL = 'help@example.edu' # String for help desk email address
-MDOT_UX_CONTACT = 'https://uw.service-now.com/uwc.do?sysparm_direct=true#/catalog_order/3494e9951385a3c0c20bb9004244b073' # String for UX team contact url
-MDOT_SERVICE_EMAIL = 'serviceteam@example.edu' # String to email app publishing requests
+# Emails
+MDOT_HELP_EMAIL = 'help@example.edu'  # String for help desk email address
+MDOT_UX_CONTACT = 'https://uw.service-now.com/uwc.do?sysparm_direct=true#/catalog_order/3494e9951385a3c0c20bb9004244b073'  # String for UX team contact url
+MDOT_SERVICE_EMAIL = 'serviceteam@example.edu'  # String to email app publishing requests
