@@ -13,6 +13,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
+from .base_urls import *
 from django.urls import include, path
 from django.contrib import admin
 from django.conf import settings
@@ -21,8 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     # path('admin/', include(admin.site.urls)),
     # path('api/v1/', include('mdot_rest.urls')),
-    # SAML login url
-    path('saml/', include('uw_saml.urls')),
     path('', include('mdot.urls')),
 ]
 
