@@ -1,12 +1,19 @@
 #generic python3.6 image
-FROM python:3.6
-ENV PYTHONUNBUFFERED 1
+# maybe use version 1.1.0
+FROM acait/django-container:1.0.38 as app-container
 
-# copy contents of repo into an 'app' directory on container
-ADD . /app/
-WORKDIR /app
-
+USER root
 # install system and python dependency packages (via setup.py) on container
 RUN apt-get update -y && apt-get install -y libxmlsec1 libxmlsec1-dev
-RUN pip install -r requirements.txt
-COPY sampleproj/manage.py /app/manage.py
+USER acait
+
+ADD --chown=acait:acait setup.py /app/
+ADD --chown=acait:acait requirements.txt /app/
+ADD --chown=acait:acait README.md /app/
+
+RUN . /app/bin/activate && pip install -r requirements.txt
+
+ADD --chown=acait:acait . /app/
+ADD --chown=acait:acait docker project
+
+
