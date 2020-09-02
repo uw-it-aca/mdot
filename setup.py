@@ -16,7 +16,6 @@ setup(
         'django>2.0,<2.2',
         'django-compressor',
         'UW-RestClients-Core<1.0,>=0.9',
-        'django-htmlmin',
         'lesscpy',
         'django-pyscss',
         'pyyaml',

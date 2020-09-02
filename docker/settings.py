@@ -17,10 +17,7 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE += (
-    'django.middleware.security.SecurityMiddleware',
-    'django_user_agents.middleware.UserAgentMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',  
+    'django_user_agents.middleware.UserAgentMiddleware', 
 )
 
 # settings for local development
