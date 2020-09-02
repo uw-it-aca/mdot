@@ -25,6 +25,7 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     MEDIA_ROOT = '/app/data/'
     MEDIA_URL = '/media/'
+    SECRET_KEY = 'secret-xxxxxxxxxxxxxxxx'
 
 STATICFILES_FINDERS += (
     'compressor.finders.CompressorFinder',
