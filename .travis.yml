@@ -16,7 +16,7 @@ before_script:
   - pip install coverage
   - pip install coveralls
 script:
-  - docker run -u root -it -v /tmp/coverage -e DJANGO_APP="${DJANGO_APP}" -e "ENV=locadev" "${IMAGE_TAG}" bash -c ". ./travis/test.sh"
+  - docker run -u root -it -v /tmp/coverage -e DJANGO_APP="${DJANGO_APP}" -e "ENV=localdev" "${IMAGE_TAG}" bash -c ". ./travis/test.sh"
   # - recess mdot/static/mdot/css/*.less --noIds false
   # This actually fails the test if there are recess errors :(
   # - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
