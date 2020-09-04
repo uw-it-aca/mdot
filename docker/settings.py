@@ -2,7 +2,7 @@ from .base_settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-if os.getenv('ENV', "NONE") == 'localdev':
+if os.getenv('ENV', "localdev") == 'localdev':
     DEBUG = True
 else:
     DEBUG = False
@@ -13,7 +13,6 @@ INSTALLED_APPS += [
     'django_user_agents',
     'mdot',
     'compressor',
-    'uw_saml',
 ]
 
 MIDDLEWARE += (
