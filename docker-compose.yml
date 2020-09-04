@@ -13,5 +13,6 @@ services:
       - "${PORT:-8000}:8000"
     environment:
       ENV: localdev
+      AUTH: ${AUTH:-SAML_MOCK}
       RESTCLIENTS_MDOT_DAO_CLASS: ${RESTCLIENTS_MDOT_DAO_CLASS:-Mock}
       RESTCLIENTS_MDOT_HOST: ${RESTCLIENTS_MDOT_HOST:-None}
