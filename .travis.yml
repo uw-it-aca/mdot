@@ -14,7 +14,7 @@ env:
     - IMAGE_TAG="${RELEASE_NAME}:${COMMIT_HASH}"
     # - DEPLOY_SCRIPT_BASE=https://raw.githubusercontent.com/uw-it-aca/gcp-app-deploy/master
 install:
-  - docker build -target app-container "${IMAGE_TAG}" .
+  - docker build --target app-container "${IMAGE_TAG}" .
   - docker build -t "${IMAGE_TAG}-test" .
 before_script:
   - pip install coverage
