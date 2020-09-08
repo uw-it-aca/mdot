@@ -48,7 +48,7 @@ after_success:
   #       curl -Ls ${DEPLOY_SCRIPT_BASE}/travis-ci/deploy.sh | bash;
   #     fi
   #   fi
-  cache:
-    directories:
-    - "$HOME/helm"
-    - "$HOME/kubeval"
+  # cache:
+  #   directories:
+  #   - "$HOME/helm"
+  #   - "$HOME/kubeval"
