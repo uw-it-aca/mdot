@@ -1,5 +1,3 @@
-#generic python3.6 image
-# maybe use version 1.1.0
 FROM acait/django-container:1.0.38 as app-container
 
 USER acait
