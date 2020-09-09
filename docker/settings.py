@@ -2,7 +2,7 @@ from .base_settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-if os.getenv('ENV', "localdev") == 'localdev':
+if os.getenv('ENV', 'localdev') == 'localdev':
     DEBUG = True
 else:
     DEBUG = False
@@ -27,6 +27,8 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     MEDIA_ROOT = '/app/data/'
     MEDIA_URL = '/media/'
+    RESTCLIENTS_MDOT_DAO_CLASS = os.getenv('RESTCLIENTS_MDOT_DAO_CLASS', 'Mock')
+    RESTCLIENTS_MDOT_HOST = os.getenv('RESTCLIENTS_MDOT_HOST', None)
 
 STATICFILES_FINDERS += (
     'compressor.finders.CompressorFinder',
@@ -40,11 +42,11 @@ TEMPLATES[0]['OPTIONS']['context_processors'].extend([
 ])
 
 # django_compressor
-COMPRESS_ROOT = "compress_files"
+COMPRESS_ROOT = 'compress_files'
 
 COMPRESS_PRECOMPILERS = (('text/less', 'lesscpy {infile} {outfile}'),)
 
 #Emails
-MDOT_HELP_EMAIL = os.getenv('MDOT_HELP_EMAIL', "help@example.edu") # String for help desk email address
+MDOT_HELP_EMAIL = os.getenv('MDOT_HELP_EMAIL', 'help@example.edu') # String for help desk email address
 MDOT_UX_CONTACT = os.getenv('MDOT_UX_CONTACT', '') # String for UX team contact url
 MDOT_SERVICE_EMAIL = os.getenv('MDOT_SERVICE_EMAIL', 'serviceteam@example.edu') # String to email app publishing requests
