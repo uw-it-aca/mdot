@@ -38,6 +38,20 @@ Otherwise, just run:
 
     $ docker-compose up
 
+
+
+### Running the app against a live rest API ###
+
+In your `.env` file, uncomment these two lines or add them if they are not there:
+
+    $ RESTCLIENTS_MDOT_DAO_CLASS=Live
+    $ RESTCLIENTS_MDOT_HOST=http://localhost:8000/
+
+This will run mdot against a live API. Make sure mdot-rest is running on a different port and set `RESTCLIENTS_MDOT_HOST` accordingly. If you would like to go back to Mock mode, set the following:
+
+    $ RESTCLIENTS_MDOT_DAO_CLASS=Mock
+
+
 ### Running unit tests inside the Docker container ###
 First, make sure that your docker container is up and running. Then, in a separate terminal, run the following command to get the __CONTAINER  ID__ of the current build:
 
