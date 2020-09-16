@@ -53,15 +53,6 @@ This will run mdot against a live API. Make sure mdot-rest is running on a diffe
 
 
 ### Running unit tests inside the Docker container ###
-First, make sure that your docker container is up and running. Then, in a separate terminal, run the following command to get the __CONTAINER  ID__ of the current build:
+To run the unit tests, simply run the following command from the repository root:
 
-    $ docker ps
-
-Then, to start an interactive terminal, run the following command, replacing {CONTIANER_ID} with the container ID of the running docker container:
-
-    $ docker exec -it {CONTAINER_ID} /bin/bash
-
-Now you are in the container! To run the unit tests, activate the virtual env and run the test command:
-
-    $ . bin/activate
-    $ python manage.py test
+    $ docker-compose run --rm app bash -c ". bin/activate && python manage.py test"
