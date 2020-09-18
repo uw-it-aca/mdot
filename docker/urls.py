@@ -21,8 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     # path('admin/', include(admin.site.urls)),
     # path('api/v1/', include('mdot_rest.urls')),
-    # SAML login url
-    path('saml/', include('uw_saml.urls')),
+    path('', include('project.base_urls')),
     path('', include('mdot.urls')),
 ]
 

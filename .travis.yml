@@ -1,25 +1,54 @@
-sudo: true
+sudo: required
 language: python
 python:
   - "3.6"
+services:
+  - docker
+os:
+  - linux
+env:
+  global:
+    - RELEASE_NAME="mdot"
+    - DJANGO_APP="mdot"
+    - COMMIT_HASH="$(git rev-parse --short=7 HEAD)"
+    - IMAGE_TAG="${RELEASE_NAME}:${COMMIT_HASH}"
+    # - DEPLOY_SCRIPT_BASE=https://raw.githubusercontent.com/uw-it-aca/gcp-app-deploy/master
 install:
-  # - npm install recess
-  - sudo apt-get update
-  - sudo apt-get install libxmlsec1 libxmlsec1-dev
-  - export BOTO_CONFIG=/dev/null  #workaround for ImportError, probably not needed after upgrading to restclients core
-  - pip install .
-  - pip install pycodestyle
+  - docker build --target app-container -t "${IMAGE_TAG}" .
+  - docker build -t "${IMAGE_TAG}-test" .
+before_script:
   - pip install coverage
   - pip install coveralls
-
-before_script:
-  - cp sampleproj/manage.py manage.py
-  - python manage.py migrate --noinput --settings=sampleproj.settings.travis
 script:
-  - pycodestyle mdot/ --exclude=migrations
-  - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot --settings=sampleproj.settings.travis
+  - docker run -u root -it -v /tmp:/coverage -e DJANGO_APP="${DJANGO_APP}" -e "ENV=localdev" -e "AUTH=SAML_MOCK" "${IMAGE_TAG}-test" bash -c ". ./travis/test.sh"
   # - recess mdot/static/mdot/css/*.less --noIds false
   # This actually fails the test if there are recess errors :(
   # - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
-after_script:
+after_success:
+  - cp /tmp/.coverage.* .
+  - coverage combine
   - coveralls
+  # - |
+  #   if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  #     case "$TRAVIS_BRANCH" in
+  #       "master")
+  #         export APP_INSTANCE="prod";
+  #         ;;
+  #       "qa")
+  #         export APP_INSTANCE="test";
+  #         ;;
+  #       "develop")
+  #         export APP_INSTANCE="dev";
+  #         ;;
+  #       *)
+  #         unset APP_INSTANCE
+  #         ;;
+  #     esac
+  #     if [[ "$APP_INSTANCE" ]]; then
+  #       curl -Ls ${DEPLOY_SCRIPT_BASE}/travis-ci/deploy.sh | bash;
+  #     fi
+  #   fi
+  # cache:
+  #   directories:
+  #   - "$HOME/helm"
+  #   - "$HOME/kubeval"
