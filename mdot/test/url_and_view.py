@@ -1,5 +1,6 @@
 from django.test import Client, TestCase, override_settings
 from django.urls import resolve
+from django.contrib.auth.models import User
 
 DAO = 'Mock'
 
@@ -12,6 +13,11 @@ class MdotTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(
+            username="javerage",
+            email="javerage@uw.edu",
+            password="p@ssTest1"
+        )
         pass
 
     # test "/" url and view
@@ -20,8 +26,7 @@ class MdotTest(TestCase):
         self.assertEqual('home', resolver.view_name)
 
     def test_home_view(self):
-        c = Client()
-        response = c.get('/')
+        response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
     # test "/developers" url and view
@@ -65,13 +70,13 @@ class MdotTest(TestCase):
         resolver = resolve('/developers/process/')
         self.assertEqual('process', resolver.view_name)
 
-    def test_url_review(self):
+    def test_url_request(self):
         """
-        Test that request to review url sends the user to
+        Test that request to request url sends the user to
         guidelines view.
         """
-        resolver = resolve('/developers/review/')
-        self.assertEqual('review', resolver.view_name)
+        resolver = resolve('/developers/request/')
+        self.assertEqual('request', resolver.view_name)
 
     def test_view_process(self):
         """
@@ -81,13 +86,23 @@ class MdotTest(TestCase):
         response = self.client.get('/developers/process/')
         self.assertEqual(response.status_code, 200)
 
-    def test_view_review(self):
+    def test_view_request_not_logged_in(self):
         """
-        Test that request to review url returns a status code
-        of 200.
+        Test that request to request url returns a status code
+        of 302 when user is not logged in.
         """
-        response = self.client.get('/developers/review/')
+        response = self.client.get('/developers/request/')
+        self.assertEqual(response.status_code, 302)
+
+    def test_view_request_logged_in(self):
+        """
+        Test that request to request url returns a status code
+        of 200 when user is logged in.
+        """
+        self.client.force_login(self.user)
+        response = self.client.get('/developers/request/')
         self.assertEqual(response.status_code, 200)
+        self.client.logout()
 
     def tearDown(self):
         pass
