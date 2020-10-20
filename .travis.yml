@@ -34,7 +34,7 @@ after_success:
         "master")
           export APP_INSTANCE="prod";
           ;;
-        "qa")
+        "feature/mci-dev")
           export APP_INSTANCE="test";
           ;;
         "develop")
