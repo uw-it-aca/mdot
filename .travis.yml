@@ -12,7 +12,7 @@ env:
     - DJANGO_APP="mdot"
     - COMMIT_HASH="$(git rev-parse --short=7 HEAD)"
     - IMAGE_TAG="${RELEASE_NAME}:${COMMIT_HASH}"
-    # - DEPLOY_SCRIPT_BASE=https://raw.githubusercontent.com/uw-it-aca/gcp-app-deploy/master
+    - DEPLOY_SCRIPT_BASE=https://raw.githubusercontent.com/uw-it-aca/gcp-app-deploy/master
 install:
   - docker build --target app-container -t "${IMAGE_TAG}" .
   - docker build -t "${IMAGE_TAG}-test" .
@@ -28,27 +28,27 @@ after_success:
   - cp /tmp/.coverage.* .
   - coverage combine
   - coveralls
-  # - |
-  #   if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  #     case "$TRAVIS_BRANCH" in
-  #       "master")
-  #         export APP_INSTANCE="prod";
-  #         ;;
-  #       "qa")
-  #         export APP_INSTANCE="test";
-  #         ;;
-  #       "develop")
-  #         export APP_INSTANCE="dev";
-  #         ;;
-  #       *)
-  #         unset APP_INSTANCE
-  #         ;;
-  #     esac
-  #     if [[ "$APP_INSTANCE" ]]; then
-  #       curl -Ls ${DEPLOY_SCRIPT_BASE}/travis-ci/deploy.sh | bash;
-  #     fi
-  #   fi
-  # cache:
-  #   directories:
-  #   - "$HOME/helm"
-  #   - "$HOME/kubeval"
+  - |
+    if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      case "$TRAVIS_BRANCH" in
+        "master")
+          export APP_INSTANCE="prod";
+          ;;
+        "qa")
+          export APP_INSTANCE="test";
+          ;;
+        "develop")
+          export APP_INSTANCE="dev";
+          ;;
+        *)
+          unset APP_INSTANCE
+          ;;
+      esac
+      if [[ "$APP_INSTANCE" ]]; then
+        curl -Ls ${DEPLOY_SCRIPT_BASE}/travis-ci/deploy.sh | bash;
+      fi
+    fi
+  cache:
+    directories:
+    - "$HOME/helm"
+    - "$HOME/kubeval"
