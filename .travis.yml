@@ -1,25 +1,55 @@
-sudo: true
+sudo: required
 language: python
 python:
-  - "3.6"
+- '3.6'
+services:
+- docker
+os:
+- linux
+env:
+  global:
+  - RELEASE_NAME="mdot"
+  - DJANGO_APP="mdot"
+  - COMMIT_HASH="$(git rev-parse --short=7 HEAD)"
+  - IMAGE_TAG="${RELEASE_NAME}:${COMMIT_HASH}"
+  - DEPLOY_SCRIPT_BASE=https://raw.githubusercontent.com/uw-it-aca/gcp-app-deploy/master
+  - secure: ZWhrqZh5cgBAADbiw2XHtfUcMTrkrs4emTxOLYshVAADNubg538UwwTdSkN8hx9EeDLtjyix9wsG6E7g3RAh32IMGZxpAVLD66hiPlYXK9+c5Svp/Tax9hE617d95fJ2Lxyw1I3PnHRZP9/qXQPo/0qU+8ZY5nHsIZQ3XsGUq9lLbcSLnRZ5ilveQLjPI6zCAnPMPQ6DzExZjrOSYwXF0f6izapUbv581qUaqnx6dro8Tg75ucK8QNJ16ZoRqkLw+w2ldAwBM6jd991qM4TSJneemMCdsoPGmftkxyNpCU/Yy0AC394fWwFMFjvDYDMHjCVrocmixukcE5owwi08SZ7c49m5YLLnyz6KMz9yjwFCiQZLeavNWMbYIXDSNHBOfInBCg01RXKXqVDTA6h8KfNl3V5zpNeyC5D+lnH7qSpgsR1wSZwBMJO+o8C+9S3Sz7HInHnAU8BJ1O16e9guyC9ZEEPs8RMuLXkD6+DVu+8gzfwWipYZ1izOwoi48jvz1rtuxALgHthmiz7lUwHjiEeIT8fZuimTjO2ur6jncoI+uOmAkqh8ylTODTJaT2yNTgts4PW7mtya4MBsC3oFOo5umK94pVAijkhBnQXp/Bz8mheUf8nPMWplbGdZwT5ppa1bTr68i9sDgeq+lLK5Ujvn7MKZMU3qEUi+xJG1Qe4=
+  - secure: s7mqDLnGlZCTshJDvDqHOXDHOd5HEEtvfx406UY0gRwHciBvezoEnTPFNzgeSmxALKewiTyNVim6w87qsmWb7Mfjz6llfoI8R9KW2fs/YRHle0AtcNRzY/q+ZSBU4zvPbnivotPhcjUYWm+7MEwOTR+KU/E9bpvltlgoZ3HV5CbuV6PkXOEYN8ZvNeWVEq5Cw1Rzb/L8rSxXMSuTXUH+vCv2XQFgsIMW7G7rQnCkiMY5pIr4RsCm49pQwKcb5cXzfqpHMs2hcIfWGzyTA3Yo7ZwUTdM9ZT7rOyWeBd4mGb5ex2LClSvupg37Fv4bJE2U0CGuIn5va/0HPGNVEHFNKvF3WWyp3jM+im3xbbKmblaZ7gKWjzGQGGgDGzJPaG3z8ioA/TuWZUO1EijmDhkax9VD2vpY7HrkRNEGB5qcm5ci8Yqz9fqPmQjQPVipCze2qNaw1A+LKcH5trJBxH2NTsR8rcOqdQzJDPRH1miC8yEEYi4YcynwCvCeO8PhTBhnVUhQXnHozHp6TDnkldT3605TEp40LPV3tgb2VOo1Js6TIEn+xCFoVXayQL5vTmkDWoVAuOLUn65GVe0GQLuoG7a/31bWnqr1Lmu6jF3gsJsxFcEigMXaQ4fQEATW+HOr6UnzdltGIjVHKFWXdIhgxu+G8Xtr/SDBDdL5om6zvzI=
+  - secure: 3eoIQ8jSQ8iE1+sliSm6Imqd/oSNEzF+ZSbyQFkDtcJRQbQrRl3UKytYt3UkW2RW0LN/pD2YV9IjwJYK9p/J3wg/6klZ1z7CCCXjX6mJZD0H8yskTeWQHLq/IC7x7lQeGaH9BUa+jMvdyNp9mP+kW9NlUMcTbZhfK59qgKOlRcImveHKM0g+FFtf7fduwBfzdOcTYY+BSQV3NhcwbLPY8AfQgkj/uxSNE9tI1sVV5cejDNBbqzzpiBIzOOeFp3Yq/REGyK+wCfQ/3/snTHZ0eoeVCKunCN+x56te42vbnjOuAnY0RK4OKaSnoo3cqHegslocCSZonK/oZF45mGTTTndu3d74sMKXrdzYgDXKvqcD6AW3dZPaiFOz1FmNGwODJ2JU2utXymi0EM7LmuqgnhUA3TdY5Eq8/E6rxidcyQJdeTjTRTWhK4bXC5BQokQptPHm0TOADNJO0MUFfO2vXTzfl2vU63JcTIX5F2EHhHz1PLcT4pJlbLv9HvrWCffHmDluahE6Pg9LEL/N7zu/bByaIQPGo7tEbo2tTZ3JX2ST3zOo5OQSTcmXaWOf8g2zk5sG6XzZ3p54n5mttbRLRfTVcQlwtKZum10xxU/FuS96uId329BiVzSyFMyWxmxyXiUK33Z9lBUUQg2eho45xvfuPmiz6PyEXfoFoGJ0E7Y=
 install:
-  # - npm install recess
-  - sudo apt-get update
-  - sudo apt-get install libxmlsec1 libxmlsec1-dev
-  - export BOTO_CONFIG=/dev/null  #workaround for ImportError, probably not needed after upgrading to restclients core
-  - pip install .
-  - pip install pycodestyle
-  - pip install coverage
-  - pip install coveralls
-
+- docker build --target app-container -t "${IMAGE_TAG}" .
+- docker build -t "${IMAGE_TAG}-test" .
 before_script:
-  - cp sampleproj/manage.py manage.py
-  - python manage.py migrate --noinput --settings=sampleproj.settings.travis
+- pip install coverage
+- pip install coveralls
 script:
-  - pycodestyle mdot/ --exclude=migrations
-  - coverage run --source=mdot/ --omit=mdot/migrations/* manage.py test mdot --settings=sampleproj.settings.travis
-  # - recess mdot/static/mdot/css/*.less --noIds false
-  # This actually fails the test if there are recess errors :(
-  # - if recess mdot/static/mdot/css/*.less --noIds false | grep Busted | grep --quiet Busted ; then `exit 1`; fi
-after_script:
-  - coveralls
+- docker run -u root -it -v /tmp:/coverage -e DJANGO_APP="${DJANGO_APP}" -e "ENV=localdev"
+  -e "AUTH=SAML_MOCK" "${IMAGE_TAG}-test" bash -c ". ./travis/test.sh"
+after_success:
+- cp /tmp/.coverage.* .
+- coverage combine
+- coveralls
+- |
+  if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    case "$TRAVIS_BRANCH" in
+      "master")
+        export APP_INSTANCE="prod";
+        ;;
+      "qa")
+        export APP_INSTANCE="test";
+        ;;
+      "develop")
+        export APP_INSTANCE="dev";
+        ;;
+      *)
+        unset APP_INSTANCE
+        ;;
+    esac
+    if [[ "$APP_INSTANCE" ]]; then
+      curl -Ls ${DEPLOY_SCRIPT_BASE}/travis-ci/deploy.sh | bash;
+    fi
+  fi
+cache:
+  directories:
+  - "$HOME/helm"
+  - "$HOME/kubeval"

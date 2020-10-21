@@ -1,0 +1,18 @@
+{% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+
+{% block title %}Building Apps Home{% endblock %}
+
+{% block content %}
+
+<div class="mdot-developers">
+
+    <div class="container" >
+
+        <h2 class="mdot-subhead" id="page_header">Review App Request</h2>
+        
+        <h3>Thank You</h3>
+        <p>You have declined the role of app sponsor for {{ app }}.</p>
+        <p>The app will not be included in the UW Development App Store under your sponsorship.</p>
+    </div>
+</div>
+{% endblock %}

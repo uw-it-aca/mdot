@@ -1,57 +1,69 @@
 from django.test import Client, TestCase
-from mdot.forms import ReviewForm
+from django.contrib.auth.models import User
+from mdot.models import SponsorForm, ManagerForm, AppForm, Platform, App
 
 
 class MdotFormTest(TestCase):
     """
     Tests that cover the fuctionality of the
-    Review Form.
+    Request Form.
     """
 
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_user(
+            username="javerage",
+            email="javerage@uw.edu",
+            password="p@ssTest1"
+        )
+        self.platform = Platform.objects.create(
+            name='Android',
+            app_store='Google Play Store'
+        )
 
-    def test_form_input_consumption(self):
+    def test_sponsor_form_input_consumption(self):
         """
-        Test that the form is valid when passed
+        Test that the sponsor forms is valid when passed
         all required values.
         """
-        form_data = {
-            'campus_audience': 'Student',
-            'campus_need': 'Test',
-            'sponsor_name': 'Test Case',
-            'sponsor_netid': 'testcase',
-            'sponsor_email': 'testcase@uw.edu',
-            'dev_name': 'Test Case',
-            'dev_email': 'testcase@uw.edu',
-            'support_name': 'Test Case',
-            'support_email': 'testcase@uw.edu',
-            'app_code': '<?php ?>'}
-        form = ReviewForm(data=form_data)
-        self.assertTrue(form.is_valid())
 
-    def test_minimal_valid_form_post(self):
+        sponsor_form_data = {
+            'first_name': 'Sponsor',
+            'last_name': 'lname',
+            'netid': 'SponTest',
+            'email': 'spon@uw.edu',
+            'title': 'Sponsor Test Case',
+            'email': 'spontestcase@uw.edu',
+            'department': 'sponsor testcase',
+            'unit': 'Sponsor Test Case'}
+        sponsor_form = SponsorForm(data=sponsor_form_data)
+        self.assertTrue(sponsor_form.is_valid())
+
+    def test_manager_form_input_consumption(self):
         """
-        Test that when given a minimal but valid form the view
-        sends the user to the thank you page.
+        Test that the manager form is valid when passed
+        all required values.
         """
-        form_data = {
-            'campus_audience': 'Student',
-            'campus_need': 'Test',
-            'sponsor_name': 'Test Case',
-            'sponsor_netid': 'testcase',
-            'sponsor_email': 'testcase@uw.edu',
-            'dev_name': 'Test Case',
-            'dev_email': 'testcase@uw.edu',
-            'support_name': 'Test Case',
-            'support_email': 'testcase@uw.edu',
-            'app_code': '<?php ?>'}
-        form = ReviewForm(data=form_data)
-        response = self.client.post('/developers/review/', form_data)
-        self.assertEqual(response.status_code, 200)
-        # Make sure the user is sent to the thank you
-        # page after submitting valid form
-        self.assertTrue(b'Thank you' in response.content)
+        manager_form_data = {
+            'first_name': 'Manager',
+            'last_name': 'lname',
+            'netid': 'ManTest',
+            'email': 'manager@uw.edu'}
+        manager_form = ManagerForm(data=manager_form_data)
+        self.assertTrue(manager_form.is_valid())
+
+    def test_app_form_input_consumption(self):
+        """
+        Test that the app form is valid when passed
+        all required values.
+        """
+        app_form_data = {
+            'name': 'App',
+            'primary_language': 'Test Lang',
+            'platform': [self.platform.pk]
+        }
+        app_form = AppForm(data=app_form_data)
+        self.assertTrue(app_form.is_valid())
 
     def test_full_valid_form_post(self):
         """
@@ -59,68 +71,34 @@ class MdotFormTest(TestCase):
         sends the user to the thank you page.
         """
 
-        form_data = {
-            'campus_audience': 'Student',
-            'campus_need': 'Test',
-            'sponsor_name': 'Test Case',
-            'sponsor_netid': 'testcase',
-            'sponsor_email': 'testcase@uw.edu',
-            'dev_name': 'Test Case',
-            'dev_email': 'testcase@uw.edu',
-            'support_name': 'Test Case',
-            'support_email': 'testcase@uw.edu',
-            'support_contact': 'test',
-            'ats_review': True,
-            'ux_review': True,
-            'brand_review': True,
-            'app_documentation': 'http://spacescout.uw.edu',
-            'app_code': '<?php ?>',
-            'anything_else': 'This is a test.'}
-        form = ReviewForm(data=form_data)
-        response = self.client.post('/developers/review/', form_data)
+        sponsor_prefix = 'sponsor-'
+        manager_prefix = 'manager-'
+        app_prefix = 'app-'
+        forms = {
+            '{}first_name'.format(sponsor_prefix): 'Sponsor',
+            '{}last_name'.format(sponsor_prefix): 'lname',
+            '{}netid'.format(sponsor_prefix): 'SponTest',
+            '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
+            '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
+            '{}department'.format(sponsor_prefix): 'sponsor testcase',
+            '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
+
+            '{}first_name'.format(manager_prefix): 'Manager',
+            '{}last_name'.format(manager_prefix): 'lname',
+            '{}netid'.format(manager_prefix): 'manager',
+            '{}email'.format(manager_prefix): 'man@uw.edu',
+
+            '{}name'.format(app_prefix): 'app',
+            '{}platform'.format(app_prefix): [self.platform.pk],
+            '{}primary_language'.format(app_prefix): 'Test Lang'
+        }
+        # login user
+        self.client.force_login(self.user)
+        response = self.client.post('/developers/request/', forms)
         self.assertEqual(response.status_code, 200)
         # Make sure the user is sent to the thank you
         # page after submitting valid form
-        self.assertTrue(b'Thank you' in response.content)
-
-    def test_bad_header(self):
-        """
-        Test that when given incorrect data the request contains
-        'Invalid header found.'.
-
-        The new line character in the sponsor_name is
-        what causes the error.
-        """
-
-        form_data = {
-            'campus_audience': 'Student',
-            'campus_need': 'Test',
-            'sponsor_name': 'Test\n Case',
-            'sponsor_netid': 'testcase',
-            'sponsor_email': 'testcase@uw.edu',
-            'dev_name': 'Test Case',
-            'dev_email': 'testcase@uw.edu',
-            'support_name': 'Test Case',
-            'support_email': 'testcase@uw.edu',
-            'support_contact': 'test',
-            'ats_review': True,
-            'ux_review': True,
-            'brand_review': True,
-            'app_documentation': 'http://spacescout.uw.edu',
-            'app_code': '<?php ?>',
-            'anything_else': 'This is a test.'}
-        response = self.client.post('/developers/review/', form_data)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Invalid header found.')
-
-    def test_review_get(self):
-        """
-        Test that a get request to the url will send the user
-        to the form.
-        """
-        response = self.client.get('/developers/review/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(b'Submit your App for Review' in response.content)
+        self.assertTrue(b'Thank You' in response.content)
 
     def tearDown(self):
         pass
