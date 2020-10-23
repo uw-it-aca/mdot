@@ -25,7 +25,7 @@ externalService:
   enabled: true
   name: mdot-db-service
   type: ClusterIP
-  serviceAddress: 104.198.109.182
+  serviceAddress: 10.45.16.3
   servicePort: 3306
 database:
   engine: mysql
