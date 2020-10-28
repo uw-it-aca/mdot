@@ -23,14 +23,14 @@ readiness:
   enabled: true
 externalService:
   enabled: true
-  name: mdot-db-service
+  name: mdot-api-db-service
   type: ClusterIP
   serviceAddress: 172.18.0.37
   servicePort: 3306
 database:
   engine: mysql
   name: mdot_test
-  hostname: mdot-db-service
+  hostname: mdot-api-db-service
   secretName: test.mdot.uw.edu-sql-secrets
 repo: mdot
 instance: test
