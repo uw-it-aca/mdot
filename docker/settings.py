@@ -27,8 +27,9 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     MEDIA_ROOT = '/app/data/'
     MEDIA_URL = '/media/'
-    RESTCLIENTS_MDOT_DAO_CLASS = os.getenv('RESTCLIENTS_MDOT_DAO_CLASS', 'Mock')
-    RESTCLIENTS_MDOT_HOST = os.getenv('RESTCLIENTS_MDOT_HOST', None)
+
+RESTCLIENTS_MDOT_DAO_CLASS = os.getenv('RESTCLIENTS_MDOT_DAO_CLASS', 'Mock')
+RESTCLIENTS_MDOT_HOST = os.getenv('RESTCLIENTS_MDOT_HOST', None)
 
 STATICFILES_FINDERS += (
     'compressor.finders.CompressorFinder',
