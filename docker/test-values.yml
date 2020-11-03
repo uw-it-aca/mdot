@@ -51,9 +51,9 @@ environmentVariables:
   - name: CLUSTER_CNAME
     value: test.mdot.uw.edu
   - name: RESTCLIENTS_MDOT_DAO_CLASS
-    value: Mock
+    value: Live
   - name: RESTCLIENTS_MDOT_HOST
-    value: None
+    value: https://test-api.mdot.uw.edu
 externalSecrets:
   enabled: true
   secrets:
