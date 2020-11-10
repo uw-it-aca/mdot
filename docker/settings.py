@@ -44,7 +44,7 @@ TEMPLATES[0]['OPTIONS']['context_processors'].extend([
 # django_compressor
 COMPRESS_ROOT = 'compress_files'
 
-COMPRESS_PRECOMPILERS = (('text/less', 'lesscpy {infile} {outfile}'),)
+COMPRESS_PRECOMPILERS = (('text/less', '/app/bin/lesscpy {infile} {outfile}'),)
 
 #Emails
 MDOT_HELP_EMAIL = os.getenv('MDOT_HELP_EMAIL', 'help@example.edu') # String for help desk email address
