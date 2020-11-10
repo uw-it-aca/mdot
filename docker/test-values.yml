@@ -25,7 +25,7 @@ externalService:
   enabled: true
   name: mdot-db-service
   type: ClusterIP
-  serviceAddress: 104.198.109.182
+  serviceAddress: 172.18.0.37
   servicePort: 3306
 database:
   engine: mysql
@@ -51,9 +51,9 @@ environmentVariables:
   - name: CLUSTER_CNAME
     value: test.mdot.uw.edu
   - name: RESTCLIENTS_MDOT_DAO_CLASS
-    value: Mock
+    value: Live
   - name: RESTCLIENTS_MDOT_HOST
-    value: None
+    value: https://test-api.mdot.uw.edu
 externalSecrets:
   enabled: true
   secrets:

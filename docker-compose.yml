@@ -1,10 +1,12 @@
-version: '3'
+version: '3.4'
 
 services:
   app:
     restart: always
-    container_name: mdot 
-    build: .
+    container_name: mdot
+    build:
+      context: .
+      target: app-container
     # map the local (host) directories to their container counterparts
     # to support live-syncing
     volumes:
