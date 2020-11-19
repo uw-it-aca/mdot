@@ -70,7 +70,7 @@ def request(request):
                     "mdot/developers/email/sponsor_plain.html").render(
                     email_context
                 ),
-                getattr(settings, "MDOT_HELP_EMAIL", None),
+                getattr(settings, "MDOT_SERVICE_EMAIL", None),
                 [sponsor.email],
                 cc=[app_requestor_email]
             )
@@ -228,7 +228,7 @@ def decline(request, pk):
             get_template(
                 "mdot/developers/email/decline_plain.html"
                 ).render(email_context),
-            getattr(settings, "MDOT_HELP_EMAIL", None),
+            getattr(settings, "MDOT_SERVICE_EMAIL", None),
             [app_requestor_email],
             cc=[getattr(settings, "MDOT_SERVICE_EMAIL", None)]
         )
@@ -279,7 +279,7 @@ def email_service_now(app, subject, message, status):
             get_template("mdot/developers/email/service_plain.html").render(
                 email_context
             ),
-            getattr(settings, "MDOT_HELP_EMAIL", None),
+            getattr(settings, "MDOT_SERVICE_EMAIL", None),
             [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
             html_message=get_template(
                 "mdot/developers/email/service.html"
