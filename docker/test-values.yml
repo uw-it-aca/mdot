@@ -41,6 +41,11 @@ memcached:
   enabled: false
 cronjob:
   enabled: false
+certs:
+  mounted: true
+  certPath: /certs/test.mdot.uw.edu-uwca.crt
+  keyPath: /certs/test.mdot.uw.edu-uwca.key
+  secretName: test.mdot.uw.edu-uwca-certs
 environmentVariables:
   - name: ENV
     value: test
@@ -64,6 +69,8 @@ externalSecrets:
           property: django-secret
         - name: google-analytics-key
           property: google-analytics-key
+        - name: email-host
+          property: email-host
         - name: mdot-help-email
           property: mdot-help-email
         - name: mdot-service-team-email
@@ -96,6 +103,10 @@ environmentVariablesSecrets:
     name: GOOGLE_ANALYTICS_KEY
     secretName: test.mdot.uw.edu-secrets
     secretKey: google-analytics-key
+  emailHost:
+    name: EMAIL_HOST
+    secretName: test.mdot.uw.edu-secrets
+    secretKey: email-host
   mdotHelpEmail:
     name: MDOT_HELP_EMAIL
     secretName: test.mdot.uw.edu-secrets
