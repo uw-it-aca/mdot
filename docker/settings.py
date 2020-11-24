@@ -22,11 +22,12 @@ MIDDLEWARE += (
     'htmlmin.middleware.MarkRequestMiddleware',  
 )
 
-# settings for local development
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     MEDIA_ROOT = '/app/data/'
     MEDIA_URL = '/media/'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 RESTCLIENTS_MDOT_DAO_CLASS = os.getenv('RESTCLIENTS_MDOT_DAO_CLASS', 'Mock')
 RESTCLIENTS_MDOT_HOST = os.getenv('RESTCLIENTS_MDOT_HOST', None)
@@ -41,9 +42,6 @@ EMAIL_SSL_KEYFILE = os.getenv('KEY_PATH', '')
 MDOT_HELP_EMAIL = os.getenv('MDOT_HELP_EMAIL', 'help@example.edu') # help desk email address
 MDOT_SERVICE_EMAIL = os.getenv('MDOT_SERVICE_EMAIL', 'serviceteam@example.edu') # app publishing request email
 MDOT_UX_CONTACT = os.getenv('MDOT_UX_CONTACT', '') # String for UX team contact url
-
-if not DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 STATICFILES_FINDERS += (
     'compressor.finders.CompressorFinder',
