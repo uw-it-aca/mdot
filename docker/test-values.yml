@@ -84,6 +84,13 @@ externalSecrets:
           property: username
         - name: password
           property: password
+    - name: test.mdot.uw.edu-uwca-certs
+      externalKey: axdd/kv/data/mdot/test/uwca-certs
+      data:
+        - name: test.mdot.uw.edu-uwca.cert
+          property: test.mdot.uw.edu-uwca.cert
+        - name: test.mdot.uw.edu-uwca.key
+          property: test.mdot.uw.edu-uwca.key
     - name: test.mdot.uw.edu-ic-certs
       externalKey: axdd/kv/data/mdot/test/ic-certs
       data:
