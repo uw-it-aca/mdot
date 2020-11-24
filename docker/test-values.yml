@@ -96,6 +96,10 @@ environmentVariablesSecrets:
     name: GOOGLE_ANALYTICS_KEY
     secretName: test.mdot.uw.edu-secrets
     secretKey: google-analytics-key
+  emailHost:
+    name: EMAIL_HOST
+    secretName: test.mdot.uw.edu-secrets
+    secretKey: email-host
   mdotHelpEmail:
     name: MDOT_HELP_EMAIL
     secretName: test.mdot.uw.edu-secrets
