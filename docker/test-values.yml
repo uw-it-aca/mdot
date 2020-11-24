@@ -43,7 +43,7 @@ cronjob:
   enabled: false
 certs:
   mounted: true
-  certPath: /certs/test.mdot.uw.edu-uwca.crt
+  certPath: /certs/test.mdot.uw.edu-uwca.cert
   keyPath: /certs/test.mdot.uw.edu-uwca.key
   secretName: test.mdot.uw.edu-uwca-certs
 environmentVariables:
