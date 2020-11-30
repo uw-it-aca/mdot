@@ -1,4 +1,8 @@
 #!/bin/bash
 
-python manage.py migrate
-python manage.py loaddata Platform.json
+if [ "$ENV" = "localdev" ]
+then
+
+    . /scripts/app_deploy.sh
+
+fi
