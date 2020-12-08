@@ -83,7 +83,7 @@ def request(request):
             msg.send()
 
             # send email to service now
-            subject = "Mobile Intake Form Submitted: {}".format(app.name)
+            subject = "MDOT: Mobile Intake Form for {} Submitted".format(app.name)
             message = ("The Mobile Intake form has been filled out by {}"
                        " on {}. The details of the submission are included"
                        " below:").format(app.requestor, app.request_date)
@@ -139,7 +139,7 @@ def sponsor(request, pk):
 
         # send email to service now
         spon_name = " ".join((app_sponsor.first_name, app_sponsor.last_name))
-        subject = "Mobile App Request Submitted: {}".format(app.name)
+        subject = "MDOT: Sponsorship for {} Accepted".format(app.name)
         message = ("The designated app sponsor {0} for the app {1}"
                    " has agreed on {2}.").format(
                        spon_name, app.name, agreement.agree_time)
