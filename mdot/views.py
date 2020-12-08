@@ -83,7 +83,8 @@ def request(request):
             msg.send()
 
             # send email to service now
-            subject = "MDOT: Mobile Intake Form for {} Submitted".format(app.name)
+            subject = ("MDOT: Mobile Intake Form "
+                       "for {} Submitted").format(app.name)
             message = ("The Mobile Intake form has been filled out by {}"
                        " on {}. The details of the submission are included"
                        " below:").format(app.requestor, app.request_date)
