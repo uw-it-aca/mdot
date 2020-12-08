@@ -56,6 +56,11 @@ gcsCredentials:
   secretName: mdot.uw.edu-gc-service-credentials
 cronjob:
   enabled: false
+certs:
+  mounted: true
+  certPath: /certs/mdot.uw.edu-uwca.cert
+  keyPath: /certs/mdot.uw.edu-uwca.key
+  secretName: mdot.uw.edu-uwca-certs
 environmentVariables:
   - name: ENV
     value: prod
@@ -79,6 +84,8 @@ externalSecrets:
           property: django-secret
         - name: google-analytics-key
           property: google-analytics-key
+        - name: email-host
+          property: email-host
         - name: mdot-help-email
           property: mdot-help-email
         - name: mdot-service-team-email
@@ -92,6 +99,13 @@ externalSecrets:
           property: username
         - name: password
           property: password
+    - name: mdot.uw.edu-uwca-certs
+      externalKey: axdd/kv/data/mdot/prod/uwca-certs
+      data:
+        - name: mdot.uw.edu-uwca.cert
+          property: mdot.uw.edu-uwca.cert
+        - name: mdot.uw.edu-uwca.key
+          property: mdot.uw.edu-uwca.key
     - name: mdot.uw.edu-ic-certs
       externalKey: axdd/kv/data/mdot/prod/ic-certs
       data:
@@ -111,6 +125,10 @@ environmentVariablesSecrets:
     name: GOOGLE_ANALYTICS_KEY
     secretName: mdot.uw.edu-secrets
     secretKey: google-analytics-key
+  emailHost:
+    name: EMAIL_HOST
+    secretName: mdot.uw.edu-secrets
+    secretKey: email-host
   mdotHelpEmail:
     name: MDOT_HELP_EMAIL
     secretName: mdot.uw.edu-secrets
