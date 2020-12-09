@@ -17,15 +17,15 @@
             <div class="details-container">
                 <h3>App Details</h3>
                 <ul>
-                    <li><strong>App Name: </strong>{{ app_name }}</li>
-                    <li><strong>Primary Language: </strong>{{ primary_lang }}</li>
-                    <li><strong>Distribution type: </strong>
+                    <li><strong>App Name:</strong>{{ app_name }}</li>
+                    <li><strong>Primary Language:</strong>{{ primary_lang }}</li>
+                    <li><strong>Distribution type:</strong>
                         {% for p in platforms %}
                             {{ p }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </li>
-                    <li><strong>App Manager: </strong>{{ manager }}</li>
-                    <li><strong>App Sponsor: </strong>{{ sponsor }}</li>
+                    <li><strong>App Manager:</strong>{{ manager }}</li>
+                    <li><strong>App Sponsor:</strong>{{ sponsor }}</li>
                 </ul>
             </div>
         </section>
