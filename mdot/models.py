@@ -50,12 +50,18 @@ class SponsorForm(forms.ModelForm):
     class Meta:
         model = Sponsor
         fields = "__all__"
+        labels = {
+            "netid": "UW NetID"
+        }
 
 
 class ManagerForm(forms.ModelForm):
     class Meta:
         model = Manager
         fields = "__all__"
+        labels = {
+            "netid": "UW NetID"
+        }
 
 
 class AppForm(forms.ModelForm):
@@ -63,6 +69,7 @@ class AppForm(forms.ModelForm):
         model = App
         fields = ["name", "primary_language", "platform"]
         labels = {
+            "name": "Application Name",
             "platform": "Distribution type"
         }
 
