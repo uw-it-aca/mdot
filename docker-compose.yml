@@ -18,3 +18,7 @@ services:
       AUTH: ${AUTH:-SAML_MOCK}
       RESTCLIENTS_MDOT_DAO_CLASS: ${RESTCLIENTS_MDOT_DAO_CLASS:-Mock}
       RESTCLIENTS_MDOT_HOST: ${RESTCLIENTS_MDOT_HOST:-None}
+    command: >
+      bash -c "/app/bin/python /app/manage.py migrate
+      && /app/bin/python /app/manage.py loaddata Platform.json
+      && /app/bin/python /app/manage.py runserver 0:8000"
