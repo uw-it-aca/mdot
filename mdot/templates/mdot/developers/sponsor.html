@@ -10,22 +10,22 @@
 
         <h2 class="mdot-subhead" id="page_header">Sponsor Agreement</h2>
         <section>
-            <p class="article intro">You have been designated as the sponsor for the app {{ app_name }}. App sponsors are responsible for adhering to the conditions set in the UW app 
-                developer terms and conditions. Please fill out the app sponsor agreement form below to take responsibility for the app.
+            <p class="article intro">You have been designated as the sponsor for the app <strong>{{ app_name }}</strong>. App Sponsors are responsible for adhering to the conditions set in the UW
+                Terms and Conditions. Please fill out the app sponsor agreement form below to take responsibility for the app.
             </p>
-            <p class="article intro">Once the form is submitted, UW-IT will grant the app manager {{ manager }} developer access to the appropriate UW App Stores</p>
+            <p class="article intro">Once the form is submitted, UW-IT will grant the App Manager <strong>{{ manager }}</strong> developer access to the appropriate UW App Stores.</p>
             <div class="details-container">
                 <h3>App Details</h3>
                 <ul>
-                    <li><strong>App Name: </strong>{{ app_name }}</li>
-                    <li><strong>Primary Language: </strong>{{ primary_lang }}</li>
-                    <li><strong>Distribution type: </strong>
+                    <li><strong>App Name:</strong>{{ app_name }}</li>
+                    <li><strong>Primary Language:</strong>{{ primary_lang }}</li>
+                    <li><strong>Distribution type:</strong>
                         {% for p in platforms %}
                             {{ p }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </li>
-                    <li><strong>App Manager: </strong>{{ manager }}</li>
-                    <li><strong>App Sponsor: </strong>{{ sponsor }}</li>
+                    <li><strong>App Manager:</strong>{{ manager }}</li>
+                    <li><strong>App Sponsor:</strong>{{ sponsor }}</li>
                 </ul>
             </div>
         </section>
@@ -40,30 +40,30 @@
                 <ul>
                     <li>
                         <strong>UW Terms and Conditions</strong>
-                        <p>You will be responsible for adhering to the conditions set out in the UW app developer <a href="https://www.washington.edu/online/terms/">terms and conditions.</a></p>
+                        <p>You will be responsible for adhering to the conditions set out in the UW <a href="https://www.washington.edu/online/terms/">Terms and Conditions.</a></p>
                     </li>
                     <li>
-                        <strong>Apple and/or Google Play Store terms and conditions</strong>
-                        <p>You will be responsible for adhering to the conditions set out in the <a href="https://developer.apple.com/terms/">Apple</a> and/or <a href="https://play.google.com/about/play-terms/index.html">Google Play</a> Store terms and conditions</p>
+                        <strong>Apple and/or Google Play Terms and Conditions</strong>
+                        <p>You will be responsible for adhering to the conditions set out in the <a href="https://developer.apple.com/terms/">Apple</a> and/or <a href="https://play.google.com/about/play-terms/index.html">Google Play</a> terms and conditions.</p>
                     </li>
                     <li> 
-                        <strong>Usability(User Experience)</strong>
-                        <p>The UW is committed to providing good user experience for our audiences. For assistance, free <a href= {{ux_contact}}>UX consultations</a> are available with the AXDD Design team.</p>
+                        <strong>Usability (User Experience)</strong>
+                        <p>The UW is committed to providing good user experience for our audiences. For assistance, free <a href= {{ux_contact}}>UX consultations</a> are available with UW-IT's AXDD design team.</p>
                     </li>
                     <li>
                         <strong>Accessibility</strong>
-                        <p>It is UW policy that all software is <a href="https://www.washington.edu/accessibility/guidelines/">accessible</a>. For assitance, UW-IT's Accessible Technology team offers <a href="https://www.washington.edu/accessibility/help/">accessiblity consulations/reviews</a>.</p>
+                        <p>It is UW policy that all software is <a href="https://www.washington.edu/accessibility/guidelines/">accessible</a>. For assistance, UW-IT's Accessible Technology Services (ATS) team offers <a href="https://www.washington.edu/accessibility/help/">accessiblity consultations/reviews</a>.</p>
                     </li>
                     <li>
-                        <strong>UW Privacy Policy</strong>
-                        <p>You will be responsible for adhering to the <a href="https://www.washington.edu/online/privacy/">UW Privacy Policy</a></p>
+                        <strong>UW Privacy Statement</strong>
+                        <p>You will be responsible for adhering to the UW <a href="https://www.washington.edu/online/privacy/">Online Privacy Statement</a>.</p>
                     </li>
                     <li>
                         <strong>UW Branding</strong>
-                        <p>If applicable, adhere to the use of <a href="http://www.washington.edu/brand/">UW logo and brand guidelines</a></p>
+                        <p>If applicable, adhere to the use of UW <a href="http://www.washington.edu/brand/">logo and brand guidelines</a>.</p>
                     </li>
                     <li>
-                        <strong>Due Dilegence</strong>
+                        <strong>Due Diligence</strong>
                         <p>You agree to undertake the due diligence to adhere to the UW values and demonstrate compliance with all UW policies mentioned and/or may otherwise be relevant.</p>
                     </li>
                 </ul>
@@ -76,15 +76,15 @@
                 <h3>Services Offered by UW-IT</h3>
                 <ul>
                     <li>
-                        <strong>Application ID creation and App Manger provisioning</strong>
-                        <p>UW-IT shall create a single application ID and assign an App Manger(specified above).</p>
+                        <strong>Application ID Creation and App Manager Provisioning</strong>
+                        <p>UW-IT shall create a single application ID and assign an App Manager (specified above).</p>
                     </li>
                     <li>
                         <strong>Audit</strong>
                         <p>UW-IT may perform audits to ensure that accounts are up to date and applications are in good standing. We are also responsible to audit any apps if we have received any formal complaints and/or requests from Apple/Google.</p>
                     </li>
                     <li>
-                        <strong>App Suspension and/or removal</strong>
+                        <strong>App Suspension and/or Removal</strong>
                         <p>UW-IT reserves the right to suspend or remove apps in the store that violate any of the terms and conditions described above.</p>
                     </li>
                     <li>
@@ -101,14 +101,14 @@
                 <h3>App Manager Responsibilities</h3>
                 <ul>
                     <li>
-                        <strong>Developer account invitations</strong>
-                        <p>The App Manger is responsible for inviting users to their specific application team as well as maintaining their team in good standing - removing members who are no longer part of their team. AXDD reserves the right to remove or update membership for members not added to a specific application team or 
+                        <strong>Developer Account Invitations</strong>
+                        <p>The App Manager is responsible for inviting users to their specific application team as well as maintaining their team in good standing - removing members who are no longer part of their team. AXDD reserves the right to remove or update membership for members not added to a specific application team or 
                         that are no longer actively participating in development.
                         </p>
                     </li>
                     <li>
-                        <strong>Publishing application</strong>
-                        <p>The App Manger is responsible for overall publishing of the app.</p>
+                        <strong>Publishing Application</strong>
+                        <p>The App Manager is responsible for overall publishing of the app.</p>
                     </li>
                 </ul>
                 <label for="understand-manager"><input id="understand-manager" name="understand-manager" required type="checkbox"> I understand the App Manager responsibilities</label>
@@ -124,8 +124,8 @@
 
 
             <p class="btn-container">
-                <a href="/developers/decline/{{app_id}}" class="btn">Decline Sponsorship</a>
-                <input type="submit" class="btn btn-primary" name="submit" value="Agree and Accept Sponsorship">
+                <a href="/developers/decline/{{app_id}}" class="btn">Decline</a>
+                <input type="submit" class="btn btn-primary" name="submit" value="Agree and Accept">
             </p>
         
         </form>
