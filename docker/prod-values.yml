@@ -41,7 +41,7 @@ externalService:
   servicePort: 3306
 database:
   engine: mysql
-  name: mdot-prod
+  name: mdot_prod
   hostname: mdot-db-service
   secretName: mdot.uw.edu-sql-secrets
 repo: mdot
