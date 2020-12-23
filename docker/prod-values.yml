@@ -70,7 +70,7 @@ environmentVariables:
     value: https://mdot.uw.edu/saml2
   - name: CLUSTER_CNAME
     value: mdot.uw.edu
-    - name: RESTCLIENTS_MDOT_DAO_CLASS
+  - name: RESTCLIENTS_MDOT_DAO_CLASS
     value: Mock  # mock until prod api is live
   - name: RESTCLIENTS_MDOT_HOST
     value: None
