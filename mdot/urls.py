@@ -11,7 +11,9 @@ urlpatterns = [
     path('developers/guidelines/', views.guidelines,
          name='guidelines'),
     path('developers/process/', views.process, name='process'),
-    path('developers/review/', views.review, name='review'),
+    path('developers/request/', views.request, name='request'),
+    path('developers/request/<int:pk>/', views.sponsor, name='sponsor'),
+    path('developers/decline/<int:pk>/', views.decline, name='decline'),
 
     # path('blog/', include('blog.urls')),
     # path('admin/', include(admin.site.urls)),

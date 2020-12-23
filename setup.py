@@ -13,9 +13,9 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
-        'django>2.0,<2.2',
+        'django>2.0,<2.1',
         'django-compressor',
-        'UW-RestClients-Core<1.0,>=0.9',
+        'UW-RestClients-Core<1.4',
         'django-htmlmin',
         'lesscpy',
         'django-pyscss',

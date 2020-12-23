@@ -1,12 +1,29 @@
-#generic python3.6 image
-FROM python:3.6
-ENV PYTHONUNBUFFERED 1
+FROM acait/django-container:1.2.5 as app-container
 
-# copy contents of repo into an 'app' directory on container
-ADD . /app/
-WORKDIR /app
+USER root
+RUN apt-get update && apt-get install mysql-client libmysqlclient-dev -y
+USER acait
 
-# install system and python dependency packages (via setup.py) on container
-RUN apt-get update -y && apt-get install -y libxmlsec1 libxmlsec1-dev
-RUN pip install -r requirements.txt
-COPY sampleproj/manage.py /app/manage.py
+ADD --chown=acait:acait setup.py /app/
+ADD --chown=acait:acait requirements.txt /app/
+ADD --chown=acait:acait README.md /app/
+
+RUN . /app/bin/activate && pip install -r requirements.txt
+RUN . /app/bin/activate && pip install mysqlclient
+
+ADD --chown=acait:acait . /app/
+ADD --chown=acait:acait docker/ project/
+ADD --chown=acait:acait docker/app_deploy.sh /scripts
+ADD --chown=acait:acait docker/app_start.sh /scripts
+RUN chmod u+x /scripts/app_deploy.sh
+
+RUN . /app/bin/activate && pip install nodeenv && nodeenv -p &&\
+    npm install -g npm && ./bin/npm install less -g
+
+RUN . /app/bin/activate && python manage.py collectstatic --noinput &&\
+    python manage.py compress -f
+
+FROM acait/django-test-container:1.2.5 as app-test-container
+
+COPY --from=app-container /app/ /app/
+COPY --from=app-container /static/ /static/

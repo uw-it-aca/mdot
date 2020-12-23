@@ -1,14 +1,20 @@
-version: '3'
+version: '3.4'
 
 services:
   app:
     restart: always
-    build: .
+    container_name: mdot
+    build:
+      context: .
+      target: app-container
     # map the local (host) directories to their container counterparts
     # to support live-syncing
     volumes:
-      - ./sampleproj:/app/sampleproj/
       - ./mdot:/app/mdot
     ports:
       - "${PORT:-8000}:8000"
-    command: bash -c "python manage.py migrate --settings=sampleproj.settings.local && python manage.py runserver 0:8000 --settings=sampleproj.settings.local"
+    environment:
+      ENV: localdev
+      AUTH: ${AUTH:-SAML_MOCK}
+      RESTCLIENTS_MDOT_DAO_CLASS: ${RESTCLIENTS_MDOT_DAO_CLASS:-Mock}
+      RESTCLIENTS_MDOT_HOST: ${RESTCLIENTS_MDOT_HOST:-None}
