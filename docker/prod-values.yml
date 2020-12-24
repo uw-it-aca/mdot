@@ -143,7 +143,7 @@ environmentVariablesSecrets:
   samlSPCert:
     name: SP_CERT
     secretName: prod.mdot.uw.edu-ic-cert
-    secretKey: mdot.uw.edu-ic.cert
+    secretKey: prod.mdot.uw.edu-ic.cert
   samlIDPCert:
     name: IDP_CERT
     secretName: prod.mdot.uw.edu-uw-idp-cert
