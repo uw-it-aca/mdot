@@ -105,7 +105,7 @@ externalSecrets:
           property: prod.mdot.uw.edu-uwca.cert
         - name: prod.mdot.uw.edu-uwca.key
           property: prod.mdot.uw.edu-uwca.key
-    - name: prod.mdot.uw.edu-ic-certs
+    - name: prod.mdot.uw.edu-ic-cert
       externalKey: axdd/kv/data/mdot/prod/ic-certs
       data:
         - name: prod.mdot.uw.edu-ic.cert
@@ -142,7 +142,7 @@ environmentVariablesSecrets:
     secretKey: mdot-service-team-email
   samlSPCert:
     name: SP_CERT
-    secretName: prod.mdot.uw.edu-ic-certs
+    secretName: prod.mdot.uw.edu-ic-cert
     secretKey: mdot.uw.edu-ic.cert
   samlIDPCert:
     name: IDP_CERT
