@@ -14,12 +14,12 @@ ingress:
   enabled: true
   tls:
     mdot:
-      secretName: mdot.uw.edu-ingress-cert
+      secretName: prod.mdot.uw.edu-ingress-cert
       hosts:
-        - mdot.uw.edu
+        - prod.mdot.uw.edu
   hosts:
     mdot:
-      host: mdot.uw.edu
+      host: prod.mdot.uw.edu
       paths:
         - "/"
   annotations:
