@@ -66,9 +66,9 @@ environmentVariables:
   - name: ENV
     value: prod
   - name: RESTCLIENTS_MDOT_DAO_CLASS
-    value: Mock  # mock until prod api is live
+    value: Live
   - name: RESTCLIENTS_MDOT_HOST
-    value: None
+    value: https://prod-api.mdot.uw.edu
   - name: SAML_ENTITY_ID
     value: https://prod.mdot.uw.edu/saml2
   - name: WEBSERVER
@@ -143,7 +143,7 @@ environmentVariablesSecrets:
   samlSPCert:
     name: SP_CERT
     secretName: prod.mdot.uw.edu-ic-certs
-    secretKey: mdot.uw.edu-ic.cert
+    secretKey: prod.mdot.uw.edu-ic.cert
   samlIDPCert:
     name: IDP_CERT
     secretName: prod.mdot.uw.edu-uw-idp-cert
