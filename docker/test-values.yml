@@ -22,6 +22,8 @@ affinity:
    podsSpanNodes: true
 readiness:
   enabled: true
+securityPolicy:
+  enabled: true
 externalService:
   enabled: true
   name: mdot-db-service
@@ -36,7 +38,7 @@ database:
 repo: mdot
 instance: test
 image:
-  repository: registry.hub.docker.com/acait/mdot
+  repository: gcr.io/uwit-mci-axdd/mdot
   tag: IMAGE_TAG
 memcached:
   enabled: false
