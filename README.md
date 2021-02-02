@@ -1,5 +1,8 @@
 # MDOT APP #
 
+[![Build Status](https://github.com/uw-it-aca/mdot/workflows/Build%2C%20Test%20and%20Deploy/badge.svg?branch=master)](https://github.com/uw-it-aca/mdot/actions)
+[![Coverage Status](https://coveralls.io/repos/github/uw-it-aca/mdot/badge.svg?branch=master)](https://coveralls.io/github/uw-it-aca/mdot?branch=master)
+
 This README documents whatever steps are necessary to get your application up and running.
 
 ## Installation ##
