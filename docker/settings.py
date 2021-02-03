@@ -66,12 +66,3 @@ TEMPLATES[0]["OPTIONS"]["context_processors"].extend(
 # django_compressor
 COMPRESS_ROOT = "compress_files"
 COMPRESS_PRECOMPILERS = (("text/less", "/app/bin/lesscpy {infile} {outfile}"),)
-
-# Emails
-MDOT_HELP_EMAIL = os.getenv(
-    "MDOT_HELP_EMAIL", "help@example.edu"
-)  # String for help desk email address
-MDOT_UX_CONTACT = os.getenv("MDOT_UX_CONTACT", "")  # String for UX team contact url
-MDOT_SERVICE_EMAIL = os.getenv(
-    "MDOT_SERVICE_EMAIL", "serviceteam@example.edu"
-)  # String to email app publishing requests
