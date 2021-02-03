@@ -5,9 +5,17 @@ ingress:
       secretName: test.mdot.uw.edu-ingress-cert
       hosts:
         - test.mdot.uw.edu
+    test-mobile-washington:
+      secretName: test.mobile.washington.edu-ingress-cert
+      hosts:
+        - test.mobile.washington.edu
   hosts:
     mdot:
       host: test.mdot.uw.edu
+      paths:
+        - "/"
+    test-mobile-washington:
+      host: test.mobile.washington.edu
       paths:
         - "/"
   annotations:
