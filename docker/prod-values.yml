@@ -17,9 +17,17 @@ ingress:
       secretName: prod.mdot.uw.edu-ingress-cert
       hosts:
         - prod.mdot.uw.edu
+    mobile-washington:
+      secretName: mobile.washington.edu-ingress-cert
+      hosts:
+        - mobile.washington.edu
   hosts:
     mdot:
       host: prod.mdot.uw.edu
+      paths:
+        - "/"
+    mobile-washington:
+      host: mobile.washington.edu
       paths:
         - "/"
   annotations:
