@@ -13,6 +13,10 @@ resources:
 ingress:
   enabled: true
   tls:
+    mobile-uw:
+      secretName: mobile.uw.edu-ingress-cert
+      hosts:
+        - mobile.uw.edu
     m-uw:
       secretName: m.uw.edu-ingress-cert
       hosts:
@@ -30,6 +34,10 @@ ingress:
       hosts:
         - m.washington.edu
   hosts:
+    mobile-uw:
+      host: mobile.uw.edu
+      paths:
+        - "/"
     m-uw:
       host: m.uw.edu
       paths:
