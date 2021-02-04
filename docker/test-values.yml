@@ -1,7 +1,7 @@
 ingress:
   enabled: true
   tls:
-    mdot:
+    test-mdot:
       secretName: test.mdot.uw.edu-ingress-cert
       hosts:
         - test.mdot.uw.edu
@@ -10,7 +10,7 @@ ingress:
       hosts:
         - test.mobile.washington.edu
   hosts:
-    mdot:
+    test-mdot:
       host: test.mdot.uw.edu
       paths:
         - "/"
