@@ -13,13 +13,45 @@ resources:
 ingress:
   enabled: true
   tls:
-    mdot:
+    prod-mdot:
       secretName: prod.mdot.uw.edu-ingress-cert
       hosts:
         - prod.mdot.uw.edu
+    mobile-uw:
+      secretName: mobile.uw.edu-ingress-cert
+      hosts:
+        - mobile.uw.edu
+    m-uw:
+      secretName: m.uw.edu-ingress-cert
+      hosts:
+        - m.uw.edu
+    mobile-washington:
+      secretName: mobile.washington.edu-ingress-cert
+      hosts:
+        - mobile.washington.edu
+    m-washington:
+      secretName: m.washington.edu-ingress-cert
+      hosts:
+        - m.washington.edu
   hosts:
-    mdot:
+    prod-mdot:
       host: prod.mdot.uw.edu
+      paths:
+        - "/"
+    mobile-uw:
+      host: mobile.uw.edu
+      paths:
+        - "/"
+    m-uw:
+      host: m.uw.edu
+      paths:
+        - "/"
+    mobile-washington:
+      host: mobile.washington.edu
+      paths:
+        - "/"
+    m-washington:
+      host: m.washington.edu
       paths:
         - "/"
   annotations:
