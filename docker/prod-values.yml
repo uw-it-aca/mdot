@@ -25,6 +25,10 @@ ingress:
       secretName: mobile.washington.edu-ingress-cert
       hosts:
         - mobile.washington.edu
+    m-washington:
+      secretName: m.washington.edu-ingress-cert
+      hosts:
+        - m.washington.edu
   hosts:
     m-uw:
       host: m.uw.edu
@@ -36,6 +40,10 @@ ingress:
         - "/"
     mobile-washington:
       host: mobile.washington.edu
+      paths:
+        - "/"
+    m-washington:
+      host: m.washington.edu
       paths:
         - "/"
   annotations:
