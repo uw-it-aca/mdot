@@ -9,7 +9,11 @@ else:
     DEBUG = False
 
 ALLOWED_HOSTS += [
-    "test.mobile.washington.edu",
+    "test.mobile.washington.edu",  # for testing purposes
+    "mobile.uw.edu",  # Extraneous after DNS switch
+    "m.uw.edu",  # Extraneous after DNS switch unless 301
+    "mobile.washington.edu",  # Extraneous after DNS switch unless 301
+    "m.washington.edu",  # Extraneous after DNS switch unless 301
 ]
 
 INSTALLED_APPS += [
