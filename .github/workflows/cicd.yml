@@ -149,7 +149,7 @@ jobs:
           gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
 
       - name: Deploy Evaluation Branch
-        if: steps.cicd.outputs.git_repo_branch == 'feature/eval-me'
+        if: steps.cicd.outputs.git_repo_branch == 'feature/supervisorctl'
         uses: uw-it-aca/actions/cicd-deploy@main
         with:
           release_name: ${{ env.RELEASE_NAME }}
