@@ -13,6 +13,7 @@ RUN . /app/bin/activate && pip install mysqlclient
 
 ADD --chown=acait:acait . /app/
 ADD --chown=acait:acait docker/ project/
+COPY --chown=acait:acait docker/supervisord.conf /etc/supervisor/
 ADD --chown=acait:acait docker/app_deploy.sh /scripts
 ADD --chown=acait:acait docker/app_start.sh /scripts
 RUN chmod u+x /scripts/app_deploy.sh
