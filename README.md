@@ -59,3 +59,5 @@ This will run mdot against a live API. Make sure mdot-rest is running on a diffe
 To run the unit tests, simply run the following command from the repository root:
 
     $ docker-compose run --rm app bash -c ". bin/activate && python manage.py test"
+
+Test!
