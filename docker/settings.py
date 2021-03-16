@@ -16,6 +16,8 @@ ALLOWED_HOSTS += [
     "m.washington.edu",  # Extraneous after DNS switch unless 301
 ]
 
+GOOGLE_ANALYTICS_KEY = os.getenv('GOOGLE_ANALYTICS_KEY', None)
+
 INSTALLED_APPS += [
     # 'rest_framework',
     # 'mdot_rest',
