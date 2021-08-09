@@ -20,6 +20,7 @@ from .models import SponsorForm, ManagerForm, AppForm,\
 def home(request):
     params = {"resources": MDOT().get_resources(featured=True)}
     return render(request, "mdot/home.html", params)
+    # return render(request, "mdot/home.html")
 
 
 def developers(request):
