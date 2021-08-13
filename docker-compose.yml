@@ -6,6 +6,7 @@ services:
     container_name: mdot
     build:
       context: .
+      dockerfile: ${DOCKERFILE:-Dockerfile}
       target: app-container
     # map the local (host) directories to their container counterparts
     # to support live-syncing
