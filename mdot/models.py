@@ -36,7 +36,7 @@ class Manager(models.Model):
     netid = models.CharField(
         max_length=16,
         validators=[netid_validator],
-        error_messages={'required':'Please enter a valid NetID'}
+        error_messages={'required': 'Please enter a valid NetID'}
     )
     email = models.EmailField(max_length=256)
 
