@@ -133,5 +133,40 @@ class MdotFormTest(TestCase):
         # page after submitting valid form
         self.assertTrue(b'Thank You' in response.content)
 
+    def test_full_invalid_netid_form_post(self):
+        """
+        Test that when given a complete form with an invalid
+        NetID, the view sends the user back to the request page.
+        """
+
+        sponsor_prefix = 'sponsor-'
+        manager_prefix = 'manager-'
+        app_prefix = 'app-'
+        forms = {
+            '{}first_name'.format(sponsor_prefix): 'Sponsor',
+            '{}last_name'.format(sponsor_prefix): 'lname',
+            '{}netid'.format(sponsor_prefix): 'SponTest@uw.edu',
+            '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
+            '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
+            '{}department'.format(sponsor_prefix): 'sponsor testcase',
+            '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
+
+            '{}first_name'.format(manager_prefix): 'Manager',
+            '{}last_name'.format(manager_prefix): 'lname',
+            '{}netid'.format(manager_prefix): 'manager@uw.edu',
+            '{}email'.format(manager_prefix): 'man@uw.edu',
+
+            '{}name'.format(app_prefix): 'app',
+            '{}platform'.format(app_prefix): [self.platform.pk],
+            '{}primary_language'.format(app_prefix): 'Test Lang'
+        }
+        # login user
+        self.client.force_login(self.user)
+        response = self.client.post('/developers/request/', forms)
+        self.assertEqual(response.status_code, 200)
+        # Make sure the user is not sent to the thank you
+        # page after submitting an invalid netid in form
+        self.assertFalse(b'Thank You' in response.content)
+
     def tearDown(self):
         pass
