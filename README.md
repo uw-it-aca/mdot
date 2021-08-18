@@ -10,7 +10,7 @@ This README documents whatever steps are necessary to get your application up an
 ### Prerequisites ###
 To run the app, you must have the following installed:
 * Docker
-* Docker-compose
+* Docker-compose (unnecessary for newer versions of Docker)
 
 ### Steps to run ###
 First, clone the app:
@@ -25,7 +25,10 @@ Navigate to the develop branch and copy the sample environment variables into yo
 
 Then, run the following command to build your docker container:
 
-    $ docker-compose up --build
+    $ docker compose up --build
+
+On some older versions of docker you may need to use `docker-compose` instead of
+`docker compose`.
 
 You should see the server running when viewing http://localhost:8000 (or at the port set in your `.env` file)
 
@@ -35,11 +38,11 @@ You should see the server running when viewing http://localhost:8000 (or at the 
 
 To rebuild the docker container from scratch, run: 
 
-    $ docker-compose up --build
+    $ docker compose up --build
 
 Otherwise, just run:
 
-    $ docker-compose up
+    $ docker compose up
 
 
 
