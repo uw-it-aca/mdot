@@ -5,7 +5,7 @@ from mdot.models import SponsorForm, ManagerForm, AppForm, Platform, App
 
 class MdotFormTest(TestCase):
     """
-    Tests that cover the fuctionality of the
+    Tests that cover the functionality of the
     Request Form.
     """
 
@@ -39,6 +39,24 @@ class MdotFormTest(TestCase):
         sponsor_form = SponsorForm(data=sponsor_form_data)
         self.assertTrue(sponsor_form.is_valid())
 
+    def test_sponsor_form_invalid_netid(self):
+        """
+        Test that the sponsor form does not accept a
+        UW NetID that contains any non-alphanumeric
+        characters
+        """
+
+        sponsor_form_data = {
+            'first_name': 'Sponsor',
+            'last_name': 'lname',
+            'netid': 'SponTest@uw.edu',
+            'title': 'Sponsor Test Case',
+            'email': 'spontestcase@uw.edu',
+            'department': 'sponsor testcase',
+            'unit': 'Sponsor Test Case'}
+        sponsor_form = SponsorForm(data=sponsor_form_data)
+        self.assertFalse(sponsor_form.is_valid())
+
     def test_manager_form_input_consumption(self):
         """
         Test that the manager form is valid when passed
@@ -51,6 +69,21 @@ class MdotFormTest(TestCase):
             'email': 'manager@uw.edu'}
         manager_form = ManagerForm(data=manager_form_data)
         self.assertTrue(manager_form.is_valid())
+
+    def test_manager_form_invalid_netid(self):
+        """
+        Test that the manager form does not accept a
+        UW NetID that contains any non-alphanumeric
+        characters
+        """
+
+        manager_form_data = {
+            'first_name': 'Manager',
+            'last_name': 'lname',
+            'netid': 'ManTest@uw.edu',
+            'email': 'manager@uw.edu'}
+        manager_form = ManagerForm(data=manager_form_data)
+        self.assertFalse(manager_form.is_valid())
 
     def test_app_form_input_consumption(self):
         """
