@@ -70,3 +70,6 @@ static/CACHE
 
 # Vim...
 *.swp
+
+# IDE files
+.idea/
