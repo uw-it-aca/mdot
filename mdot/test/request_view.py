@@ -6,7 +6,7 @@ from mdot.models import SponsorForm, ManagerForm, AppForm,\
 
 class MdotRequestTest(TestCase):
     """
-    Tests that cover the fuctionality of the
+    Tests that cover the functionality of the
     Request Form.
     """
 
