@@ -295,6 +295,6 @@ def email_service_now(app, subject, message, sender, cc, status):
             ), "text/html")
 
         email.send()
-        
+
     except BadHeaderError:
         return HttpResponse("Invalid header found.")
