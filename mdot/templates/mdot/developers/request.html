@@ -18,7 +18,13 @@
             {{ form.non_field_errors }}
 
             <h3 class="form-heading">App Information: </h3>
+
             <p class="form-description">This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.</p>
+
+            {% if managerform.errors or sponsorform.errors or appform.errors %}
+            <p style="color: red">Errors in fields</p>
+            {% endif %}
+
             {{ appform }}
 
             <h3 class="form-heading">Manager Contact: </h3>
