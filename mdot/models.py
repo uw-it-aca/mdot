@@ -7,9 +7,9 @@ import re
 
 # Create your models here.
 
-# assumes NetID only allows alphanumeric characters and underscores
+# assumes NetID conforms to personal or shared NetID requirements
 netid_validator = RegexValidator(
-    regex=r'^[a-zA-Z0-9_]*$', message='NetID must be valid')
+    regex='^[a-z][0-9a-z]{0,7}$', message='NetID must be valid')
 
 
 class Platform(models.Model):
