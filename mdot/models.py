@@ -29,6 +29,9 @@ class Sponsor(models.Model):
     department = models.CharField(max_length=30)
     unit = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
 
 class Manager(models.Model):
     first_name = models.CharField(max_length=50)
@@ -40,6 +43,9 @@ class Manager(models.Model):
     )
     email = models.EmailField(max_length=256)
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
 
 class App(models.Model):
     name = models.CharField(max_length=50)
@@ -49,12 +55,52 @@ class App(models.Model):
     app_sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
     requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
+    # status = "Agreed" if Agreement.objects.all().filter(app__name=self.name).exists() else "Pending"
+
+    def __str__(self):
+        return self.name
+
+    def sponsor_contact(self):
+        return self.app_sponsor.email
+
+    def manager_contact(self):
+        return self.app_manager.email
+
+    def app_platform(self):
+        return ", ".join([p.app_store for p in self.platform.all()])
+
+    def agreed_to(self):
+        if not Agreement.objects.all().filter(app__name=self.name).exists():
+            return "Pending"
+        else:
+            dates = Agreement.objects.all().filter(app__name=self.name)
+
+            agreements = []
+            for date in dates:
+                agreements.append(date)
+
+            def time(e):
+                return e.agree_time
+
+            agreements.sort(key=time)
+            if agreements[-1].agree:
+                return "Agreed on " + str(agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y'))
+            else:
+                return "Denied on " + str(agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y'))
+
+    sponsor_contact = property(sponsor_contact)
+    manager_contact = property(manager_contact)
+    agreed_to = property(agreed_to)
+    platforms = property(app_platform)
 
 
 class Agreement(models.Model):
     app = models.ForeignKey(App, on_delete=models.CASCADE)
     agree = models.BooleanField(default=True)
     agree_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.app.name
 
 
 class SponsorForm(forms.ModelForm):
