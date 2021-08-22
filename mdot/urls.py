@@ -1,7 +1,7 @@
 from django.urls import include, path
 
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 from . import views
 
@@ -16,7 +16,7 @@ urlpatterns = [
     path('developers/decline/<int:pk>/', views.decline, name='decline'),
 
     # path('blog/', include('blog.urls')),
-    # path('admin/', include(admin.site.urls)),
+    # path('admin/', admin.site.urls),
 
     # include applications
     # path('', include('app_name.urls')),

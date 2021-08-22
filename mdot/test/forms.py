@@ -5,7 +5,7 @@ from mdot.models import SponsorForm, ManagerForm, AppForm, Platform, App
 
 class MdotFormTest(TestCase):
     """
-    Tests that cover the fuctionality of the
+    Tests that cover the functionality of the
     Request Form.
     """
 
@@ -33,7 +33,6 @@ class MdotFormTest(TestCase):
             'netid': 'SponTest',
             'email': 'spon@uw.edu',
             'title': 'Sponsor Test Case',
-            'email': 'spontestcase@uw.edu',
             'department': 'sponsor testcase',
             'unit': 'Sponsor Test Case'}
         sponsor_form = SponsorForm(data=sponsor_form_data)

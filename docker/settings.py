@@ -24,6 +24,7 @@ INSTALLED_APPS += [
     "django_user_agents",
     "mdot",
     "compressor",
+    # "django.contrib.admin",
 ]
 
 MIDDLEWARE += (

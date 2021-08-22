@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7662c93c-da21-437e-8788-ddd46f2fed32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mdot/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile-ARM" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mdot/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mdot/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +48,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -213,7 +220,7 @@
       <workItem from="1629431732476" duration="154000" />
       <workItem from="1629434611973" duration="43000" />
       <workItem from="1629434711466" duration="2048000" />
-      <workItem from="1629444583645" duration="7047000" />
+      <workItem from="1629444583645" duration="18135000" />
     </task>
     <servers />
   </component>
@@ -230,6 +237,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/mdot$Test__mdot_test_forms.coverage" NAME="Test: mdot.test.forms Coverage Results" MODIFIED="1629324809227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
