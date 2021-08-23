@@ -72,3 +72,10 @@ TEMPLATES[0]["OPTIONS"]["context_processors"].extend(
 
 # django_compressor
 COMPRESS_PRECOMPILERS = (("text/less", "/app/bin/lesscpy {infile} {outfile}"),)
+
+# settings for local development
+if os.getenv('AUTH', 'NONE') == 'SAML_MOCK':
+    MOCK_SAML_ATTRIBUTES['isMemberOf'] = ['u_test_admin']
+
+# Authentication Groups
+ADMIN_AUTHZ_GROUP = os.getenv('ADMIN_AUTHZ_GROUP', 'u_test_admin')

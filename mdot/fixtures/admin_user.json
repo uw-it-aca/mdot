@@ -1,0 +1,12 @@
+[
+    {
+        "model": "auth.User",
+        "pk": 1,
+        "fields": {
+            "username": "javerage",
+            "email": "javerage@example.com",
+            "is_superuser": true
+        }
+            
+    }
+]

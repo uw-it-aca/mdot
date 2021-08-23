@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7662c93c-da21-437e-8788-ddd46f2fed32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile-ARM" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mdot/fixtures/admin_user.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdot/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mdot/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,12 +183,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django Server.mdot" />
       <item itemvalue="Django tests.Test: mdot.test" />
       <item itemvalue="Django tests.Test: mdot.test.forms" />
       <item itemvalue="Django tests.Test: mdot.test.forms.MdotFormTest.test_manager_form_invalid_netid" />
       <item itemvalue="Django tests.Test: mdot.test.forms.MdotFormTest.test_sponsor_form_invalid_netid" />
       <item itemvalue="Python.tests" />
+      <item itemvalue="Django Server.mdot" />
     </list>
     <recent_temporary>
       <list>
@@ -237,6 +234,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
