@@ -22,12 +22,18 @@ class Sponsor(models.Model):
     department = models.CharField(max_length=30)
     unit = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
 
 class Manager(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     netid = models.CharField(max_length=16)
     email = models.EmailField(max_length=256)
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
 
 
 class App(models.Model):
@@ -39,11 +45,17 @@ class App(models.Model):
     requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Agreement(models.Model):
     app = models.ForeignKey(App, on_delete=models.CASCADE)
     agree = models.BooleanField(default=True)
     agree_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.app
 
 
 class SponsorForm(forms.ModelForm):
