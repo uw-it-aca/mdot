@@ -55,7 +55,7 @@ class Agreement(models.Model):
     agree_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.app
+        return self.app.name
 
 
 class SponsorForm(forms.ModelForm):

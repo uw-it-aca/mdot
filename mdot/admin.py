@@ -31,6 +31,11 @@ class PlatformInline(admin.TabularInline):
 @admin.register(Sponsor, site=admin_site)
 class SponsorAdmin(admin.ModelAdmin):
     model = Sponsor
+    list_display = (
+        '__str__',
+        'netid',
+        'department',
+    )
 
 
 class SponsorInLine(admin.TabularInline):
@@ -39,6 +44,11 @@ class SponsorInLine(admin.TabularInline):
 @admin.register(Manager, site=admin_site)
 class ManagerAdmin(admin.ModelAdmin):
     model = Manager
+    list_display = (
+        '__str__',
+        'netid',
+        'email',
+    )
 
 
 class ManagerInLine(admin.TabularInline):
@@ -47,6 +57,10 @@ class ManagerInLine(admin.TabularInline):
 @admin.register(App, site=admin_site)
 class AppAdmin(admin.ModelAdmin):
     model = App
+    list_display = (
+        '__str__',
+        'request_date',
+    )
 
 
 class AppInLine(admin.TabularInline):
@@ -55,6 +69,10 @@ class AppInLine(admin.TabularInline):
 @admin.register(Agreement, site=admin_site)
 class AgreementAdmin(admin.ModelAdmin):
     model = Agreement
+    list_display = (
+        '__str__',
+        'agree',
+    )
 
 
 class AgreementInLine(admin.TabularInline):
