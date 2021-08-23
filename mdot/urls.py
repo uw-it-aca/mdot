@@ -1,9 +1,8 @@
 from django.urls import include, path
-
+from . import views
 from django.contrib import admin
 admin.autodiscover()
 
-from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),

@@ -7,6 +7,7 @@ from uw_saml.utils import is_member_of_group
 
 admin_group = settings.ADMIN_AUTHZ_GROUP
 
+
 class SAMLAdminSite(admin.AdminSite):
     def has_permission(self, request):
         return (
@@ -20,6 +21,7 @@ class SAMLAdminSite(admin.AdminSite):
 
 admin_site = SAMLAdminSite(name="SAMLAdmin")
 
+
 @admin.register(Platform, site=admin_site)
 class PlatformAdmin(admin.ModelAdmin):
     model = Platform
@@ -27,6 +29,7 @@ class PlatformAdmin(admin.ModelAdmin):
 
 class PlatformInline(admin.TabularInline):
     model = Platform
+
 
 @admin.register(Sponsor, site=admin_site)
 class SponsorAdmin(admin.ModelAdmin):
@@ -41,6 +44,7 @@ class SponsorAdmin(admin.ModelAdmin):
 class SponsorInLine(admin.TabularInline):
     model = Sponsor
 
+
 @admin.register(Manager, site=admin_site)
 class ManagerAdmin(admin.ModelAdmin):
     model = Manager
@@ -54,6 +58,7 @@ class ManagerAdmin(admin.ModelAdmin):
 class ManagerInLine(admin.TabularInline):
     model = Manager
 
+
 @admin.register(App, site=admin_site)
 class AppAdmin(admin.ModelAdmin):
     model = App
@@ -65,6 +70,7 @@ class AppAdmin(admin.ModelAdmin):
 
 class AppInLine(admin.TabularInline):
     model = App
+
 
 @admin.register(Agreement, site=admin_site)
 class AgreementAdmin(admin.ModelAdmin):
