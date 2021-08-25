@@ -22,7 +22,24 @@
             <p class="form-description">This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.</p>
 
             {% if managerform.errors or sponsorform.errors or appform.errors %}
-            <p style="color: red">Errors in fields</p>
+                <p style="color: red; margin-bottom: 0;">Please correct the field errors below:</p>
+                <ul style="list-style-type: disc; margin-left: 2em;">
+                {% for field, errors in appform.errors.items %}
+                    {% for error in errors %}
+                    <li style="color: red;">App: {{error}}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for field, errors in managerform.errors.items %}
+                    {% for error in errors %}
+                        <li style="color: red;">Manager: {{error}}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for field, errors in sponsorform.errors.items %}
+                    {% for error in errors %}
+                        <li style="color: red;">Sponsor: {{error}}</li>
+                    {% endfor %}
+                {% endfor %}
+                </ul>
             {% endif %}
 
             {{ appform }}
