@@ -26,17 +26,17 @@
                 <ul style="list-style-type: disc; margin-left: 2em;">
                 {% for field, errors in appform.errors.items %}
                     {% for error in errors %}
-                    <li style="color: red;">App: {{ error }}</li>
+                    <li style="color: red;">App Information: {{ error }}</li>
                     {% endfor %}
                 {% endfor %}
                 {% for field, errors in managerform.errors.items %}
                     {% for error in errors %}
-                        <li style="color: red;">Manager: {{ error }}</li>
+                        <li style="color: red;">Manager Contact: {{ error }}</li>
                     {% endfor %}
                 {% endfor %}
                 {% for field, errors in sponsorform.errors.items %}
                     {% for error in errors %}
-                        <li style="color: red;">Sponsor: {{ error }}</li>
+                        <li style="color: red;">Sponsor Contact: {{ error }}</li>
                     {% endfor %}
                 {% endfor %}
                 </ul>
