@@ -72,7 +72,7 @@ def request(request):
                 ),
                 getattr(settings, "MDOT_SERVICE_EMAIL", None),
                 [sponsor.email],
-                cc=[app_requestor_email]
+                cc=[app_requestor_email, manager.email]
             )
             msg.attach_alternative(
                 get_template(
@@ -88,7 +88,9 @@ def request(request):
             message = ("The Mobile Intake form has been filled out by {}"
                        " on {}. The details of the submission are included"
                        " below:").format(app.requestor, app.request_date)
-            email_service_now(app, subject, message, "incomplete")
+            sender = app_requestor_email
+            cc = sponsor.email
+            email_service_now(app, subject, message, sender, cc, "incomplete")
 
             params = {
                 "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
@@ -144,7 +146,9 @@ def sponsor(request, pk):
         message = ("The designated app sponsor {0} for the app {1}"
                    " has agreed on {2}.").format(
                        spon_name, app.name, agreement.agree_time)
-        email_service_now(app, subject, message, "complete")
+        sender = app.app_sponsor.email
+        cc = "{}@uw.edu".format(app.requestor.username)
+        email_service_now(app, subject, message, sender, cc, "complete")
 
         params = {
             'service_email': getattr(settings, "MDOT_SERVICE_EMAIL", None),
@@ -249,7 +253,7 @@ def decline(request, pk):
     return render_to_response("mdot/developers/decline.html", params)
 
 
-def email_service_now(app, subject, message, status):
+def email_service_now(app, subject, message, sender, cc, status):
     """
     Function that sends an email to the mdot service now team about
     new mobile app requests and any updates
@@ -268,23 +272,29 @@ def email_service_now(app, subject, message, status):
         "manager_name": " ".join(
             (app_manager.first_name, app_manager.last_name)),
         "manager_netid": app_manager.netid,
-        "manager_email": "{}@uw.edu".format(app_manager.netid),
+        "manager_email": app_manager.email,
         "app_name": app.name,
         "app_lang": app.primary_language,
         "app_store": list(app.platform.all())
     }
 
     try:
-        send_mail(
+        email = EmailMultiAlternatives(
             subject,
             get_template("mdot/developers/email/service_plain.html").render(
                 email_context
             ),
-            getattr(settings, "MDOT_SERVICE_EMAIL", None),
+            sender,
             [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
-            html_message=get_template(
-                "mdot/developers/email/service.html"
-            ).render(email_context),
-        ),
+            cc=[cc, app_manager.email]
+        )
+        email.attach_alternative(
+            get_template(
+                "mdot/developers/email/service.html").render(
+                email_context
+            ), "text/html")
+
+        email.send()
+
     except BadHeaderError:
         return HttpResponse("Invalid header found.")
