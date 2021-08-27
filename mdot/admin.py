@@ -83,4 +83,3 @@ class AgreementAdmin(admin.ModelAdmin):
 
 class AgreementInLine(admin.TabularInline):
     model = Agreement
-
