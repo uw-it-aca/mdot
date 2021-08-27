@@ -30,13 +30,31 @@ class MdotFormTest(TestCase):
         sponsor_form_data = {
             'first_name': 'Sponsor',
             'last_name': 'lname',
-            'netid': 'SponTest',
+            'netid': 'spontest',
             'email': 'spon@uw.edu',
             'title': 'Sponsor Test Case',
             'department': 'sponsor testcase',
             'unit': 'Sponsor Test Case'}
         sponsor_form = SponsorForm(data=sponsor_form_data)
         self.assertTrue(sponsor_form.is_valid())
+
+    def test_sponsor_form_invalid_netid(self):
+        """
+        Test that the sponsor form does not accept a
+        UW NetID that contains any non-alphanumeric
+        characters
+        """
+
+        sponsor_form_data = {
+            'first_name': 'Sponsor',
+            'last_name': 'lname',
+            'netid': 'SponTest@uw.edu',
+            'title': 'Sponsor Test Case',
+            'email': 'spontestcase@uw.edu',
+            'department': 'sponsor testcase',
+            'unit': 'Sponsor Test Case'}
+        sponsor_form = SponsorForm(data=sponsor_form_data)
+        self.assertFalse(sponsor_form.is_valid())
 
     def test_manager_form_input_consumption(self):
         """
@@ -46,10 +64,25 @@ class MdotFormTest(TestCase):
         manager_form_data = {
             'first_name': 'Manager',
             'last_name': 'lname',
-            'netid': 'ManTest',
+            'netid': 'mantest',
             'email': 'manager@uw.edu'}
         manager_form = ManagerForm(data=manager_form_data)
         self.assertTrue(manager_form.is_valid())
+
+    def test_manager_form_invalid_netid(self):
+        """
+        Test that the manager form does not accept a
+        UW NetID that contains any non-alphanumeric
+        characters
+        """
+
+        manager_form_data = {
+            'first_name': 'Manager',
+            'last_name': 'lname',
+            'netid': 'ManTest@uw.edu',
+            'email': 'manager@uw.edu'}
+        manager_form = ManagerForm(data=manager_form_data)
+        self.assertFalse(manager_form.is_valid())
 
     def test_app_form_input_consumption(self):
         """
@@ -76,7 +109,7 @@ class MdotFormTest(TestCase):
         forms = {
             '{}first_name'.format(sponsor_prefix): 'Sponsor',
             '{}last_name'.format(sponsor_prefix): 'lname',
-            '{}netid'.format(sponsor_prefix): 'SponTest',
+            '{}netid'.format(sponsor_prefix): 'spontest',
             '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
             '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
             '{}department'.format(sponsor_prefix): 'sponsor testcase',
@@ -98,6 +131,41 @@ class MdotFormTest(TestCase):
         # Make sure the user is sent to the thank you
         # page after submitting valid form
         self.assertTrue(b'Thank You' in response.content)
+
+    def test_full_invalid_netid_form_post(self):
+        """
+        Test that when given a complete form with an invalid
+        NetID, the view sends the user back to the request page.
+        """
+
+        sponsor_prefix = 'sponsor-'
+        manager_prefix = 'manager-'
+        app_prefix = 'app-'
+        forms = {
+            '{}first_name'.format(sponsor_prefix): 'Sponsor',
+            '{}last_name'.format(sponsor_prefix): 'lname',
+            '{}netid'.format(sponsor_prefix): 'SponTest@uw.edu',
+            '{}title'.format(sponsor_prefix): 'Sponsor Test Case',
+            '{}email'.format(sponsor_prefix): 'spontestcase@uw.edu',
+            '{}department'.format(sponsor_prefix): 'sponsor testcase',
+            '{}unit'.format(sponsor_prefix): 'Sponsor Test Case',
+
+            '{}first_name'.format(manager_prefix): 'Manager',
+            '{}last_name'.format(manager_prefix): 'lname',
+            '{}netid'.format(manager_prefix): 'manager@uw.edu',
+            '{}email'.format(manager_prefix): 'man@uw.edu',
+
+            '{}name'.format(app_prefix): 'app',
+            '{}platform'.format(app_prefix): [self.platform.pk],
+            '{}primary_language'.format(app_prefix): 'Test Lang'
+        }
+        # login user
+        self.client.force_login(self.user)
+        response = self.client.post('/developers/request/', forms)
+        self.assertEqual(response.status_code, 200)
+        # Make sure the user is not sent to the thank you
+        # page after submitting an invalid netid in form
+        self.assertFalse(b'Thank You' in response.content)
 
     def tearDown(self):
         pass

@@ -1,8 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
+from django.core.validators import RegexValidator
+from django.core.exceptions import FieldError
+import re
 
 # Create your models here.
+
+# assumes NetID conforms to personal or shared NetID requirements
+netid_validator = RegexValidator(
+    regex='^[a-z][0-9a-z]{0,7}$', message='NetID must be valid')
 
 
 class Platform(models.Model):
@@ -16,7 +23,7 @@ class Platform(models.Model):
 class Sponsor(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    netid = models.CharField(max_length=16)
+    netid = models.CharField(max_length=16, validators=[netid_validator])
     email = models.EmailField(max_length=256)
     title = models.CharField(max_length=50)
     department = models.CharField(max_length=30)
@@ -29,7 +36,11 @@ class Sponsor(models.Model):
 class Manager(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    netid = models.CharField(max_length=16)
+    netid = models.CharField(
+        max_length=16,
+        validators=[netid_validator],
+        error_messages={'required': 'Please enter a valid NetID'}
+    )
     email = models.EmailField(max_length=256)
 
     def __str__(self):

@@ -100,6 +100,15 @@ def request(request):
             return render_to_response(
                 "mdot/developers/thanks.html",
                 params)
+        else:
+            forms = {
+                "sponsorform": sponsorForm,
+                "managerform": managerForm,
+                "appform": appForm,
+            }
+
+        # return forms to request page
+        return render(request, "mdot/developers/request.html", forms)
 
     # use prefixes to avoid duplicate field names
     sponsorForm = SponsorForm(prefix="sponsor")
