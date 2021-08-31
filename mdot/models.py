@@ -93,6 +93,9 @@ class App(models.Model):
     agreed_to = property(agreed_to)
     platforms = property(app_platform)
 
+    def __str__(self):
+        return self.name
+
 
 class Agreement(models.Model):
     app = models.ForeignKey(App, on_delete=models.CASCADE)
@@ -127,7 +130,7 @@ class AppForm(forms.ModelForm):
         fields = ["name", "primary_language", "platform"]
         labels = {
             "name": "Application Name",
-            "platform": "Distribution type"
+            "platform": "Distribution Platform"
         }
 
     def __init__(self, *args, **kwargs):

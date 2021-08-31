@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72a7bf96-f564-4182-9988-7dc4bcff8c4e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mdot/test/admin_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/app_deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/app_deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdot/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdot/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mdot/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mdot/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mdot/templates/mdot/developers/request.html" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/templates/mdot/developers/request.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mdot/test/admin_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/test/admin_view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +22,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1xFhHE6xjypaBokBIZA6RF6AKLM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -85,6 +85,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
