@@ -93,7 +93,7 @@ class AppForm(forms.ModelForm):
         fields = ["name", "primary_language", "platform"]
         labels = {
             "name": "Application Name",
-            "platform": "Distribution type"
+            "platform": "Distribution Platform"
         }
 
     def __init__(self, *args, **kwargs):
