@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import RegexValidator
 from django.core.exceptions import FieldError
-import re
 
 # Create your models here.
 
@@ -92,9 +91,6 @@ class App(models.Model):
     manager_contact = property(manager_contact)
     agreed_to = property(agreed_to)
     platforms = property(app_platform)
-
-    def __str__(self):
-        return self.name
 
 
 class Agreement(models.Model):

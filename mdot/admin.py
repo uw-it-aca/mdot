@@ -81,15 +81,6 @@ class AgreementFilter(admin.SimpleListFilter):
             return queryset.filter(agreement=None)
 
 
-@admin.register(App, site=admin_site)
-class AppAdmin(admin.ModelAdmin):
-    model = App
-    list_display = (
-        '__str__',
-        'request_date',
-    )
-
-
 class AppInLine(admin.TabularInline):
     model = App
 
