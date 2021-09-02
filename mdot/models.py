@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import RegexValidator
 from django.core.exceptions import FieldError
-import re
+from django.forms import inlineformset_factory
 
 # Create your models here.
 
@@ -42,6 +42,8 @@ class Manager(models.Model):
         error_messages={'required': 'Please enter a valid NetID'}
     )
     email = models.EmailField(max_length=256)
+    # to_app = models.ForeignKey('App', on_delete=models.CASCADE,
+    # null=True, editable=False)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -52,7 +54,11 @@ class App(models.Model):
     primary_language = models.CharField(max_length=20)
     platform = models.ManyToManyField(Platform)
     app_manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
+    manager_contact = models.CharField(default=str(Manager.email),
+                                       editable=False)
     app_sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
+    sponsor_contact = models.CharField(default=str(Sponsor.email),
+                                       editable=False)
     requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
 
@@ -80,8 +86,13 @@ class App(models.Model):
 
             def time(e):
                 return e.agree_time
+
+            # method to sort agreements by agree time
+            def time(agreement):
+                return agreement.agree_time
+
             agreements.sort(key=time)
-            time = str(agreements[-1].agree_time.
+            time = str(time(agreements[-1]).
                        strftime('%b %d, %Y, %I:%M %p'))
             if agreements[-1].agree:
                 return "Agreed on " + time
@@ -92,9 +103,6 @@ class App(models.Model):
     manager_contact = property(manager_contact)
     agreed_to = property(agreed_to)
     platforms = property(app_platform)
-
-    def __str__(self):
-        return self.name
 
 
 class Agreement(models.Model):
