@@ -22,13 +22,19 @@ class SAMLAdminSite(admin.AdminSite):
 admin_site = SAMLAdminSite(name="SAMLAdmin")
 
 
+class PlatformInline(admin.TabularInline):
+    model = Platform
+    extra = 0
+
+
 @admin.register(Platform, site=admin_site)
 class PlatformAdmin(admin.ModelAdmin):
     model = Platform
 
 
-class PlatformInline(admin.TabularInline):
-    model = Platform
+class SponsorInLine(admin.TabularInline):
+    model = Sponsor
+    extra = 0
 
 
 @admin.register(Sponsor, site=admin_site)
@@ -41,8 +47,9 @@ class SponsorAdmin(admin.ModelAdmin):
     )
 
 
-class SponsorInLine(admin.TabularInline):
-    model = Sponsor
+class ManagerInLine(admin.TabularInline):
+    model = Manager
+    extra = 0
 
 
 @admin.register(Manager, site=admin_site)
@@ -53,10 +60,7 @@ class ManagerAdmin(admin.ModelAdmin):
         'netid',
         'email',
     )
-
-
-class ManagerInLine(admin.TabularInline):
-    model = Manager
+    fields = ['first_name', 'last_name', 'netid', 'email']
 
 
 class AgreementFilter(admin.SimpleListFilter):
@@ -81,8 +85,9 @@ class AgreementFilter(admin.SimpleListFilter):
             return queryset.filter(agreement=None)
 
 
-class AppInLine(admin.TabularInline):
-    model = App
+class AgreementInLine(admin.StackedInline):
+    model = Agreement
+    extra = 0
 
 
 @admin.register(Agreement, site=admin_site)
@@ -95,8 +100,9 @@ class AgreementAdmin(admin.ModelAdmin):
     ]
 
 
-class AgreementInLine(admin.StackedInline):
-    model = Agreement
+class AppInLine(admin.TabularInline):
+    model = App
+    extra = 0
 
 
 @admin.register(App, site=admin_site)
@@ -104,6 +110,7 @@ class AppAdmin(admin.ModelAdmin):
     date_hierarchy = 'request_date'
     inlines = [AgreementInLine, ]
     model = App
+
     list_filter = (
         'platform',
         AgreementFilter
@@ -117,3 +124,6 @@ class AppAdmin(admin.ModelAdmin):
         'agreed_to',
         'platforms'
     )
+    fields = ['name', 'primary_language', 'platform', 'app_manager', 'manager_contact',
+              'app_sponsor', 'sponsor_contact', 'requestor']
+    readonly_fields = ['manager_contact', 'sponsor_contact']
