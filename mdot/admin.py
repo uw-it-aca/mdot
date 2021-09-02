@@ -59,6 +59,7 @@ class ManagerInLine(admin.TabularInline):
     model = Manager
 
 
+# filters agreements into agreed, denied, or pending
 class AgreementFilter(admin.SimpleListFilter):
     title = "Agreement"
     parameter_name = 'agreements'
@@ -81,36 +82,29 @@ class AgreementFilter(admin.SimpleListFilter):
             return queryset.filter(agreement=None)
 
 
-@admin.register(App, site=admin_site)
-class AppAdmin(admin.ModelAdmin):
-    model = App
-    list_display = (
-        '__str__',
-        'request_date',
-    )
-
-
-class AppInLine(admin.TabularInline):
-    model = App
-
-
 @admin.register(Agreement, site=admin_site)
 class AgreementAdmin(admin.ModelAdmin):
     model = Agreement
+    date_hierarchy = 'agree_time'
     list_display = [
         '__str__',
         'agree',
-        'agree_time',
+        'agree_time'
     ]
 
 
-class AgreementInLine(admin.StackedInline):
+class AgreementInLine(admin.TabularInline):
     model = Agreement
+    extra = 0
+    list_display = [
+        '__str__',
+        'agree',
+        'agree_time'
+    ]
 
 
 @admin.register(App, site=admin_site)
 class AppAdmin(admin.ModelAdmin):
-    date_hierarchy = 'request_date'
     inlines = [AgreementInLine, ]
     model = App
     list_filter = (
@@ -126,3 +120,7 @@ class AppAdmin(admin.ModelAdmin):
         'agreed_to',
         'platforms'
     )
+
+
+class AppInLine(admin.TabularInline):
+    model = App

@@ -55,7 +55,6 @@ class App(models.Model):
     app_sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
     requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
-    # status = "Agreed" if Agreement.objects.all().filter(app__name=self.name).exists() else "Pending"
 
     def __str__(self):
         return self.name
@@ -69,24 +68,25 @@ class App(models.Model):
     def app_platform(self):
         return ", ".join([p.app_store for p in self.platform.all()])
 
+    # finds app's corresponding agreement time if it exists
     def agreed_to(self):
         if not Agreement.objects.all().filter(app__name=self.name).exists():
             return "Pending"
         else:
             dates = Agreement.objects.all().filter(app__name=self.name)
-
             agreements = []
             for date in dates:
                 agreements.append(date)
 
             def time(e):
                 return e.agree_time
-
             agreements.sort(key=time)
+            time = str(agreements[-1].agree_time.
+                       strftime('%b %d, %Y, %I:%M %p'))
             if agreements[-1].agree:
-                return "Agreed on " + str(agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y'))
+                return "Agreed on " + time
             else:
-                return "Denied on " + str(agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y'))
+                return "Denied on " + time
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)
