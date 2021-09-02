@@ -42,7 +42,8 @@ class Manager(models.Model):
         error_messages={'required': 'Please enter a valid NetID'}
     )
     email = models.EmailField(max_length=256)
-    # to_app = models.ForeignKey('App', on_delete=models.CASCADE, null=True, editable=False)
+    # to_app = models.ForeignKey('App', on_delete=models.CASCADE,
+    # null=True, editable=False)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -53,9 +54,11 @@ class App(models.Model):
     primary_language = models.CharField(max_length=20)
     platform = models.ManyToManyField(Platform)
     app_manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
-    manager_contact = models.CharField(default=str(Manager.email), editable=False)
+    manager_contact = models.CharField(default=str(Manager.email),
+                                       editable=False)
     app_sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
-    sponsor_contact = models.CharField(default=str(Sponsor.email), editable=False)
+    sponsor_contact = models.CharField(default=str(Sponsor.email),
+                                       editable=False)
     requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
 
@@ -87,9 +90,11 @@ class App(models.Model):
 
             agreements.sort(key=time)
             if agreements[-1].agree:
-                return "Agreed on " + agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y')
+                return "Agreed on "\
+                       + agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y')
             else:
-                return "Denied on " + agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y')
+                return "Denied on "\
+                       + agreements[-1].agree_time.strftime('%H:%M, %B %d, %Y')
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)

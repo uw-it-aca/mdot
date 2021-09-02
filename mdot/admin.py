@@ -124,6 +124,7 @@ class AppAdmin(admin.ModelAdmin):
         'agreed_to',
         'platforms'
     )
-    fields = ['name', 'primary_language', 'platform', 'app_manager', 'manager_contact',
-              'app_sponsor', 'sponsor_contact', 'requestor']
+    fields = ['name', 'primary_language', 'platform', 'app_manager',
+              'manager_contact', 'app_sponsor', 'sponsor_contact',
+              'requestor']
     readonly_fields = ['manager_contact', 'sponsor_contact']
