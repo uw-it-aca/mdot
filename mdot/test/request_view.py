@@ -92,7 +92,7 @@ class MdotRequestTest(TestCase):
             "sponsor-requirements": "on",
             "understand-agreements": "on",
             "understand-manager": "on",
-            "agree": "on"
+            "agree": "yes"
         }
         response = self.client.post("/developers/request/{}/".format(pk),
                                     params)
