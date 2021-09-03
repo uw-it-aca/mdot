@@ -108,7 +108,6 @@ class AgreementAdmin(admin.ModelAdmin):
         'agree',
         'agree_time'
     ]
-    form = AgreementForm
 
 
 class AppInLine(admin.TabularInline):

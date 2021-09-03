@@ -133,16 +133,6 @@ class ManagerForm(forms.ModelForm):
         }
 
 
-class AgreementForm(forms.ModelForm):
-    class Meta:
-        model = Agreement
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(AgreementForm, self).__init__(*args, **kwargs)
-        self.fields["agree"].widget = forms.NullBooleanSelect()
-
-
 class AppForm(forms.ModelForm):
     class Meta:
         model = App
