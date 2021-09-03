@@ -48,9 +48,15 @@ class Manager(models.Model):
         return self.first_name + ' ' + self.last_name
 
 
+AGREEMENT_CHOICES = [
+    (True, 'Agreed'),
+    (False, 'Denied'),
+]
+
+
 class Agreement(models.Model):
     app = models.ForeignKey('App', on_delete=models.CASCADE)
-    agree = models.NullBooleanField(default=None, null=True)
+    agree = models.BooleanField(choices=AGREEMENT_CHOICES)
     agree_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

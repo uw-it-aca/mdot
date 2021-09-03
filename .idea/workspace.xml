@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72a7bf96-f564-4182-9988-7dc4bcff8c4e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/mdot/migrations/0008_auto_20210903_0215.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdot/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdot/test/request_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdot/test/request_view.py" afterDir="false" />
