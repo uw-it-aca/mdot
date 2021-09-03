@@ -110,6 +110,7 @@ class AgreementInLine(admin.TabularInline):
         'agree',
         'agree_time'
     ]
+    fields = ['agree', ]
 
 
 class AppInLine(admin.TabularInline):
@@ -133,7 +134,8 @@ class AppAdmin(admin.ModelAdmin):
         'app_sponsor',
         'sponsor_contact',
         'agreed_to',
-        'platforms'
+        'platforms',
+        'request_date'
     )
 
 
@@ -141,5 +143,5 @@ class AppInLine(admin.TabularInline):
     model = App
     fields = ['name', 'primary_language', 'platform', 'app_manager',
               'manager_contact', 'app_sponsor', 'sponsor_contact',
-              'requestor']
-    readonly_fields = ['manager_contact', 'sponsor_contact']
+              'requestor', 'agreed_to']
+    readonly_fields = ['manager_contact', 'sponsor_contact', 'agreed_to']

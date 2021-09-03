@@ -4,6 +4,7 @@ from django import forms
 from django.core.validators import RegexValidator
 from django.core.exceptions import FieldError
 from django.forms import inlineformset_factory
+from django.utils.timezone import *
 
 # Create your models here.
 
@@ -49,6 +50,15 @@ class Manager(models.Model):
         return self.first_name + ' ' + self.last_name
 
 
+class Agreement(models.Model):
+    app = models.ForeignKey('App', on_delete=models.CASCADE)
+    agree = models.BooleanField(default=False)
+    agree_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.app.name
+
+
 class App(models.Model):
     name = models.CharField(max_length=50)
     primary_language = models.CharField(max_length=20)
@@ -76,6 +86,7 @@ class App(models.Model):
 
     # finds app's corresponding agreement time if it exists
     def agreed_to(self):
+        # return self.app_agreement.agree
         if not Agreement.objects.all().filter(app__name=self.name).exists():
             return "Pending"
         else:
@@ -84,14 +95,12 @@ class App(models.Model):
             for date in dates:
                 agreements.append(date)
 
-            def time(e):
-                return e.agree_time
-
             # method to sort agreements by agree time
             def time(agreement):
                 return agreement.agree_time
 
             agreements.sort(key=time)
+            print(agreements[-1].agree_time)
             time = str(time(agreements[-1]).
                        strftime('%b %d, %Y, %I:%M %p'))
             if agreements[-1].agree:
@@ -104,14 +113,8 @@ class App(models.Model):
     agreed_to = property(agreed_to)
     platforms = property(app_platform)
 
-
-class Agreement(models.Model):
-    app = models.ForeignKey(App, on_delete=models.CASCADE)
-    agree = models.BooleanField(default=True)
-    agree_time = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.app.name
+    app_agreement = models.CharField(Agreement, default=str(agreed_to),
+                                     editable=False, max_length=150)
 
 
 class SponsorForm(forms.ModelForm):
@@ -139,6 +142,9 @@ class AppForm(forms.ModelForm):
         labels = {
             "name": "Application Name",
             "platform": "Distribution Platform"
+        }
+        widgets = {
+            "app_agreement": "forms.HiddenInput()",
         }
 
     def __init__(self, *args, **kwargs):

@@ -79,3 +79,5 @@ if os.getenv('AUTH', 'NONE') == 'SAML_MOCK':
 
 # Authentication Groups
 ADMIN_AUTHZ_GROUP = os.getenv('ADMIN_AUTHZ_GROUP', 'u_test_admin')
+
+TIME_ZONE = 'America/Los_Angeles'
