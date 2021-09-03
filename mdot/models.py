@@ -43,8 +43,6 @@ class Manager(models.Model):
         error_messages={'required': 'Please enter a valid NetID'}
     )
     email = models.EmailField(max_length=256)
-    # to_app = models.ForeignKey('App', on_delete=models.CASCADE,
-    # null=True, editable=False)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -52,7 +50,7 @@ class Manager(models.Model):
 
 class Agreement(models.Model):
     app = models.ForeignKey('App', on_delete=models.CASCADE)
-    agree = models.BooleanField(default=False)
+    agree = models.NullBooleanField(default=None)
     agree_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -85,7 +83,7 @@ class App(models.Model):
         return ", ".join([p.app_store for p in self.platform.all()])
 
     # finds app's corresponding agreement time if it exists
-    def agreed_to(self):
+    def status(self):
         # return self.app_agreement.agree
         if not Agreement.objects.all().filter(app__name=self.name).exists():
             return "Pending"
@@ -110,7 +108,7 @@ class App(models.Model):
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)
-    agreed_to = property(agreed_to)
+    agreed_to = property(status)
     platforms = property(app_platform)
 
     app_agreement = models.CharField(Agreement, default=str(agreed_to),
@@ -135,6 +133,16 @@ class ManagerForm(forms.ModelForm):
         }
 
 
+class AgreementForm(forms.ModelForm):
+    class Meta:
+        model = Agreement
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(AgreementForm, self).__init__(*args, **kwargs)
+        self.fields["agree"].widget = forms.NullBooleanSelect()
+
+
 class AppForm(forms.ModelForm):
     class Meta:
         model = App
@@ -143,9 +151,9 @@ class AppForm(forms.ModelForm):
             "name": "Application Name",
             "platform": "Distribution Platform"
         }
-        widgets = {
-            "app_agreement": "forms.HiddenInput()",
-        }
+
+    def has_changed(self):
+        return True
 
     def __init__(self, *args, **kwargs):
         super(AppForm, self).__init__(*args, **kwargs)

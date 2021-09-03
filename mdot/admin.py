@@ -86,9 +86,17 @@ class AgreementFilter(admin.SimpleListFilter):
             return queryset.filter(agreement=None)
 
 
-class AgreementInLine(admin.StackedInline):
+class AgreementInLine(admin.TabularInline):
     model = Agreement
     extra = 0
+    list_display = [
+        '__str__',
+        'agree',
+        'agree_time'
+    ]
+    fields = ['agree', 'agree_time']
+    readonly_fields = ['agree_time', ]
+    ordering = ['-agree_time', ]
 
 
 @admin.register(Agreement, site=admin_site)
@@ -100,17 +108,7 @@ class AgreementAdmin(admin.ModelAdmin):
         'agree',
         'agree_time'
     ]
-
-
-class AgreementInLine(admin.TabularInline):
-    model = Agreement
-    extra = 0
-    list_display = [
-        '__str__',
-        'agree',
-        'agree_time'
-    ]
-    fields = ['agree', ]
+    form = AgreementForm
 
 
 class AppInLine(admin.TabularInline):
@@ -133,15 +131,12 @@ class AppAdmin(admin.ModelAdmin):
         'manager_contact',
         'app_sponsor',
         'sponsor_contact',
-        'agreed_to',
+        'status',
         'platforms',
         'request_date'
     )
-
-
-class AppInLine(admin.TabularInline):
-    model = App
     fields = ['name', 'primary_language', 'platform', 'app_manager',
               'manager_contact', 'app_sponsor', 'sponsor_contact',
-              'requestor', 'agreed_to']
-    readonly_fields = ['manager_contact', 'sponsor_contact', 'agreed_to']
+              'requestor', 'status']
+    readonly_fields = ['manager_contact', 'sponsor_contact', 'status']
+    save_as = True
