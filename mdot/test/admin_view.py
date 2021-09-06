@@ -18,9 +18,13 @@ class MdotAdminTest(TestCase):
             email="javerage@uw.edu",
             password="p@ssTest1"
         )
-        self.platform = Platform.objects.create(
+        self.platform_android = Platform.objects.create(
             name='Android',
             app_store='Google Play Store'
+        )
+        self.platform_ios = Platform.objects.create(
+            name='IOS',
+            app_store='Apple Store'
         )
         self.sponsor = Sponsor.objects.create(
             first_name='Sponsor',
@@ -37,7 +41,7 @@ class MdotAdminTest(TestCase):
             primary_language='English',
             app_manager=self.manager,
             app_sponsor=self.sponsor,
-            requestor=self.user
+            requestor=self.user,
         )
 
     def test_platform_name_displays_properly(self):
@@ -147,6 +151,15 @@ class MdotAdminTest(TestCase):
         )
         display = self.app.status()
         self.assertEqual('Pending', str(display))
+
+    def test_app_platform_displays_properly(self):
+        """
+        Test that app platforms display properly on the admin dashboard.
+        """
+
+        self.app.platform.add(self.platform_ios, self.platform_android)
+        display = self.app.app_platform()
+        self.assertEqual('Google Play Store, Apple Store', str(display))
 
     def tearDown(self):
         pass
