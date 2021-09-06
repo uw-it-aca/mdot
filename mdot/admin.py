@@ -1,11 +1,14 @@
 from django.conf import settings
 from django.contrib import admin
 from .models import *
+import logging
 
 from uw_saml.utils import is_member_of_group
 
 
 admin_group = settings.ADMIN_AUTHZ_GROUP
+
+logger = logging.getLogger('filter')
 
 
 class SAMLAdminSite(admin.AdminSite):
@@ -132,10 +135,8 @@ class AppAdmin(admin.ModelAdmin):
         'sponsor_contact',
         'status',
         'platforms',
-        'request_date'
     )
     fields = ['name', 'primary_language', 'platform', 'app_manager',
               'manager_contact', 'app_sponsor', 'sponsor_contact',
               'requestor', 'status']
     readonly_fields = ['manager_contact', 'sponsor_contact', 'status']
-    save_as = True

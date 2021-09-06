@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.test import Client, TestCase
 from django.contrib.auth.models import User
 from mdot.models import Sponsor, Manager, App, Platform, Agreement
@@ -20,6 +22,23 @@ class MdotAdminTest(TestCase):
             name='Android',
             app_store='Google Play Store'
         )
+        self.sponsor = Sponsor.objects.create(
+            first_name='Sponsor',
+            last_name='lname',
+            email='sponsor@uw.edu'
+        )
+        self.manager = Manager.objects.create(
+            first_name='J',
+            last_name='average',
+            email='manager@uw.edu'
+        )
+        self.app = App.objects.create(
+            name='TestApp',
+            primary_language='English',
+            app_manager=self.manager,
+            app_sponsor=self.sponsor,
+            requestor=self.user
+        )
 
     def test_platform_name_displays_properly(self):
         """
@@ -36,8 +55,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        sponsor = Sponsor(first_name='Sponsor', last_name='lname')
-        self.assertEqual('Sponsor lname', str(sponsor))
+        self.assertEqual('Sponsor lname', str(self.sponsor))
 
     def test_manager_name_displays_properly(self):
         """
@@ -45,8 +63,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        manager = Manager(first_name='J', last_name='average')
-        self.assertEqual('J average', str(manager))
+        self.assertEqual('J average', str(self.manager))
 
     def test_app_name_displays_properly(self):
         """
@@ -54,8 +71,25 @@ class MdotAdminTest(TestCase):
         displays the app's name correctly.
         """
 
-        app = App(name='TestApp', primary_language='English')
-        self.assertEqual('TestApp', str(app))
+        self.assertEqual('TestApp', str(self.app))
+
+    def test_manager_contact_displays_properly(self):
+        """
+        Test that app manager's email in detail view displays
+        properly.
+        """
+
+        display = self.app.manager_contact
+        self.assertEqual('manager@uw.edu', display)
+
+    def test_sponsor_contact_displays_properly(self):
+        """
+        Test that app sponsor's email in detail view displays
+        properly.
+        """
+
+        display = self.app.sponsor_contact
+        self.assertEqual('sponsor@uw.edu', display)
 
     def test_agreement_name_displays_properly(self):
         """
@@ -63,10 +97,56 @@ class MdotAdminTest(TestCase):
         displays correctly.
         """
 
-        app = App(name='TestApp', primary_language='English')
-
-        agreement = Agreement(app=app, agree=True)
+        agreement = Agreement(app=self.app, agree=True)
         self.assertEqual('TestApp', str(agreement))
+
+    def test_agreed_status_displays_properly(self):
+        """
+        Test that an approved app's agreement status displays properly.
+        """
+
+        time = datetime.now()
+        agreement = Agreement.objects.create(
+            app=self.app,
+            agree=True,
+            agree_time=time
+        )
+        display = self.app.status()
+        self.assertEqual(
+            'Agreed on ' + time.strftime('%b %d, %Y, %I:%M %p'),
+            str(display)
+        )
+
+    def test_denied_status_displays_properly(self):
+        """
+        Test that a denied app's agreement status displays properly.
+        """
+
+        time = datetime.now()
+        agreement = Agreement.objects.create(
+            app=self.app,
+            agree=False,
+            agree_time=time
+        )
+        display = self.app.status()
+        self.assertEqual(
+            'Denied on ' + time.strftime('%b %d, %Y, %I:%M %p'),
+            str(display)
+        )
+
+    def test_pending_status_displays_properly(self):
+        """
+        Test that a pending app's agreement status displays properly.
+        """
+
+        time = datetime.now()
+        agreement = Agreement(
+            app=self.app,
+            agree=False,
+            agree_time=time
+        )
+        display = self.app.status()
+        self.assertEqual('Pending', str(display))
 
     def tearDown(self):
         pass

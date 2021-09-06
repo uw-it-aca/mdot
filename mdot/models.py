@@ -88,9 +88,7 @@ class App(models.Model):
     def app_platform(self):
         return ", ".join([p.app_store for p in self.platform.all()])
 
-    # finds app's corresponding agreement time if it exists
     def status(self):
-        # return self.app_agreement.agree
         if not Agreement.objects.all().filter(app__name=self.name).exists():
             return "Pending"
         else:
@@ -104,9 +102,7 @@ class App(models.Model):
                 return agreement.agree_time
 
             agreements.sort(key=time)
-            print(agreements[-1].agree_time)
-            time = str(time(agreements[-1]).
-                       strftime('%b %d, %Y, %I:%M %p'))
+            time = time(agreements[-1]).strftime('%b %d, %Y, %I:%M %p')
             if agreements[-1].agree:
                 return "Agreed on " + time
             else:
@@ -114,11 +110,7 @@ class App(models.Model):
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)
-    agreed_to = property(status)
     platforms = property(app_platform)
-
-    app_agreement = models.CharField(Agreement, default=str(agreed_to),
-                                     editable=False, max_length=150)
 
 
 class SponsorForm(forms.ModelForm):
@@ -147,9 +139,6 @@ class AppForm(forms.ModelForm):
             "name": "Application Name",
             "platform": "Distribution Platform"
         }
-
-    def has_changed(self):
-        return True
 
     def __init__(self, *args, **kwargs):
         super(AppForm, self).__init__(*args, **kwargs)

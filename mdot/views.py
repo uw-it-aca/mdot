@@ -145,7 +145,7 @@ def sponsor(request, pk):
             and "understand-manager" in request.POST
             and "agree" in request.POST):
         agreement = Agreement.objects.create(
-            app=app
+            app=app, agree=True
         )
         agreement.save()
 
