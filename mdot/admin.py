@@ -79,11 +79,23 @@ class AgreementFilter(admin.SimpleListFilter):
         ]
 
     def queryset(self, request, queryset):
+        # make list of app names that agreed (in status)
+        agreed_apps = []
+        for app in App.objects.all():
+            if app.status().startswith('A'):
+                agreed_apps.append(app.name)
+
+        # make list of app names that denied (in status)
+        denied_apps = []
+        for app in App.objects.all():
+            if app.status().startswith('D'):
+                denied_apps.append(app.name)
+
         if self.value() == 'agreed':
-            return queryset.filter(agreement__agree=True)
+            return queryset.filter(name__in=agreed_apps)
 
         if self.value() == 'denied':
-            return queryset.filter(agreement__agree=False)
+            return queryset.filter(name__in=denied_apps)
 
         if self.value() == 'pending':
             return queryset.filter(agreement=None)
