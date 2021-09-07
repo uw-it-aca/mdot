@@ -137,7 +137,7 @@ class MdotRequestTest(TestCase):
         self.assertEqual(response.status_code, 200)
         # make sure agreement object is created with 'false' for agree value
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
-        self.assertFalse(Agreement.objects.get(app__pk=pk).agree)
+        self.assertFalse(Agreement.objects.get(app__pk=pk).status)
 
         # accessing the original request page should redirect to Thank you page
         response = self.client.get("/developers/request/{}/".format(pk))

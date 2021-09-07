@@ -145,7 +145,7 @@ def sponsor(request, pk):
             and "understand-manager" in request.POST
             and "agree" in request.POST):
         agreement = Agreement.objects.create(
-            app=app, agree=True
+            app=app, status=True
         )
         agreement.save()
 
@@ -196,7 +196,7 @@ def sponsor(request, pk):
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
                 "app": app.name
             }
-            if agreement.latest("agree_time").agree:
+            if agreement.latest("agree_time").status:
                 return render_to_response(
                     "mdot/developers/agree.html",
                     params)
@@ -224,7 +224,7 @@ def decline(request, pk):
     if not agreement:
         agreement = Agreement.objects.create(
             app=app,
-            agree=False
+            status=False
         )
         agreement.save()
 

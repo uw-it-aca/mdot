@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -55,11 +56,16 @@ AGREEMENT_CHOICES = [
 
 class Agreement(models.Model):
     app = models.ForeignKey('App', on_delete=models.CASCADE)
-    agree = models.BooleanField(choices=AGREEMENT_CHOICES)
+    status = models.BooleanField(choices=AGREEMENT_CHOICES)
     agree_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.app.name
+
+    def clean(self):
+        if not self.status:
+            raise ValidationError('Please select a status (agreed/denied) '
+                                  'for the agreement')
 
 
 class App(models.Model):
@@ -102,8 +108,9 @@ class App(models.Model):
 
             agreements.sort(key=time)
             # time adjusted back 7 hours due to disparity (temp fix?)
-            time = (agreements[-1].agree_time - timedelta(hours=7)).strftime('%b %d, %Y, %I:%M %p')
-            if agreements[-1].agree:
+            time = (agreements[-1].agree_time -
+                    timedelta(hours=7)).strftime('%b %d, %Y, %I:%M %p')
+            if agreements[-1].status:
                 return "Agreed on " + time
             else:
                 return "Denied on " + time

@@ -106,10 +106,10 @@ class AgreementInLine(admin.TabularInline):
     extra = 0
     list_display = [
         '__str__',
-        'agree',
+        'status',
         'agree_time'
     ]
-    fields = ['agree', 'agree_time']
+    fields = ['status', 'agree_time']
     readonly_fields = ['agree_time', ]
     ordering = ['-agree_time', ]
 
@@ -120,7 +120,7 @@ class AgreementAdmin(admin.ModelAdmin):
     date_hierarchy = 'agree_time'
     list_display = [
         '__str__',
-        'agree',
+        'status',
         'agree_time'
     ]
 

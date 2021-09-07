@@ -3,6 +3,7 @@ from datetime import datetime
 from django.test import Client, TestCase
 from django.contrib.auth.models import User
 from mdot.models import Sponsor, Manager, App, Platform, Agreement
+from django.core.exceptions import ValidationError
 
 
 class MdotAdminTest(TestCase):
@@ -101,7 +102,7 @@ class MdotAdminTest(TestCase):
         displays correctly.
         """
 
-        agreement = Agreement(app=self.app, agree=True)
+        agreement = Agreement(app=self.app, status=True)
         self.assertEqual('TestApp', str(agreement))
 
     def test_agreed_status_displays_properly(self):
@@ -112,7 +113,7 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement.objects.create(
             app=self.app,
-            agree=True,
+            status=True,
             agree_time=time
         )
         display = self.app.status()
@@ -130,7 +131,7 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement.objects.create(
             app=self.app,
-            agree=False,
+            status=False,
             agree_time=time
         )
         display = self.app.status()
@@ -148,7 +149,7 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement(
             app=self.app,
-            agree=False,
+            status=False,
             agree_time=time
         )
         display = self.app.status()
@@ -156,12 +157,25 @@ class MdotAdminTest(TestCase):
 
     def test_app_platform_displays_properly(self):
         """
-        Test that app platforms display properly on the admin dashboard.
+        Test that an app's platforms display properly on the admin dashboard.
         """
 
         self.app.platform.add(self.platform_ios, self.platform_android)
         display = self.app.app_platform()
         self.assertEqual('Google Play Store, Apple Store', str(display))
+
+    def test_invalid_agreement_status(self):
+        """
+        Test that agreement dashboard will raise ValidationError if no
+        agreement status (agreed/denied) is selected.
+        """
+
+        time = datetime.now()
+        with self.assertRaises(ValidationError):
+            agreement = Agreement.objects.create(
+                app=self.app,
+                status='---------',
+                agree_time=time)
 
     def tearDown(self):
         pass
