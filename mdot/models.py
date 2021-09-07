@@ -1,10 +1,9 @@
+from datetime import timedelta
+
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
 from django.core.validators import RegexValidator
-from django.core.exceptions import FieldError
-from django.forms import inlineformset_factory
-from django.utils.timezone import *
 
 # Create your models here.
 
@@ -89,10 +88,10 @@ class App(models.Model):
         return ", ".join([p.app_store for p in self.platform.all()])
 
     def status(self):
-        if not Agreement.objects.all().filter(app__name=self.name).exists():
+        if not Agreement.objects.filter(app__name=self.name).exists():
             return "Pending"
         else:
-            dates = Agreement.objects.all().filter(app__name=self.name)
+            dates = Agreement.objects.filter(app__name=self.name)
             agreements = []
             for date in dates:
                 agreements.append(date)
@@ -102,7 +101,8 @@ class App(models.Model):
                 return agreement.agree_time
 
             agreements.sort(key=time)
-            time = time(agreements[-1]).strftime('%b %d, %Y, %I:%M %p')
+            # time adjusted back 7 hours due to disparity (temp fix?)
+            time = (agreements[-1].agree_time - timedelta(hours=7)).strftime('%b %d, %Y, %I:%M %p')
             if agreements[-1].agree:
                 return "Agreed on " + time
             else:
