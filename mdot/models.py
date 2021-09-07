@@ -102,7 +102,8 @@ class App(models.Model):
 
             agreements.sort(key=time)
             # time adjusted back 7 hours due to disparity (temp fix?)
-            time = (agreements[-1].agree_time - timedelta(hours=7)).strftime('%b %d, %Y, %I:%M %p')
+            time = (agreements[-1].agree_time - timedelta(hours=7))\
+                .strftime('%b %d, %Y, %I:%M %p')
             if agreements[-1].agree:
                 return "Agreed on " + time
             else:
