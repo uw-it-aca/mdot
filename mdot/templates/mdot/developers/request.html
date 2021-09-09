@@ -26,17 +26,17 @@
             <ul style="list-style-type: disc; margin-left: 2em;">
                 {% for field, errors in appform.errors.items %}
                 {% for error in errors %}
-                <li style="color: red;">App Information: {{ field | title | add_whitespace }} {{ error | remove_this_field }}</li>
+                <li style="color: red;">App Information: {{ error | replace_this_field:field }}</li>
                 {% endfor %}
                 {% endfor %}
                 {% for field, errors in managerform.errors.items %}
                 {% for error in errors %}
-                <li style="color: red;">Manager Contact: {{ field | title | add_whitespace }} {{ error | remove_this_field }}</li>
+                <li style="color: red;">Manager Contact: {{ error | replace_this_field:field }}</li>
                 {% endfor %}
                 {% endfor %}
                 {% for field, errors in sponsorform.errors.items %}
                 {% for error in errors %}
-                <li style="color: red;">Sponsor Contact: {{ field | title | add_whitespace }} {{ error | remove_this_field }}</li>
+                <li style="color: red;">Sponsor Contact: {{ error | replace_this_field:field }}</li>
                 {% endfor %}
                 {% endfor %}
             </ul>

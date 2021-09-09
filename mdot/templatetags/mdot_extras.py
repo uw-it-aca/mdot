@@ -1,5 +1,5 @@
 from django import template
-from django.template.defaultfilters import stringfilter
+from django.template.defaultfilters import stringfilter, title
 
 register = template.Library()
 
@@ -12,5 +12,5 @@ def add_whitespace(value):
 
 @register.filter
 @stringfilter
-def remove_this_field(value):
-    return value.replace('This field ', '')
+def replace_this_field(value, field):
+    return value.replace('This field', add_whitespace(title(field))) if 'This field' in value else value
