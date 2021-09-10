@@ -103,7 +103,7 @@ class MdotAdminTest(TestCase):
         displays correctly.
         """
 
-        agreement = Agreement(app=self.app, status=True)
+        agreement = Agreement(app=self.app, status='agreed')
         self.assertEqual('TestApp', str(agreement))
 
     def test_agreed_status_displays_properly(self):
@@ -114,7 +114,7 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement.objects.create(
             app=self.app,
-            status=True,
+            status='agreed',
             agree_time=time
         )
         display = self.app.status()
@@ -132,13 +132,31 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement.objects.create(
             app=self.app,
-            status=False,
+            status='denied',
             agree_time=time
         )
         display = self.app.status()
         self.assertTrue(str(display).startswith('Denied on '))
         # self.assertEqual(
         #     'Denied on ' + time.strftime('%b %d, %Y, %I:%M %p'),
+        #     str(display)
+        # )
+
+    def test_removed_status_displays_properly(self):
+        """
+        Test that a removed app's agreement status displays properly.
+        """
+
+        time = datetime.now()
+        agreement = Agreement.objects.create(
+            app=self.app,
+            status='removed',
+            agree_time=time
+        )
+        display = self.app.status()
+        self.assertTrue(str(display).startswith('Removed on '))
+        # self.assertEqual(
+        #     'Removed on ' + time.strftime('%b %d, %Y, %I:%M %p'),
         #     str(display)
         # )
 
@@ -150,7 +168,6 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement(
             app=self.app,
-            status=False,
             agree_time=time
         )
         display = self.app.status()
@@ -168,7 +185,7 @@ class MdotAdminTest(TestCase):
     def test_invalid_agreement_status(self):
         """
         Test that agreement dashboard will raise ValidationError if no
-        agreement status (agreed/denied) is selected.
+        agreement status is selected.
         """
 
         time = datetime.now()
@@ -187,7 +204,7 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement(
             app=self.app,
-            status=True,
+            status='agreed',
             agree_time=time
         )
         apps = App.objects.all()
@@ -208,13 +225,34 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         agreement = Agreement(
             app=self.app,
-            status=False,
+            status='denied',
             agree_time=time
         )
         apps = App.objects.all()
         f = AgreementFilter(
             None,
             {'status': 'denied'},
+            Agreement,
+            AgreementAdmin
+        )
+        self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists)
+
+    def test_agreement_filter_removed_status(self):
+        """
+        Test that the agreement filter properly filters apps when the
+        app's latest agreement status is removed.
+        """
+
+        time = datetime.now()
+        agreement = Agreement(
+            app=self.app,
+            status='removed',
+            agree_time=time
+        )
+        apps = App.objects.all()
+        f = AgreementFilter(
+            None,
+            {'status': 'removed'},
             Agreement,
             AgreementAdmin
         )

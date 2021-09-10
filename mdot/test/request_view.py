@@ -127,7 +127,7 @@ class MdotRequestTest(TestCase):
     def test_decline_sponsorship(self):
         """
         Tests that the decline page creates an agreement object
-        with 'false' as the agree value
+        with 'denied' as the agree value
         """
         pk = self.app.pk
 
@@ -137,7 +137,7 @@ class MdotRequestTest(TestCase):
         self.assertEqual(response.status_code, 200)
         # make sure agreement object is created with 'false' for agree value
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
-        self.assertFalse(Agreement.objects.get(app__pk=pk).status)
+        self.assertEquals(Agreement.objects.get(app__pk=pk).status, 'denied')
 
         # accessing the original request page should redirect to Thank you page
         response = self.client.get("/developers/request/{}/".format(pk))

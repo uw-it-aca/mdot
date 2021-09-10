@@ -49,14 +49,17 @@ class Manager(models.Model):
 
 
 AGREEMENT_CHOICES = [
-    (True, 'Agreed'),
-    (False, 'Denied'),
+    ('agreed', 'Agreed'),
+    ('denied', 'Denied'),
+    ('removed', 'Removed'),
 ]
 
 
 class Agreement(models.Model):
     app = models.ForeignKey('App', on_delete=models.CASCADE)
-    status = models.BooleanField(choices=AGREEMENT_CHOICES)
+    status = models.CharField(choices=AGREEMENT_CHOICES,
+                              max_length=20,
+                              default='')
     agree_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -64,7 +67,7 @@ class Agreement(models.Model):
 
     def clean(self):
         if self.status == '':
-            raise ValidationError('Please select a status (agreed/denied) '
+            raise ValidationError('Please select a status '
                                   'for the agreement.')
 
     def save(self, *args, **kwargs):
@@ -112,12 +115,16 @@ class App(models.Model):
 
             agreements.sort(key=time)
             # time adjusted back 7 hours due to disparity (temp fix?)
-            time = (agreements[-1].agree_time -
-                    timedelta(hours=7)).strftime('%b %d, %Y, %I:%M %p')
-            if agreements[-1].status:
+            time = (agreements[-1].agree_time - timedelta(hours=7))\
+                .strftime('%b %d, %Y, %I:%M %p')
+            if agreements[-1].status == 'agreed':
                 return "Agreed on " + time
-            else:
+            elif agreements[-1].status == 'denied':
                 return "Denied on " + time
+            elif agreements[-1].status == 'removed':
+                return 'Removed on ' + time
+            else:  # catch all (for debugging)
+                return 'Something\'s wrong: ' + str(agreements[-1].status)
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)

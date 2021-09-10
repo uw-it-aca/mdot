@@ -75,7 +75,8 @@ class AgreementFilter(admin.SimpleListFilter):
         return [
             ('agreed', 'Agreed'),
             ('pending', 'Pending'),
-            ('denied', 'Denied')
+            ('denied', 'Denied'),
+            ('removed', 'Removed'),
         ]
 
     def queryset(self, request, queryset):
@@ -91,11 +92,20 @@ class AgreementFilter(admin.SimpleListFilter):
             if app.status().startswith('D'):
                 denied_apps.append(app.id)
 
+        # make list of app names that got removed from platform (in status)
+        removed_apps = []
+        for app in App.objects.all():
+            if app.status().startswith('R'):
+                removed_apps.append(app.id)
+
         if self.value() == 'agreed':
             return queryset.filter(id__in=agreed_apps)
 
         if self.value() == 'denied':
             return queryset.filter(id__in=denied_apps)
+
+        if self.value() == 'removed':
+            return queryset.filter(id__in=removed_apps)
 
         if self.value() == 'pending':
             return queryset.filter(agreement=None)
