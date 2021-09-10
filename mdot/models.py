@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 
 # assumes NetID conforms to personal or shared NetID requirements
 netid_validator = RegexValidator(
-    regex='^[a-z][0-9a-z]{0,7}$', message='NetID must be valid')
+    regex='^[a-z][0-9a-z]{0,7}$', message='NetID must be valid.')
 
 
 class Platform(models.Model):
@@ -40,7 +40,7 @@ class Manager(models.Model):
     netid = models.CharField(
         max_length=16,
         validators=[netid_validator],
-        error_messages={'required': 'Please enter a valid NetID'}
+        error_messages={'required': 'Please enter a valid NetID'},
     )
     email = models.EmailField(max_length=256)
 
@@ -63,9 +63,13 @@ class Agreement(models.Model):
         return self.app.name
 
     def clean(self):
-        if not self.status:
+        if self.status == '':
             raise ValidationError('Please select a status (agreed/denied) '
-                                  'for the agreement')
+                                  'for the agreement.')
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super(Agreement, self).save(*args, **kwargs)
 
 
 class App(models.Model):

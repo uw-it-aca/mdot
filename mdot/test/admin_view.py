@@ -174,7 +174,7 @@ class MdotAdminTest(TestCase):
         with self.assertRaises(ValidationError):
             agreement = Agreement.objects.create(
                 app=self.app,
-                status='---------',
+                status='',
                 agree_time=time)
 
     def tearDown(self):
