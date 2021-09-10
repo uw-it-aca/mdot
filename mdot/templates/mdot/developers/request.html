@@ -67,30 +67,11 @@
 <script>
     $('#main-form').children().on('blur', function(event) {
         let box = event.target
-        if (!box.value && !$(this).prev().is('div')) {
-            let error = (format(box.name) + ' is required')
-            $('<div>' + error + '</div>').css('color', 'red').insertBefore(box)
-        } else if (box.value && $(this).prev().is('div')) {
+        if (!box.value && !$(this).prev().is('ul')) {
+            $('<ul>This field is required.</ul>').css('color', 'red').insertBefore(box)
+        } else if (box.value && $(this).prev().is('ul:contains("This field is required")')) {
             $(this).prev().remove()
         }
     });
-
-    function format(name) {
-        let formattedName
-        if (name.includes('-')) {
-            formattedName = name.split('-')[1]
-        }
-        return toTitleCase(formattedName.replace('_', ' '))
-    }
-
-    // function below from StackOverflow
-    function toTitleCase(str) {
-        return str.replace(
-            /\w\S*/g,
-            function(txt) {
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            }
-        );
-    }
 </script>
 {% endblock %}
