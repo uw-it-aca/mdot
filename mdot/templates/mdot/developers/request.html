@@ -65,12 +65,27 @@
     </div>
 </div>
 <script>
+    // onblur validation
     $('#main-form').children().on('blur', function(event) {
         let box = event.target
         if (!box.value && !$(this).prev().is('ul')) {
             $('<ul>This field is required.</ul>').css('color', 'red').insertBefore(box)
         } else if (box.value && $(this).prev().is('ul:contains("This field is required")')) {
             $(this).prev().remove()
+        }
+    });
+
+    // consolidation of required field errors
+    let required = false
+    $('#main-form').children('ul').first().find('*').each(function() {
+        if ($(this).is('li:contains("is required")')) {
+            // if block executes once if any required field errors exist
+            if (!required) {
+                $('<li>Fields below are required.</li>').css('color', 'red')
+                .insertAfter($('#main-form').children('ul').first().children().last())
+            }
+            $(this).remove()
+            required = true
         }
     });
 </script>
