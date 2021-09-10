@@ -1,4 +1,5 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+{% load mdot_extras %}
 
 {% block title %}Building Apps Home{% endblock %}
 
@@ -12,7 +13,7 @@
         <p class="article intro">Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>? </p>
         <p class="article intro">If so, please fill out the form below. We will process your request and let you know the next steps.</p>
 
-        <form method="post" class="request-form" novalidate>
+        <form id="main-form" method="post" class="request-form" novalidate>
 
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -22,17 +23,17 @@
             <ul style="list-style-type: disc; margin-left: 2em;">
                 {% for field, errors in appform.errors.items %}
                 {% for error in errors %}
-                <li style="color: red;">App Information: {{ error }}</li>
+                <li style="color: red;">App Information: {{ error | replace_this_field:field }}</li>
                 {% endfor %}
                 {% endfor %}
                 {% for field, errors in managerform.errors.items %}
                 {% for error in errors %}
-                <li style="color: red;">Manager Contact: {{ error }}</li>
+                <li style="color: red;">Manager Contact: {{ error | replace_this_field:field }}</li>
                 {% endfor %}
                 {% endfor %}
                 {% for field, errors in sponsorform.errors.items %}
                 {% for error in errors %}
-                <li style="color: red;">Sponsor Contact: {{ error }}</li>
+                <li style="color: red;">Sponsor Contact: {{ error | replace_this_field:field }}</li>
                 {% endfor %}
                 {% endfor %}
             </ul>
@@ -63,4 +64,33 @@
         </form>
     </div>
 </div>
+<script>
+    $('#main-form').children().on('blur', function(event) {
+        let box = event.target
+        if (!box.value && !$(this).prev().is('div')) {
+            let error = (format(box.name) + ' is required')
+            $('<div>' + error + '</div>').css('color', 'red').insertBefore(box)
+        } else if (box.value && $(this).prev().is('div')) {
+            $(this).prev().remove()
+        }
+    });
+
+    function format(name) {
+        let formattedName
+        if (name.includes('-')) {
+            formattedName = name.split('-')[1]
+        }
+        return toTitleCase(formattedName.replace('_', ' '))
+    }
+
+    // function below from StackOverflow
+    function toTitleCase(str) {
+        return str.replace(
+            /\w\S*/g,
+            function(txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
+        );
+    }
+</script>
 {% endblock %}
