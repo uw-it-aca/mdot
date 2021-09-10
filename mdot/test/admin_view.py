@@ -3,6 +3,7 @@ from datetime import datetime
 from django.test import Client, TestCase
 from django.contrib.auth.models import User
 from mdot.models import Sponsor, Manager, App, Platform, Agreement
+from mdot.admin import AgreementFilter, AgreementAdmin
 from django.core.exceptions import ValidationError
 
 
@@ -176,6 +177,65 @@ class MdotAdminTest(TestCase):
                 app=self.app,
                 status='',
                 agree_time=time)
+
+    def test_agreement_filter_accepted_status(self):
+        """
+        Test that the agreement filter properly filters apps when the
+        app's latest agreement status is accepted.
+        """
+
+        time = datetime.now()
+        agreement = Agreement(
+            app=self.app,
+            status=True,
+            agree_time=time
+        )
+        apps = App.objects.all()
+        f = AgreementFilter(
+            None,
+            {'status': 'agreed'},
+            Agreement,
+            AgreementAdmin
+        )
+        self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists)
+
+    def test_agreement_filter_denied_status(self):
+        """
+        Test that the agreement filter properly filters apps when the
+        app's latest agreement status is denied.
+        """
+
+        time = datetime.now()
+        agreement = Agreement(
+            app=self.app,
+            status=False,
+            agree_time=time
+        )
+        apps = App.objects.all()
+        f = AgreementFilter(
+            None,
+            {'status': 'denied'},
+            Agreement,
+            AgreementAdmin
+        )
+        self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists)
+
+    def test_agreement_filter_pending_status(self):
+        """
+        Test that the agreement filter properly filters apps when the
+        app's latest agreement status is pending.
+        """
+
+        time = datetime.now()
+        Agreement.objects.all().delete()
+        apps = App.objects.all()
+        f = AgreementFilter(
+            None,
+            {'status': 'pending'},
+            Agreement,
+            AgreementAdmin
+        )
+        self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists())
 
     def tearDown(self):
         pass

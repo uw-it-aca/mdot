@@ -69,7 +69,7 @@ class ManagerAdmin(admin.ModelAdmin):
 # filters agreements into agreed, denied, or pending
 class AgreementFilter(admin.SimpleListFilter):
     title = "Agreement"
-    parameter_name = 'agreements'
+    parameter_name = 'status'
 
     def lookups(self, request, model_admin):
         return [
