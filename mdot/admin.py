@@ -119,9 +119,21 @@ class AgreementInLine(admin.TabularInline):
         'status',
         'agree_time'
     ]
-    fields = ['status', 'agree_time']
-    readonly_fields = ['agree_time', ]
+    readonly_fields = ['status', 'agree_time']
     ordering = ['-agree_time', ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+class AddAgreementInLine(admin.TabularInline):
+    model = Agreement
+    extra = 0
+    can_delete = False
+    fields = ['status']
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(Agreement, site=admin_site)
@@ -142,7 +154,7 @@ class AppInLine(admin.TabularInline):
 
 @admin.register(App, site=admin_site)
 class AppAdmin(admin.ModelAdmin):
-    inlines = [AgreementInLine, ]
+    inlines = [AgreementInLine, AddAgreementInLine]
     model = App
 
     list_filter = (
