@@ -145,6 +145,7 @@ class AgreementAdmin(admin.ModelAdmin):
         'status',
         'agree_time'
     ]
+    list_filter = ['app']
 
 
 class AppInLine(admin.TabularInline):
