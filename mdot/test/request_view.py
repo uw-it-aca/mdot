@@ -174,5 +174,39 @@ class MdotRequestTest(TestCase):
             "/developers/decline/{}/".format(nonexistant_pk))
         self.assertEqual(response.status_code, 404)
 
+    def test_submitting_removes_duplicate_sponsor(self):
+        """
+        Test to check that submitting a request form with an existing
+        Sponsor doesn't create a duplicate Sponsor.
+        """
+
+        self.client.request(app=self.app,
+                            sponsor=self.sponsor,
+                            manager=self.manager)
+        self.client.request(app=self.app,
+                            sponsor=self.sponsor,
+                            manager=self.manager)
+        self.assertEqual(
+            len(Sponsor.objects.filter(netid=self.sponsor.netid)),
+            1
+        )
+
+    def test_submitting_removes_duplicate_manager(self):
+        """
+        Test to check that submitting a request form with an existing
+        Manager doesn't create a duplicate Sponsor.
+        """
+
+        self.client.request(app=self.app,
+                            sponsor=self.sponsor,
+                            manager=self.manager)
+        self.client.request(app=self.app,
+                            sponsor=self.sponsor,
+                            manager=self.manager)
+        self.assertEqual(
+            len(Manager.objects.filter(netid=self.manager.netid)),
+            1
+        )
+
     def tearDown(self):
         pass
