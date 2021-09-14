@@ -46,11 +46,13 @@ def request(request):
             if not Sponsor.objects.filter(netid=sponsorForm.instance.netid):
                 sponsor = sponsorForm.save()
             else:
-                sponsor = Sponsor.objects.filter(netid=sponsorForm.instance.netid)[0]
+                sponsor = Sponsor.objects.filter(
+                    netid=sponsorForm.instance.netid)[0]
             if not Manager.objects.filter(netid=managerForm.instance.netid):
                 manager = managerForm.save()
             else:
-                manager = Manager.objects.filter(netid=managerForm.instance.netid)[0]
+                manager = Manager.objects.filter(
+                    netid=managerForm.instance.netid)[0]
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
