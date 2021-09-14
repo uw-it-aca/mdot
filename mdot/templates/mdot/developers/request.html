@@ -88,5 +88,10 @@
             required = true
         }
     });
+
+    // disable submit button after one click
+    $('#main-form').one('submit', function() {
+        $(this).find('input[type="submit"]').attr('disabled','disabled');
+    });
 </script>
 {% endblock %}
