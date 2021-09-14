@@ -33,6 +33,13 @@ class Sponsor(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
+    def __eq__(self, other):
+        return self.netid == other.netid
+
+    # def clean(self):
+    #     if Sponsor.objects.filter(netid=self.netid):
+    #         self.delete()
+
 
 class Manager(models.Model):
     first_name = models.CharField(max_length=50)
@@ -46,6 +53,13 @@ class Manager(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    def __eq__(self, other):
+        return self.netid == other.netid
+
+    # def clean(self):
+    #     if Manager.objects.filter(netid=self.netid):
+    #         self.delete()
 
 
 AGREEMENT_CHOICES = [

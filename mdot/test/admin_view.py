@@ -275,5 +275,51 @@ class MdotAdminTest(TestCase):
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists())
 
+    def test_similar_sponsor_objects_are_equal(self):
+        """
+        Test that Sponsor objects with the same NetID are
+        considered equal.
+        """
+
+        s1 = Sponsor.objects.create(
+            netid='jtest'
+        )
+        s2 = Sponsor.objects.create(
+            netid='jtest'
+        )
+        s3 = Sponsor.objects.create(
+            first_name='J',
+            netid='jtest'
+        )
+        s4 = Sponsor.objects.create(
+            first_name='D',
+            netid='jtest'
+        )
+        self.assertEqual(s1, s2)
+        self.assertEqual(s3, s4)
+
+    def test_similar_manager_objects_are_equal(self):
+        """
+        Test that Manager objects with the same NetID are
+        considered equal.
+        """
+
+        m1 = Manager.objects.create(
+            netid='jtest'
+        )
+        m2 = Manager.objects.create(
+            netid='jtest'
+        )
+        m3 = Manager.objects.create(
+            first_name='J',
+            netid='jtest'
+        )
+        m4 = Manager.objects.create(
+            first_name='D',
+            netid='jtest'
+        )
+        self.assertEqual(m1, m2)
+        self.assertEqual(m3, m4)
+
     def tearDown(self):
         pass

@@ -13,8 +13,8 @@ from .mdot_rest_client.client import MDOT
 
 import urllib
 import json
-from .models import SponsorForm, ManagerForm, AppForm,\
-    App, Agreement
+from .models import SponsorForm, ManagerForm, AppForm, \
+    App, Agreement, Sponsor, Manager
 
 
 def home(request):
@@ -43,8 +43,14 @@ def request(request):
         appForm = AppForm(request.POST, prefix="app")
         if (sponsorForm.is_valid() and managerForm.is_valid()
                 and appForm.is_valid()):
-            sponsor = sponsorForm.save()
-            manager = managerForm.save()
+            if not Sponsor.objects.filter(netid=sponsorForm.instance.netid):
+                sponsor = sponsorForm.save()
+            else:
+                sponsor = Sponsor.objects.filter(netid=sponsorForm.instance.netid)[0]
+            if not Manager.objects.filter(netid=managerForm.instance.netid):
+                manager = managerForm.save()
+            else:
+                manager = Manager.objects.filter(netid=managerForm.instance.netid)[0]
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
