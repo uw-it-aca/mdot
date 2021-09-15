@@ -121,10 +121,8 @@ class App(models.Model):
                 return "Agreed on " + time
             elif agreements[-1].status == 'denied':
                 return "Denied on " + time
-            elif agreements[-1].status == 'removed':
+            else:  # agreements[-1].status == 'removed':
                 return 'Removed on ' + time
-            else:  # catch all (for debugging)
-                return 'Something\'s wrong: ' + str(agreements[-1].status)
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)
