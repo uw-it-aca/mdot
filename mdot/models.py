@@ -101,13 +101,11 @@ class App(models.Model):
         return ", ".join([p.app_store for p in self.platform.all()])
 
     def status(self):
-        if not Agreement.objects.filter(app__name=self.name).exists():
+        dates = Agreement.objects.filter(app__name=self.name)
+        if not dates.exists():
             return "Pending"
         else:
-            dates = Agreement.objects.filter(app__name=self.name)
-            agreements = []
-            for date in dates:
-                agreements.append(date)
+            agreements = [date for date in dates]
 
             # method to sort agreements by agree time
             def time(agreement):
