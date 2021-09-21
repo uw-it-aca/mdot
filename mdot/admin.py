@@ -80,22 +80,14 @@ class AgreementFilter(admin.SimpleListFilter):
         ]
 
     def queryset(self, request, queryset):
-        # make list of app names that agreed (in status)
-        agreed_apps = []
-        for app in App.objects.all():
+        # make list of app agreements for each status
+        agreed_apps, denied_apps, removed_apps = [], [], []
+        for app in App.objects.filter(agreement__isnull=False):
             if app.status().startswith('A'):
                 agreed_apps.append(app.id)
-
-        # make list of app names that denied (in status)
-        denied_apps = []
-        for app in App.objects.all():
-            if app.status().startswith('D'):
+            elif app.status().startswith('D'):
                 denied_apps.append(app.id)
-
-        # make list of app names that got removed from platform (in status)
-        removed_apps = []
-        for app in App.objects.all():
-            if app.status().startswith('R'):
+            else:  # app.status().startswith('R'):
                 removed_apps.append(app.id)
 
         if self.value() == 'agreed':
