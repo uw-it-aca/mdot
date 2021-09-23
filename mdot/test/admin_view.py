@@ -1,6 +1,9 @@
+import unittest
 from datetime import datetime
 
 from django.test import Client, TestCase
+import random
+import time
 from django.contrib.auth.models import User
 from mdot.models import Sponsor, Manager, App, Platform, Agreement
 from mdot.admin import AgreementFilter, AgreementAdmin
@@ -274,6 +277,65 @@ class MdotAdminTest(TestCase):
             AgreementAdmin
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists())
+
+    @unittest.skip('This test can take a while')
+    def test_agreement_filter_timeliness(self):
+        """
+        Test that checks that the agreement filter filters in a reasonable
+        time with a large amount of Apps
+        """
+
+        App.objects.all().delete()
+        Agreement.objects.all().delete()
+        apps, agreements = [], []
+        statuses = ['agreed', 'denied', 'removed']
+        for i in range(1000):
+            apps.append(App.objects.create(
+                name='TestApp' + str(i),
+                primary_language='English',
+                app_manager=self.manager,
+                app_sponsor=self.sponsor,
+                requestor=self.user,
+            ))
+
+            agreements.append(Agreement.objects.create(
+                app=apps[i],
+                status=statuses[random.randint(0, 2)]
+            ))
+
+        start = time.time()
+        agreeds = AgreementFilter(
+            None,
+            {'status': 'agreed'},
+            Agreement,
+            AgreementAdmin
+        )
+        denieds = AgreementFilter(
+            None,
+            {'status': 'denied'},
+            Agreement,
+            AgreementAdmin
+        )
+        removeds = AgreementFilter(
+            None,
+            {'status': 'removed'},
+            Agreement,
+            AgreementAdmin
+        )
+        pendings = AgreementFilter(
+            None,
+            {'status': 'pending'},
+            Agreement,
+            AgreementAdmin
+        )
+        print('\nQueryset lengths:')
+        print(len(pendings.queryset(None, App.objects.all())))
+        print(len(agreeds.queryset(None, App.objects.all())))
+        print(len(denieds.queryset(None, App.objects.all())))
+        print(len(removeds.queryset(None, App.objects.all())))
+        end = time.time()
+        self.assertTrue(end - start < 30)
+        print('\ntime taken: ' + str(end - start))
 
     def tearDown(self):
         pass
