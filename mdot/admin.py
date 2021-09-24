@@ -44,7 +44,7 @@ class SponsorInLine(admin.TabularInline):
 class SponsorAdmin(admin.ModelAdmin):
     model = Sponsor
     list_display = (
-        '__str__',
+        'full_name',
         'netid',
         'department',
     )
@@ -59,7 +59,7 @@ class ManagerInLine(admin.TabularInline):
 class ManagerAdmin(admin.ModelAdmin):
     model = Manager
     list_display = (
-        '__str__',
+        'full_name',
         'netid',
         'email',
     )

@@ -31,6 +31,9 @@ class Sponsor(models.Model):
     unit = models.CharField(max_length=30)
 
     def __str__(self):
+        return self.netid
+
+    def full_name(self):
         return self.first_name + ' ' + self.last_name
 
 
@@ -45,6 +48,9 @@ class Manager(models.Model):
     email = models.EmailField(max_length=256)
 
     def __str__(self):
+        return self.netid
+
+    def full_name(self):
         return self.first_name + ' ' + self.last_name
 
 
