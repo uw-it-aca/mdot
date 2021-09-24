@@ -1,4 +1,4 @@
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -71,18 +71,17 @@ class Agreement(models.Model):
     def __str__(self):
         return self.app.name
 
+    # time to expiration is subject to change
     def expiration_date(self):
         try:
             return (self.agree_time.replace(year=self.agree_time.year+1)
-                    - timedelta(hours=7))\
-                .strftime('%b %d, %Y')
+                    - timedelta(hours=7)).strftime('%b %d, %Y')
         # Change date from February 29th to March 1st if leap year
         except ValueError:
             return (self.agree_time
                     + (date(self.agree_time.year + 1, 1, 1)
                        - date(self.agree_time.year, 1, 1))
-                    - timedelta(hours=7))\
-                .strftime('%b %d, %Y')
+                    - timedelta(hours=7)).strftime('%b %d, %Y')
 
     def clean(self):
         if self.status == '':
@@ -134,6 +133,9 @@ class App(models.Model):
             # time adjusted back 7 hours due to disparity (temp fix?)
             time = (agreements[-1].agree_time - timedelta(hours=7))\
                 .strftime('%b %d, %Y, %I:%M %p')
+            if datetime.now().date() > datetime.strptime(
+                    agreements[-1].expiration_date(), '%b %d, %Y').date():
+                return 'Pending'
             if agreements[-1].status == 'agreed':
                 return "Agreed on " + time
             elif agreements[-1].status == 'denied':
