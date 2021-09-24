@@ -110,9 +110,10 @@ class AgreementInLine(admin.TabularInline):
     list_display = [
         '__str__',
         'status',
-        'agree_time'
+        'agree_time',
+        'expiration_date',
     ]
-    readonly_fields = ['status', 'agree_time']
+    readonly_fields = ['status', 'agree_time', 'expiration_date']
     ordering = ['-agree_time', ]
 
     def has_add_permission(self, request, obj=None):
@@ -136,7 +137,8 @@ class AgreementAdmin(admin.ModelAdmin):
     list_display = [
         '__str__',
         'status',
-        'agree_time'
+        'agree_time',
+        'expiration_date',
     ]
     list_filter = ['app']
 
