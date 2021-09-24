@@ -83,11 +83,11 @@ class AgreementFilter(admin.SimpleListFilter):
         # make list of app agreements for each status
         agreed_apps, denied_apps, removed_apps = [], [], []
         for app in App.objects.filter(agreement__isnull=False):
-            if app.status().startswith('A'):
+            if app.status().startswith('Agreed'):
                 agreed_apps.append(app.id)
-            elif app.status().startswith('D'):
+            elif app.status().startswith('Denied'):
                 denied_apps.append(app.id)
-            else:  # app.status().startswith('R'):
+            else:  # app.status().startswith('Removed'):
                 removed_apps.append(app.id)
 
         if self.value() == 'agreed':
