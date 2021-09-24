@@ -41,11 +41,13 @@ class MdotAdminTest(TestCase):
         self.sponsor = Sponsor.objects.create(
             first_name='Sponsor',
             last_name='lname',
+            netid='spontest',
             email='sponsor@uw.edu'
         )
         self.manager = Manager.objects.create(
             first_name='J',
             last_name='average',
+            netid='mantest',
             email='manager@uw.edu'
         )
         self.app = App.objects.create(
@@ -71,7 +73,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        self.assertEqual('Sponsor lname', str(self.sponsor))
+        self.assertEqual('Sponsor lname', str(self.sponsor.full_name()))
 
     def test_manager_name_displays_properly(self):
         """
@@ -79,7 +81,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        self.assertEqual('J average', str(self.manager))
+        self.assertEqual('J average', str(self.manager.full_name()))
 
     def test_app_name_displays_properly(self):
         """
