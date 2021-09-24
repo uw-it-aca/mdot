@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, date
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -70,6 +70,19 @@ class Agreement(models.Model):
 
     def __str__(self):
         return self.app.name
+
+    def expiration_date(self):
+        try:
+            return (self.agree_time.replace(year=self.agree_time.year+1)
+                    - timedelta(hours=7))\
+                .strftime('%b %d, %Y')
+        # Change date from February 29th to March 1st if leap year
+        except ValueError:
+            return (self.agree_time
+                    + (date(self.agree_time.year + 1, 1, 1)
+                       - date(self.agree_time.year, 1, 1))
+                    - timedelta(hours=7))\
+                .strftime('%b %d, %Y')
 
     def clean(self):
         if self.status == '':
