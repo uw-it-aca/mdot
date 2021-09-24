@@ -17,6 +17,13 @@ class MdotAdminTest(TestCase):
     """
 
     def setUp(self):
+        App.objects.all().delete()
+        Agreement.objects.all().delete()
+        Manager.objects.all().delete()
+        Sponsor.objects.all().delete()
+        Platform.objects.all().delete()
+        User.objects.all().delete()
+
         self.client = Client()
         self.user = User.objects.create_user(
             username="javerage",
@@ -278,7 +285,7 @@ class MdotAdminTest(TestCase):
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists())
 
-    @unittest.skip('This test can take a while')
+    # @unittest.skip('This test can take a while')
     def test_agreement_filter_timeliness(self):
         """
         Test that checks that the agreement filter filters in a reasonable
