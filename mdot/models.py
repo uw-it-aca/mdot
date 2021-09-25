@@ -74,7 +74,7 @@ class Agreement(models.Model):
     # time to expiration is subject to change
     def expiration_date(self):
         try:
-            return (self.agree_time.replace(year=self.agree_time.year+1)
+            return (self.agree_time.replace(year=self.agree_time.year + 1)
                     - timedelta(hours=7)).strftime('%b %d, %Y')
         # Change date from February 29th to March 1st if leap year
         except ValueError:
@@ -91,6 +91,18 @@ class Agreement(models.Model):
     def save(self, *args, **kwargs):
         self.full_clean()
         return super(Agreement, self).save(*args, **kwargs)
+
+
+class Note(models.Model):
+    app = models.ForeignKey('App', on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    body = models.TextField()
+
+    def __str__(self):
+        if len(self.title) < 20:
+            return self.title
+        else:
+            return self.title[:16] + '...'
 
 
 class App(models.Model):
