@@ -143,6 +143,15 @@ class AgreementAdmin(admin.ModelAdmin):
     list_filter = ['app']
 
 
+class NoteInLine(admin.TabularInline):
+    model = Note
+    extra = 0
+
+
+class NoteAdmin(admin.ModelAdmin):
+    model = Note
+
+
 class AppInLine(admin.TabularInline):
     model = App
     extra = 0
@@ -150,7 +159,7 @@ class AppInLine(admin.TabularInline):
 
 @admin.register(App, site=admin_site)
 class AppAdmin(admin.ModelAdmin):
-    inlines = [AgreementInLine, AddAgreementInLine]
+    inlines = [AgreementInLine, AddAgreementInLine, NoteInLine]
     model = App
 
     list_filter = (
