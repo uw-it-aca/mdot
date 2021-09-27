@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 
 # assumes NetID conforms to personal or shared NetID requirements
 netid_validator = RegexValidator(
-    regex='^[a-z][a-z0-9\-\_\.]{,127}$', message='NetID must be valid.')
+    regex=r'^[a-z][a-z0-9\-\_\.]{,127}$', message='NetID must be valid.')
 
 
 class Platform(models.Model):
