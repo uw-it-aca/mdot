@@ -7,3 +7,4 @@ from mdot.test.client_helper_methods import MdotClientMethodsTest
 from mdot.test.request_view import MdotRequestTest
 from mdot.test.url_and_view import MdotTest
 from mdot.test.forms import MdotFormTest
+from mdot.test.admin_view import MdotAdminTest

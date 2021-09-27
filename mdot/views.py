@@ -13,8 +13,8 @@ from .mdot_rest_client.client import MDOT
 
 import urllib
 import json
-from .models import SponsorForm, ManagerForm, AppForm,\
-    App, Agreement
+from .models import SponsorForm, ManagerForm, AppForm, \
+    App, Agreement, Sponsor, Manager
 
 
 def home(request):
@@ -43,8 +43,16 @@ def request(request):
         appForm = AppForm(request.POST, prefix="app")
         if (sponsorForm.is_valid() and managerForm.is_valid()
                 and appForm.is_valid()):
-            sponsor = sponsorForm.save()
-            manager = managerForm.save()
+            if not Sponsor.objects.filter(netid=sponsorForm.instance.netid):
+                sponsor = sponsorForm.save()
+            else:
+                sponsor = Sponsor.objects.filter(
+                    netid=sponsorForm.instance.netid)[0]
+            if not Manager.objects.filter(netid=managerForm.instance.netid):
+                manager = managerForm.save()
+            else:
+                manager = Manager.objects.filter(
+                    netid=managerForm.instance.netid)[0]
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
@@ -145,7 +153,7 @@ def sponsor(request, pk):
             and "understand-manager" in request.POST
             and "agree" in request.POST):
         agreement = Agreement.objects.create(
-            app=app
+            app=app, status='agreed'
         )
         agreement.save()
 
@@ -196,7 +204,7 @@ def sponsor(request, pk):
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
                 "app": app.name
             }
-            if agreement.latest("agree_time").agree:
+            if agreement.latest("agree_time").status == 'agreed':
                 return render_to_response(
                     "mdot/developers/agree.html",
                     params)
@@ -224,7 +232,7 @@ def decline(request, pk):
     if not agreement:
         agreement = Agreement.objects.create(
             app=app,
-            agree=False
+            status='denied'
         )
         agreement.save()
 

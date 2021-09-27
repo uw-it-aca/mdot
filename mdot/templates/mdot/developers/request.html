@@ -1,4 +1,5 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+{% load mdot_extras %}
 
 {% block title %}Building Apps Home{% endblock %}
 
@@ -12,35 +13,35 @@
         <p class="article intro">Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>? </p>
         <p class="article intro">If so, please fill out the form below. We will process your request and let you know the next steps.</p>
 
-        <form method="post" class="request-form">
+        <form id="main-form" method="post" class="request-form" novalidate>
 
             {% csrf_token %}
             {{ form.non_field_errors }}
 
+            {% if managerform.errors or sponsorform.errors or appform.errors %}
+            <p style="color: red; margin-bottom: 0;">Please correct the field errors below:</p>
+            <ul style="list-style-type: disc; margin-left: 2em;">
+                {% for field, errors in appform.errors.items %}
+                {% for error in errors %}
+                <li style="color: red;">App Information: {{ error | replace_this_field:field }}</li>
+                {% endfor %}
+                {% endfor %}
+                {% for field, errors in managerform.errors.items %}
+                {% for error in errors %}
+                <li style="color: red;">Manager Contact: {{ error | replace_this_field:field }}</li>
+                {% endfor %}
+                {% endfor %}
+                {% for field, errors in sponsorform.errors.items %}
+                {% for error in errors %}
+                <li style="color: red;">Sponsor Contact: {{ error | replace_this_field:field }}</li>
+                {% endfor %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+
             <h3 class="form-heading">App Information: </h3>
 
             <p class="form-description">This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.</p>
-
-            {% if managerform.errors or sponsorform.errors or appform.errors %}
-                <p style="color: red; margin-bottom: 0;">Please correct the field errors below:</p>
-                <ul style="list-style-type: disc; margin-left: 2em;">
-                {% for field, errors in appform.errors.items %}
-                    {% for error in errors %}
-                    <li style="color: red;">App Information: {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-                {% for field, errors in managerform.errors.items %}
-                    {% for error in errors %}
-                        <li style="color: red;">Manager Contact: {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-                {% for field, errors in sponsorform.errors.items %}
-                    {% for error in errors %}
-                        <li style="color: red;">Sponsor Contact: {{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-                </ul>
-            {% endif %}
 
             {{ appform }}
 
@@ -63,4 +64,34 @@
         </form>
     </div>
 </div>
+<script>
+    // onblur validation
+    $('#main-form').children().on('blur', function(event) {
+        let box = event.target
+        if (!box.value && !$(this).prev().is('ul')) {
+            $('<ul>This field is required.</ul>').css('color', 'red').insertBefore(box)
+        } else if (box.value && $(this).prev().is('ul:contains("This field is required")')) {
+            $(this).prev().remove()
+        }
+    });
+
+    // consolidation of required field errors
+    let required = false
+    $('#main-form').children('ul').first().find('*').each(function() {
+        if ($(this).is('li:contains("is required")')) {
+            // if block executes once if any required field errors exist
+            if (!required) {
+                $('<li>Fields below are required.</li>').css('color', 'red')
+                .insertAfter($('#main-form').children('ul').first().children().last())
+            }
+            $(this).remove()
+            required = true
+        }
+    });
+
+    // disable submit button after one click
+    $('#main-form').one('submit', function() {
+        $(this).find('input[type="submit"]').attr('disabled','disabled');
+    });
+</script>
 {% endblock %}
