@@ -13,8 +13,8 @@ from .mdot_rest_client.client import MDOT
 
 import urllib
 import json
-from .models import SponsorForm, ManagerForm, AppForm,\
-    App, Agreement
+from .models import SponsorForm, ManagerForm, AppForm, \
+    App, Agreement, Sponsor, Manager
 
 
 def home(request):
@@ -43,8 +43,16 @@ def request(request):
         appForm = AppForm(request.POST, prefix="app")
         if (sponsorForm.is_valid() and managerForm.is_valid()
                 and appForm.is_valid()):
-            sponsor = sponsorForm.save()
-            manager = managerForm.save()
+            if not Sponsor.objects.filter(netid=sponsorForm.instance.netid):
+                sponsor = sponsorForm.save()
+            else:
+                sponsor = Sponsor.objects.filter(
+                    netid=sponsorForm.instance.netid)[0]
+            if not Manager.objects.filter(netid=managerForm.instance.netid):
+                manager = managerForm.save()
+            else:
+                manager = Manager.objects.filter(
+                    netid=managerForm.instance.netid)[0]
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
@@ -72,7 +80,7 @@ def request(request):
                 ),
                 getattr(settings, "MDOT_SERVICE_EMAIL", None),
                 [sponsor.email],
-                cc=[app_requestor_email]
+                cc=[app_requestor_email, manager.email]
             )
             msg.attach_alternative(
                 get_template(
@@ -88,7 +96,9 @@ def request(request):
             message = ("The Mobile Intake form has been filled out by {}"
                        " on {}. The details of the submission are included"
                        " below:").format(app.requestor, app.request_date)
-            email_service_now(app, subject, message, "incomplete")
+            sender = app_requestor_email
+            cc = sponsor.email
+            email_service_now(app, subject, message, sender, cc, "incomplete")
 
             params = {
                 "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
@@ -98,6 +108,15 @@ def request(request):
             return render_to_response(
                 "mdot/developers/thanks.html",
                 params)
+        else:
+            forms = {
+                "sponsorform": sponsorForm,
+                "managerform": managerForm,
+                "appform": appForm,
+            }
+
+        # return forms to request page
+        return render(request, "mdot/developers/request.html", forms)
 
     # use prefixes to avoid duplicate field names
     sponsorForm = SponsorForm(prefix="sponsor")
@@ -134,7 +153,7 @@ def sponsor(request, pk):
             and "understand-manager" in request.POST
             and "agree" in request.POST):
         agreement = Agreement.objects.create(
-            app=app
+            app=app, status='agreed'
         )
         agreement.save()
 
@@ -144,7 +163,9 @@ def sponsor(request, pk):
         message = ("The designated app sponsor {0} for the app {1}"
                    " has agreed on {2}.").format(
                        spon_name, app.name, agreement.agree_time)
-        email_service_now(app, subject, message, "complete")
+        sender = app.app_sponsor.email
+        cc = "{}@uw.edu".format(app.requestor.username)
+        email_service_now(app, subject, message, sender, cc, "complete")
 
         params = {
             'service_email': getattr(settings, "MDOT_SERVICE_EMAIL", None),
@@ -183,7 +204,7 @@ def sponsor(request, pk):
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
                 "app": app.name
             }
-            if agreement.latest("agree_time").agree:
+            if agreement.latest("agree_time").status == 'agreed':
                 return render_to_response(
                     "mdot/developers/agree.html",
                     params)
@@ -211,7 +232,7 @@ def decline(request, pk):
     if not agreement:
         agreement = Agreement.objects.create(
             app=app,
-            agree=False
+            status='denied'
         )
         agreement.save()
 
@@ -249,7 +270,7 @@ def decline(request, pk):
     return render_to_response("mdot/developers/decline.html", params)
 
 
-def email_service_now(app, subject, message, status):
+def email_service_now(app, subject, message, sender, cc, status):
     """
     Function that sends an email to the mdot service now team about
     new mobile app requests and any updates
@@ -268,23 +289,29 @@ def email_service_now(app, subject, message, status):
         "manager_name": " ".join(
             (app_manager.first_name, app_manager.last_name)),
         "manager_netid": app_manager.netid,
-        "manager_email": "{}@uw.edu".format(app_manager.netid),
+        "manager_email": app_manager.email,
         "app_name": app.name,
         "app_lang": app.primary_language,
         "app_store": list(app.platform.all())
     }
 
     try:
-        send_mail(
+        email = EmailMultiAlternatives(
             subject,
             get_template("mdot/developers/email/service_plain.html").render(
                 email_context
             ),
-            getattr(settings, "MDOT_SERVICE_EMAIL", None),
+            sender,
             [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
-            html_message=get_template(
-                "mdot/developers/email/service.html"
-            ).render(email_context),
-        ),
+            cc=[cc, app_manager.email]
+        )
+        email.attach_alternative(
+            get_template(
+                "mdot/developers/email/service.html").render(
+                email_context
+            ), "text/html")
+
+        email.send()
+
     except BadHeaderError:
         return HttpResponse("Invalid header found.")
