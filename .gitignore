@@ -59,6 +59,7 @@ docs/_build/
 static/CACHE
 *.sqlite3
 .env
+.*~
 
 # Django/virtualenv
 /project
@@ -69,3 +70,7 @@ static/CACHE
 
 # Vim...
 *.swp
+
+# IDE files
+.idea
+.idea/

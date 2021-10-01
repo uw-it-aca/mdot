@@ -1,9 +1,12 @@
 from django.urls import include, path
-
-# from django.contrib import admin
-# admin.autodiscover()
-
 from . import views
+from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+
+from mdot.admin import admin_site
+
+admin.autodiscover()
+admin_site.login = login_required(admin_site.login)
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,7 +19,7 @@ urlpatterns = [
     path('developers/decline/<int:pk>/', views.decline, name='decline'),
 
     # path('blog/', include('blog.urls')),
-    # path('admin/', include(admin.site.urls)),
+    path('admin/', admin_site.urls),
 
     # include applications
     # path('', include('app_name.urls')),

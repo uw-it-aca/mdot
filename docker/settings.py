@@ -24,6 +24,7 @@ INSTALLED_APPS += [
     "django_user_agents",
     "mdot",
     "compressor",
+    # "django.contrib.admin",
 ]
 
 MIDDLEWARE += (
@@ -42,6 +43,7 @@ else:
 
 RESTCLIENTS_MDOT_DAO_CLASS = os.getenv("RESTCLIENTS_MDOT_DAO_CLASS", "Mock")
 RESTCLIENTS_MDOT_HOST = os.getenv("RESTCLIENTS_MDOT_HOST", None)
+RESTCLIENTS_CA_BUNDLE = '/etc/ssl/certs/ca-certificates.crt'
 
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_PORT = 587
@@ -71,3 +73,12 @@ TEMPLATES[0]["OPTIONS"]["context_processors"].extend(
 
 # django_compressor
 COMPRESS_PRECOMPILERS = (("text/less", "/app/bin/lesscpy {infile} {outfile}"),)
+
+# settings for local development
+if os.getenv('AUTH', 'NONE') == 'SAML_MOCK':
+    MOCK_SAML_ATTRIBUTES['isMemberOf'] = ['u_test_admin']
+
+# Authentication Groups
+ADMIN_AUTHZ_GROUP = os.getenv('ADMIN_AUTHZ_GROUP', 'u_test_admin')
+
+TIME_ZONE = 'America/Los_Angeles'
