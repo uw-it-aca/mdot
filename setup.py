@@ -13,7 +13,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
-        'django>2.0,<2.1',
+        'django>2.1,<2.2',
         'django-compressor',
         'UW-RestClients-Core<1.4',
         'django-htmlmin',
@@ -23,7 +23,7 @@ setup(
         'ua-parser',
         'user-agents',
         'django-user-agents',
-        'UW-Django-SAML2<2.0',
+        'UW-Django-SAML2',
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
