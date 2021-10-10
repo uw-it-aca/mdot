@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from django.template import RequestContext, Context
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail, EmailMultiAlternatives, BadHeaderError
 from django.urls import reverse
@@ -105,7 +105,8 @@ def request(request):
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
             }
 
-            return render_to_response(
+            return render(
+                request,
                 "mdot/developers/thanks.html",
                 params)
         else:
@@ -171,7 +172,8 @@ def sponsor(request, pk):
             'service_email': getattr(settings, "MDOT_SERVICE_EMAIL", None),
             'ux_contact': getattr(settings, "MDOT_UX_CONTACT", None),
         }
-        return render_to_response(
+        return render(
+            request,
             'mdot/developers/agree.html',
             params)
 
@@ -205,11 +207,13 @@ def sponsor(request, pk):
                 "app": app.name
             }
             if agreement.latest("agree_time").status == 'agreed':
-                return render_to_response(
+                return render(
+                    request,
                     "mdot/developers/agree.html",
                     params)
             else:
-                return render_to_response(
+                return render(
+                    request,
                     "mdot/developers/decline.html",
                     params
                 )
@@ -267,7 +271,7 @@ def decline(request, pk):
         "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
         "app": app.name
     }
-    return render_to_response("mdot/developers/decline.html", params)
+    return render(request, "mdot/developers/decline.html", params)
 
 
 def email_service_now(app, subject, message, sender, cc, status):
