@@ -34,6 +34,8 @@ MIDDLEWARE += (
     "htmlmin.middleware.MarkRequestMiddleware",
 )
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 if DEBUG:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     MEDIA_ROOT = "/app/data/"
