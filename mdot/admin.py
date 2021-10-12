@@ -113,8 +113,8 @@ class AgreementInLine(admin.TabularInline):
         'agree_time',
         'expiration_date',
     ]
-    fields = ['status', 'agree_time']
-    readonly_fields = ['agree_time']
+    fields = ['status', 'agree_time', 'expiration_date']
+    readonly_fields = ['agree_time', 'expiration_date']
     ordering = ['-agree_time']
 
     def has_change_permission(self, request, obj=None):
