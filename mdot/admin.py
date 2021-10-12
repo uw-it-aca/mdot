@@ -114,7 +114,6 @@ class AgreementFilter(admin.SimpleListFilter):
 class AgreementInLine(admin.TabularInline):
     model = Agreement
     extra = 0
-    # can_delete = False
     list_display = [
         '__str__',
         'status',
