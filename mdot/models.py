@@ -97,12 +97,7 @@ class Note(models.Model):
     app = models.ForeignKey('App', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.TextField()
-
-    def __str__(self):
-        if len(self.title) < 20:
-            return self.title
-        else:
-            return self.title[:16] + '...'
+    created_on = models.DateTimeField(auto_now_add=True)
 
 
 class App(models.Model):
