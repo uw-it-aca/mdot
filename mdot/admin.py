@@ -137,6 +137,16 @@ class AgreementAdmin(admin.ModelAdmin):
 class NoteInLine(admin.TabularInline):
     model = Note
     extra = 0
+    list_display = [
+        'title',
+        'created_on',
+    ]
+    fields = ['title', 'body', 'created_on']
+    readonly_fields = ['created_on']
+    ordering = ['-created_on']
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 class NoteAdmin(admin.ModelAdmin):
