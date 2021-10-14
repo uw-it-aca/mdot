@@ -82,6 +82,8 @@ externalSecrets:
     - name: test.mdot.uw.edu-secrets
       externalKey: axdd/kv/data/mdot/test/secrets
       data:
+        - name: admin-authz-group
+          property: admin-authz-group
         - name: django-secret
           property: django-secret
         - name: google-analytics-key
@@ -119,6 +121,10 @@ externalSecrets:
         - name: uw-idp-cert
           property: cert
 environmentVariablesSecrets:
+  adminAuthzGroup:
+    name: ADMIN_AUTHZ_GROUP
+    secretName: test.mdot.uw.edu-secrets
+    secretKey: admin-authz-group
   djangoSecret:
     name: DJANGO_SECRET
     secretName: test.mdot.uw.edu-secrets
