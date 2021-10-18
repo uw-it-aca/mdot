@@ -22,7 +22,7 @@ def _test_agreement_filter_timeliness():
     Platform.objects.all().delete()
     User.objects.all().delete()
 
-    requestor=User.objects.create_user(
+    requestor = User.objects.create_user(
         username="javerage",
         email="javerage@uw.edu",
         password="p@assTest1",
@@ -90,8 +90,7 @@ def _test_agreement_filter_timeliness():
 
 class Command(BaseCommand):
     help = 'Runs tests to check the timeliness of MDOT'
-    
+
     def handle(self, *args, **options):
         _test_agreement_filter_timeliness()
         self.stdout.write(self.style.SUCCESS('Completed'))
-
