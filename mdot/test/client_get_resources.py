@@ -1,3 +1,6 @@
+# Copyright 2021 UW-IT, University of Washington
+# SPDX-License-Identifier: Apache-2.0
+
 from django.test import TestCase, override_settings
 from mdot.mdot_rest_client.client import MDOT
 import json
