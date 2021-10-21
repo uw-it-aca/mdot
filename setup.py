@@ -24,6 +24,7 @@ setup(
         'user-agents',
         'django-user-agents',
         'UW-Django-SAML2',
+        'Django-Safe-EmailBackend',
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',

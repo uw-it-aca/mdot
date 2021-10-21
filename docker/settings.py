@@ -36,10 +36,15 @@ MIDDLEWARE += (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-if DEBUG:
+if os.getenv("ENV", "localdev") == "localdev":
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     MEDIA_ROOT = "/app/data/"
     MEDIA_URL = "/media/"
+elif os.getenv("ENV") == "test":
+    EMAIL_BACKEND = "saferecipient.EmailBackend"
+    SAFE_EMAIL_RECIPIENT = os.getenv("SAFE_EMAIL_RECIPIENT")
+    # Optional, removes all whitespace and turns envvar into array
+    SAFE_EMAIL_WHITELIST = [i for i in os.getenv("SAFE_EMAIL_WHITELIST", "").replace(" ", "").split(",") if i]
 else:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
