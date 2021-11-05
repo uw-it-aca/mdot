@@ -144,7 +144,7 @@
         "first_name": "J",
         "last_name": "Average",
         "netid": "javerage",
-        "email": "javerage@uw.edu",
+        "email": "javerage@example.com",
         "title": "1",
         "department": "1",
         "unit": "1"
@@ -155,9 +155,9 @@
     "pk": 1,
     "fields": {
         "first_name": "David",
-        "last_name": "Strupinski",
-        "netid": "dstrupin",
-        "email": "dstrupin@uw.edu"
+        "last_name": "Smith",
+        "netid": "dsmithersghjstdffgb",
+        "email": "dsmithersghjstdffgb@example.com"
     }
 },
 {
@@ -165,9 +165,9 @@
     "pk": 2,
     "fields": {
         "first_name": "Craig",
-        "last_name": "Stimmel",
-        "netid": "cstimmel",
-        "email": "cstimeel@uw.edu"
+        "last_name": "Scott",
+        "netid": "cscottkjnwdakshkkhuuh",
+        "email": "cscottkjnwdakshkkhuuh@example.com"
     }
 },
 {
@@ -175,9 +175,9 @@
     "pk": 3,
     "fields": {
         "first_name": "Jon",
-        "last_name": "Beaubien",
-        "netid": "jbeaubi",
-        "email": "jbeaubi@uw.edu"
+        "last_name": "Quartile",
+        "netid": "jquartilemasdiojaswaw",
+        "email": "jquartilemasdiojaswaw@example.com"
     }
 },
 {
@@ -186,8 +186,8 @@
     "fields": {
         "first_name": "The",
         "last_name": "Batman",
-        "netid": "tbatman",
-        "email": "tbatman@uw.edu"
+        "netid": "tbatmanekjhuefvnsdlds",
+        "email": "tbatmanekjhuefvnsdlds@example.com"
     }
 },
 {
@@ -196,8 +196,8 @@
     "fields": {
         "first_name": "Average",
         "last_name": "Joe",
-        "netid": "ajoe",
-        "email": "ajoe@gmail.com"
+        "netid": "ajoeaawdkjsesfs",
+        "email": "ajoeaawdkjsesfs@example.com"
     }
 },
 {
@@ -206,8 +206,8 @@
     "fields": {
         "first_name": "Boot",
         "last_name": "Guy",
-        "netid": "bguy",
-        "email": "bguy@uw.edu"
+        "netid": "bguyeoohfgeasmdasd",
+        "email": "bguyeoohfgeasmdasd@example.com"
     }
 },
 {
@@ -216,8 +216,8 @@
     "fields": {
         "first_name": "Jimothy",
         "last_name": "Median",
-        "netid": "jmedian",
-        "email": "jmedian@uw.edu"
+        "netid": "jmedianekfndmshdfopa",
+        "email": "jmedianekfndmshdfopa@example.com"
     }
 },
 {
@@ -226,8 +226,8 @@
     "fields": {
         "first_name": "Skater",
         "last_name": "Craig",
-        "netid": "scraig",
-        "email": "scraig@yahoo.com"
+        "netid": "scraigeinisodjensl",
+        "email": "scraigeinisodjensl@example.com"
     }
 },
 {
@@ -236,8 +236,8 @@
     "fields": {
         "first_name": "Crimson",
         "last_name": "Chin",
-        "netid": "cchin",
-        "email": "cchin@uw.edu"
+        "netid": "cchinalienflasndion",
+        "email": "cchinalienflasndion@example.com"
     }
 },
 {
