@@ -5,7 +5,6 @@ import unittest
 from datetime import datetime
 
 from django.test import Client, TestCase
-import random
 import time
 from django.contrib.auth.models import User
 from mdot.models import Sponsor, Manager, App, Platform, Agreement
