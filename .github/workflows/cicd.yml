@@ -171,6 +171,7 @@ jobs:
           git_repo_branch: ${{ needs.context.outputs.git_repo_branch }}
           gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
           app_instance: eval
+          helm_chart_branch: bug/CKV_K8S_153
 
       - name: 'Surface context from executed build step'
         id: context
