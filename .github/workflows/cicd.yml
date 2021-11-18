@@ -161,6 +161,7 @@ jobs:
           commit_hash: ${{ needs.context.outputs.commit_hash }}
           git_repo_branch: ${{ needs.context.outputs.git_repo_branch }}
           gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
+          helm_chart_branch: feature/ingress-skipCheck
 
       - name: Deploy Evaluation Branch
         if: needs.context.outputs.git_repo_branch == 'feature/eval-me'
@@ -171,7 +172,6 @@ jobs:
           git_repo_branch: ${{ needs.context.outputs.git_repo_branch }}
           gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
           app_instance: eval
-          helm_chart_branch: feature/ingress-skipCheck
 
       - name: 'Surface context from executed build step'
         id: context
