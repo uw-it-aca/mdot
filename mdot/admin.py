@@ -1,3 +1,6 @@
+# Copyright 2021 UW-IT, University of Washington
+# SPDX-License-Identifier: Apache-2.0
+
 from django.conf import settings
 from django.contrib import admin
 from .models import *
@@ -44,7 +47,7 @@ class SponsorInLine(admin.TabularInline):
 class SponsorAdmin(admin.ModelAdmin):
     model = Sponsor
     list_display = (
-        '__str__',
+        'full_name',
         'netid',
         'department',
     )
@@ -59,7 +62,7 @@ class ManagerInLine(admin.TabularInline):
 class ManagerAdmin(admin.ModelAdmin):
     model = Manager
     list_display = (
-        '__str__',
+        'full_name',
         'netid',
         'email',
     )
@@ -80,22 +83,14 @@ class AgreementFilter(admin.SimpleListFilter):
         ]
 
     def queryset(self, request, queryset):
-        # make list of app names that agreed (in status)
-        agreed_apps = []
-        for app in App.objects.all():
-            if app.status().startswith('A'):
+        # make list of app agreements for each status
+        agreed_apps, denied_apps, removed_apps = [], [], []
+        for app in App.objects.filter(agreement__isnull=False):
+            if app.status().startswith('Agreed'):
                 agreed_apps.append(app.id)
-
-        # make list of app names that denied (in status)
-        denied_apps = []
-        for app in App.objects.all():
-            if app.status().startswith('D'):
+            elif app.status().startswith('Denied'):
                 denied_apps.append(app.id)
-
-        # make list of app names that got removed from platform (in status)
-        removed_apps = []
-        for app in App.objects.all():
-            if app.status().startswith('R'):
+            else:  # app.status().startswith('Removed'):
                 removed_apps.append(app.id)
 
         if self.value() == 'agreed':
@@ -114,23 +109,16 @@ class AgreementFilter(admin.SimpleListFilter):
 class AgreementInLine(admin.TabularInline):
     model = Agreement
     extra = 0
+    can_delete = False
     list_display = [
         '__str__',
         'status',
-        'agree_time'
+        'agree_time',
+        'expiration_date',
     ]
-    readonly_fields = ['status', 'agree_time']
-    ordering = ['-agree_time', ]
-
-    def has_add_permission(self, request, obj=None):
-        return False
-
-
-class AddAgreementInLine(admin.TabularInline):
-    model = Agreement
-    extra = 0
-    can_delete = False
-    fields = ['status']
+    fields = ['status', 'agree_time', 'expiration_date']
+    readonly_fields = ['agree_time', 'expiration_date']
+    ordering = ['-agree_time']
 
     def has_change_permission(self, request, obj=None):
         return False
@@ -143,9 +131,29 @@ class AgreementAdmin(admin.ModelAdmin):
     list_display = [
         '__str__',
         'status',
-        'agree_time'
+        'agree_time',
+        'expiration_date',
     ]
     list_filter = ['app']
+
+
+class NoteInLine(admin.TabularInline):
+    model = Note
+    extra = 0
+    list_display = [
+        'title',
+        'created_on',
+    ]
+    fields = ['title', 'body', 'created_on']
+    readonly_fields = ['created_on']
+    ordering = ['-created_on']
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+
+class NoteAdmin(admin.ModelAdmin):
+    model = Note
 
 
 class AppInLine(admin.TabularInline):
@@ -155,7 +163,7 @@ class AppInLine(admin.TabularInline):
 
 @admin.register(App, site=admin_site)
 class AppAdmin(admin.ModelAdmin):
-    inlines = [AgreementInLine, AddAgreementInLine]
+    inlines = [AgreementInLine, NoteInLine]
     model = App
 
     list_filter = (

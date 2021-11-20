@@ -1,6 +1,11 @@
+# Copyright 2021 UW-IT, University of Washington
+# SPDX-License-Identifier: Apache-2.0
+
+import unittest
 from datetime import datetime
 
 from django.test import Client, TestCase
+import time
 from django.contrib.auth.models import User
 from mdot.models import Sponsor, Manager, App, Platform, Agreement
 from mdot.admin import AgreementFilter, AgreementAdmin
@@ -14,6 +19,13 @@ class MdotAdminTest(TestCase):
     """
 
     def setUp(self):
+        App.objects.all().delete()
+        Agreement.objects.all().delete()
+        Manager.objects.all().delete()
+        Sponsor.objects.all().delete()
+        Platform.objects.all().delete()
+        User.objects.all().delete()
+
         self.client = Client()
         self.user = User.objects.create_user(
             username="javerage",
@@ -31,11 +43,13 @@ class MdotAdminTest(TestCase):
         self.sponsor = Sponsor.objects.create(
             first_name='Sponsor',
             last_name='lname',
+            netid='spontest',
             email='sponsor@uw.edu'
         )
         self.manager = Manager.objects.create(
             first_name='J',
             last_name='average',
+            netid='mantest',
             email='manager@uw.edu'
         )
         self.app = App.objects.create(
@@ -61,7 +75,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        self.assertEqual('Sponsor lname', str(self.sponsor))
+        self.assertEqual('Sponsor lname', str(self.sponsor.full_name()))
 
     def test_manager_name_displays_properly(self):
         """
@@ -69,7 +83,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        self.assertEqual('J average', str(self.manager))
+        self.assertEqual('J average', str(self.manager.full_name()))
 
     def test_app_name_displays_properly(self):
         """

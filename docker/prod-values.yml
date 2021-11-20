@@ -1,15 +1,8 @@
 autoscaling:
   enabled: true
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 4
 targetAverageUtilization: 100
-resources:
-  limits:
-    cpu: 1.0
-    memory: 1280Mi
-  requests:
-    cpu: 256m
-    memory: 1024Mi
 ingress:
   enabled: true
   tls:
@@ -108,14 +101,14 @@ environmentVariables:
     value: https://prod-api.mdot.uw.edu
   - name: SAML_ENTITY_ID
     value: https://mobile.uw.edu/saml2
-  - name: WEBSERVER
-    value: nginx
 externalSecrets:
   enabled: true
   secrets:
     - name: prod.mdot.uw.edu-secrets
       externalKey: axdd/kv/data/mdot/prod/secrets
       data:
+        - name: admin-authz-group
+          property: admin-authz-group
         - name: django-secret
           property: django-secret
         - name: google-analytics-key
@@ -153,6 +146,10 @@ externalSecrets:
         - name: uw-idp-cert
           property: cert
 environmentVariablesSecrets:
+  adminAuthzGroup:
+    name: ADMIN_AUTHZ_GROUP
+    secretName: test.mdot.uw.edu-secrets
+    secretKey: admin-authz-group
   djangoSecret:
     name: DJANGO_SECRET
     secretName: prod.mdot.uw.edu-secrets
