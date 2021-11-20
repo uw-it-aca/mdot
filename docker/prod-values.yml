@@ -148,7 +148,7 @@ externalSecrets:
 environmentVariablesSecrets:
   adminAuthzGroup:
     name: ADMIN_AUTHZ_GROUP
-    secretName: test.mdot.uw.edu-secrets
+    secretName: prod.mdot.uw.edu-secrets
     secretKey: admin-authz-group
   djangoSecret:
     name: DJANGO_SECRET
