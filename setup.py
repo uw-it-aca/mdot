@@ -1,7 +1,10 @@
 import os
 from setuptools import find_packages, setup
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
+README = """
+See the README on `GitHub
+<https://github.com/uw-it-aca/mdot>`_.
+"""
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -24,6 +27,7 @@ setup(
         'user-agents',
         'django-user-agents',
         'UW-Django-SAML2',
+        'django-webpack-loader',
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',

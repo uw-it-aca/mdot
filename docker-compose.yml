@@ -2,20 +2,41 @@ version: '3.4'
 
 services:
   app:
-    restart: always
-    container_name: mdot
     build:
       context: .
-      dockerfile: ${DOCKERFILE:-Dockerfile}
       target: app-container
-    # map the local (host) directories to their container counterparts
-    # to support live-syncing
-    volumes:
-      - ./mdot:/app/mdot
-    ports:
-      - "${PORT:-8000}:8000"
+    restart: always
+    container_name: mdot_app
     environment:
+      GOOGLE_ANALYTICS_KEY: ${GOOGLE_ANALYTICS_KEY}
       ENV: localdev
       AUTH: ${AUTH:-SAML_MOCK}
       RESTCLIENTS_MDOT_DAO_CLASS: ${RESTCLIENTS_MDOT_DAO_CLASS:-Mock}
       RESTCLIENTS_MDOT_HOST: ${RESTCLIENTS_MDOT_HOST:-None}
+    volumes:
+      - ./mdot:/app/mdot
+      - statics-volume:/static
+    ports:
+      - "${RUNSERVER_PORT:-8000}:8000"
+    stdin_open: true
+    tty: true
+  devtools:
+    build:
+      context: .
+      target: wpack
+    restart: always
+    container_name: mdot_devtools
+    ports:
+      - "${BUNDLE_ANALYZER_PORT:-8888}:8888" # Required when environment.BUNDLE_ANALYZER is true
+    environment:
+      VUE_DEVTOOLS: "True"
+      BUNDLE_ANALYZER: "True"
+    volumes:
+      - ./mdot:/app/mdot # expose main django app so webpack-loader can output bundles here
+      - ./mdot_vue:/app/mdot_vue
+      - statics-volume:/static
+    command: npx webpack --watch --mode=development
+    stdin_open: true
+    tty: true
+volumes:
+  statics-volume:

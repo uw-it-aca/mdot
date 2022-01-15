@@ -1,4 +1,7 @@
-#!/bin/bash
+source "/app/bin/activate"
+
+cd /app
+python manage.py migrate
 
 python manage.py migrate
 python manage.py loaddata Platform.json
