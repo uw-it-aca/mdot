@@ -88,7 +88,7 @@
           <h2>Customization</h2>
           <p>
             Ready to go beyond the starter template and start buidling your application? Read about
-            how to <a href="/customize">customize</a> your application.
+            how to <a href="/vue/customize">customize</a> your application.
           </p>
         </div>
       </div>

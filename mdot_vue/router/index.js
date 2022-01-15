@@ -7,12 +7,11 @@ import Customize from '../pages/customize.vue';
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
+    path: "/vue",
     component: Home
   },
   {
-    path: "/customize",
+    path: "/vue/customize",
     name: "Customize",
     component: Customize,
     pathToRegexpOptions: { strict: true }
