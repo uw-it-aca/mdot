@@ -2,7 +2,7 @@
   <!-- layout.vue: this is where you override the layout -->
   <div class="col-lg-8 mx-auto p-3 py-md-5" :app-name="appName" :page-title="pageTitle">
     <header class="d-flex align-items-center pb-3 mb-5 h4 border-bottom">
-      <a href="/" class="text-reset text-decoration-none">{{ appName }}</a>
+      <a href="/vue" class="text-reset text-decoration-none">{{ appName }}</a>
     </header>
 
     <h1>
@@ -10,10 +10,6 @@
         {{ pageTitle }}
       </slot>
     </h1>
-
-    <slot name="description" />
-
-    <hr class="mb-5 w-25 d-inline-block" />
 
     <slot name="content" />
 
@@ -35,7 +31,7 @@ export default {
   data() {
     return {
       // minimum application setup overrides
-      appName: 'AXDD Django+Vue',
+      appName: 'Mobile UW',
       // automatically set year
       currentYear: new Date().getFullYear(),
     };
