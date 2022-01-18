@@ -11,6 +11,7 @@ from django.core.mail import send_mail, EmailMultiAlternatives, BadHeaderError
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 from htmlmin.decorators import minified_response
 from .mdot_rest_client.client import MDOT
 
@@ -322,3 +323,15 @@ def email_service_now(app, subject, message, sender, cc, status):
 
     except BadHeaderError:
         return HttpResponse("Invalid header found.")
+
+# class-based views for rendering vue container
+class PageView(TemplateView):
+    template_name = "index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def render_to_response(self, context, **response_kwargs):
+        response = super(PageView, self).render_to_response(context, **response_kwargs)
+        return response

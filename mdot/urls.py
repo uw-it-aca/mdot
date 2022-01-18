@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from mdot.admin import admin_site
 
 from django.views.generic.base import RedirectView
-from mdot.pages import PageView
 
 admin.autodiscover()
 admin_site.login = login_required(admin_site.login)
@@ -27,5 +26,5 @@ urlpatterns = [
     path('admin/', admin_site.urls),
     
     # temporary vue app location
-    re_path('vue/', PageView.as_view(), name="index"),
+    re_path('vue/', views.PageView.as_view(), name="index"),
 ]
