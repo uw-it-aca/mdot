@@ -10,13 +10,13 @@
 
     <template #content>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sed, officia adipisci, neque inventore nemo excepturi aspernatur rerum a totam aliquid in omnis quas, labore dolorum hic. Eligendi, vero aut.</p>
-      <p><a href="/vue/developers">Go to Developers</a></p>
+      <p><a href="/vue/resources">Go to mobile development resources</a></p>
     </template>
   </layout>
 </template>
 
 <script>
-import Layout from '../layout.vue';
+import Layout from '../components/layouts/launcher.vue';
 
 export default {
   components: {

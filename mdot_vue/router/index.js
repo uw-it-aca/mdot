@@ -3,7 +3,7 @@ import { trackRouter } from "vue-gtag-next";
 
 // page components
 import Home from '../pages/home.vue';
-import Developers from '../pages/developers.vue';
+import Resources from '../pages/resources.vue';
 
 const routes = [
   {
@@ -11,8 +11,8 @@ const routes = [
     component: Home
   },
   {
-    path: "/vue/developers",
-    component: Developers,
+    path: "/vue/resources",
+    component: Resources,
     pathToRegexpOptions: { strict: true }
   },
 ];

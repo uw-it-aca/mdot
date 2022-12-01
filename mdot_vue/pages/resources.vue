@@ -9,25 +9,27 @@
     </template>
 
     <template #content>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores fuga eius, amet maxime odit mollitia, ducimus voluptas ullam unde obcaecati voluptatibus laborum ea quod perferendis nobis, nemo officiis? Sint, dolore.</p>
+      <h2>Things to Consider</h2>
+      
+      <h3>Mobile Web vs. Native vs. Hybrid</h3>
+      <p>Before deciding what to build, understand your options. Mobile web is the most versatile and easiest to maintain, but can be limiting if you need robust device integration.</p>
+    
     </template>
   </layout>
 </template>
 
 <script>
 import { Card } from 'axdd-components';
-import Layout from '../layout.vue';
-import HelloWorld from '../components/hello-world.vue';
+import Layout from '../components/layouts/docs.vue';
 
 export default {
   components: {
     layout: Layout,
-    'hello-world': HelloWorld,
     'axdd-card': Card,
   },
   data() {
     return {
-      pageTitle: 'Developers',
+      pageTitle: 'Resources',
     };
   },
   methods: {},
