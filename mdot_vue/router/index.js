@@ -4,17 +4,29 @@ import { createWebHistory, createRouter } from "vue-router";
 // import { trackRouter } from "vue-gtag-next";
 
 // page components
-import Home from "../pages/home.vue";
-import Resources from "../pages/resources.vue";
+import LauncherApp from "../pages/launcher.vue";
+import DevIndex from "../pages/developers/index.vue";
+import DevGuidelines from "../pages/developers/guidelines.vue";
+import DevProcess from "../pages/developers/process.vue";
 
 const routes = [
   {
-    path: "/vue",
-    component: Home,
+    path: "/",
+    component: LauncherApp,
   },
   {
-    path: "/vue/resources",
-    component: Resources,
+    path: "/developers",
+    component: DevIndex,
+    pathToRegexpOptions: { strict: true },
+  },
+  {
+    path: "/developers/guidelines",
+    component: DevGuidelines,
+    pathToRegexpOptions: { strict: true },
+  },
+  {
+    path: "/developers/process",
+    component: DevProcess,
     pathToRegexpOptions: { strict: true },
   },
 ];

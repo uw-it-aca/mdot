@@ -13,7 +13,7 @@
         officia adipisci, neque inventore nemo excepturi aspernatur rerum a
         totam aliquid in omnis quas, labore dolorum hic. Eligendi, vero aut.
       </p>
-      <p><a href="/vue/resources">Go to mobile development resources</a></p>
+      <p><a href="/developers">Go to mobile development resources</a></p>
     </template>
   </layout>
 </template>

@@ -35,26 +35,23 @@ if settings.DEBUG:
 
 
 urlpatterns += [
-    
-    re_path('developers/', developers, name='developers'),
-    re_path('developers/guidelines/', guidelines,
+    re_path('django/', home, name='home'),
+    re_path('django/developers/', developers, name='developers'),
+    re_path('django/developers/guidelines/', guidelines,
          name='guidelines'),
-    re_path('developers/process/', process, name='process'),
-    re_path('developers/request/', request, name='request'),
-    re_path('developers/request/<int:pk>/', sponsor, name='sponsor'),
-    re_path('developers/decline/<int:pk>/', decline, name='decline'),
+    re_path('django/developers/process/', process, name='process'),
+    re_path('django/developers/request/', request, name='request'),
+    re_path('django/developers/request/<int:pk>/', sponsor, name='sponsor'),
+    re_path('django/developers/decline/<int:pk>/', decline, name='decline'),
 
     # path('blog/', include('blog.urls')),
     re_path('admin/', admin_site.urls),
     
-    # temporary vue app location
-    #re_path('vue/', DefaultPageView.as_view()),
-
     # add api endpoints here
 
     # add default Vue page routes here
-    re_path(r"^(vue/resources|page2|page3)$", DefaultPageView.as_view()),
-    re_path(r"vue/", DefaultPageView.as_view()),
+    re_path(r"^(developers|developers/guidelines|developers/process)$", DefaultPageView.as_view()),
+    re_path(r"$", DefaultPageView.as_view()),
 
-    re_path('', home, name='home'),
+    
 ]

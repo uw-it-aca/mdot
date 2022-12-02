@@ -5,7 +5,7 @@
       class="d-flex align-items-center h4 border-bottom bg-purple text-white p-3"
     >
       <div class="container">
-        <a href="/vue" class="text-reset text-decoration-none">{{ appName }}</a>
+        <a href="/" class="text-reset text-decoration-none">{{ appName }}</a>
       </div>
     </header>
 
@@ -16,6 +16,24 @@
         </slot>
       </h1>
 
+      <nav>
+        <ul>
+          <li>
+            <router-link :to="'/developers'">Dev Home</router-link>
+          </li>
+          <li>
+            <router-link :to="'/developers/guidelines'">Guidelines</router-link>
+          </li>
+          <li>
+            <router-link :to="'/developers/process'">Process</router-link>
+          </li>
+          <li>
+            <router-link :to="'/developers/request'"
+              >Request Access</router-link
+            >
+          </li>
+        </ul>
+      </nav>
       <slot name="content" />
     </main>
 
