@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Layout from '../components/layouts/launcher.vue';
+import Layout from '../layouts/launcher.vue';
 
 export default {
   components: {

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Layout from '../components/layouts/docs.vue';
+import Layout from '../layouts/docs.vue';
 
 export default {
   components: {
