@@ -2,7 +2,7 @@
   <!-- docs.vue: this is the layout for documentation app -->
   <div :app-name="appName" :page-title="pageTitle">
     <header
-      class="d-flex align-items-center h4 border-bottom bg-purple text-white"
+      class="d-flex align-items-center h4 border-bottom bg-purple text-white p-3"
     >
       <div class="container">
         <a href="/vue" class="text-reset text-decoration-none">{{ appName }}</a>
@@ -19,7 +19,7 @@
       <slot name="content" />
     </main>
 
-    <footer class="text-white border-top bg-purple">
+    <footer class="border-top bg-purple text-white p-3">
       <div class="container">
         Copyright &copy; {{ currentYear }} University of Washington
       </div>
@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       // minimum application setup overrides
-      appName: "Mobile UW Developer Resources",
+      appName: "Mobile UW",
       // automatically set year
       currentYear: new Date().getFullYear(),
     };

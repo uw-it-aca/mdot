@@ -14,10 +14,10 @@ import "bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 // bootstrap (basic)
-import "./css/basic.scss";
+// import "./css/basic.scss";
 
 // bootstrap (axdd) and axdd-components
-// import "./css/custom.scss";
+import "./css/custom.scss";
 // import "axdd-components/dist/style.css";
 
 const app = createApp(App);
