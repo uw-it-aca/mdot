@@ -19,13 +19,11 @@
 </template>
 
 <script>
-import { Card } from 'axdd-components';
 import Layout from '../components/layouts/docs.vue';
 
 export default {
   components: {
     layout: Layout,
-    'axdd-card': Card,
   },
   data() {
     return {

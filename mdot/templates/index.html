@@ -1,5 +1,5 @@
 {% load static %}
-{% load render_bundle from webpack_loader %}
+{% load vite %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,16 +7,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="{% static 'app_name/img/favicon.png' %}">
-    {% render_bundle 'main' 'css' %}
+    <link rel="icon" href="{% static 'mdot/img/favicon.png' %}">
 
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;500;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <!-- vite css bundle -->
+    {% vite_styles 'mdot_vue/main.js' %}
 </head>
 
-<body {% if google_analytics %}data-google-analytics="{{ google_analytics }}"{% endif %} data-django-debug="{{ django_debug|lower}}">
+<body {% if google_analytics %}data-google-analytics="{{ google_analytics }}"{% endif %} {% if logout_url %}data-logout-url="{{ logout_url }}"{% endif %} data-django-debug="{{ django_debug|lower}}" class="bg-light">
+    {% csrf_token %}
 
     <!-- vue app will be injected here -->
     <div id="app"></div>
-    {% render_bundle 'main' 'js' attrs='defer' %}
+
+    <!-- vite js bundle -->
+    {% vite_scripts 'mdot_vue/main.js' %}
 
 </body>
 

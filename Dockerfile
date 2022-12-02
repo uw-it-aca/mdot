@@ -1,16 +1,19 @@
-FROM gcr.io/uwit-mci-axdd/django-container:1.3.7 as app-prewebpack-container
+ARG DJANGO_CONTAINER_VERSION=1.4.1
+
+FROM gcr.io/uwit-mci-axdd/django-container:${DJANGO_CONTAINER_VERSION} as app-prebundler-container
 
 USER root
+
 RUN apt-get update && apt-get install libpq-dev -y
 RUN apt-get update && apt-get install mysql-client libmysqlclient-dev -y
+
 USER acait
 
-ADD --chown=acait:acait mdot/VERSION /app/mdot/
-ADD --chown=acait:acait setup.py /app/
-ADD --chown=acait:acait requirements.txt /app/
+ADD --chown=acait:acait . /app/
+ADD --chown=acait:acait docker/ /app/project/
 
-RUN . /app/bin/activate && pip install -r requirements.txt
-RUN . /app/bin/activate && pip install mysqlclient
+RUN /app/bin/pip install -r requirements.txt
+RUN /app/bin/pip install  mysqlclient
 
 ADD --chown=acait:acait . /app/
 ADD --chown=acait:acait docker/ project/
@@ -18,7 +21,7 @@ ADD --chown=acait:acait docker/app_deploy.sh /scripts
 ADD --chown=acait:acait docker/app_start.sh /scripts
 RUN chmod u+x /scripts/app_deploy.sh
 
-FROM node:14.18.1-stretch AS wpack
+FROM node:14.18.1-stretch AS node-bundler
 
 ADD ./package.json /app/
 WORKDIR /app/
@@ -28,18 +31,18 @@ ADD . /app/
 
 ARG VUE_DEVTOOLS
 ENV VUE_DEVTOOLS=$VUE_DEVTOOLS
-RUN npx webpack --mode=production
+RUN npm run build
 
-FROM app-prewebpack-container as app-container
+FROM app-prebundler-container as app-container
 
-ADD --chown=acait:acait . /app/
-ADD --chown=acait:acait docker/ project/
-COPY --chown=acait:acait --from=wpack /app/mdot/static /static
+# ADD --chown=acait:acait . /app/
+# ADD --chown=acait:acait docker/ project/
 
-RUN . /app/bin/activate && python manage.py collectstatic --noinput &&\
-    python manage.py compress -f
+COPY --chown=acait:acait --from=node-bundler /app/mdot/static /app/mdot/static
 
-FROM gcr.io/uwit-mci-axdd/django-test-container:1.3.7 as app-test-container
+RUN /app/bin/python manage.py collectstatic --noinput
+
+FROM gcr.io/uwit-mci-axdd/django-test-container:${DJANGO_CONTAINER_VERSION} as app-test-container
 
 ENV NODE_PATH=/app/lib/node_modules
 COPY --from=app-container /app/ /app/

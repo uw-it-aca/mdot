@@ -13,11 +13,11 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from htmlmin.decorators import minified_response
-from .mdot_rest_client.client import MDOT
+from mdot.mdot_rest_client.client import MDOT
 
 import urllib
 import json
-from .models import SponsorForm, ManagerForm, AppForm, \
+from mdot.models import SponsorForm, ManagerForm, AppForm, \
     App, Agreement, Sponsor, Manager
 
 

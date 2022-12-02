@@ -19,29 +19,13 @@ ALLOWED_HOSTS += [
 GOOGLE_ANALYTICS_KEY = os.getenv("GOOGLE_ANALYTICS_KEY", default=" ")
 
 INSTALLED_APPS += [
-    # 'rest_framework',
-    # 'mdot_rest',
+    "mdot.apps.AppNameConfig",
+    #'rest_framework',
+    #'mdot_rest',
     "django_user_agents",
-    "mdot",
     "compressor",
     # "django.contrib.admin",
-    "webpack_loader",
 ]
-
-# Location of stats file that can be accessed during local development and 
-# collected from during production build process
-if os.getenv("ENV") == "localdev":
-    WEBPACK_LOADER = {
-        'DEFAULT': {
-            'STATS_FILE': os.path.join(BASE_DIR, 'mdot/static/webpack-stats.json'),
-        }
-    }
-else:
-    WEBPACK_LOADER = {
-        'DEFAULT': {
-            'STATS_FILE': os.path.join(BASE_DIR, '/static/webpack-stats.json'),
-        }
-    }
 
 MIDDLEWARE += (
     "django.middleware.security.SecurityMiddleware",
@@ -100,3 +84,13 @@ if os.getenv('AUTH', 'NONE') == 'SAML_MOCK':
 ADMIN_AUTHZ_GROUP = os.getenv('ADMIN_AUTHZ_GROUP', 'u_test_admin')
 
 TIME_ZONE = 'America/Los_Angeles'
+
+if os.getenv("ENV") == "localdev":
+    DEBUG = True
+
+if os.getenv("ENV") == "localdev":
+    VITE_MANIFEST_PATH = os.path.join(
+        BASE_DIR, "mdot", "static", "manifest.json"
+    )
+else:
+    VITE_MANIFEST_PATH = os.path.join(os.sep, "static", "manifest.json")

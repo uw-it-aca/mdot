@@ -79,7 +79,9 @@ static/CACHE
 node_modules/
 package-lock.json
 
-# webpack
-bundles/
-webpack_bundles/
-webpack-stats.json
+# vite bundle
+assets/
+manifest.json
+
+# coverage
+coverage

@@ -1,5 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
-import { trackRouter } from "vue-gtag-next";
+
+// vue-gtag-next track routing
+// import { trackRouter } from "vue-gtag-next";
+
 
 // page components
 import Home from '../pages/home.vue';
@@ -23,6 +26,6 @@ const router = createRouter({
 });
 
 // vue-gtag-next router tracking
-trackRouter(router);
+// trackRouter(router);
 
 export default router;

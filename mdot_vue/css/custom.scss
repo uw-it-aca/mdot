@@ -1,27 +1,163 @@
-// override variables
-$nav-height: 52px;
-$bar-height: 40px;
-$link-color: #0069d9; //a11y blue
+// 1. import bootstrap functions first
+@import "node_modules/bootstrap/scss/functions";
 
-@use "sass:map";
-@import 'axdd-components/src/assets/css/custom.scss';
+// 2. include any default variable overrides
 
-// mdot custom theme colors
+// override bootstrap default theme colors
+
+/*
+$body-bg: #000;
+$body-color: #111;
+$text-muted: orange;
+
+$danger: #a94442;
+$warning: #f5d300;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+);
+*/
+
+// 3. include remaining bootstrap styles
+@import "node_modules/bootstrap/scss/variables";
+
+// override card border color
+$card-border-color: $gray-200;
+
+// 4. include default map overrides
+
+// apply custom theme colors
 $custom-colors: (
-  "test": red, // bg-test text-test
+  "purple": #4d307f,
+  "dark-purple": #452a78,
+  "beige": #e8e3d3,
+  "dark-beige": #85754d,
+  "light-beige": #faf8f4,
+  "mid-beige": #ab9765,
+  "gold": #ffbc24,
+  "teal": #4c7286,
+  "light-gray": #e8e8e8,
+  "gray": #e9ecef,
+) !default;
+
+// merge the default bootstrap + custom color maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// adding extra font-sizes (fs-#)
+$extra-font-sizes: (
+  7: 0.875rem,
+  8: 0.8125rem,
+  9: 0.75rem,
+  10: 0.6875rem,
+  11: 0.625rem,
+);
+$font-sizes: map-merge($font-sizes, $extra-font-sizes);
+
+// 5. include required parts
+@import "node_modules/bootstrap/scss/maps";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/root";
+
+// 6. optional include any other parts needed
+@import "node_modules/bootstrap/scss/utilities";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/images";
+@import "node_modules/bootstrap/scss/containers";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/helpers";
+
+// add custom hover utilities for bg-color-hover and text-color-hover
+$utilities: (
+  // MARK: bg-color-hover (changes bg-color on hover)
+  "background-color":
+    (
+      property: background-color,
+      class: bg,
+      state: hover focus,
+      values:
+        map-merge(
+          $theme-colors,
+          (
+            "body": $body-bg,
+            "white": $white,
+            "transparent": transparent,
+          )
+        ),
+    ),
+  // MARK: text-color-hover (changes text-color on hover)
+  "color":
+    (
+      property: color,
+      class: text,
+      state: hover focus,
+      values:
+        map-merge(
+          $theme-colors,
+          (
+            // re-merge theme colors
+            "body": $body-color,
+            "muted": $text-muted,
+            "white": $white,
+            "reset": inherit,
+            "transparent": transparent,
+          )
+        ),
+    )
 );
 
-// axdd-components + mdot custom colors
-$theme-colors: map-merge($theme-colors, $custom-colors);
-$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
-$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
-$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
-$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
+// 7. include utilities api and import bootstrap last
+@import "node_modules/bootstrap/scss/utilities/api";
+@import "node_modules/bootstrap/scss/bootstrap";
 
-// import bootstrap and bootstrap-icons
-@import "bootstrap/scss/bootstrap";
-//@import "bootstrap-icons/font/bootstrap-icons.css";
+// 8. continue... add global app overrides and custom mixins
 
-// additional non-bootstrap styles
+// global axdd-component styles
+.axdd-font-open-sans {
+  font-family: "Open Sans", sans-serif !important;
+}
 
-.blah { color: blue; }
+.axdd-font-encode-sans {
+  font-family: "Encode Sans Condensed", sans-serif !important;
+}
+
+// MARK: adds alert-theme-color support
+// https://getbootstrap.com/docs/5.2/components/alerts/#sass-mixin
+@mixin alert-variant($background, $border, $color) {
+  --#{$prefix}alert-color: #{$color};
+  --#{$prefix}alert-bg: #{$background};
+  --#{$prefix}alert-border-color: #{$border};
+
+  @if $enable-gradients {
+    background-image: var(--#{$prefix}gradient);
+  }
+
+  .alert-link {
+    color: shade-color($color, 20%);
+  }
+}
+
+// https://getbootstrap.com/docs/5.2/components/alerts/#sass-loop
+@each $state, $value in $theme-colors {
+  $alert-background: shift-color($value, $alert-bg-scale);
+  $alert-border: shift-color($value, $alert-border-scale);
+  $alert-color: shift-color($value, $alert-color-scale);
+
+  @if contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio {
+    $alert-color: mix(
+      $value,
+      color-contrast($alert-background),
+      abs($alert-color-scale)
+    );
+  }
+  .alert-#{$state} {
+    @include alert-variant($alert-background, $alert-border, $alert-color);
+  }
+}
