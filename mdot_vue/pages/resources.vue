@@ -2,7 +2,6 @@
 
 <template>
   <layout :page-title="pageTitle">
-    
     <!-- page content -->
     <template #title>
       {{ pageTitle }}
@@ -10,16 +9,19 @@
 
     <template #content>
       <h2>Things to Consider</h2>
-      
+
       <h3>Mobile Web vs. Native vs. Hybrid</h3>
-      <p>Before deciding what to build, understand your options. Mobile web is the most versatile and easiest to maintain, but can be limiting if you need robust device integration.</p>
-    
+      <p>
+        Before deciding what to build, understand your options. Mobile web is
+        the most versatile and easiest to maintain, but can be limiting if you
+        need robust device integration.
+      </p>
     </template>
   </layout>
 </template>
 
 <script>
-import Layout from '../layouts/docs.vue';
+import Layout from "../layouts/docs.vue";
 
 export default {
   components: {
@@ -27,7 +29,7 @@ export default {
   },
   data() {
     return {
-      pageTitle: 'Resources',
+      pageTitle: "Resources",
     };
   },
   methods: {},

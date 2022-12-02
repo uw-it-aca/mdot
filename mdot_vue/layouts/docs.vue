@@ -1,13 +1,13 @@
 <template>
   <!-- docs.vue: this is the layout for documentation app -->
   <div :app-name="appName" :page-title="pageTitle">
-    
-    <header class="d-flex align-items-center h4 border-bottom bg-purple text-white">
+    <header
+      class="d-flex align-items-center h4 border-bottom bg-purple text-white"
+    >
       <div class="container">
-      <a href="/vue" class="text-reset text-decoration-none">{{ appName }}</a>
+        <a href="/vue" class="text-reset text-decoration-none">{{ appName }}</a>
       </div>
     </header>
-
 
     <main class="container">
       <h1 class="text-purple fw-bold">
@@ -21,7 +21,7 @@
 
     <footer class="text-white border-top bg-purple">
       <div class="container">
-      Copyright &copy; {{ currentYear }} University of Washington
+        Copyright &copy; {{ currentYear }} University of Washington
       </div>
     </footer>
   </div>
@@ -39,14 +39,14 @@ export default {
   data() {
     return {
       // minimum application setup overrides
-      appName: 'Mobile UW Developer Resources',
+      appName: "Mobile UW Developer Resources",
       // automatically set year
       currentYear: new Date().getFullYear(),
     };
   },
-  created: function() {
+  created: function () {
     // constructs page title in the following format "Page Title - AppName"
-    document.title = this.pageTitle + ' - ' + this.appName;
+    document.title = this.pageTitle + " - " + this.appName;
   },
 };
 </script>

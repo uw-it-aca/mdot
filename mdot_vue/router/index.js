@@ -3,20 +3,19 @@ import { createWebHistory, createRouter } from "vue-router";
 // vue-gtag-next track routing
 // import { trackRouter } from "vue-gtag-next";
 
-
 // page components
-import Home from '../pages/home.vue';
-import Resources from '../pages/resources.vue';
+import Home from "../pages/home.vue";
+import Resources from "../pages/resources.vue";
 
 const routes = [
   {
     path: "/vue",
-    component: Home
+    component: Home,
   },
   {
     path: "/vue/resources",
     component: Resources,
-    pathToRegexpOptions: { strict: true }
+    pathToRegexpOptions: { strict: true },
   },
 ];
 
