@@ -4,10 +4,10 @@ import { createWebHistory, createRouter } from "vue-router";
 // import { trackRouter } from "vue-gtag-next";
 
 // page components
-import LauncherApp from "../pages/launcher.vue";
-import DevIndex from "../pages/developers/index.vue";
-import DevGuidelines from "../pages/developers/guidelines.vue";
-import DevProcess from "../pages/developers/process.vue";
+import LauncherApp from "../pages/home.vue";
+import DevResources from "../pages/developers.vue";
+import PubGuidelines from "../pages/guidelines.vue";
+import ProcessOverview from "../pages/process.vue";
 
 const routes = [
   {
@@ -16,17 +16,17 @@ const routes = [
   },
   {
     path: "/developers",
-    component: DevIndex,
+    component: DevResources,
     pathToRegexpOptions: { strict: true },
   },
   {
-    path: "/developers/guidelines",
-    component: DevGuidelines,
+    path: "/guidelines",
+    component: PubGuidelines,
     pathToRegexpOptions: { strict: true },
   },
   {
-    path: "/developers/process",
-    component: DevProcess,
+    path: "/process",
+    component: ProcessOverview,
     pathToRegexpOptions: { strict: true },
   },
 ];

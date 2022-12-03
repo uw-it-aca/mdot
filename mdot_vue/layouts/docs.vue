@@ -19,18 +19,18 @@
       <nav>
         <ul>
           <li>
-            <router-link :to="'/developers'">Dev Home</router-link>
+            <router-link :to="'/developers'">Developer Resources</router-link>
           </li>
           <li>
-            <router-link :to="'/developers/guidelines'">Guidelines</router-link>
-          </li>
-          <li>
-            <router-link :to="'/developers/process'">Process</router-link>
-          </li>
-          <li>
-            <router-link :to="'/developers/request'"
-              >Request Access</router-link
+            <router-link :to="'/process'"
+              >Publishing Process Overview</router-link
             >
+          </li>
+          <li>
+            <router-link :to="'/guidelines'">Publishing Guidelines</router-link>
+          </li>
+          <li>
+            <a href="/request">Request Access (Sponsorship app)</a>
           </li>
         </ul>
       </nav>

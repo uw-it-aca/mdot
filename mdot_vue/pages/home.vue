@@ -13,7 +13,9 @@
         officia adipisci, neque inventore nemo excepturi aspernatur rerum a
         totam aliquid in omnis quas, labore dolorum hic. Eligendi, vero aut.
       </p>
-      <p><a href="/developers">Go to mobile development resources</a></p>
+      <p>
+        <router-link :to="'/developers'"> developer resources</router-link>
+      </p>
     </template>
   </layout>
 </template>

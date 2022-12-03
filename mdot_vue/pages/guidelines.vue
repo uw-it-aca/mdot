@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import DocsLayout from "../../layouts/developers.vue";
+import DocsLayout from "../layouts/docs.vue";
 
 export default {
   components: {

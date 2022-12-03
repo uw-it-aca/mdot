@@ -371,7 +371,7 @@
 </template>
 
 <script>
-import DocsLayout from "../../layouts/developers.vue";
+import DocsLayout from "../layouts/docs.vue";
 
 export default {
   components: {
@@ -379,7 +379,7 @@ export default {
   },
   data() {
     return {
-      pageTitle: "Resources",
+      pageTitle: "Developer Resources",
     };
   },
   methods: {},
