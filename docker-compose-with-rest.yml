@@ -1,0 +1,53 @@
+# use docker-compose -f docker-compose-with-rest.yml up --build for this file
+
+version: '3.7'
+
+services:
+  mdot-rest:
+    restart: always
+    container_name: mdot-rest-co-op
+    build:
+      context: ../mdot-rest
+      dockerfile: Dockerfile
+      target: app-container
+    # map the local (host) directories to their container counterparts
+    # to support live-syncing
+    volumes:
+      - ./mdot_rest:/app/mdot-rest
+    ports:
+      - "${REST_PORT:-8000}:8000"
+    networks:
+      mdot-net:
+        ipv4_address: 10.5.0.5
+    environment:
+      ENV: localdev
+      AUTH: ${AUTH:-SAML_MOCK}
+
+  mdot:
+    restart: always
+    container_name: mdot-co-op
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE:-Dockerfile}
+      target: app-container
+    # map the local (host) directories to their container counterparts
+    # to support live-syncing
+    volumes:
+      - ./mdot:/app/mdot
+    ports:
+      - "${PORT:-8001}:8000"
+    networks:
+      mdot-net:
+        ipv4_address: 10.5.0.6
+    environment:
+      ENV: localdev
+      AUTH: ${AUTH:-SAML_MOCK}
+      RESTCLIENTS_MDOT_DAO_CLASS: Live
+      RESTCLIENTS_MDOT_HOST: 10.5.0.5:8000
+
+networks:
+  mdot-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
