@@ -13,6 +13,10 @@
         officia adipisci, neque inventore nemo excepturi aspernatur rerum a
         totam aliquid in omnis quas, labore dolorum hic. Eligendi, vero aut.
       </p>
+
+      <div class="mb-5">
+        <HomeApps />
+      </div>
       <p>
         <router-link :to="'/developers'"> developer resources</router-link>
       </p>
@@ -22,10 +26,12 @@
 
 <script>
 import Layout from "../layouts/launcher.vue";
+import HomeApps from "../components/home-apps.vue";
 
 export default {
   components: {
     layout: Layout,
+    HomeApps,
   },
   data() {
     return {
