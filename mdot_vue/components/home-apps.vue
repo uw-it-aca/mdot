@@ -8,10 +8,10 @@
   </div>
   <div v-else>Loading...</div>
 
-  <ul>
-    <li v-for="app in apps" :key="app.id">
-      {{ app.title }}
-      <img :src="app.image" />
+  <ul class="list-inline">
+    <li v-for="app in apps" :key="app.id" class="list-inline-item">
+      <img :src="app.image" class="img-thumbnail" style="width:200px;" />
+      <p>{{ app.title }}</p>
     </li>
   </ul>
 </template>

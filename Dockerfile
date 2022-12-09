@@ -15,11 +15,11 @@ ADD --chown=acait:acait docker/ /app/project/
 RUN /app/bin/pip install -r requirements.txt
 RUN /app/bin/pip install  mysqlclient
 
-ADD --chown=acait:acait . /app/
-ADD --chown=acait:acait docker/ project/
-ADD --chown=acait:acait docker/app_deploy.sh /scripts
-ADD --chown=acait:acait docker/app_start.sh /scripts
-RUN chmod u+x /scripts/app_deploy.sh
+#ADD --chown=acait:acait . /app/
+#ADD --chown=acait:acait docker/ project/
+#ADD --chown=acait:acait docker/app_deploy.sh /scripts
+#ADD --chown=acait:acait docker/app_start.sh /scripts
+#RUN chmod u+x /scripts/app_deploy.sh
 
 FROM node:14.18.1-stretch AS node-bundler
 
