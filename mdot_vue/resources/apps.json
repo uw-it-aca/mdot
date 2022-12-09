@@ -1,0 +1,779 @@
+[
+    {
+        "id": 1,
+        "title": "SpaceScout",
+        "feature_desc": "Find the perfect place to study.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/spacescout_LViQ7OG.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024318Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=85061746f137a7c9335f9726ce72044ace14a94fde18b82dbe2eabfed557bff5a6bc658c17e25fb327ccd3f17ad3dad636234c6860e1acb29cdcdab5f812a38dff011377b816f92799fec041b0fd5414469c970b0557dab2538340ee8e4ddce9de1cf53f1e6ff3a88338aa6cee6f1d72c8b790a7de80b75926aa0d2820bba65f1aa533ed13968bb5790aebfce1a98a793a4d03803cce34c426e1789c9100be41b9c581de569704b5a8869cc60f2f4b5d800012c2129c24d062ab6edc0ba26969263a15921d8ba4b1f9c08161a49860193d6fdc9cbb0f6433b57bcc38fef2df6187e90de591837240edd3145bbbb9c68998d9a5fc6308cd160f3551264e94899c",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "https://spacescout.uw.edu"
+            },
+            {
+                "link_type": "IOS",
+                "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-04T15:03:53-07:00",
+        "last_modified": "2015-09-17T15:45:01-07:00"
+    },
+    {
+        "id": 2,
+        "title": "Canvas",
+        "feature_desc": "Instantly access your Canvas courses.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/canvas_VcQv93V.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024318Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=8893bfa93e586907efeb003ceb1d5fd416381633bfcf3c81b1f429491f5217f190a837a7b75210b7d0d5f2daf56e17c9441b2fb9db5df74e164ae5a8a61a5de940dc9d889d1009f3167305eeb90eec03fe101444c4234b289bbdd1f28e1f7711d845b74a2621de4a6a96b95f511724545d028898b2cd92fd63a371f3de862771e12fd4a03f3e5b40325ccdcd3b3702e181c207d930939454381495c68380af756bef26c228c56d37947478312a1f1a47b4f6e21032653dd0b34e09d6dd01914865624a0b30486a078d13bfa873c4cc474791c8407e28b23ad64026f7e1b7adf57aeaafa6b207ad99df2b40ca1592c800a5f8a2b77c20590dfd7f123396fe03cf",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "https://canvas.uw.edu"
+            },
+            {
+                "link_type": "IOS",
+                "url": "https://itunes.apple.com/us/app/canvas-by-instructure/id480883488?mt=8"
+            },
+            {
+                "link_type": "AND",
+                "url": "https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-04T15:08:28-07:00",
+        "last_modified": "2015-09-17T15:44:52-07:00"
+    },
+    {
+        "id": 3,
+        "title": "News",
+        "feature_desc": "Stay up to date with all things UW.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/uwtoday_iFRpTUs.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024318Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=4756a99a622980fad7b79863e5c1bed8cf6b4548468f5201c2a2d76a477472cb95ac6261c90de4da50ee5a7aa410661a5669160ba3fde4f465e9814563bf87de4286ae36d5e3723f8eb2070b1f0c38c2cc0af08ee3b16e37b7cd41bcf7d9c9042eb88f827214920acbf4b6e1091b5639581c8b9a6e8f993a098901cf3d86a50d8698dd53f1ecd6f3cc8d223ef265d0de7298b4a6168173d037b6bd5a852604b46690e4a3ac812e6ddd9279629b5a6f2069673ebda964a08e4c2d8bcf8e2af3189ec34d4aceb00797543666a8c59aab3715d429272273e9378dbb7f1505103af2d53a8913e9b834d48269591a6af383a6fcfc04d7ed48feef4b88c651c81391ec",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": false,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/news/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": false,
+        "campus_tacoma": false,
+        "campus_seattle": false,
+        "created_date": "2015-08-04T15:09:57-07:00",
+        "last_modified": "2015-09-17T15:44:44-07:00"
+    },
+    {
+        "id": 4,
+        "title": "MyUW",
+        "feature_desc": "Up-to-the-minute personalized info to help you focus on what matters now.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/myuw_G2uVjJ6.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024318Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=9e9a48804e4da1c11936e3a3c957bfd245705d62eaf33ec734549b773009c7c5407a3556641cda7c1ab389fcc39cebabe453ac0d95b69613f6becbfc5c3d556b6dd0a9ef5ba2fa269770968c4de0870ca034e44118aa51a4f539ae4c31e7f2a0de149539a94c6531481759f88b894fa5382ef2e667c89b921ca0a1a5ca5a0b72ec8f568ba437a971be8abf0ec74383d37a90d0c7f5d2bdc22173851dff2c728110599c153c653425c1dd8109f2495617d4867534106c6b160088b743293a5f0ee63ed2399c9c734477a0c6e4fcd82d8669e88aad2d1e727f4701a4ecc2a6af4dbaf352803e23737cb864f953bd28dbe0e3a0fc9ae8a4c5a08128043cf4a97c33",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://myuw.washington.edu"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-04T15:10:54-07:00",
+        "last_modified": "2019-03-13T11:10:41-07:00"
+    },
+    {
+        "id": 5,
+        "title": "One Bus Away",
+        "feature_desc": "Real-time arrival info for King County public transit.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/onebus_kNKkiQE_zNRxgg5_4uvAdcB.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024318Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=add13072ec710b9abf68037ca76ec8d5faf6ddff48621dd7ebe1e8c3c6b7ece6ef139b7a371c270314456816be1b2a38e540d7884f4f948a82fad646fb141582a27fdff0f3510106f63eaf090c6edffd0eff704d2e808014dc82efee6fe893a2721dde7b9782f0bc5ed3c6468699bd21ef5b09b1544f62e9869d144f78959e40bec356b5024da60730896f2bd2ee7b30914a798130d04d2c646a85aaf0798bc50e86df3867db27de836de0687473118257ad5387b0ab03794b9a77d2fd97ae3b7359596f4e0427d414cbad1076653f3e340974e4675b3b5b2cad580814c565dd55691f9dea72177b62be99e86d76e7e7ee01c3c65514bf37740a6a3ba99919bd",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "AND",
+                "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+            },
+            {
+                "link_type": "IOS",
+                "url": "https://itunes.apple.com/us/app/onebusaway/id329380089?mt=8"
+            },
+            {
+                "link_type": "WEB",
+                "url": "http://pugetsound.onebusaway.org/where/standard/"
+            },
+            {
+                "link_type": "WIP",
+                "url": "https://www.microsoft.com/en-us/store/apps/onebusaway/9wzdncrdm5pc"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-04T15:13:42-07:00",
+        "last_modified": "2015-09-22T09:38:05-07:00"
+    },
+    {
+        "id": 6,
+        "title": "Athletics",
+        "feature_desc": "Comprehensive coverage of UW athletics.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/athletics_69KlBz8_ueUEoJD.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024318Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=23a3cfdd8254ec034106e9d4593352c93642b6f0a9b22007f991839d59b2aec6ad320206d8b1a62fabe54e0f1e2758ad0b3bcb9956073a2213bfe0d8e4cdc0023d1e027a0c9e7b51c4d8a28960effc9e5e0d64debea4c5c40e369daf5405e4d0b425082e1de49dfe561ef426218ab4f6c8db5257d749a9cb9b699af92f0c515975d13fc427cca98bfd4479ea043cd5c519991b07c67d6768a75bbc9350e79aee9b35f5bea49cab7db79a8744ab6642dad9f557154c95c99442dae7a9cff024f951f4b0235ec332a4ba2e6c70593a232abdef68142fbbebbc9d4c47831ec4268d89f20e1b36bec7bd2a6d15e526979c7173399849f66463f5e43d8e11c083ffec",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.gohuskies.com/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-05T10:05:15-07:00",
+        "last_modified": "2015-09-22T09:31:28-07:00"
+    },
+    {
+        "id": 7,
+        "title": "Libraries",
+        "feature_desc": "The place for books, study rooms, and library info.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/library_BSUR2ob_ugt7Zky.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=afb5e433038c59592622f48fcbdb245816d65528fc5e3743f5fad0960840398cf3aa5c70b9c076b1e80374f6cede9ea59feda48d9ea4b8a6eb037916ecaeb7798600f1c843c6af4bb04732b05d4db2f373f8d3055cd94e5fd4dcccfc3f23ed0fab2460a6af5621b6c8daf2e057e52a754f789eb94ffffd17e2352f58748d8bb9adf9b8b812e684d8ff733c27de6c3231454bcfdf5a5520c61f3b33162a87adb979d69e16cc069c644e1415f63e47f74b37e52455c36fe9134f8dfeb0bb3e3fa5cb2e753ac74b61f2470f8b9edd0a69bb460e52e021d4b5837c6a3c71770257965bbc2b1f599adf3d947b6c16d5e1ae4fc910873da9863d9eb405200641d7fee6",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "https://www.lib.washington.edu/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-05T13:36:05-07:00",
+        "last_modified": "2015-09-22T09:32:25-07:00"
+    },
+    {
+        "id": 8,
+        "title": "IT Connect",
+        "feature_desc": "Connect with UW technology tools and resources.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/itconnect_KeqtZlE.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=3e3fdaa087c2718d2e0d5884c567fb8a5e5e357a72b1da466b96c84a5e651ef959f146a1bd2a8e24622369b46da8cfed2540021a16a38b31952a55b4df5b435bc2c6ed3c86a3ee2c6c29d42d459b4981f01bfe5481a9b5074c7215cb8e3bdd44b0163859756ee65a3ebbbb66612a89106e262f4ffd3e37043859f3dafc620d2e99026651b762a2bcced17dc3b8d19dbbc6f9a236ed5f12a69bcaa92b5c398ea39ce0c7451ff744ed2d7b544ee80de76254f39696bc75d15cd7d499a2077231020e7f13af2fc5fa8a984881a58b3c26182b91655ab6fbadf29fc174c2ead4737fdec9b51a12ccf15e09862cf280ca5acb67a004d67484f207e37145558f48b3d6",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/itconnect/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-05T13:38:43-07:00",
+        "last_modified": "2015-09-17T15:43:56-07:00"
+    },
+    {
+        "id": 9,
+        "title": "Events",
+        "feature_desc": "Discover what’s happening at the UW.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/events_QJaZ4Ey.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=847ee007d08951d6bada5d360f258f86756b9605e8676bd9ce85a476fe335e86f91f6a94d01f5ed3a93f1b761cae01de4e5b81845496430be33fbc841698cbef21f15cde8b914f3f213c149ef4304be8a73fc95fb16a7c72a4ceeee2c7dd399a834521d06f895025483878913654c5509d2be26eaaf3bdd09d2a290337f5cb399d61f4e984911ab8ee69f0cd534949eef18e6cc622b1ca9581b0888cec2a67a08e0c3cd37f5c051f0914f868c9da78cceff0107909af304886e088236153896d32af8b9a0403900a1babbfd336024ad01b3793392518e6f5655826170a1275873e5acf2a6e176123c91be2074a27c93c7b7778b417513f967323a6775dc75a3d",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/calendar/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-05T13:41:19-07:00",
+        "last_modified": "2015-09-17T15:43:47-07:00"
+    },
+    {
+        "id": 10,
+        "title": "Directory",
+        "feature_desc": "Find UW staff, students, and faculty.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/directory_AtqGeeq_XGsJ8MG.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=22f908137abb15f7c0eaeeafbbc68dc68653a2482b931d074f67c389d1b0ab51cf02b57e1525e90b325c5c1c49e7b568a620c11ea1b6a5eb8c915cf59d3e0a991b04b83a27f0ec5dcd43ddc12b2bf41bcd6e1f7ccab076e16db4730ea398d136c4c82d64392979a2ca56844ed5c5d895bcf3499c077a79f22b24cbf261cc14e19dc67810843876a2d7155fc47c0af57b5aa6a6990a8c19be3ae6116b136d4b86fc3524fb6b9b7c038c54f34c4591957bce524d50836075d6aa34786621de4ace4f9c8f8d25e77771d9d8d04ad3d147ed326d0c0a24ba890e16568d71aa378ea420236d9f45a4de37e46c3eaf2878588b8bb322bf78de596fe518b955b76c1e51",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/home/peopledir/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-05T13:49:12-07:00",
+        "last_modified": "2015-09-22T09:32:11-07:00"
+    },
+    {
+        "id": 11,
+        "title": "Maps",
+        "feature_desc": "Find your way around the UW.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/campusmap_CNsO3n5_8Egl3Df_s40aVCQ.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=55cb28cde141e6818853283804f0ac39743c44d4bbb26d95f3199b7a3e72e27c40603afcb3d808ffb195f6bb81d1061bc306e962ebc30b528487309d5c500ce6e5fadfd8994ec41a6e9eef2b74daf5e3fe1d4619dbaa1f7390d0cef40d0359cb242715d4feb4059ff1afb2c745fdcbad1d053f9e31a319de06747ebc844d820446fb60a0db13a87d1ae9db7e5a157cc18b7cf5c9b66023af5d10ce03c6e40a744ea03c274398fd913bd846d1528f58996ce6c50ac4a8fbad9ace4dd0a7b47e26165d90e2af9bd27136cef0b799f49e922589ab3e854929a7fa48c2140bd4d83f7a3bd42ebe8e248c0f3d4532a2761d68370702e653b9f798969fc4cd9031a031",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/maps/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": false,
+        "campus_tacoma": false,
+        "campus_seattle": true,
+        "created_date": "2015-08-05T13:51:08-07:00",
+        "last_modified": "2015-09-22T09:38:21-07:00"
+    },
+    {
+        "id": 12,
+        "title": "Safety",
+        "feature_desc": "List of campus safety & emergency resources.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/safety_1HQ4hIw_1R2gA0o_5rtYiTh.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=86859d3fd9d20cc31664349296814f4115d48d6f7ec689e0f98f3a7ac6c7eea7686d20030b16582ec5f0bd9fcb6b803ae244de73b0037b12a3e366b9a8041ef5ff95a860496f65d35ecbea1070f285da55b007e3d9d06078f7856113c83948372878494f283837d96355fd66c828985c79cf22fc14c42ee3ca1afb910f360e33cbfb660f2b1ea3905730331b5fd013d1811b654aaea95f069ce208508ca1609787a1a75d2e60c28090c7e576362eb4522f5eebb8e0a6caffc404a7bd018a050bb25e14d933ec0c3a0886e8e021b652e793974db28af54cbc6ebb4807ab12402e2e332d3b52efa6acbc9f8e7fa18573d0656db7d8c45434b33c18616d2f8593be",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/safety/"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-26T14:51:34-07:00",
+        "last_modified": "2015-09-22T09:37:53-07:00"
+    },
+    {
+        "id": 13,
+        "title": "Arts",
+        "feature_desc": "Everything happening in campus arts, performance, and museums.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/arts_qoCUe26.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=02c75946862f962cb622de76c0381e77dac71763796adffd27ee5721df71bf142c1e59283f91cd9ab66e01c8fe3bab8bafcb5cf1414afd9c1f8564d010218356ca558dd2dd8fc95c08748aba80f7cb1c4cab0737f0e3b9eefdad25c814a07e8779b5f43d38800fbde882341f5ad11694a3f539224a86fd44037cc58bd8e6583f60fcbe5257715d86e78b0fa5f7fdfaf7d1b263399d49fd99a21702427b9cd5a5196dbc2748c41691a2300d08eeebd8acb6b82b30d7195d46bd40a4e73f2cbebc95c0833ee50a758a27b9ce68271cf6bef2c73446a374a0c22588b2cad1a3d720adab7365bdf22f19f36bddec3b22497b9797f79aa54ebd6b9d9bdb84db3ae702",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://artsuw.org"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            },
+            {
+                "audience": "Alumni"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-26T14:55:42-07:00",
+        "last_modified": "2015-09-17T15:43:14-07:00"
+    },
+    {
+        "id": 14,
+        "title": "Google Apps",
+        "feature_desc": "Log in with your UW email for FERPA-compliant Gmail, Drive, Calendar, and Sites.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/google_apps_9Ift7t9.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=09c232374109d04e75507bc37877df7e9fb195d6808ee556ff04b2b95478553e1f065469e520d206414580bd6bc4e47775ceb64c2c2c96f95d0090f9ca8f62a09cd2ba8063a37976de1c0ab294d3c79081c79a3d310d8901b91f57a3aa616378b825e2746b58f3cf1754fe54313eac71118f0e10ac0916d1e93bfc0aef3e9d1a819ca58d962a9f36d4f4b34d0662013fc89a885dd4ae0e29f7eeb679f4c6f670e37a69442e8f7079dbebc4fa113e8fae856f2d7316af2725376185fda3663e952d09125c4d8e5d9e6fc122e6c5e38d7d3678458abdbc6a38029767cbd07c49156a9f04947f7680c2b0180733edf164092df540624f56645b069b181e83efd05b",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://gmail.uw.edu"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-26T15:36:51-07:00",
+        "last_modified": "2015-09-17T15:43:06-07:00"
+    },
+    {
+        "id": 15,
+        "title": "MS Outlook",
+        "feature_desc": "Microsoft email client for staff and faculty.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/ms_office365_U9j4K8Z.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=8fe42cdea4de2984869f84178eb404971fe9df2efce7ac8128ec1abfb61c248beb9e075ce721182a40ca498c8fb4ba02068b15a8f5c03011e718d9772b6c6185d78f6f7f0c47d4b3df77d88acdf0672194c7227334409d6ecb69d9ac33a2847d027fe89f3f0e8b12a01778680ed6d8e538b3238389b4d895fad3fbe2f0677a918260897785ef02d4a51d204e988b4d426d857899499139cf367fbae593b2640646a8c787fc87de4e843f735600784e0151e8731f1393149250331f5178b2cc2f8e544f64c3f37dccb5ed85bf00952123d234b1dea2fb48c804103622f2b091d1cf1f8bf824055d11374ebbf31ed7e31c7ff9ab68b28d03aa96cbc04f6a4f1ebf",
+        "featured": false,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "https://portal.office.com/OLS/MySoftware.aspx?wa=wsignin1.0"
+            },
+            {
+                "link_type": "AND",
+                "url": "https://play.google.com/store/apps/details?id=com.microsoft.office.outlook&hl=en"
+            },
+            {
+                "link_type": "IOS",
+                "url": "https://itunes.apple.com/us/app/microsoft-outlook/id951937596?mt=8"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-26T15:47:59-07:00",
+        "last_modified": "2015-09-17T15:42:56-07:00"
+    },
+    {
+        "id": 16,
+        "title": "MS OneDrive",
+        "feature_desc": "Secure cloud storage for all your files.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/ms_onedrive_7ziV96r.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=11bb6d8bde32723c2949c76b287526236d3fb0c4536b1e4562eb4203a6e37b6e774db1f4fa88062d9b60c254ed617b1200f5d7ac749e45e0483cd427ebb0d1abf86317b11b42cda96735720d42a46f245e037d51da37329d3f0aa128a044582a59e1ecf87d362b1f33b90580b7bccf6d48ef49c07b34f925cc4ea3a52b761330d7282157a7689120cd360b775c10d6b60472dd0991588764883c75c374ee9b64f1b18772eab383e6133e4185c32348b1fc1148893d727a19aa4ae5245e291cfd914e8102465f5a6f51d8c73e32c2dab38a47d29ba2e83be1a044cf8cbae764a0fac09f973d2ba3f862c6e9746da5fe3778a02458b7858aaac89287a55ce1b5a2",
+        "featured": false,
+        "accessible": false,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "https://login.microsoftonline.com/login.srf?wa=wsignin1.0&whr=uw.edu&wreply=https:%2F%2Fuwnetid-my%2Esharepoint%2Ecom"
+            },
+            {
+                "link_type": "IOS",
+                "url": "https://itunes.apple.com/us/app/onedrive/id477537958?mt=8"
+            },
+            {
+                "link_type": "WIP",
+                "url": "https://www.microsoft.com/en-us/store/apps/onedrive/9wzdncrfj1p3"
+            },
+            {
+                "link_type": "AND",
+                "url": "https://play.google.com/store/apps/details?id=com.microsoft.skydrive&hl=en"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            },
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-08-26T16:02:39-07:00",
+        "last_modified": "2015-09-17T15:42:43-07:00"
+    },
+    {
+        "id": 17,
+        "title": "Calendar",
+        "feature_desc": "Critical dates for courses, registration, fees, and holidays.",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/calendar_A2RsIAh.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=5b773ea99e69f37977c7b753c07313f4491e6460eda3deef9218289e8c8892a8104dcb792c21c6eb3c4b3f7970f6ff7f12ae24bb3f45bf9be8b7a125482483b4bd7c55561c567afe1a6a7e53ba7b43e2ca8aa3d46d00eee2487654391e23783ab8009c0426748387b9d3815cb9e069b093d4496f48f6ee3329169348e016f2c271a93015fdc064173635d8cef43ba36084146ac58aff920a7bb86ede7d12274dce660fc5aa85a817992e4c6485bf8a6ff38210c18ed03d69045e32c93ed2706a7be84b4c2a6e1bd07cd72e63e3756686e7aa9c5a8687b4b48133bbe8fc6a1089e63ddf3f09706f541d497c03fb44ff9c948b41b6d0d3f47fb7978a22856eb114",
+        "featured": true,
+        "accessible": false,
+        "responsive_web": false,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://www.washington.edu/students/reg/calendar.html"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            },
+            {
+                "audience": "Grad"
+            },
+            {
+                "audience": "Faculty"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2015-09-10T15:39:04-07:00",
+        "last_modified": "2019-02-28T14:04:56-08:00"
+    },
+    {
+        "id": 18,
+        "title": "Test app",
+        "feature_desc": "n/a",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/Screen_Shot_2020-10-08_at_10.39.30_AM.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=98e02f4f7a4f1ddebf9a60bd19dfcaf2f9a58205799f643d61136e6d39f6ceaff129ff0b3b91a275f0bdf50d8143213dcae2f3a64664c1d712a555fdf9db542ea3364d67769775afdd33e546f88090e9e35e9f4cc41f5d01f440a9d8e7181af1eac2b9ffdb141ad913dc0770e35cae507c7018bc9875f64662dc0f82f7f02d31e2d064811adcbf61256b8e3921fa1fdd15d6ce3dde70e637401a46b61842bf1ada4d5cdd6180aed44c15e256e8a9ad35e93f585d2cf38104a9b394d76381e919963639b29d225b4dae3f8d801789d50d7da42147ce4a58ce38a1e98ba24dcec1313c19ed31ff2afcad6119e812f8f82146ad39be3f9d253e772db64b476c9fd7",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "https://www.google.com/search?q=resource+link&oq=resource+link&aqs=chrome..69i57j0l7.2958j1j7&sourceid=chrome&ie=UTF-8"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Undergrad"
+            }
+        ],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2020-02-27T16:23:33-08:00",
+        "last_modified": "2020-10-13T12:00:44-07:00"
+    },
+    {
+        "id": 19,
+        "title": "New Test App py2/3",
+        "feature_desc": "description",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/test_png_image.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=7fb34f7c1b5a827bbe1a3532e5a7f682a6273aee8241b3b6f241d609dc25d9bea0cb7d86fd3d2a5e99a069d671d397cce19b51811564107575225ee7b773492c49b1cf9c792b1dfdbe2558714e4813de37970bdc7f4432b20267086178501eeace323aacda43ae723b49ae837a05a80f886ef68b6aecfe4068300708a6e2f42b06b30e85266e1a566c8c555c8d8cf2e9b4aed98eac7bf3ed2483c5037e20b3df81dd8df51400752bf5caae213d6e09079ed9446268d347bce4742591cdd61344b609055ea82c7caa4273cd7a8134d7b7aa56daa776f8b310493adbe00815332761750a48a9730d749ea2abdf743ead49178b5ef2b806e71d8188ca6829ddb9a3",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://google.com"
+            }
+        ],
+        "intended_audiences": [],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2020-04-16T12:17:37-07:00",
+        "last_modified": "2020-04-16T12:17:37-07:00"
+    },
+    {
+        "id": 20,
+        "title": "New Test App py2/3 .jpeg",
+        "feature_desc": "description",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/test-jpeg.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024319Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=a14274b33b5a04c450b8d9b39d07d47536741926f7b6a9398ce8241b89b7f6fea442136268f6ef8283160632669aabd2bf26d830e2b85a81993c49cd32e642629e050e167d05e9a7d01ff48aa79dbee598d15fa52b1bed1e3b599919af259a460c6b59deadbd19565c590ecb83996b01a2c156e89f175abda958d11dd4a21812a140a9758471dda2dea12ce3c5d4c5c979683a1ec25a0ecd37970d26ab34c595feded90cf85e0a9af109ffbff022c38f2e83fe124cb1fc24ad9d22b1c5b5128426ff350ee47a25a61ef2f760228966bf7da5d50f80f66e2c2c02b097d0adf6ad006f66f5e18e009ded8b687a95b41303717f918c1fd8443d399712492ac562b7",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://google.com"
+            }
+        ],
+        "intended_audiences": [],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2020-04-16T12:19:18-07:00",
+        "last_modified": "2020-10-13T11:59:45-07:00"
+    },
+    {
+        "id": 21,
+        "title": "Python3 woo!",
+        "feature_desc": "testing out a png image",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/test_png_image_mbq3en5.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024320Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=6791d804b566de3cdbef163d3d92fb745e29e8ec8f7ade4ede0697700565d0cf536eb7d468588089df751681972e01b1a00ea40a15d61527fb5301acdb88302c9b85aff9aa84f04c48cff1623ab41742fd0fba0d2cbdc3c07684e24b424b81bc13c65e61c0d38f0a0bd86c09bf2b03978b714fb1e64881a8bb1b82e72e0ca2f8c546e3e9b73fc15e04bf42662e0f08b0bb56cdfc9404f6f9db3339f2b30f5f789b4b2acf9f9e3c8f623ad71101f545edd06cc8d22b47c9a53853e07c47326a0ad8bf50fd11b0aa4787a5eb435f9933f15b89f8b3378d830cac4f08d5b91cc810fd1c5c4e9c8b8df53f9680ffef811706313e934c50f9a7815c84702267eb6d0c",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://google.com"
+            }
+        ],
+        "intended_audiences": [],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2020-04-29T16:05:18-07:00",
+        "last_modified": "2020-04-29T16:05:18-07:00"
+    },
+    {
+        "id": 22,
+        "title": "Python 3 Fun",
+        "feature_desc": "testing out .jpeg image",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/test-jpeg_D9hhh5G.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024320Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=8737054e3a346d06f7755f8cdf01d3cd25ea3ba2c4f3121d8a6e677160cddbd95b8a785ea2fa5ecb55df83ad5967eacd0ae22905e98f4e56386b2b1deb82160b8ce32f9a1f30338aee2e6fbe9510b3e8ee6f4ef93a23e4b54f56d1ed406320f6b2b7b17bc3b410e1c04a79a50bc5ab265b97f7e8007221a8c06c13ea9a6a3f447fc35c81210553792251ae63a7d76bfa434acdfb54aa96c69afec9ab57b900ba9fb18a1cd29d38d30cea5a2790af5f8de015bd416e7a28f2debe939580163f65826236a71b1104ec97b4d54b57314b5ad403485765a1fa2df9fa150b381d9ffe82ac1aae8b0b72bb47770b665a70a01e4ba326967d0567b4b58a19cd72a5e3c3",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://google.com"
+            }
+        ],
+        "intended_audiences": [],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2020-04-29T16:06:39-07:00",
+        "last_modified": "2020-10-13T12:17:02-07:00"
+    },
+    {
+        "id": 23,
+        "title": "Testing App 3",
+        "feature_desc": "testing out a gif file",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/gifImage.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024320Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=127e7a0df6c3ab1b6971a291b445feed90a4a460a78df7a2aa71aab4e40b3b94e3dcf26b72cb69bd9f22d6f3c5ccec87b843617991d58abc1c59cc1d56e0184be6547f0e1c8e8665ed07b4a836551ef8497a10587d83885fd78c06b58879b4ac5e45a9a5ce9406b013406f1180c2d2fb2970cbbe5616fa869b18bc42404295ee7a5b429a98195e180dd353c278e37e9fb3113e9cbd25e882825d300cb48da307073a5fa7e4677b072456c43923018456f132ce6f63cd46f303c3045cc18e0b3d035c0ad6b67e096e342ed4b946515c5d3211533bffc3fadc50df250849f92d53c6525ce3a99e54bd5e79273a9bede5e997abb63f3b04d51807950de8daa1a6e1",
+        "featured": true,
+        "accessible": true,
+        "responsive_web": true,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://google.com"
+            }
+        ],
+        "intended_audiences": [],
+        "campus_bothell": true,
+        "campus_tacoma": true,
+        "campus_seattle": true,
+        "created_date": "2020-04-29T16:24:07-07:00",
+        "last_modified": "2020-04-29T16:27:13-07:00"
+    },
+    {
+        "id": 24,
+        "title": "test",
+        "feature_desc": "test",
+        "image": "https://storage.googleapis.com/mdot-media/test/media/uploads/Bruce_Lee_on_the_Ave.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=mdot-test-uwit-mci-axdd-iam-gs%40uwit-mci-axdd.iam.gserviceaccount.com%2F20221209%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20221209T024320Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=76cb351781a64a94b96b0fbc53740bca32953f154374f1dcd6a24f53f78d56ed5476148a2179428b693eb773a8ef40348952692e1596c132a6964c7fe6954c18984dc88a8eb42744998fc8eaaa96043119eceb873ddb51d29ea526f0c3b50b982dd715ccfb54fd6251c7df9b26d3e514b65678ace1b7d044f9057550a056e895f59e47a57aa133332a998d36d6d1171f04a87e7133bd01c9d63a13e18e27eb361279b89e7db6f4ee51da4f66749a8f1d6e6411348822be64f9841bbdeece8113a5e0f30138f57299ddf68b5c35e4e66d10e43843e819944372db8039b56ba211ceda35de392477e01390e1669e0071037f2c4530cfbc7f101e2b4d8b92b075e3",
+        "featured": false,
+        "accessible": false,
+        "responsive_web": false,
+        "resource_links": [
+            {
+                "link_type": "WEB",
+                "url": "http://example.com"
+            }
+        ],
+        "intended_audiences": [
+            {
+                "audience": "Staff"
+            }
+        ],
+        "campus_bothell": false,
+        "campus_tacoma": false,
+        "campus_seattle": false,
+        "created_date": "2020-09-25T15:49:28-07:00",
+        "last_modified": "2020-11-06T16:22:36-08:00"
+    }
+]

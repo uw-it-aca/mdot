@@ -7,16 +7,29 @@
     <pre>{{ data }}</pre>
   </div>
   <div v-else>Loading...</div>
+
+  <ul>
+    <li v-for="app in apps" :key="app.id">
+      {{ app.title }}
+      <img :src="app.image" />
+    </li>
+  </ul>
 </template>
 
 <script>
 import { useFetch } from "../composables/fetch.js";
+import appsData from "../resources/apps.json";
 
 export default {
   setup() {
     const baseUrl = "https://test-api.mdot.uw.edu/api/v1/uwresources/";
     const { data, error } = useFetch(baseUrl);
     return { data, error };
+  },
+  data() {
+    return {
+      apps: appsData,
+    };
   },
 };
 </script>
