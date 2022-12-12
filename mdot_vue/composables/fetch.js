@@ -9,8 +9,9 @@ export function useFetch(url) {
     // reset state before fetching..
     data.value = null;
     error.value = null;
+
     // unref() unwraps potential refs
-    fetch(unref(url, { mode: "no-cors" }))
+    fetch(unref(url))
       .then((res) => res.json())
       .then((json) => (data.value = json))
       .catch((err) => (error.value = err));
