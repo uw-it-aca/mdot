@@ -8,7 +8,11 @@
     "accessible": false,
     "responsive_web": true,
     "resource_links": [
-      { "link_type": "WEB", "url": "http://www.washington.edu/home/peopledir" }
+      { "link_type": "WEB", "url": "http://www.washington.edu/home/peopledir" },
+      {
+        "link_type": "IOS",
+        "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
+      }
     ],
     "intended_audiences": [
       { "audience": "students" },
@@ -32,7 +36,15 @@
     "accessible": false,
     "responsive_web": true,
     "resource_links": [
-      { "link_type": "WEB", "url": "http://www.washington.edu/maps/" }
+      { "link_type": "WEB", "url": "http://www.washington.edu/maps/" },
+      {
+        "link_type": "IOS",
+        "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en"
+    }
     ],
     "intended_audiences": [
       { "audience": "students" },
@@ -54,7 +66,13 @@
     "featured": false,
     "accessible": false,
     "responsive_web": true,
-    "resource_links": [{ "link_type": "WEB", "url": "http://gohuskies.com" }],
+    "resource_links": [
+      { "link_type": "WEB", "url": "http://gohuskies.com" },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en"
+      }
+    ],
     "intended_audiences": [
       { "audience": "students" },
       { "audience": "faculty" },
