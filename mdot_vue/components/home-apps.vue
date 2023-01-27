@@ -10,16 +10,22 @@
 
   <ul class="list-inline">
     <li v-for="app in apps" :key="app.id" class="list-inline-item">
-      <img v-if="app.image" :src="app.image" class="img-thumbnail" style="width:200px;" />
+      <img
+        v-if="app.image"
+        :src="app.image"
+        class="img-thumbnail"
+        style="width: 200px"
+      />
       <img v-else src="https://via.placeholder.com/200" />
       <p>{{ app.title }}</p>
+      <p>{{ app.feature_desc }}</p>
     </li>
   </ul>
 </template>
 
 <script>
 import { useFetch } from "../composables/fetch.js";
-import appsData from "../resources/apps.json";
+import appsData from "../../mdot/resources/mdot/file/api/v1/uwresources/index.json";
 
 export default {
   setup() {

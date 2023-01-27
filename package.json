@@ -2,57 +2,56 @@
     "name": "mdot",
     "version": "1.0.0",
     "description": "mdot some description text",
-    "main": "webpack.config.js",
     "scripts": {
-      "build": "vite build",
-      "watch": "vite build --watch --mode development",
-      "test": "vitest --environment jsdom",
-      "coverage": "vitest run --coverage",
-      "eslint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
-      "stylelint": "stylelint '**/*.{vue,scss}'"
+        "build": "vite build",
+        "watch": "vite build --watch --mode development",
+        "test": "vitest --environment jsdom",
+        "coverage": "vitest run --coverage",
+        "eslint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --ignore-path .gitignore",
+        "stylelint": "stylelint '**/*.{vue,scss}'"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/uw-it-aca/mdot.git"
+        "type": "git",
+        "url": "git+https://github.com/uw-it-aca/mdot.git"
     },
     "author": "Your Name Here",
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/uw-it-aca/mdot/issues"
+        "url": "https://github.com/uw-it-aca/mdot/issues"
     },
     "homepage": "https://github.com/uw-it-aca/mdot#readme",
     "dependencies": {
-      "@popperjs/core": "^2.9.2",
-      "axdd-components": "github:uw-it-aca/axdd-components#1.0.6",
-      "axios": "^0.27.2",
-      "bootstrap": "^5.2.2",
-      "bootstrap-icons": "^1.10.1",
-      "jquery": "^3.6.0",
-      "pinia": "^2.0.21",
-      "vue": "^3.2.38",
-      "vue-gtag-next": "^1.14.0",
-      "vue-router": "^4.1.5",
-      "vue3-cookies": "^1.0.6",
-      "vue3-mq": "^3.1.0"
+        "@popperjs/core": "^2.9.2",
+        "axdd-components": "github:uw-it-aca/axdd-components#1.0.6",
+        "axios": "^0.27.2",
+        "bootstrap": "^5.2.2",
+        "bootstrap-icons": "^1.10.1",
+        "jquery": "^3.6.0",
+        "pinia": "^2.0.21",
+        "vue": "^3.2.45",
+        "vue-gtag-next": "^1.14.0",
+        "vue-router": "^4.1.6",
+        "vue3-cookies": "^1.0.6",
+        "vue3-mq": "^3.1.0"
     },
     "devDependencies": {
-      "@rushstack/eslint-patch": "^1.1.4",
-      "@vitejs/plugin-vue": "^3.0.3",
-      "@vitest/coverage-c8": "^0.23.2",
-      "@vue/eslint-config-prettier": "^7.0.0",
-      "@vue/test-utils": "^2.0.2",
-      "eslint": "^8.22.0",
-      "eslint-plugin-vue": "^9.3.0",
-      "jsdom": "^20.0.0",
-      "postcss-html": "^1.4.1",
-      "prettier": "^2.7.1",
-      "sass": "^1.56.1",
-      "stylelint": "^14.7.1",
-      "stylelint-config-prettier": "^9.0.3",
-      "stylelint-config-recommended-scss": "^6.0.0",
-      "stylelint-config-recommended-vue": "^1.4.0",
-      "stylelint-config-standard-scss": "^3.0.0",
-      "vite": "^3.1.4",
-      "vitest": "^0.23.2"
+        "@rushstack/eslint-patch": "^1.1.4",
+        "@vitejs/plugin-vue": "^3.2.0",
+        "@vitest/coverage-c8": "^0.23.4",
+        "@vue/eslint-config-prettier": "^7.0.0",
+        "@vue/test-utils": "^2.0.2",
+        "eslint": "^8.22.0",
+        "eslint-plugin-vue": "^9.3.0",
+        "jsdom": "^20.0.0",
+        "postcss-html": "^1.4.1",
+        "prettier": "^2.7.1",
+        "sass": "^1.56.1",
+        "stylelint": "^14.7.1",
+        "stylelint-config-prettier": "^9.0.3",
+        "stylelint-config-recommended-scss": "^6.0.0",
+        "stylelint-config-recommended-vue": "^1.4.0",
+        "stylelint-config-standard-scss": "^3.0.0",
+        "vite": "^3.2.5",
+        "vitest": "^0.23.4"
     }
-  }
+}

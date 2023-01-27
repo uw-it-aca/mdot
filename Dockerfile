@@ -4,7 +4,7 @@ FROM gcr.io/uwit-mci-axdd/django-container:${DJANGO_CONTAINER_VERSION} as app-pr
 
 USER root
 
-RUN apt-get update && apt-get install libpq-dev -y
+RUN apt-get update && apt-get install -y libpq-dev
 RUN apt-get update && apt-get install mysql-client libmysqlclient-dev -y
 
 USER acait
@@ -21,7 +21,7 @@ RUN /app/bin/pip install  mysqlclient
 #ADD --chown=acait:acait docker/app_start.sh /scripts
 #RUN chmod u+x /scripts/app_deploy.sh
 
-FROM node:14.18.1-stretch AS node-bundler
+FROM node:lts-bullseye AS node-bundler
 
 ADD ./package.json /app/
 WORKDIR /app/
