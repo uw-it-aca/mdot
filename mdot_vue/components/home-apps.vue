@@ -30,7 +30,7 @@
 
 <script>
 import { useFetch } from "../composables/fetch.js";
-import appsData from "../../mdot/resources/mdot/file/api/v1/uwresources/?featured_True";
+import appsData from "../../mdot/resources/mdot/file/api/v1/uwresources/?featured=True";
 
 export default {
   setup() {
