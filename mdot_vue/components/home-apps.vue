@@ -16,12 +16,12 @@
         class="img-thumbnail"
         style="width: 200px"
       />
-      <img v-else src="https://via.placeholder.com/200" />
+      <img v-else src="https://via.placeholder.com/100" />
       <p>{{ app.title }}</p>
       <p>{{ app.feature_desc }}</p>
       <ul>
-        <li v-for="resource in app.resource_links">
-          {{  resource.link_type }}, {{ resource.url }}
+        <li v-for="(resource, index) in app.resource_links" :key="index">
+          {{ resource.link_type }}, {{ resource.url }}
         </li>
       </ul>
     </li>
