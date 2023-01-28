@@ -13,10 +13,10 @@
       <img
         v-if="app.image"
         :src="app.image"
-        class="img-thumbnail"
+        class="rounded-5"
         style="width: 200px"
       />
-      <img v-else src="https://via.placeholder.com/100" />
+      <img v-else src="https://via.placeholder.com/100" class="rounded-5"/>
       <p>{{ app.title }}</p>
       <p>{{ app.feature_desc }}</p>
       <ul>
