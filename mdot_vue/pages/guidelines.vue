@@ -88,7 +88,12 @@
               <li class="text-danger">
                 <strong>External Vendors/Developers</strong>
                 <p>
-                  If you are working with an external vendor or developer, you will be responsible for ensuring the vendor/developer is in compliance with UW policies regarding data security and privacy and that any necessary agreements to that regard are in place. The Office of the CISO or Procurement Services may be able to provide guidance.
+                  If you are working with an external vendor or developer, you
+                  will be responsible for ensuring the vendor/developer is in
+                  compliance with UW policies regarding data security and
+                  privacy and that any necessary agreements to that regard are
+                  in place. The Office of the CISO or Procurement Services may
+                  be able to provide guidance.
                 </p>
               </li>
               <li>

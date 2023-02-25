@@ -8,18 +8,7 @@
     </template>
 
     <template #content>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sed,
-        officia adipisci, neque inventore nemo excepturi aspernatur rerum a
-        totam aliquid in omnis quas, labore dolorum hic. Eligendi, vero aut.
-      </p>
-
-      <div class="mb-5">
-        <HomeApps />
-      </div>
-      <p>
-        <router-link :to="'/developers'"> developer resources</router-link>
-      </p>
+      <HomeApps />
     </template>
   </layout>
 </template>
@@ -35,7 +24,7 @@ export default {
   },
   data() {
     return {
-      pageTitle: "Welcome...",
+      pageTitle: "UW at your fingertips",
     };
   },
   methods: {},

@@ -11,7 +11,7 @@ import ProcessOverview from "../pages/process.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/vue",
     component: LauncherApp,
   },
   {

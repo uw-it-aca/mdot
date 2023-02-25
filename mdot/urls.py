@@ -43,19 +43,17 @@ if settings.DEBUG:
 
 
 urlpatterns += [
-    # temp django page
-    re_path("django/", home, name="home"),
-    re_path("django/developers/", developers, name="developers"),
-    re_path("django/developers/guidelines/", guidelines, name="guidelines"),
-    re_path("django/developers/process/", process, name="process"),
+    # add api endpoints here
+    # vue pages
+    re_path(
+        r"^(vue|developers|guidelines|process)$", DefaultPageView.as_view()
+    ),
     # sponsor app
     re_path("request", request, name="request"),
     re_path("request/<int:pk>/", sponsor, name="sponsor"),
     re_path("decline/<int:pk>/", decline, name="decline"),
     # admin app
     re_path("admin/", admin_site.urls),
-    # add api endpoints here
-    # add default Vue page routes here
-    re_path(r"^(developers|guidelines|process)$", DefaultPageView.as_view()),
-    re_path(r"^$", DefaultPageView.as_view()),
+    # django home
+    re_path(r"^$", home, name="home"),
 ]

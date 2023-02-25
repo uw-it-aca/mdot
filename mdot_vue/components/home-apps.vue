@@ -3,25 +3,29 @@
     <p>Oops! Error encountered: {{ error.message }}</p>
   </div>
   <div v-else-if="data">
-    <ul class="list-inline list-unstyled" style="--bs-columns: 3">
+    <ul class="list-inline list-unstyled row">
       <li
         v-for="app in data"
         :key="app.id"
-        class="list-inline-item border rounded p-3"
-        style="width: 200px"
+        class="list-inline-item p-3 col-4 col-sm-3 col-lg-2 m-0"
       >
-        <img
+        <div
           v-if="app.image"
-          :src="app.image"
-          class="rounded-5"
-          style="width: 200px"
-        />
-        <img v-else src="https://via.placeholder.com/100" class="rounded-5" />
-        <p>{{ app.title }}</p>
+          class="square border rounded-4"
+          :style="'background-image: url(' + app.image + ')'"
+        ></div>
+
+        <div
+          v-else
+          class="square border rounded-4"
+          style="background-image: url('https://via.placeholder.com/190')"
+        ></div>
+
+        <p class="text-center text-uppercase mt-3">{{ app.title }}</p>
         <p>{{ app.feature_desc }}</p>
         <ul>
           <li v-for="(resource, index) in app.resource_links" :key="index">
-            {{ resource.link_type }}, {{ resource.url }}
+            <a :href="resource.url">{{ resource.link_type }}</a>
           </li>
         </ul>
       </li>
@@ -32,7 +36,7 @@
 
 <script>
 import { useFetch } from "../composables/fetch.js";
-import mockData from "../../mdot/resources/mdot/file/api/v1/jsonmock/?featured=True";
+import mockData from "../../mdot/resources/mdot/file/api/v1/jsonmock/";
 
 export default {
   setup() {
@@ -68,3 +72,18 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.square {
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+  transition-duration: 0.2s;
+  transition-property: transform;
+}
+
+.square:hover {
+  transform: scale(1.05);
+}
+</style>

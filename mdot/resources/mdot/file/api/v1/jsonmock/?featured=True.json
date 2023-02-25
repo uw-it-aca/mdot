@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "UW Directory",
-    "feature_desc": "UW Directory",
+    "feature_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "image": null,
     "featured": true,
     "accessible": false,
@@ -39,7 +39,7 @@
   {
     "id": 2,
     "title": "Maps",
-    "feature_desc": "Maps",
+    "feature_desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "image": null,
     "featured": true,
     "accessible": false,
