@@ -31,7 +31,7 @@ services:
     environment:
       VUE_DEVTOOLS: "True"
       BUNDLE_ANALYZER: "True"
-      ENV: localdev
+      NODE_ENV: localdev
     volumes:
       - ./mdot:/app/mdot # expose main django app so webpack-loader can output bundles here
       - ./mdot_vue:/app/mdot_vue
