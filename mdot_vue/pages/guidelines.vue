@@ -24,7 +24,7 @@
           >.
         </li>
         <li class="article">
-          <h3>Sponsorship & support</h3>
+          <h3>Sponsorship &amp; support</h3>
           The app must have a clearly identified:
           <ul>
             <li>
@@ -34,53 +34,91 @@
             <li>Support Channel (contact info)</li>
           </ul>
         </li>
-        <li class="article">
-          <h3>UW policy links</h3>
-          The app must link to the
-          <a
-            href="http://www.washington.edu/itconnect/connect/web-publishing/shared-hosting/tos-privacy/"
-            >UW Privacy Policy and Terms of Use</a
-          >.
-        </li>
-        <li class="article">
-          <h3>Usability Review</h3>
-          All apps submitted for publication will be reviewed for usability.
-          Feedback will be given and all critical issues will need to be
-          addressed before publication to the app store. It is strongly advised
-          to consult with Academic and Collaborative Applications User
-          Experience Team early and often through the development of your app,
-          to ensure that there are no surprises.
-          <ul>
-            <li><a href="#">Schedule a free consultation</a>.</li>
-          </ul>
-        </li>
-        <li class="article">
-          <h3>Accessibility Review</h3>
-          It is the sponsor's responsibility to ensure accessibility of the app.
-          <ul>
-            <li>
-              <a href="http://www.washington.edu/accessibility/guidelines/"
-                >UW IT Accessibility Guidelines.</a
-              >
-            </li>
-            <li>
-              <a href="http://www.washington.edu/accessibility/help/"
-                >Get help</a
-              >. We highly recommend scheduling a free consultation on your app
-              with
-              <a href="mailto:{{help_email}}"
-                >UW-IT Accessible Technology Services (ATS)</a
-              >.
-            </li>
-          </ul>
-        </li>
-        <li class="article">
-          <h3>UW brand alignment</h3>
-          Using the UW logo? If so, review the
-          <a href="http://www.washington.edu/accessibility/guidelines/"
-            >UW Brand Guidelines</a
-          >
-          for appropriate use guidelines.
+        <li>
+          <h3>Sponsor responsibilities</h3>
+          <section class="sponsor-requirements">
+            <ul>
+              <li>
+                <strong>UW Terms and Conditions</strong>
+                <p>
+                  You will be responsible for adhering to the conditions set out
+                  in the UW
+                  <a href="https://www.washington.edu/online/terms/"
+                    >Terms and Conditions.</a
+                  >
+                </p>
+              </li>
+              <li>
+                <strong>Apple and/or Google Play Terms and Conditions</strong>
+                <p>
+                  You will be responsible for adhering to the conditions set out
+                  in the
+                  <a href="https://developer.apple.com/terms/">Apple</a> and/or
+                  <a href="https://play.google.com/about/play-terms/index.html"
+                    >Google Play</a
+                  >
+                  terms and conditions.
+                </p>
+              </li>
+              <li>
+                <strong>Usability (User Experience)</strong>
+                <p>
+                  The UW is committed to providing good user experience for our
+                  audiences. For assistance, free
+                  <a
+                    href="https://uw.service-now.com/uwc.do?sysparm_direct=true#/catalog_order/3494e9951385a3c0c20bb9004244b073"
+                    >UX consultations</a
+                  >
+                  are available with UW-IT's AXDD design team.
+                </p>
+              </li>
+              <li>
+                <strong>Accessibility</strong>
+                <p>
+                  It is UW policy that all software is
+                  <a href="https://www.washington.edu/accessibility/guidelines/"
+                    >accessible</a
+                  >. For assistance, UW-IT's Accessible Technology Services
+                  (ATS) team offers
+                  <a href="https://www.washington.edu/accessibility/help/"
+                    >accessiblity consultations/reviews</a
+                  >.
+                </p>
+              </li>
+              <li class="text-danger">
+                <strong>External Vendors/Developers</strong>
+                <p>
+                  When working with vendors, you must.... go to UW Procurement
+                </p>
+              </li>
+              <li>
+                <strong>UW Privacy Statement</strong>
+                <p>
+                  You will be responsible for adhering to the UW
+                  <a href="https://www.washington.edu/online/privacy/"
+                    >Online Privacy Statement</a
+                  >.
+                </p>
+              </li>
+              <li>
+                <strong>UW Branding</strong>
+                <p>
+                  If applicable, adhere to the use of UW
+                  <a href="http://www.washington.edu/brand/"
+                    >logo and brand guidelines</a
+                  >.
+                </p>
+              </li>
+              <li>
+                <strong>Due Diligence</strong>
+                <p>
+                  You agree to undertake the due diligence to adhere to the UW
+                  values and demonstrate compliance with all UW policies
+                  mentioned and/or may otherwise be relevant.
+                </p>
+              </li>
+            </ul>
+          </section>
         </li>
       </ol>
     </template>

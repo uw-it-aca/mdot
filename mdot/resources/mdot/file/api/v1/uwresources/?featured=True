@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "title": "UW Directory",
+    "feature_desc": "UW Directory",
+    "image": null,
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/home/peopledir"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "alumni"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:29:08.532000Z",
+    "last_modified": "2015-08-05T18:32:00.574000Z"
+  },
+  {
+    "id": 2,
+    "title": "Maps",
+    "feature_desc": "Maps",
+    "image": null,
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/maps/"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:33:02.041000Z",
+    "last_modified": "2015-08-05T18:33:42.690000Z"
+  }
+]

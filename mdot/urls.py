@@ -7,7 +7,15 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from mdot.admin import admin_site
 from django.views.generic import TemplateView
-from mdot.views.index import home, developers, guidelines, process, request, sponsor, decline
+from mdot.views.index import (
+    home,
+    developers,
+    guidelines,
+    process,
+    request,
+    sponsor,
+    decline,
+)
 from mdot.views.pages import DefaultPageView
 
 from django.views.generic.base import RedirectView
@@ -35,25 +43,19 @@ if settings.DEBUG:
 
 
 urlpatterns += [
-    re_path('django/', home, name='home'),
-    re_path('django/developers/', developers, name='developers'),
-    re_path('django/developers/guidelines/', guidelines,
-         name='guidelines'),
-    re_path('django/developers/process/', process, name='process'),
-
+    # temp django page
+    re_path("django/", home, name="home"),
+    re_path("django/developers/", developers, name="developers"),
+    re_path("django/developers/guidelines/", guidelines, name="guidelines"),
+    re_path("django/developers/process/", process, name="process"),
     # sponsor app
-    re_path('request', request, name='request'),
-    re_path('request/<int:pk>/', sponsor, name='sponsor'),
-    re_path('decline/<int:pk>/', decline, name='decline'),
-
-    # path('blog/', include('blog.urls')),
-    re_path('admin/', admin_site.urls),
-    
+    re_path("request", request, name="request"),
+    re_path("request/<int:pk>/", sponsor, name="sponsor"),
+    re_path("decline/<int:pk>/", decline, name="decline"),
+    # admin app
+    re_path("admin/", admin_site.urls),
     # add api endpoints here
-
     # add default Vue page routes here
     re_path(r"^(developers|guidelines|process)$", DefaultPageView.as_view()),
     re_path(r"^$", DefaultPageView.as_view()),
-
-    
 ]
