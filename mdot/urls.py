@@ -18,7 +18,6 @@ from mdot.views.index import (
     decline,
 )
 from mdot.views.pages import DefaultPageView
-
 from django.views.generic.base import RedirectView
 
 admin.autodiscover()
