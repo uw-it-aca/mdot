@@ -144,6 +144,28 @@
             </ul>
           </section>
         </li>
+
+        <li>
+          <h3>SERVICES OFFERED BY UW-IT</h3>
+Application ID Creation and App Manager Provisioning
+UW-IT shall create a single application ID and assign an App Manager (specified above).
+
+Audit
+UW-IT may perform audits to ensure that accounts are up to date and applications are in good standing. We are also responsible to audit any apps if we have received any formal complaints and/or requests from Apple/Google.
+
+App Suspension and/or Removal
+UW-IT reserves the right to suspend or remove apps in the store that violate any of the terms and conditions described above.
+
+Support
+UW-IT provides minimal technical support in the form of technical advice/guidance and knowledge expertise. No support provided for application development.</li>
+          <li>
+            <h3>APP MANAGER RESPONSIBILITIES</h3>
+Developer Account Invitations
+The App Manager is responsible for inviting users to their specific application team as well as maintaining their team in good standing - removing members who are no longer part of their team. AXDD reserves the right to remove or update membership for members not added to a specific application team or that are no longer actively participating in development.
+
+Publishing Application
+The App Manager is responsible for overall publishing of the app.
+          </li>
       </ol>
     </template>
   </DocsLayout>

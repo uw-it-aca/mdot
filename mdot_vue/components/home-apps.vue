@@ -4,10 +4,11 @@
   </div>
   <div v-else-if="data">
     <ul class="list-inline list-unstyled row">
+    
       <li
         v-for="app in data"
         :key="app.id"
-        class="list-inline-item p-3 col-4 col-sm-3 col-lg-2 m-0"
+        class="list-inline-item p-3 col-4 col-sm-3 col-lg-2 m-0 d-flex flex-column"
       >
         <template v-for="(resource, index) in app.resource_links" :key="index">
           <div v-if="resource.link_type == 'WEB'">
@@ -30,9 +31,9 @@
         <p class="text-center text-uppercase mt-3 fs-5 fw-light">
           {{ app.title }}
         </p>
-        <p>{{ app.feature_desc }}</p>
+        <p class="flex-fill">{{ app.feature_desc }}</p>
 
-        <div>
+        <div class="small">
           <template
             v-for="(resource, index) in app.resource_links"
             :key="index"
@@ -45,6 +46,7 @@
             </span>
           </template>
         </div>
+
       </li>
     </ul>
   </div>
