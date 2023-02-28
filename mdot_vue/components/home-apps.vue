@@ -59,7 +59,7 @@ export default {
     // if production... call api
     // useFetch and other composable methods can only be called from setup()
     if (process.env.NODE_ENV == "localdev") {
-      const baseUrl = "api/v1/resources/";
+      const baseUrl = "api/resources/";
       const { data, error } = useFetch(baseUrl);
       return { data, error };
     }

@@ -45,7 +45,7 @@ if settings.DEBUG:
 
 urlpatterns += [
     # add api endpoints here
-    re_path("api/v1/resources", api, name="api"),
+    re_path("api/resources", api, name="api"),
 
     # vue pages
     re_path(

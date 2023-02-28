@@ -34,7 +34,7 @@ from mdot.models import (
 
 
 def api(request):
-    params = [MDOT().get_resources_json()]
+    params = MDOT().get_resources_json()
     return HttpResponse(params, 'application/json')
 
 
