@@ -27,7 +27,9 @@
           </div>
         </template>
 
-        <p class="text-center text-uppercase mt-3 fs-5 fw-light">{{ app.title }}</p>
+        <p class="text-center text-uppercase mt-3 fs-5 fw-light">
+          {{ app.title }}
+        </p>
         <p>{{ app.feature_desc }}</p>
 
         <div>
@@ -51,41 +53,23 @@
 
 <script>
 import { useFetch } from "../composables/fetch.js";
-import mockData from "../../mdot/resources/mdot/file/api/v1/jsonmock/";
-import { link } from "fs/promises";
 
 export default {
   setup() {
     // if production... call api
     // useFetch and other composable methods can only be called from setup()
-    if (process.env.NODE_ENV !== "localdev") {
-      const baseUrl = "https://test-api.mdot.uw.edu/api/v1/uwresources/";
+    if (process.env.NODE_ENV == "localdev") {
+      const baseUrl = "api/v1/resources/";
       const { data, error } = useFetch(baseUrl);
       return { data, error };
     }
   },
 
-  created: function () {
-    // if localdev... use mock data
-    if (process.env.NODE_ENV == "localdev") {
-      setTimeout(() => {
-        this.loadStudent();
-      }, 3000);
-    }
-  },
+  created: function () {},
   data() {
-    return {
-      data: null,
-      error: null,
-    };
+    return {};
   },
-  methods: {
-    loadStudent: function () {
-      console.log("hello world");
-      this.error = "";
-      this.data = mockData;
-    },
-  },
+  methods: {},
 };
 </script>
 

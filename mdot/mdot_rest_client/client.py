@@ -33,6 +33,23 @@ class MDOT(DAO):
         resources = self._python_list_to_resources_model_list(resources)
         return resources
 
+    def get_resources_json(self, **kwargs):
+        url = "/api/v1/uwresources/"
+        i = kwargs.__len__()
+        if kwargs:
+            url += "?"
+            for key, value in kwargs.items():
+                url += "{0}={1}".format(key, value)
+                if i > 1:
+                    url += "&"
+                i = i - 1
+
+        response = self.getURL(url,
+                               {'Accept': 'application/json'})
+        resources = json.loads(response.data)
+
+        return json.dumps(resources)
+
     def _python_list_to_resources_model_list(self, resources):
         client_resources = []
         for resource in resources:
