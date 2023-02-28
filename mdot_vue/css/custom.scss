@@ -27,6 +27,7 @@ $theme-colors: (
 
 // 3. include remaining bootstrap styles
 @import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/variables-dark";
 
 // override card border color
 $card-border-color: $gray-200;
