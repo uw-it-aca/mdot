@@ -61,7 +61,7 @@
                 </p>
               </li>
               <li>
-                <strong>Usability (User Experience)</strong>
+                <strong>User Experience (Usability)</strong>
                 <p>
                   The UW is committed to providing good user experience for our
                   audiences. For assistance, free
@@ -85,28 +85,8 @@
                   >.
                 </p>
               </li>
-              <li class="text-danger">
-                <strong>External Vendors/Developers</strong>
-                <p>
-                  If you are working with an external vendor or developer, you
-                  will be responsible for ensuring the vendor/developer is in
-                  compliance with UW policies regarding data security and
-                  privacy and that any necessary agreements to that regard are
-                  in place. The Office of the CISO or Procurement Services may
-                  be able to provide guidance.
-                </p>
-              </li>
               <li>
-                <strong>UW Privacy Statement</strong>
-                <p>
-                  You will be responsible for adhering to the UW
-                  <a href="https://www.washington.edu/online/privacy/"
-                    >Online Privacy Statement</a
-                  >.
-                </p>
-              </li>
-              <li>
-                <strong>UW Branding</strong>
+                <strong>Branding</strong>
                 <p>
                   If applicable, adhere to the use of UW
                   <a href="http://www.washington.edu/brand/"
@@ -114,6 +94,45 @@
                   >.
                 </p>
               </li>
+              <li>
+                <strong>Privacy Practices</strong>
+                <p>
+                  You will be responsible for adhering to the UW
+                  <a href="https://www.washington.edu/online/privacy/"
+                    >Online Privacy Statement</a
+                  >
+                  and implementing any
+                  <a href="https://privacy.uw.edu/take-action/"
+                    >proactive privacy practices</a
+                  >.
+                </p>
+              </li>
+              <li>
+                <strong>Information Security</strong>
+                <p>
+                  You will be responsible for adhering to abd implementing
+                  <a href="https://ciso.uw.edu/policy/uw-policies/"
+                    >information security policies</a
+                  >
+                  and complying with relevant
+                  <a href="https://privacy.uw.edu/reference-materials/laws/"
+                    >laws and regulations</a
+                  >.
+                </p>
+              </li>
+              <li class="">
+                <strong>External Vendors &amp; Developers</strong>
+                <p>
+                  If you are working with an external vendor or developer, you
+                  will be responsible for ensuring the vendor/developer is in
+                  compliance with UW policies regarding data security and
+                  privacy and that any necessary agreements to that regard are
+                  in place.
+                  <a href="https://finance.uw.edu/ps/">Procurement Services</a>
+                  may be able to provide guidance.
+                </p>
+              </li>
+
               <li>
                 <strong>Due Diligence</strong>
                 <p>

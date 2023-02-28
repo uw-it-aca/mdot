@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from mdot.admin import admin_site
 from django.views.generic import TemplateView
 from mdot.views.index import (
+    api,
     home,
     developers,
     guidelines,
@@ -44,6 +45,8 @@ if settings.DEBUG:
 
 urlpatterns += [
     # add api endpoints here
+    re_path("api/v1/resources", api, name="api"),
+
     # vue pages
     re_path(
         r"^(vue|developers|guidelines|process)$", DefaultPageView.as_view()

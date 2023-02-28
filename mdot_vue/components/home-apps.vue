@@ -9,25 +9,40 @@
         :key="app.id"
         class="list-inline-item p-3 col-4 col-sm-3 col-lg-2 m-0"
       >
-        <div
-          v-if="app.image"
-          class="square border rounded-4"
-          :style="'background-image: url(' + app.image + ')'"
-        ></div>
+        <template v-for="(resource, index) in app.resource_links" :key="index">
+          <div v-if="resource.link_type == 'WEB'">
+            <a :href="resource.url">
+              <div
+                v-if="app.image"
+                class="square border rounded-4"
+                :style="'background-image: url(' + app.image + ')'"
+              ></div>
 
-        <div
-          v-else
-          class="square border rounded-4"
-          style="background-image: url('https://via.placeholder.com/190')"
-        ></div>
+              <div
+                v-else
+                class="square border rounded-4"
+                style="background-image: url('https://via.placeholder.com/190')"
+              ></div>
+            </a>
+          </div>
+        </template>
 
-        <p class="text-center text-uppercase mt-3">{{ app.title }}</p>
+        <p class="text-center text-uppercase mt-3 fs-5 fw-light">{{ app.title }}</p>
         <p>{{ app.feature_desc }}</p>
-        <ul>
-          <li v-for="(resource, index) in app.resource_links" :key="index">
-            <a :href="resource.url">{{ resource.link_type }}</a>
-          </li>
-        </ul>
+
+        <div>
+          <template
+            v-for="(resource, index) in app.resource_links"
+            :key="index"
+          >
+            <span v-if="resource.link_type == 'AND'" class="me-2 text-nowrap">
+              <a :href="resource.url"><i class="bi bi-android2"></i>AND</a>
+            </span>
+            <span v-if="resource.link_type == 'IOS'" class="me-2 text-nowrap">
+              <a :href="resource.url"><i class="bi bi-apple"></i>iOS</a>
+            </span>
+          </template>
+        </div>
       </li>
     </ul>
   </div>
@@ -37,6 +52,7 @@
 <script>
 import { useFetch } from "../composables/fetch.js";
 import mockData from "../../mdot/resources/mdot/file/api/v1/jsonmock/";
+import { link } from "fs/promises";
 
 export default {
   setup() {

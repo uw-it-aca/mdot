@@ -32,7 +32,7 @@
 
         <slot name="content" />
 
-        <footer class="pt-5 my-5 text-muted border-top">
+        <footer class="pt-3 my-5 text-muted border-top small">
           Copyright &copy; {{ currentYear }} University of Washington
         </footer>
       </div>
