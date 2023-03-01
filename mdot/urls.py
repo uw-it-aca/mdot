@@ -48,7 +48,7 @@ urlpatterns += [
 
     # vue pages
     re_path(
-        r"^(vue|developers|guidelines|process)$", DefaultPageView.as_view()
+        r"^(vue|developers|guidelines|process|access|agreement|agree|decline)$", DefaultPageView.as_view()
     ),
     # sponsor app
     re_path("request", request, name="request"),

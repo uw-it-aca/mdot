@@ -8,6 +8,10 @@ import LauncherApp from "../pages/home.vue";
 import DevResources from "../pages/developers.vue";
 import PubGuidelines from "../pages/guidelines.vue";
 import ProcessOverview from "../pages/process.vue";
+import RequestAccess from "../pages/access.vue";
+import SponsorAgreement from "../pages/agreement.vue";
+import SponsorAgree from "../pages/agree.vue";
+import SponsorDecline from "../pages/decline.vue";
 
 const routes = [
   {
@@ -27,6 +31,26 @@ const routes = [
   {
     path: "/process",
     component: ProcessOverview,
+    pathToRegexpOptions: { strict: true },
+  },
+  {
+    path: "/access",
+    component: RequestAccess,
+    pathToRegexpOptions: { strict: true },
+  },
+  {
+    path: "/agreement",
+    component: SponsorAgreement,
+    pathToRegexpOptions: { strict: true },
+  },
+  {
+    path: "/agree",
+    component: SponsorAgree,
+    pathToRegexpOptions: { strict: true },
+  },
+  {
+    path: "/decline",
+    component: SponsorDecline,
     pathToRegexpOptions: { strict: true },
   },
 ];

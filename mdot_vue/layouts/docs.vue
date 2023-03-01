@@ -10,39 +10,47 @@
     </header>
 
     <main class="container">
-      <div class="row">
-        <div class="col-8">
-          <h1 class="text-purple fw-bold">
-            <slot name="title">
-              {{ pageTitle }}
-            </slot>
-          </h1>
+      <h1 class="text-purple fw-bold">
+        <slot name="title">
+          {{ pageTitle }}
+        </slot>
+      </h1>
 
-          <nav>
-            <ul>
-              <li>
-                <router-link :to="'/developers'"
-                  >Developer Resources</router-link
-                >
-              </li>
-              <li>
-                <router-link :to="'/process'"
-                  >Publishing Process Overview</router-link
-                >
-              </li>
-              <li>
-                <router-link :to="'/guidelines'"
-                  >Publishing Guidelines</router-link
-                >
-              </li>
-              <li>
-                <a href="/request">Request Access (Sponsorship app)</a>
-              </li>
-            </ul>
-          </nav>
-          <slot name="content" />
-        </div>
-      </div>
+      <nav>
+        <ul>
+          <li>
+            <router-link :to="'/developers'">Developer Resources</router-link>
+          </li>
+          <li>
+            <router-link :to="'/process'"
+              >Publishing Process Overview</router-link
+            >
+          </li>
+          <li>
+            <router-link :to="'/guidelines'">Publishing Guidelines</router-link>
+          </li>
+          <li>
+            <router-link :to="'/access'">Request Access (vue form)</router-link>
+          </li>
+          <li>
+            <router-link :to="'/agreement'"
+              >Sponsor Agreement (vue form)</router-link
+            >
+          </li>
+          <li>
+            <router-link :to="'/agree'">Sponsor Agreed (vue form)</router-link>
+          </li>
+          <li>
+            <router-link :to="'/decline'"
+              >Sponsor Declined (vue form)</router-link
+            >
+          </li>
+          <li>
+            <a href="/request">Request Access (Django Sponsorship app OLD)</a>
+          </li>
+        </ul>
+      </nav>
+      <slot name="content" />
     </main>
 
     <footer class="border-top bg-purple text-white p-3">

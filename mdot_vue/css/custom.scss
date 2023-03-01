@@ -31,6 +31,7 @@ $theme-colors: (
 
 // override card border color
 $card-border-color: $gray-200;
+//$enable-cssgrid: true;
 
 // 4. include default map overrides
 
@@ -108,7 +109,7 @@ $utilities: (
             "muted": $text-muted,
             "white": $white,
             "reset": inherit,
-            "transparent": transparent,
+            "transparent": transparent
           )
         ),
     )
