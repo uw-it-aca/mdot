@@ -23,7 +23,7 @@
           </li>
           <li>
             <router-link :to="'/overview'"
-              >Publishing Process Overview</router-link
+              >Program Overview</router-link
             >
           </li>
           <li>

@@ -82,7 +82,7 @@ export default {
   },
   data() {
     return {
-      pageTitle: "Process Overview",
+      pageTitle: "Program Overview",
     };
   },
   methods: {},
