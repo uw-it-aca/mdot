@@ -26,7 +26,7 @@
       </div>
 
       <h2 class="" id="page_header">
-        Mobile UW Developer Store
+        Mobile UW Developer Program
         <span class="nobreak">Publishing Process</span>
       </h2>
       <p class="">
@@ -39,34 +39,35 @@
           Confirm that your app meets the requirements and responsibilities
           listed in the
           <a href="/guidelines" class="fw-bold"
-            >UW Developer Store Publishing Guidelines</a
+            >Mobile UW Developer Program Publishing Guidelines</a
           >.
         </li>
         <li class="">
           <h3>Step 2</h3>
           Submit <a href="/access" class="fw-bold">your application</a> to
-          request access to the <strong>UW Developer Store</strong>.
+          request access to the <strong>Mobile UW Developer Program</strong>.
           <ul>
             <li>
-              Designate an appropriate App Manager who will be granted access to
-              the <strong>UW Developer Program</strong>.
-            </li>
-            <li>
-              Designate an appropriate App Sponsor who will be responsible for
+              Designate an appropriate Sponsor who will be responsible for
               adhering to the conditions set in the UW App Developer Terms and
               Conditions.
+            </li>
+            <li>
+              Designate an appropriate Developer (App Manager) who will be
+              granted access.
             </li>
           </ul>
         </li>
         <li class="article">
           <h3>Step 3</h3>
-          The designated App Sponsor will receive an email asking them to agree
-          to the UW App Developer Terms and Conditions.
+          The designated Sponsor will receive an email asking them to agree to
+          the Mobile UW Developer Program Agreement.
         </li>
         <li class="article">
           <h3>Step 4</h3>
-          The UW-IT Mobile Team will process the request and grant the
-          designated App Manager access to the UW Developer Program.
+          The Mobile UW Developer Program Team will process the request and
+          grant the designated Developer access to the Mobile UW Developer
+          Program.
         </li>
       </ol>
     </template>
