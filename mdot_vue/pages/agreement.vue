@@ -33,7 +33,7 @@
                 />
 
                 <section class="sponsor-requirements">
-                  <h3 class="h4">Sponsor Responsibilities</h3>
+                  <h3 class="h4 mb-3">Sponsor Responsibilities</h3>
                   <ul>
                     <li>
                       <strong>UW Terms and Conditions</strong>
@@ -114,18 +114,12 @@
                       </p>
                     </li>
                   </ul>
-                  <label for="sponsor-requirements"
-                    ><input
-                      id="sponsor-requirements"
-                      name="sponsor-requirements"
-                      required=""
-                      type="checkbox"
-                    />I agree to the App Sponsor responsibilities</label
-                  >
                 </section>
-                <hr />
+
+                <hr class="my-4" />
+
                 <section class="sponsor-requirements">
-                  <h3 class="h4">Services Offered by UW-IT</h3>
+                  <h3 class="h4 mb-3">Services Offered by UW-IT</h3>
                   <ul>
                     <li>
                       <strong
@@ -163,18 +157,12 @@
                       </p>
                     </li>
                   </ul>
-                  <label for="understand-agreements"
-                    ><input
-                      id="understand-agreements"
-                      name="understand-agreements"
-                      required=""
-                      type="checkbox"
-                    />I understand the services offered by UW-IT</label
-                  >
                 </section>
-                <hr />
+
+                <hr class="my-4" />
+
                 <section class="sponsor-requirements">
-                  <h3>App Manager Responsibilities</h3>
+                  <h3 class="h4 mb-3">App Manager Responsibilities</h3>
                   <ul>
                     <li>
                       <strong>Developer Account Invitations</strong>
@@ -196,57 +184,11 @@
                       </p>
                     </li>
                   </ul>
-                  <label for="understand-manager"
-                    ><input
-                      id="understand-manager"
-                      name="understand-manager"
-                      required=""
-                      type="checkbox"
-                    />I understand the App Manager responsibilities</label
-                  >
                 </section>
-                <hr />
-                <section class="sponsor-requirements">
-                  <h3>Agreement</h3>
-                  <p>
-                    I certify that this form has been completed by the App
-                    Sponsor listed above and that my answers are true and
-                    complete to the best of my knowledge.
-                  </p>
-                  <label for="agree"
-                    ><input
-                      id="agree"
-                      name="agree"
-                      required=""
-                      type="checkbox"
-                    />I agree to the policies and conditions listed in this
-                    form.</label
-                  >
-                </section>
-
-                <hr class="my-4" />
-
-                <div class="row mb-5">
-                  <div class="col">
-                    <input
-                      class="w-100 btn btn-purple btn-lg"
-                      name="submit"
-                      type="submit"
-                      value="Agree and Accept"
-                    />
-                  </div>
-                  <div class="col">
-                    <a
-                      class="w-100 btn btn-outline-purple btn-lg"
-                      href="/developers/decline/11"
-                      >Decline</a
-                    >
-                  </div>
-                </div>
               </div>
               <div class="col-4">
-                <h3 class="h4">App Details</h3>
-                <ul class="list-group">
+                <h3 class="h4 mb-3">App Details</h3>
+                <ul class="list-group mb-4">
                   <li class="list-group-item">
                     <div>
                       <h6 class="my-0">App Test</h6>
@@ -278,6 +220,89 @@
                     </div>
                   </li>
                 </ul>
+
+                <section class="sponsor-requirements">
+                  <h3 class="h4 mb-3">Agreement</h3>
+                  <p>
+                    I certify that this form has been completed by the App
+                    Sponsor listed above and that my answers are true and
+                    complete to the best of my knowledge.
+                  </p>
+
+                  <div class="form-check">
+                    <input
+                      id="sponsor-requirements"
+                      class="form-check-input"
+                      name="sponsor-requirements"
+                      required=""
+                      type="checkbox"
+                    />
+                    <label class="form-check-label" for="sponsor-requirements"
+                      >I understand the Sponsor Responsibilities</label
+                    >
+                  </div>
+
+                  <div class="form-check">
+                    <input
+                      id="understand-agreements"
+                      class="form-check-input"
+                      name="understand-agreements"
+                      required=""
+                      type="checkbox"
+                    />
+                    <label class="form-check-label" for="understand-agreements"
+                      >I understand the Services Offered by UW-IT</label
+                    >
+                  </div>
+
+                  <div class="form-check">
+                    <input
+                      id="understand-manager"
+                      class="form-check-input"
+                      name="understand-manager"
+                      required=""
+                      type="checkbox"
+                    /><label class="form-check-label" for="understand-manager"
+                      >I understand the App Manager Responsibilities</label
+                    >
+                  </div>
+                </section>
+
+                <div class="form-check mb-4 visually-hidden">
+                  <input
+                    id="agree"
+                    class="form-check-input"
+                    name="agree"
+                    required=""
+                    type="checkbox"
+                    checked
+                  />
+                  <label class="form-check-label" for="agree"
+                    >I agree to the policies and conditions listed in this
+                    form.</label
+                  >
+                </div>
+
+                <div class="row my-4">
+                  <div class="col">
+                    <input
+                      class="w-100 mb-3 btn btn-purple btn-lg"
+                      name="submit"
+                      type="submit"
+                      value="Accept"
+                    />
+                    <a
+                      class="w-100 btn btn-outline-purple btn-lg"
+                      href="/developers/decline/11"
+                      >Decline</a
+                    >
+                  </div>
+                  <hr class="my-4" />
+                  <p class="small text-muted">
+                    By clicking Accept, you agree to the terms and conditions of
+                    this agreement.
+                  </p>
+                </div>
               </div>
             </div>
           </form>
