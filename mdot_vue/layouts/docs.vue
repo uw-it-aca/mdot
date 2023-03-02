@@ -22,7 +22,7 @@
             <router-link :to="'/developers'">Developer Resources</router-link>
           </li>
           <li>
-            <router-link :to="'/process'"
+            <router-link :to="'/overview'"
               >Publishing Process Overview</router-link
             >
           </li>

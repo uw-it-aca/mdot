@@ -15,7 +15,7 @@
 
 <script>
 import Layout from "../layouts/launcher.vue";
-import HomeApps from "../components/home-apps.vue";
+import HomeApps from "../components/HomeApps.vue";
 
 export default {
   components: {

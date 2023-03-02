@@ -263,7 +263,7 @@
         </div>
       </div>
 
-      <h3>Publishing Native Apps</h3>
+      <h3>Publishing Native Mobile Apps</h3>
 
       <div class="row">
         <div class="col-md-4 article">
@@ -327,39 +327,6 @@
               <a
                 title="Design guidelines (Android)"
                 href="http://developer.android.com/design/index.html"
-                >Design Guidelines</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4 article">
-          <h4>Windows Store (Windows)</h4>
-          <ul>
-            <li>
-              <a
-                title="Get started with publishing (Windows)"
-                href="https://dev.windows.com/en-us/getstarted"
-                >Getting Started
-              </a>
-            </li>
-            <li>
-              <a
-                title="Signing your applications (Windows)"
-                href="https://msdn.microsoft.com/en-us/library/windows/desktop/jj835835(v=vs.85).aspx"
-                >Signing Your Applications</a
-              >
-            </li>
-            <li>
-              <a
-                title="Upload and distribute apps (Windows)"
-                href="https://msdn.microsoft.com/library/windows/apps/hh694062.aspx"
-                >App Distribution</a
-              >
-            </li>
-            <li>
-              <a
-                title="Design guidelines (Windows)"
-                href="https://dev.windows.com/en-us/design"
                 >Design Guidelines</a
               >
             </li>

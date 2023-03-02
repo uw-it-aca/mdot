@@ -12,7 +12,7 @@
         <p class="lead">
           Ready to submit your app for inclusion in the UW Development App
           Stores? Does it meet our
-          <a href="/developers/guidelines">publishing guidelines</a>?
+          <a href="/guidelines">publishing guidelines</a>?
         </p>
         <p class="article intro">
           If so, please fill out the form below. We will process your request
@@ -116,7 +116,7 @@
 
             <hr class="my-4" />
 
-            <h3 class="form-heading">Manager Contact</h3>
+            <h3 class="form-heading">Developer Contact</h3>
             <p class="form-description">
               This portion of the form should be filled out with the details of
               the person who will be serving as the App Manager.

@@ -7,7 +7,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import LauncherApp from "../pages/home.vue";
 import DevResources from "../pages/developers.vue";
 import PubGuidelines from "../pages/guidelines.vue";
-import ProcessOverview from "../pages/process.vue";
+import ProcessOverview from "../pages/overview.vue";
 import RequestAccess from "../pages/access.vue";
 import SponsorAgreement from "../pages/agreement.vue";
 import SponsorAgree from "../pages/agree.vue";
@@ -29,7 +29,7 @@ const routes = [
     pathToRegexpOptions: { strict: true },
   },
   {
-    path: "/process",
+    path: "/overview",
     component: ProcessOverview,
     pathToRegexpOptions: { strict: true },
   },

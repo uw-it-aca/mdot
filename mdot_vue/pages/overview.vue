@@ -8,29 +8,48 @@
     </template>
 
     <template #content>
-      <h2 class="mdot-subhead" id="page_header">
-        UW Developer Store <span class="nobreak">Publishing Process</span>
+      <h2 class="" id="page_header">
+        What is the Mobile UW Developer Program?
       </h2>
-      <p class="article intro">
+      <p>
+        the store is for anyone interested in publishing mobile apps through the
+        Apple Developer and Google Play stores. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Ab aliquid voluptatum fugit, officiis
+        quos, qui consectetur itaque incidunt a asperiores quidem, veritatis
+        totam doloribus iste architecto cum eveniet. Impedit, harum. Grants
+        access to the UW's Apple Developer Program. Android developers are good
+        to go!
+      </p>
+      <div class="row mb-5">
+        <div class="col">UW App Store (iOS)</div>
+        <div class="col">UW Google Play Store (Android)</div>
+      </div>
+
+      <h2 class="" id="page_header">
+        Mobile UW Developer Store
+        <span class="nobreak">Publishing Process</span>
+      </h2>
+      <p class="">
         So, you have developed a native app and want to publish it under the UW
         Developer Store? Here is what you do next.
       </p>
-      <ol class="trad-list process-page">
-        <li class="article">
+      <ol class="list-unstyled">
+        <li class="">
           <h3>Step 1</h3>
-          Confirm that your app meets the
-          <a href="/developers/guidelines"
+          Confirm that your app meets the requirements and responsibilities
+          listed in the
+          <a href="/guidelines" class="fw-bold"
             >UW Developer Store Publishing Guidelines</a
           >.
         </li>
-        <li class="article">
+        <li class="">
           <h3>Step 2</h3>
-          Submit <a href="/developers/request">your application</a> to request
-          access to the UW Developer Store.
+          Submit <a href="/access" class="fw-bold">your application</a> to
+          request access to the <strong>UW Developer Store</strong>.
           <ul>
             <li>
               Designate an appropriate App Manager who will be granted access to
-              the UW Developer Program.
+              the <strong>UW Developer Program</strong>.
             </li>
             <li>
               Designate an appropriate App Sponsor who will be responsible for
