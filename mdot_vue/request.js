@@ -18,7 +18,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./css/custom.scss";
 // import "axdd-components/dist/style.css";
 
-
 // vue-gtag-next
 // TODO: un-commment to use Google Analytics for you app. also
 // configure trackRouter located in the router/index.js file
@@ -39,6 +38,8 @@ app.use(VueGtag, {
 });
 */
 
+const app = createApp(RequestApp);
+
 // vue-mq (media queries)
 app.use(Vue3Mq, {
   preset: "bootstrap5",
@@ -48,5 +49,4 @@ app.component("mq-responsive", MqResponsive);
 // axdd-components
 app.use(AxddComponents);
 
-
-createApp(RequestApp).mount("#request");
+app.mount("#request");
