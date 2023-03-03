@@ -1,5 +1,4 @@
 // about.vue
-
 <template>
   <DocsLayout :page-title="pageTitle">
     <!-- page content -->
@@ -28,16 +27,9 @@
           <form
             class="request-form"
             id="main-form"
-            method="post"
             novalidate=""
             data-gtm-form-interact-id="0"
           >
-            <input
-              name="csrfmiddlewaretoken"
-              type="hidden"
-              value="3WS798EXYd3vmNZZVJF7DhbYVooeXM2tlOEj2mhwZUXMEKqh5horWd9x3qSTvjQo"
-            />
-
             <h3 class="h4">App Information</h3>
             <p class="form-description">
               This portion of the form should be filled out with the details of
@@ -298,7 +290,11 @@
 
             <hr class="my-4" />
             <div class="text-end my-5">
-              <button class="w-100 btn btn-purple btn-lg" type="submit">
+              <button
+                class="w-100 btn btn-purple btn-lg"
+                type="submit"
+                @click="requestAccess"
+              >
                 Request Access
               </button>
             </div>
@@ -321,7 +317,16 @@ export default {
       pageTitle: "Request Access",
     };
   },
-  methods: {},
+  methods: {
+    requestAccess() {
+      this.axios({
+        method: "post",
+        url: "/request",
+        headers: { "X-CSRFToken": window.csrf_token },
+        data: {},
+      });
+    },
+  },
 };
 </script>
 

@@ -1,5 +1,4 @@
 <template>
-  <div>laksdjfl;kasjd</div>
   <RequestAccess></RequestAccess>
 </template>
 
