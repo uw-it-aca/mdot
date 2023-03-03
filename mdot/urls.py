@@ -45,10 +45,10 @@ if settings.DEBUG:
 urlpatterns += [
     # add api endpoints here
     re_path("api/resources", api, name="api"),
-
     # vue pages
     re_path(
-        r"^(vue|developers|guidelines|overview|access|agreement|agree|decline)$", DefaultPageView.as_view()
+        r"^(vue|developers|guidelines|overview|agreement|agree|decline)$",
+        DefaultPageView.as_view(),
     ),
     # sponsor app
     re_path("request", request, name="request"),

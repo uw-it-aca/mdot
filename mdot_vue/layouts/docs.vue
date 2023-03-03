@@ -19,34 +19,25 @@
       <nav>
         <ul>
           <li>
-            <router-link :to="'/developers'">Developer Resources</router-link>
+            <a href="/developers">Developer Resources</a>
           </li>
           <li>
-            <router-link :to="'/overview'"
-              >Program Overview</router-link
-            >
+            <a href="/overview">Program Overview</a>
           </li>
           <li>
-            <router-link :to="'/guidelines'">Publishing Guidelines</router-link>
+            <a href="/guidelines">Publishing Guidelines</a>
           </li>
           <li>
-            <router-link :to="'/access'">Request Access (vue form)</router-link>
+            <a href="/agreement">Sponsor Agreement (vue form)</a>
           </li>
           <li>
-            <router-link :to="'/agreement'"
-              >Sponsor Agreement (vue form)</router-link
-            >
+            <a href="/agree">Sponsor Agreed (vue form)</a>
           </li>
           <li>
-            <router-link :to="'/agree'">Sponsor Agreed (vue form)</router-link>
+            <a href="/decline">Sponsor Declined (vue form)</a>
           </li>
           <li>
-            <router-link :to="'/decline'"
-              >Sponsor Declined (vue form)</router-link
-            >
-          </li>
-          <li>
-            <a href="/request">Request Access (Django Sponsorship app OLD)</a>
+            <a href="/request">Request Access (Vue compiled on request.html)</a>
           </li>
         </ul>
       </nav>
