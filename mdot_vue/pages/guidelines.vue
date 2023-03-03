@@ -80,7 +80,7 @@
               voluptas a iure quam! A, beatae.
             </p>
 
-            <p><a href="/access">Request access</a></p>
+            <p><a href="/request">Request access</a></p>
           </div>
           <div>
             <h3 class="h4 mb-3">Developer Resources</h3>

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import RequestAccess from "./pages/access.vue";
+import RequestAccess from "./pages/request.vue";
 
 export default {
   name: "RequestApp",

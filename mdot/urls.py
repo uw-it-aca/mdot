@@ -45,17 +45,21 @@ if settings.DEBUG:
 urlpatterns += [
     # add api endpoints here
     re_path("api/resources", api, name="api"),
-    # vue pages
-    re_path(
-        r"^(vue|developers|guidelines|overview|agreement|agree|decline)$",
-        DefaultPageView.as_view(),
-    ),
+    
     # sponsor app
     re_path("request", request, name="request"),
     re_path("request/<int:pk>/", sponsor, name="sponsor"),
     re_path("decline/<int:pk>/", decline, name="decline"),
     # admin app
     re_path("admin/", admin_site.urls),
-    # django home
-    re_path(r"^$", home, name="home"),
+
+    # vue pages
+    re_path(
+        r"^(developers|guidelines|overview|agreement|agree|decline)$",
+        DefaultPageView.as_view(),
+    ),
+
+    # vue home
+    # re_path(r"^$", home, name="home"),
+    re_path(r"^$", DefaultPageView.as_view(), name="index"),
 ]

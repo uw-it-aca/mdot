@@ -14,7 +14,7 @@ import SponsorDecline from "../pages/decline.vue";
 
 const routes = [
   {
-    path: "/vue",
+    path: "/",
     component: LauncherApp,
   },
   {
