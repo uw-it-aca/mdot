@@ -157,7 +157,7 @@ def request(request):
     }
 
     # return forms to request page
-    return render(request, "mdot/developers/request.html", forms)
+    return render(request, "request.html", forms)
 
 
 @login_required

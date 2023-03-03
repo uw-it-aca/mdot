@@ -17,6 +17,7 @@ export default defineConfig({
       input: [
         // list all entry points
         "./mdot_vue/main.js",
+        "./mdot_vue/request.js",
       ],
     },
     outDir: "./mdot/static/", // relative path to django's static directory
