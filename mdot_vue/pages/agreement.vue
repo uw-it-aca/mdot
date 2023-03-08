@@ -25,12 +25,6 @@
         <div class="col">
           <div class="row">
             <div class="col-8">
-              <input
-                name="csrfmiddlewaretoken"
-                type="hidden"
-                value="v3AVpmRF9ayyeNqiycgjMB2wRIwCZvjjNVm7iAueaRsPwKRAIKZD5x05ZK0hx27e"
-              />
-
               <SponsorResposibilities></SponsorResposibilities>
 
               <hr class="my-4" />
@@ -38,7 +32,6 @@
 
               <hr class="my-4" />
               <UWITResponsibilities></UWITResponsibilities>
-
             </div>
             <div class="col-4">
               <h3 class="h4 mb-3">App Details</h3>
@@ -84,7 +77,7 @@
                     complete to the best of my knowledge.
                   </p>
 
-                  <div class="form-chec visually-hidden">
+                  <div class="form-check">
                     <input
                       id="sponsor-requirements"
                       class="form-check-input"
@@ -98,7 +91,7 @@
                     >
                   </div>
 
-                  <div class="form-check visually-hidden">
+                  <div class="form-check">
                     <input
                       id="understand-agreements"
                       class="form-check-input"
@@ -112,7 +105,7 @@
                     >
                   </div>
 
-                  <div class="form-check visually-hidden">
+                  <div class="form-check">
                     <input
                       id="understand-manager"
                       class="form-check-input"

@@ -199,7 +199,7 @@
                     type="text"
                     placeholder="xx"
                   />
-                  <label for="id_sponsor-first_name">First name:</label>
+                  <label for="id_sponsor-first_name">First name</label>
                 </div>
               </div>
               <div class="col">
@@ -213,7 +213,7 @@
                     type="text"
                     placeholder="xx"
                   />
-                  <label for="id_sponsor-last_name">Last name:</label>
+                  <label for="id_sponsor-last_name">Last name</label>
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@
                 type="text"
                 placeholder="xx"
               />
-              <label for="id_sponsor-netid">UW NetID:</label>
+              <label for="id_sponsor-netid">UW NetID</label>
             </div>
 
             <div class="form-floating mb-3">
@@ -241,7 +241,7 @@
                 type="email"
                 placeholder="xx"
               />
-              <label for="id_sponsor-email">Email:</label>
+              <label for="id_sponsor-email">Email</label>
             </div>
 
             <div class="form-floating mb-3">
@@ -254,7 +254,7 @@
                 type="text"
                 placeholder="xx"
               />
-              <label for="id_sponsor-title">Title:</label>
+              <label for="id_sponsor-title">Title</label>
             </div>
 
             <div class="row">
@@ -269,7 +269,7 @@
                     type="text"
                     placeholder="xx"
                   />
-                  <label for="id_sponsor-department">Department:</label>
+                  <label for="id_sponsor-department">Department</label>
                 </div>
               </div>
               <div class="col">
@@ -283,7 +283,7 @@
                     type="text"
                     placeholder="xx"
                   />
-                  <label for="id_sponsor-unit">Unit:</label>
+                  <label for="id_sponsor-unit">Unit</label>
                 </div>
               </div>
             </div>
@@ -307,6 +307,7 @@
 
 <script>
 import DocsLayout from "../layouts/docs.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -319,7 +320,7 @@ export default {
   },
   methods: {
     requestAccess() {
-      this.axios({
+      axios({
         method: "post",
         url: "/request",
         headers: { "X-CSRFToken": window.csrf_token },
@@ -329,5 +330,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss"></style>

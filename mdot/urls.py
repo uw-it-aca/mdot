@@ -55,7 +55,7 @@ urlpatterns += [
 
     # vue pages
     re_path(
-        r"^(developers|guidelines|overview|agreement|agree|decline)$",
+        r"^(developers|guidelines|overview|agreement|agree|decline|thank-you)$",
         DefaultPageView.as_view(),
     ),
 

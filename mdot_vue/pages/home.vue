@@ -1,5 +1,3 @@
-// home.vue
-
 <template>
   <layout :page-title="pageTitle">
     <!-- page content -->
@@ -8,19 +6,19 @@
     </template>
 
     <template #content>
-      <HomeApps />
+      <HomeList />
     </template>
   </layout>
 </template>
 
 <script>
 import Layout from "../layouts/launcher.vue";
-import HomeApps from "../components/HomeApps.vue";
+import HomeList from "../components/HomeList.vue";
 
 export default {
   components: {
     layout: Layout,
-    HomeApps,
+    HomeList,
   },
   data() {
     return {
@@ -30,5 +28,3 @@ export default {
   methods: {},
 };
 </script>
-
-<style lang="scss"></style>

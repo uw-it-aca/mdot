@@ -1,14 +1,14 @@
 <template>
-  <RequestAccess></RequestAccess>
+  <RequestPage></RequestPage>
 </template>
 
 <script>
-import RequestAccess from "./pages/request.vue";
+import RequestPage from "./pages/request.vue";
 
 export default {
   name: "RequestApp",
   components: {
-    RequestAccess,
+    RequestPage,
   },
 };
 </script>

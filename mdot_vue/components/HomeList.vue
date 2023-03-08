@@ -4,7 +4,6 @@
   </div>
   <div v-else-if="data">
     <ul class="list-inline list-unstyled row">
-    
       <li
         v-for="app in data"
         :key="app.id"
@@ -46,7 +45,6 @@
             </span>
           </template>
         </div>
-
       </li>
     </ul>
   </div>

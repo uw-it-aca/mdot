@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from django.template import RequestContext, Context
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail, EmailMultiAlternatives, BadHeaderError
 from django.urls import reverse
@@ -134,7 +134,7 @@ def request(request):
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
             }
 
-            return render(request, "mdot/developers/thanks.html", params)
+            return redirect('/thank-you')
         else:
             forms = {
                 "sponsorform": sponsorForm,
@@ -143,7 +143,7 @@ def request(request):
             }
 
         # return forms to request page
-        return render(request, "mdot/developers/request.html", forms)
+        return render(request, "request.html", forms)
 
     # use prefixes to avoid duplicate field names
     sponsorForm = SponsorForm(prefix="sponsor")
@@ -232,9 +232,9 @@ def sponsor(request, pk):
                 "app": app.name,
             }
             if agreement.latest("agree_time").status == "agreed":
-                return render(request, "mdot/developers/agree.html", params)
+                return redirect('/agree')
             else:
-                return render(request, "mdot/developers/decline.html", params)
+                return redirect('/decline')
 
 
 @login_required

@@ -9,12 +9,11 @@
 
     <template #content>
       <h3>Thank You</h3>
+      <p>Your response has been recorded.</p>
       <p>
-        You have declined the role of App Sponsor for <strong>xxxxx</strong>.
-      </p>
-      <p>
-        The designated App Manager will not be granted access to the Developer
-        Program under your sponsorship.
+        The App Sponsor will be notified and asked to agree to the sponsor terms
+        and conditions. Access to the Developer Program will be granted to the
+        App Manager after the Sponsor submits the app sponsor agreement form.
       </p>
     </template>
   </DocsLayout>
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      pageTitle: "Declined",
+      pageTitle: "Thank You",
     };
   },
   methods: {},

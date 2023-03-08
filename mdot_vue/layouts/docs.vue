@@ -1,11 +1,15 @@
 <template>
   <!-- docs.vue: this is the layout for documentation app -->
   <div :app-name="appName" :page-title="pageTitle">
-    <header
-      class="d-flex align-items-center h4 border-bottom bg-purple text-white p-3"
-    >
+    <header class="h4 border-bottom bg-purple text-white py-3">
       <div class="container">
-        <a href="/" class="text-reset text-decoration-none">{{ appName }}</a>
+        <div class="row">
+          <div class="col">
+            <a href="/" class="text-reset text-decoration-none">{{
+              appName
+            }}</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -27,17 +31,23 @@
           <li>
             <a href="/guidelines">Publishing Guidelines</a>
           </li>
-          <li>
-            <a href="/agreement">Sponsor Agreement (vue form)</a>
-          </li>
-          <li>
-            <a href="/agree">Sponsor Agreed (vue form)</a>
-          </li>
-          <li>
-            <a href="/decline">Sponsor Declined (vue form)</a>
-          </li>
+
           <li>
             <a href="/request">Request Access (Vue compiled on request.html)</a>
+            <ul>
+              <li>
+                <a href="/agreement">Sponsor Agreement (vue form)</a>
+              </li>
+              <li>
+                <a href="/agree">Sponsor Agreed (vue get)</a>
+              </li>
+              <li>
+                <a href="/decline">Sponsor Declined (vue get)</a>
+              </li>
+              <li>
+                <a href="/thank-you">Sponsor Thank You (vue)</a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>

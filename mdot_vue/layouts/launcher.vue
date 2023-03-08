@@ -4,7 +4,7 @@
   <div class="bg-purple text-white">
     <div class="container">
       <div class="row">
-        <div class="col p-3">
+        <div class="col py-3">
           <header class="d-flex align-items-center pb-3 mb-5 h4">
             <a href="/" class="text-reset text-decoration-none">{{
               appName

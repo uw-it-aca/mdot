@@ -8,120 +8,126 @@
     </template>
 
     <template #content>
-      <h1>Building mobile apps</h1>
-
       <h2>Things to consider</h2>
 
-      <div class="row">
-        <div class="col-md-4 article">
-          <h4>Mobile web vs. Native vs. Hybrid</h4>
-          <p>
-            Before deciding what to build, understand your options. Mobile web
-            is the most versatile and easiest to maintain, but can be limiting
-            if you need robust device integration.
-          </p>
-          <ul>
-            <!-- unavailable resource  <li><a title="Socious Blog: Mobile vs. Native" href="http://blog.socious.com/the-best-mobile-online-community-options-responsive-web-design-vs-mobile-sites-vs-native-apps">Mobile web vs. Native</a></li> -->
-            <li>
-              <a
-                title="Signal V Noise: Hybrid Sweet Spot"
-                href="https://signalvnoise.com/posts/3743-hybrid-sweet-spot-native-navigation-web-content"
-                >Hybrid Sweet Spot</a
-              >
-            </li>
-            <li>
-              <a
-                title="SalesForce Blog: Mobile App Development Options"
-                href="https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options"
-                >Comparison of the three options</a
-              >
-            </li>
-          </ul>
+      <div class="row mb-5">
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h4>Mobile web vs. Native vs. Hybrid</h4>
+            <p>
+              Before deciding what to build, understand your options. Mobile web
+              is the most versatile and easiest to maintain, but can be limiting
+              if you need robust device integration.
+            </p>
+            <ul>
+              <!-- unavailable resource  <li><a title="Socious Blog: Mobile vs. Native" href="http://blog.socious.com/the-best-mobile-online-community-options-responsive-web-design-vs-mobile-sites-vs-native-apps">Mobile web vs. Native</a></li> -->
+              <li>
+                <a
+                  title="Signal V Noise: Hybrid Sweet Spot"
+                  href="https://signalvnoise.com/posts/3743-hybrid-sweet-spot-native-navigation-web-content"
+                  >Hybrid Sweet Spot</a
+                >
+              </li>
+              <li>
+                <a
+                  title="SalesForce Blog: Mobile App Development Options"
+                  href="https://developer.salesforce.com/page/Native,_HTML5,_or_Hybrid:_Understanding_Your_Mobile_Application_Development_Options"
+                  >Comparison of the three options</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-4 article">
-          <h4>Build vs. Buy</h4>
-          <p>
-            Existing products may already solve the problems that concern your
-            users. They might not be a perfect fit, but could provide real
-            benefit far more quickly.
-          </p>
-          <ul>
-            <li>
-              <a
-                title="Harvard Business Review: Are You Solving the Right Problem?"
-                href="https://hbr.org/2012/09/are-you-solving-the-right-problem"
-                >Define The Problem(s) You Need to Solve</a
-              >
-            </li>
-            <li>
-              <a
-                title="Forbes: Know When You Should Build Custom Software Over Canned Solutions"
-                href="http://www.forbes.com/sites/chuckcohn/2014/09/15/build-vs-buy-how-to-know-when-you-should-build-custom-software-over-canned-solutions/"
-                >Build vs. Buy</a
-              >
-            </li>
-            <li>
-              <a
-                title="Boxes and Arrows: Understanding the Market Context"
-                href="http://boxesandarrows.com/competitive-analysis-understanding-the-market-context/"
-                >Doing a Competitive Analysis</a
-              >
-            </li>
-          </ul>
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h4>Build vs. Buy</h4>
+            <p>
+              Existing products may already solve the problems that concern your
+              users. They might not be a perfect fit, but could provide real
+              benefit far more quickly.
+            </p>
+            <ul>
+              <li>
+                <a
+                  title="Harvard Business Review: Are You Solving the Right Problem?"
+                  href="https://hbr.org/2012/09/are-you-solving-the-right-problem"
+                  >Define The Problem(s) You Need to Solve</a
+                >
+              </li>
+              <li>
+                <a
+                  title="Forbes: Know When You Should Build Custom Software Over Canned Solutions"
+                  href="http://www.forbes.com/sites/chuckcohn/2014/09/15/build-vs-buy-how-to-know-when-you-should-build-custom-software-over-canned-solutions/"
+                  >Build vs. Buy</a
+                >
+              </li>
+              <li>
+                <a
+                  title="Boxes and Arrows: Understanding the Market Context"
+                  href="http://boxesandarrows.com/competitive-analysis-understanding-the-market-context/"
+                  >Doing a Competitive Analysis</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-4 article">
-          <h4>True Cost</h4>
-          <p>
-            Offering a software solution is never without cost. Understand the
-            real costs for ongoing development, maintenance, support, and
-            communication.
-          </p>
-          <ul>
-            <li>
-              <a
-                title="SFCD Blog: How much does it cost to make an app?"
-                href="https://sfcd.com/blog/cost/"
-                >The Cost of an App</a
-              >
-            </li>
-          </ul>
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h4>True Cost</h4>
+            <p>
+              Offering a software solution is never without cost. Understand the
+              real costs for ongoing development, maintenance, support, and
+              communication.
+            </p>
+            <ul>
+              <li>
+                <a
+                  title="SFCD Blog: How much does it cost to make an app?"
+                  href="https://sfcd.com/blog/cost/"
+                  >The Cost of an App</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <h3>Create a successful product</h3>
 
-      <div class="row">
-        <div class="col-md-4 article">
-          <h4>Solve the Right Problems, for Real Users</h4>
-          <p>
-            Understand and prioritize your user population(s), their needs, and
-            their goals for your software.
-          </p>
-          <ul>
-            <li>
-              <a
-                title="Usability First: Intro to User-Centered Design"
-                href="http://www.usabilityfirst.com/about-usability/introduction-to-user-centered-design"
-                >User-Centered Design Basics</a
-              >
-            </li>
-            <li>
-              <a
-                title="A List Apart: Why Every Business Needs Product Discovery"
-                href="http://alistapart.com/article/usable-yet-useless-why-every-business-needs-product-discovery"
-                >Usable Yet Useless</a
-              >
-            </li>
-            <li>
-              <a
-                title="Intercom Blog: Making Things People Want"
-                href="https://blog.intercom.io/making-things-people-want/"
-                >Making Things People Want</a
-              >
-            </li>
-          </ul>
+      <div class="row mb-5">
+        <div class="col-md-4">
+          <div class="card p-3">
+            <h4>Solve the Right Problems, for Real Users</h4>
+            <p>
+              Understand and prioritize your user population(s), their needs,
+              and their goals for your software.
+            </p>
+            <ul>
+              <li>
+                <a
+                  title="Usability First: Intro to User-Centered Design"
+                  href="http://www.usabilityfirst.com/about-usability/introduction-to-user-centered-design"
+                  >User-Centered Design Basics</a
+                >
+              </li>
+              <li>
+                <a
+                  title="A List Apart: Why Every Business Needs Product Discovery"
+                  href="http://alistapart.com/article/usable-yet-useless-why-every-business-needs-product-discovery"
+                  >Usable Yet Useless</a
+                >
+              </li>
+              <li>
+                <a
+                  title="Intercom Blog: Making Things People Want"
+                  href="https://blog.intercom.io/making-things-people-want/"
+                  >Making Things People Want</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-4 article">
+        <div class="col-md-4">
           <h4>Aim for Simplicity</h4>
           <p>
             What's the simplest solution that will provide real benefit to your
@@ -178,8 +184,8 @@
 
       <h3>Development Concerns</h3>
 
-      <div class="row">
-        <div class="col-md-4 article">
+      <div class="row mb-5">
+        <div class="col-md-4">
           <h4>So Many Options</h4>
           <p>
             Choosing the technology upon which to build is a huge step.
@@ -202,7 +208,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-4 article">
+        <div class="col-md-4">
           <h4>Frameworks and Toolkits</h4>
           <p>
             Let others do some of the heavy lifting with your technology stack.
@@ -231,7 +237,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-4 article">
+        <div class="col-md-4">
           <h4>Performance Tuning</h4>
           <p>
             Performance is a primary concern for good user experience. Optimize
@@ -265,8 +271,8 @@
 
       <h3>Publishing Native Mobile Apps</h3>
 
-      <div class="row">
-        <div class="col-md-4 article">
+      <div class="row mb-5">
+        <div class="col-md-4">
           <h4>Apple Developer Program (iOS)</h4>
           <ul>
             <li>
@@ -299,7 +305,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-4 article">
+        <div class="col-md-4">
           <h4>Google Play Store (Android)</h4>
           <ul>
             <li>
@@ -333,6 +339,13 @@
           </ul>
         </div>
       </div>
+
+      <h3>Publishing at UW</h3>
+
+      <div class="row mb-5">
+        <div class="col-md-4">asdfasf</div>
+        <div class="col-md-4">asfdafdsdasfasfasfasf</div>
+      </div>
     </template>
   </DocsLayout>
 </template>
@@ -342,11 +355,11 @@ import DocsLayout from "../layouts/docs.vue";
 
 export default {
   components: {
-    DocsLayout
+    DocsLayout,
   },
   data() {
     return {
-      pageTitle: "Developer Resources",
+      pageTitle: "Mobile Developer Resources",
     };
   },
   methods: {},
