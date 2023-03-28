@@ -1,0 +1,9 @@
+{
+  "python.linting.pycodestyleEnabled": true,
+  "python.linting.enabled": true,
+  "python.formatting.autopep8Args": ["--max-line-length=79"],
+  "python.formatting.blackArgs": ["--line-length=79"],
+  "beautify.language": {
+    "html": ["htm", "html", "django-html"]
+  }
+}
