@@ -1,4 +1,3 @@
-
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
 {% load static %}
 {% load user_agents %}
@@ -19,50 +18,79 @@
 
                     {% if resources %}
 
-                        {% for resource in resources %}
+                    {% for resource in resources %}
 
-                        <!-- This is the featured template -->
-                        <li class="col-xs-4 col-sm-3 col-lg-2  mdot-feature-item">
+                    <!-- This is the featured template -->
+                    <li class="col-xs-4 col-sm-3 col-lg-2  mdot-feature-item">
 
                         {% if not request|is_mobile and not request|is_tablet %}
-                        	<!-- desktop only -->
-                            {% if resource.has_native and not resource.has_web %}
-		                    <h4 class="mdot-resource-nolink" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><span class="mdot-resource-name">{{ resource.title }}</h4>
-		                    {% else %}
-	                        <a href='{{ resource.resource_links.WEB }}' {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WEB }}', {'event_category': 'outbound'})"{% endif %} title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;"><h4 class="mdot-resource-name">{{ resource.title }}</h4>
-                            {% endif %}{% if resource.has_native and not resource.has_web %}</span>{% else %}</a>{% endif %}
-                            <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
-                            {% if resource.has_ios or resource.has_and or resource.has_wip %}
-                            <ul class="mdot-resource-desktop">
-                                {% if resource.has_ios %}
-                                <li><a href="{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="gtag('event', '{{ resources.resource_links.IOS }}', {'event_category': 'outbound'})"{% endif %} aria-label="{{ resource.title }} IOS app" title="{{ resource.title }} IOS app"><i class="fa fa-apple"></i> IOS</a></li>
-                                {% endif %}
-                                {% if resource.has_and %}
-                                <li><a href="{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.AND}}', {'event_category': 'outbound'})"{% endif %} aria-label="{{ resource.title }} Android app" title="{{ resource.title }} Android app"><i class="fa fa-android"></i> AND</a></li>
-                                {% endif %}
-                                {% if resource.has_wip %}
-                                <li><a href="{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WIP }}', {'event_category': 'outbound'})"{% endif %} aria-label="{{ resource.title }} Windows app" title="{{ resource.title }} Windows app"><i class="fa fa-windows"></i> WIN</a></li>
-                                {% endif %}
-                            </ul>
-                            {% endif %}
+                        <!-- desktop only -->
+                        {% if resource.has_native and not resource.has_web %}
+                        <h4 class="mdot-resource-nolink"
+                            style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+                            <span class="mdot-resource-name">{{ resource.title }}</h4>
                         {% else %}
-	                        <!-- mobile only -->
-	                        <a href={% if request.user_agent.os.family == 'iOS' and resource.has_ios %}"{{ resource.resource_links.IOS }}" {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.IOS }}', {'event_category': 'outbound'})"{% endif %}{% elif request.user_agent.os.family == 'Android' and resource.has_and %}"{{ resource.resource_links.AND }}" {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.AND }}', {'event_category': 'outbound'})"{% endif %}{% elif request.user_agent.os.family == 'Windows Phone' and resource.has_wip %}"{{ resource.resource_links.WIP }}" {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WIP }}', {'event_category': 'outbound'})"{% endif %}{% else %}"{{ resource.resource_links.WEB }}"{% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WEB }}', {'event_category': 'outbound'})"{% endif %}
-	                        {% endif %}title="Go to {{ resource.title }}" class="mdot-resource-link" style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+                        <a href='{{ resource.resource_links.WEB }}'
+                            {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WEB }}', {'event_category': 'outbound'})"
+                            {% endif %} title="Go to {{ resource.title }}" class="mdot-resource-link"
+                            style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
+                            <h4 class="mdot-resource-name">{{ resource.title }}</h4>
+                            {% endif %}{% if resource.has_native and not resource.has_web %}</span>{% else %}
+                        </a>{% endif %}
+                        <span class="mdot-resource-desc">{{ resource.feature_desc }}</span>
+                        {% if resource.has_ios or resource.has_and or resource.has_wip %}
+                        <ul class="mdot-resource-desktop">
+                            {% if resource.has_ios %}
+                            <li><a href="{{ resource.resource_links.IOS }}"
+                                    {% if google_analytics %}onclick="gtag('event', '{{ resources.resource_links.IOS }}', {'event_category': 'outbound'})"
+                                    {% endif %} aria-label="{{ resource.title }} IOS app"
+                                    title="{{ resource.title }} IOS app"><i class="fa fa-apple"></i> IOS</a></li>
+                            {% endif %}
+                            {% if resource.has_and %}
+                            <li><a href="{{ resource.resource_links.AND }}"
+                                    {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.AND}}', {'event_category': 'outbound'})"
+                                    {% endif %} aria-label="{{ resource.title }} Android app"
+                                    title="{{ resource.title }} Android app"><i class="fa fa-android"></i> AND</a></li>
+                            {% endif %}
+                            {% if resource.has_wip %}
+                            <li><a href="{{ resource.resource_links.WIP }}"
+                                    {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WIP }}', {'event_category': 'outbound'})"
+                                    {% endif %} aria-label="{{ resource.title }} Windows app"
+                                    title="{{ resource.title }} Windows app"><i class="fa fa-windows"></i> WIN</a></li>
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+                        {% else %}
+                        <!-- mobile only -->
+                        <a href={% if request.user_agent.os.family == 'iOS' and resource.has_ios %}"{{ resource.resource_links.IOS }}"
+                            {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.IOS }}', {'event_category': 'outbound'})"
+                            {% endif %}{% elif request.user_agent.os.family == 'Android' and resource.has_and %}"{{ resource.resource_links.AND }}"
+                            {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.AND }}', {'event_category': 'outbound'})"
+                            {% endif %}{% elif request.user_agent.os.family == 'Windows Phone' and resource.has_wip %}"{{ resource.resource_links.WIP }}"
+                            {% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WIP }}', {'event_category': 'outbound'})"
+                            {% endif %}{% else %}"{{ resource.resource_links.WEB }}"{% if google_analytics %}onclick="gtag('event', '{{ resource.resource_links.WEB }}', {'event_category': 'outbound'})"
+                            {% endif %} {% endif %}title="Go to {{ resource.title }}" class="mdot-resource-link"
+                            style="background: #eee {% if resource.image_url %}url('{{ resource.image_url }}') center{% endif %}; background-size:cover; background-repeat: no-repeat;">
 
-	                         <h4 class="mdot-resource-name">{{ resource.title }}</h4>
+                            <h4 class="mdot-resource-name">{{ resource.title }}</h4>
 
-                          {% if request.user_agent.os.family == 'iOS' and resource.has_ios %}<span class="mdot-native"><i class="fa fa-apple"><span class="sr-only">IOS App</span></i></span>
-	                        {% elif request.user_agent.os.family == 'Android' and resource.has_and %}<span class="mdot-native"><i class="fa fa-android"><span class="sr-only">Android App</span></i></span>
-	                        {% elif request.user_agent.os.family == 'Windows Phone' and resource.has_wip %}<span class="mdot-native"><i class="fa fa-windows"><span class="sr-only">Windows App</span></i></span>
-	                        {% endif %}
+                            {% if request.user_agent.os.family == 'iOS' and resource.has_ios %}<span
+                                class="mdot-native"><i class="fa fa-apple"><span class="sr-only">IOS
+                                        App</span></i></span>
+                            {% elif request.user_agent.os.family == 'Android' and resource.has_and %}<span
+                                class="mdot-native"><i class="fa fa-android"><span class="sr-only">Android
+                                        App</span></i></span>
+                            {% elif request.user_agent.os.family == 'Windows Phone' and resource.has_wip %}<span
+                                class="mdot-native"><i class="fa fa-windows"><span class="sr-only">Windows
+                                        App</span></i></span>
+                            {% endif %}
 
-	                        </a>
+                        </a>
                         {% endif %}
 
-                        </li>
-                        <!-- end template -->
-                        {% endfor %}
+                    </li>
+                    <!-- end template -->
+                    {% endfor %}
 
                     {% else %}
 
@@ -75,7 +103,8 @@
             </div>
         </div>
 
-    </div><!--end slider container -->
+    </div>
+    <!--end slider container -->
 
 </div><!-- end feature -->
 
@@ -88,17 +117,23 @@
     <div class="mdot-sub-content">
         <div class="container">
             <div class="row">
-        	    <h3 id="stores_header" class="sr-only">By UW App Store</h3>
+                <h3 id="stores_header" class="sr-only">By UW App Store</h3>
 
                 {% if request.user_agent.os.family == 'iOS' or not request|is_mobile and not request|is_tablet %}
                 <div class="col-sm-5 col-lg-3 mdot-resource-group">
                     <h4><i class="fa fa-apple"></i> Apple iTunes Store</h4>
-    				<div class="app-store-article">
-    	                <ul>
-    	                    <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464" {% if google_analytics %}onclick="gtag('event', 'https://itunes.apple.com/us/artist/university-of-washington/id328228464', {'event_category': 'outbound'})"{% endif %} title="Go to UW iTunes store" aria-label="UW iTunes store" >University of Washington</a></li>
-    	                    <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304" {% if google_analytics %}onclick="gtag('event', 'https://itunes.apple.com/us/artist/university-washington-alumni/id682824304', {'event_category', 'outbound'})"{% endif %} title="Go to UW Alumni Association iTunes store" aria-label="UW Alumni Association iTunes store" >UW Alumni Association</a></li>
-    	                </ul>
-    				</div>
+                    <div class="app-store-article">
+                        <ul>
+                            <li><a href="https://itunes.apple.com/us/artist/university-of-washington/id328228464"
+                                    {% if google_analytics %}onclick="gtag('event', 'https://itunes.apple.com/us/artist/university-of-washington/id328228464', {'event_category': 'outbound'})"
+                                    {% endif %} title="Go to UW iTunes store" aria-label="UW iTunes store">University of
+                                    Washington</a></li>
+                            <li><a href="https://itunes.apple.com/us/artist/university-washington-alumni/id682824304"
+                                    {% if google_analytics %}onclick="gtag('event', 'https://itunes.apple.com/us/artist/university-washington-alumni/id682824304', {'event_category', 'outbound'})"
+                                    {% endif %} title="Go to UW Alumni Association iTunes store"
+                                    aria-label="UW Alumni Association iTunes store">UW Alumni Association</a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 {% endif %}
@@ -107,18 +142,26 @@
                 <div class="col-sm-5 col-lg-3 mdot-resource-group">
                     <h4><i class="fa fa-android"></i> Google Play Store</h4>
                     <div class="app-store-article">
-    	                <ul>
-    	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en" {% if google_analytics %}onclick="gtag('event', 'https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en', {'event_category': 'outbound'})"{% endif %} title="Go to UW Play store" aria-label="UW Play store" >University of Washington</a></li>
-    	                    <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en" {% if google_analytics %}onclick="gtag('event', 'https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en', {'event_category': 'outbound'})"{% endif %} aria-label="UW Alumni Association Play store" title="Go to UW Alumni Association Play store" >UW Alumni Association</a></li>
-    	                </ul>
+                        <ul>
+                            <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en"
+                                    {% if google_analytics %}onclick="gtag('event', 'https://play.google.com/store/apps/developer?id=University%20of%20Washington&hl=en', {'event_category': 'outbound'})"
+                                    {% endif %} title="Go to UW Play store" aria-label="UW Play store">University of
+                                    Washington</a></li>
+                            <li><a href="https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en"
+                                    {% if google_analytics %}onclick="gtag('event', 'https://play.google.com/store/apps/developer?id=University%20of%20Washington%20Alumni%20Association&hl=en', {'event_category': 'outbound'})"
+                                    {% endif %} aria-label="UW Alumni Association Play store"
+                                    title="Go to UW Alumni Association Play store">UW Alumni Association</a></li>
+                        </ul>
                     </div>
                 </div>
                 {% endif %}
 
-                <div class="col-sm-7 col-lg-6 mdot-dev-link" role="complementary" aria-labelledby="dev_header" style="background: url('{% static  "mdot/img/android-nexus.jpg" %}') 50% 50%; background-size:cover; ">
+                <div class="col-sm-7 col-lg-6 mdot-dev-link" role="complementary" aria-labelledby="dev_header"
+                    style="background: url('{% static  "mdot/img/android-nexus.jpg" %}') 50% 50%; background-size:cover; ">
                     <div class="mdot-dev-callout">
                         <h2 id="dev_header"><i class="fa fa-mobile"></i> Building a mobile app?</h2>
-                        <p>Browse our curated <a href="/developers/">developer resources</a> on building mobile websites and applications here at UW.</p>
+                        <p>Browse our curated <a href="/developers/">developer resources</a> on building mobile websites
+                            and applications here at UW.</p>
                     </div>
                 </div>
 

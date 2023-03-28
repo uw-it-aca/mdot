@@ -5,5 +5,9 @@
   "python.formatting.blackArgs": ["--line-length=79"],
   "beautify.language": {
     "html": ["htm", "html", "django-html"]
+  },
+  "[django-html]": {
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.rulers": [80]
   }
 }
