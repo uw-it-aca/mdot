@@ -1,20 +1,15 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-
 {% block title %}403 Forbidden{% endblock %}
-
 {% block content %}
-
-<div class="mdot-developers">
-
-    <div class="container" >
-
-        <h2 class="mdot-subhead" id="page_header">Forbidden</h2>
-        <p>Only the app sponsor can access the sponsor agreement form.</p>
-        <br/>
-        <p>
-            If you think there is a mistake or you would like to designate a new app sponsor, please resubmit the 
-            <a href="/developers/request">mobile app request form</a> with the new app sponsor's contact information. 
-        </p>
+  <div class="mdot-developers">
+    <div class="container">
+      <h2 class="mdot-subhead" id="page_header">Forbidden</h2>
+      <p>Only the app sponsor can access the sponsor agreement form.</p>
+      <br/>
+      <p>
+        If you think there is a mistake or you would like to designate a new app sponsor, please resubmit the
+        <a href="/developers/request">mobile app request form</a> with the new app sponsor's contact information.
+      </p>
     </div>
-</div>
+  </div>
 {% endblock %}
