@@ -1,18 +1,14 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-
 {% block title %}Building Apps Home{% endblock %}
-
 {% block content %}
-
-<div class="mdot-developers">
-
-    <div class="container" >
-
-        <h2 class="mdot-subhead" id="page_header">Review App Request</h2>
-        
-        <h3>Thank You</h3>
-        <p>You have declined the role of App Sponsor for <strong>{{ app }}</strong>.</p>
-        <p>The designated App Manager will not be granted access to the Developer Program under your sponsorship.</p>
+  <div class="mdot-developers">
+    <div class="container">
+      <h2 class="mdot-subhead" id="page_header">Review App Request</h2>
+      <h3>Thank You</h3>
+      <p>
+        You have declined the role of App Sponsor for <strong>{{ app }}</strong>.
+      </p>
+      <p>The designated App Manager will not be granted access to the Developer Program under your sponsorship.</p>
     </div>
-</div>
+  </div>
 {% endblock %}
