@@ -1,6 +1,8 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
 {% load mdot_extras %}
-{% block title %}Building Apps Home{% endblock %}
+{% block title %}
+  Building Apps Home
+{% endblock title %}
 {% block content %}
   <div class="mdot-developers">
     <div class="container">
@@ -16,21 +18,29 @@
         {% csrf_token %}
         {{ form.non_field_errors }}
         {% if managerform.errors or sponsorform.errors or appform.errors %}
-          <p style="color: red; margin-bottom: 0;">Please correct the field errors below:</p>
+          <p style="color: red; margin-bottom: 0;">
+            Please correct the field errors below:
+          </p>
           <ul style="list-style-type: disc; margin-left: 2em;">
             {% for field, errors in appform.errors.items %}
               {% for error in errors %}
-                <li style="color: red;">App Information: {{ error | replace_this_field:field }}</li>
+                <li style="color: red;">
+                  App Information: {{ error | replace_this_field:field }}
+                </li>
               {% endfor %}
             {% endfor %}
             {% for field, errors in managerform.errors.items %}
               {% for error in errors %}
-                <li style="color: red;">Manager Contact: {{ error | replace_this_field:field }}</li>
+                <li style="color: red;">
+                  Manager Contact: {{ error | replace_this_field:field }}
+                </li>
               {% endfor %}
             {% endfor %}
             {% for field, errors in sponsorform.errors.items %}
               {% for error in errors %}
-                <li style="color: red;">Sponsor Contact: {{ error | replace_this_field:field }}</li>
+                <li style="color: red;">
+                  Sponsor Contact: {{ error | replace_this_field:field }}
+                </li>
               {% endfor %}
             {% endfor %}
           </ul>
@@ -44,7 +54,9 @@
         <p class="form-description">
           This portion of the form should be filled out with the details of the person who will be serving as the App Manager.
         </p>
-        <p class="form-description">The App Manager will be responsible for code maintenance and app distribution.</p>
+        <p class="form-description">
+          The App Manager will be responsible for code maintenance and app distribution.
+        </p>
         {{ managerform }}
         <h3 class="form-heading">Sponsor Contact:</h3>
         <p class="form-description">
@@ -57,7 +69,7 @@
         {{ sponsorform }}
         <p class="btn-container">
           <a href="/developers/" class="btn">Cancel</a>
-          <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+          <input type="submit" class="btn btn-primary" name="submit" value="Submit" />
         </p>
       </form>
     </div>
@@ -92,4 +104,4 @@
         $(this).find('input[type="submit"]').attr('disabled','disabled');
     });
   </script>
-{% endblock %}
+{% endblock content %}

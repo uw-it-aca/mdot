@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Mobile UW:
-      {% block title %}{% endblock %}
+      {% block title %}
+      {% endblock title %}
     </title>
     {% include "mdot/includes/head.html" %}
   </head>
@@ -14,7 +15,8 @@
     <div class="mdot-navbar" role="banner" aria-labelledby="app_header">
       <div class="container-fluid">
         <div class="uw-icon"
-             style="background: transparent url('{% static "mdot/img/w-mini_wht.png" %}') no-repeat"></div>
+             style="background: transparent url('{% static "mdot/img/w-mini_wht.png" %}') no-repeat">
+        </div>
         <div class="uw-background"></div>
         <div class="brand-title">
           <h1 id="app_header" class="mdot-logo">
@@ -28,7 +30,8 @@
          id="content"
          role="main"
          aria-labelledby="page_header">
-      {% block content %}{% endblock %}
+      {% block content %}
+      {% endblock content %}
     </div>
     {% block subcontent %}
       <div class="mdot-sub-content">
@@ -39,9 +42,13 @@
                  role="complementary"
                  aria-labelledby="publish_header"
                  style="margin-bottom: 1.5em">
-              <h2 class="sub-content-header" id="publish_header">Publishing native apps at UW</h2>
+              <h2 class="sub-content-header" id="publish_header">
+                Publishing native apps at UW
+              </h2>
               <div class="sub-content-article">
-                <p>If your native app is intended for broad UW use, consider publication in the UW Developer App Store.</p>
+                <p>
+                  If your native app is intended for broad UW use, consider publication in the UW Developer App Store.
+                </p>
                 <ul>
                   <li>
                     <a href="/developers/guidelines">Guidelines</a>
@@ -76,7 +83,9 @@
                     </ul>
                   </li>
                   <li>
-                    <div class="sub-content-category" style="padding-top:10px;">Email Us About:</div>
+                    <div class="sub-content-category" style="padding-top:10px;">
+                      Email Us About:
+                    </div>
                     <ul>
                       <li>
                         <a href="mailto:{{ service_email }}">Publishing Your App</a>
@@ -95,7 +104,7 @@
           </div>
         </div>
       </div>
-    {% endblock %}
+    {% endblock subcontent %}
     <div id="footer"
          class="mdot-footer"
          role="contentinfo"

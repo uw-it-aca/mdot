@@ -5,6 +5,8 @@
   "python.formatting.blackArgs": ["--line-length=79"],
   "[django-html]": {
     "editor.defaultFormatter": "monosans.djlint",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.wordBreak": "keepAll",
+    "editor.wordWrap": "wordWrapColumn"
   }
 }

@@ -1,5 +1,7 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-{% block title %}Building Apps Home{% endblock %}
+{% block title %}
+  Building Apps Home
+{% endblock title %}
 {% block content %}
   <div class="mdot-developers">
     <div class="container">
@@ -18,7 +20,9 @@
           <h3>Step 2</h3>
           Submit <a href="/developers/request">your application</a> to request access to the UW Developer Store.
           <ul>
-            <li>Designate an appropriate App Manager who will be granted access to the UW Developer Program.</li>
+            <li>
+              Designate an appropriate App Manager who will be granted access to the UW Developer Program.
+            </li>
             <li>
               Designate an appropriate App Sponsor who will be responsible for adhering to the conditions set in the UW App Developer Terms and Conditions.
             </li>
@@ -35,4 +39,4 @@
       </ol>
     </div>
   </div>
-{% endblock %}
+{% endblock content %}
