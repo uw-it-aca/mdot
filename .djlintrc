@@ -1,0 +1,5 @@
+{
+  "profile": "django",
+  "ignore": "D018,H021,H022,H023,H030,H031",
+  "max_line_length": "80"
+}

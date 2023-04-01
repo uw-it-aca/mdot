@@ -1,5 +1,7 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-{% block title %}Building Apps Home{% endblock %}
+{% block title %}
+  Building Apps Home
+{% endblock title %}
 {% block content %}
   <div class="mdot-developers pub-guidelines">
     <div class="container">
@@ -9,11 +11,13 @@
       <ol class="trad-list">
         <li class="article">
           <h3>Meet campus needs</h3>
-          The app must meet known needs of broad campus-wide audiences. If it is intended for very specific audiences (such as a class, department, or school), we advise departments and schools to set up their own App Stores.  If you need assistance in doing this, please feel free to contact us at <a href="mailto:{{ service_email }}">{{ service_email }}</a>.
+          <p>
+            The app must meet known needs of broad campus-wide audiences. If it is intended for very specific audiences (such as a class, department, or school), we advise departments and schools to set up their own App Stores.  If you need assistance in doing this, please feel free to contact us at <a href="mailto:{{ service_email }}">{{ service_email }}</a>.
+          </p>
         </li>
         <li class="article">
           <h3>Sponsorship &amp; support</h3>
-          The app must have a clearly identified:
+          <p>The app must have a clearly identified:</p>
           <ul>
             <li>Official sponsor affiliated with the UW (UWNetID, contact info)</li>
             <li>Maintainer/publisher (single contact) (name, contact info)</li>
@@ -22,11 +26,13 @@
         </li>
         <li class="article">
           <h3>UW policy links</h3>
-          The app must link to the <a href="http://www.washington.edu/itconnect/connect/web-publishing/shared-hosting/tos-privacy/">UW Privacy Policy and Terms of Use</a>.
+          The app must link to the <a href="https://www.washington.edu/itconnect/connect/web-publishing/shared-hosting/tos-privacy/">UW Privacy Policy and Terms of Use</a>.
         </li>
         <li class="article">
           <h3>Usability Review</h3>
-          All apps submitted for publication will be reviewed for usability. Feedback will be given and all critical issues will need to be addressed before publication to the app store.  It is strongly advised to consult with Academic and Collaborative Applications User Experience Team early and often through the development of your app, to ensure that there are no surprises.
+          <p>
+            All apps submitted for publication will be reviewed for usability. Feedback will be given and all critical issues will need to be addressed before publication to the app store.  It is strongly advised to consult with Academic and Collaborative Applications User Experience Team early and often through the development of your app, to ensure that there are no surprises.
+          </p>
           <ul>
             <li>
               <a href={{ ux_contact }}>Schedule a free consultation</a>.
@@ -35,21 +41,25 @@
         </li>
         <li class="article">
           <h3>Accessibility Review</h3>
-          It is the sponsor’s responsibility to ensure accessibility of the app.
+          <p>
+            It is the sponsor&rsquo;s responsibility to ensure accessibility of the app.
+          </p>
           <ul>
             <li>
-              <a href="http://www.washington.edu/accessibility/guidelines/">UW IT Accessibility Guidelines.</a>
+              <a href="https://www.washington.edu/accessibility/guidelines/">UW IT Accessibility Guidelines.</a>
             </li>
             <li>
-              <a href="http://www.washington.edu/accessibility/help/">Get help</a>. We highly recommend scheduling a free consultation on your app with <a href="mailto:{{ help_email }}">UW-IT Accessible Technology Services (ATS)</a>.
+              <a href="https://www.washington.edu/accessibility/help/">Get help</a>. We highly recommend scheduling a free consultation on your app with <a href="mailto:{{ help_email }}">UW-IT Accessible Technology Services (ATS)</a>.
             </li>
           </ul>
         </li>
         <li class="article">
           <h3>UW brand alignment</h3>
-          Using the UW logo? If so, review the <a href="http://www.washington.edu/accessibility/guidelines/">UW Brand Guidelines</a> for appropriate use guidelines.
+          <p>
+            Using the UW logo? If so, review the <a href="https://www.washington.edu/accessibility/guidelines/">UW Brand Guidelines</a> for appropriate use guidelines.
+          </p>
         </li>
       </ol>
     </div>
   </div>
-{% endblock %}
+{% endblock content %}

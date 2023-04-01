@@ -1,5 +1,7 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-{% block title %}Building Apps Home{% endblock %}
+{% block title %}
+  Building Apps Home
+{% endblock title %}
 {% block content %}
   <div class="mdot-developers">
     <div class="container">
@@ -9,8 +11,7 @@
         <div class="col-md-4 article">
           <h4>Mobile web vs. Native vs. Hybrid</h4>
           <p>
-            Before deciding what to build, understand your options. Mobile web is the most versatile and easiest
-            to maintain, but can be limiting if you need robust device integration.
+            Before deciding what to build, understand your options. Mobile web is the most versatile and easiest to maintain, but can be limiting if you need robust device integration.
           </p>
           <ul>
             <!-- unavailable resource  <li><a title="Socious Blog: Mobile vs. Native" href="http://blog.socious.com/the-best-mobile-online-community-options-responsive-web-design-vs-mobile-sites-vs-native-apps">Mobile web vs. Native</a></li> -->
@@ -29,8 +30,7 @@
         <div class="col-md-4 article">
           <h4>Build vs. Buy</h4>
           <p>
-            Existing products may already solve the problems that concern your users. They might not be a perfect
-            fit, but could provide real benefit far more quickly.
+            Existing products may already solve the problems that concern your users. They might not be a perfect fit, but could provide real benefit far more quickly.
           </p>
           <ul>
             <li>
@@ -53,8 +53,7 @@
         <div class="col-md-4 article">
           <h4>True Cost</h4>
           <p>
-            Offering a software solution is never without cost. Understand the real costs for ongoing
-            development, maintenance, support, and communication.
+            Offering a software solution is never without cost. Understand the real costs for ongoing development, maintenance, support, and communication.
           </p>
           <ul>
             <li>
@@ -68,7 +67,9 @@
       <div class="row">
         <div class="col-md-4 article">
           <h4>Solve the Right Problems, for Real Users</h4>
-          <p>Understand and prioritize your user population(s), their needs, and their goals for your software.</p>
+          <p>
+            Understand and prioritize your user population(s), their needs, and their goals for your software.
+          </p>
           <ul>
             <li>
               <a title="Usability First: Intro to User-Centered Design"
@@ -88,7 +89,9 @@
         </div>
         <div class="col-md-4 article">
           <h4>Aim for Simplicity</h4>
-          <p>What's the simplest solution that will provide real benefit to your users?</p>
+          <p>
+            What's the simplest solution that will provide real benefit to your users?
+          </p>
           <ul>
             <li>
               <a title="UX Magazine: The Experience Makes the Product, Not the Features"
@@ -109,7 +112,9 @@
         </div>
         <div class="col-md-4 article">
           <h4>Continuous Improvement</h4>
-          <p>Build a solid foundation, put it in front of users, and then optimize through iteration.</p>
+          <p>
+            Build a solid foundation, put it in front of users, and then optimize through iteration.
+          </p>
           <ul>
             <li>
               <a title="Intercom Blog: Start With a Cupcake"
@@ -126,7 +131,9 @@
       <div class="row">
         <div class="col-md-4 article">
           <h4>So Many Options</h4>
-          <p>Choosing the technology upon which to build is a huge step. Understand your various options.</p>
+          <p>
+            Choosing the technology upon which to build is a huge step. Understand your various options.
+          </p>
           <ul>
             <li>
               <a title="Smashing Magazine: Four Ways To Build a Mobile Application"
@@ -158,8 +165,12 @@
           </ul>
         </div>
         <div class="col-md-4 article">
-          <h4>Performance Tuning</h4>
-          <p>Performance is a primary concern for good user experience. Optimize your applications.</p>
+          <h4>
+            Performance Tuning
+          </h4>
+          <p>
+            Performance is a primary concern for good user experience. Optimize your applications.
+          </p>
           <ul>
             <li>
               <a title="Varvy Blog: Critical Rendering Path Explained"
@@ -261,4 +272,4 @@
       </div>
     </div>
   </div>
-{% endblock %}
+{% endblock content %}
