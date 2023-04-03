@@ -7,71 +7,78 @@
   <div class="mdot-developers">
     <div class="container">
       <h2 class="mdot-subhead" id="page_header">Request Developer Access</h2>
-      <p class="article intro">
-        Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>?
-      </p>
-      <p class="article intro">
-        If so, please fill out the form below. We will process your request and let you know the next steps.
-      </p>
-      <p>All the fields below must be filled out in order to submit this form.</p>
-      <form id="main-form" method="post" class="request-form" novalidate>
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        {% if managerform.errors or sponsorform.errors or appform.errors %}
-          <p style="color: red; margin-bottom: 0;">
-            Please correct the field errors below:
+      <div class="row">
+        <div class="col-md-8">
+          <p class="article intro">
+            Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>?
           </p>
-          <ul style="list-style-type: disc; margin-left: 2em;">
-            {% for field, errors in appform.errors.items %}
-              {% for error in errors %}
-                <li style="color: red;">
-                  App Information: {{ error | replace_this_field:field }}
-                </li>
+          <p class="article intro">
+            If so, please fill out the form below. We will process your request and let you know the next steps.
+          </p>
+          <p>All the fields below must be filled out in order to submit this form.</p>
+          <form id="main-form" method="post" class="request-form" novalidate>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% if managerform.errors or sponsorform.errors or appform.errors %}
+              <p style="color: red; margin-bottom: 0;">
+                Please correct the field errors below:
+              </p>
+              <ul style="list-style-type: disc; margin-left: 2em;">
+                {% for field, errors in appform.errors.items %}
+                  {% for error in errors %}
+                    <li style="color: red;">
+                      App Information: {{ error | replace_this_field:field }}
+                    </li>
+                  {% endfor %}
+                {% endfor %}
+                {% for field, errors in sponsorform.errors.items %}
+                  {% for error in errors %}
+                    <li style="color: red;">
+                      Sponsor Contact: {{ error | replace_this_field:field }}
+                    </li>
+                  {% endfor %}
+                {% endfor %}
+                {% for field, errors in managerform.errors.items %}
+                {% for error in errors %}
+                  <li style="color: red;">
+                    Developer Contact: {{ error | replace_this_field:field }}
+                  </li>
+                {% endfor %}
               {% endfor %}
-            {% endfor %}
-            {% for field, errors in managerform.errors.items %}
-              {% for error in errors %}
-                <li style="color: red;">
-                  Manager Contact: {{ error | replace_this_field:field }}
-                </li>
-              {% endfor %}
-            {% endfor %}
-            {% for field, errors in sponsorform.errors.items %}
-              {% for error in errors %}
-                <li style="color: red;">
-                  Sponsor Contact: {{ error | replace_this_field:field }}
-                </li>
-              {% endfor %}
-            {% endfor %}
-          </ul>
-        {% endif %}
-        <h3 class="form-heading">App Information:</h3>
-        <p class="form-description">
-          This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.
-        </p>
-        {{ appform }}
-        <h3 class="form-heading">Manager Contact:</h3>
-        <p class="form-description">
-          This portion of the form should be filled out with the details of the person who will be serving as the App Manager.
-        </p>
-        <p class="form-description">
-          The App Manager will be responsible for code maintenance and app distribution.
-        </p>
-        {{ managerform }}
-        <h3 class="form-heading">Sponsor Contact:</h3>
-        <p class="form-description">
-          This portion of the form should be filled out with the details of the person who will be serving as the App Sponsor.
-          The sponsor is a Director or above (or equivalent) at unit level within the University of Washington.
-        </p>
-        <p class="form-description">
-          The App Sponsor will be notified and asked to agree to the sponsor terms and conditions.
-        </p>
-        {{ sponsorform }}
-        <p class="btn-container">
-          <a href="/developers/" class="btn">Cancel</a>
-          <input type="submit" class="btn btn-primary" name="submit" value="Submit" />
-        </p>
-      </form>
+              </ul>
+            {% endif %}
+            <h3 class="form-heading">App Information:</h3>
+            <p class="form-description">
+              This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.
+            </p>
+            {{ appform }}
+
+            <h3 class="form-heading">Developer Contact:</h3>
+            <p class="form-description">
+              This portion of the form should be filled out with the details of the person who will be serving as the App Manager.
+            </p>
+            <p class="form-description">
+              The App Manager will be responsible for code maintenance and app distribution.
+            </p>
+            {{ managerform }}
+
+            <h3 class="form-heading">Sponsor Contact:</h3>
+            <p class="form-description">
+              This portion of the form should be filled out with the details of the person who will be serving as the App Sponsor.
+              The sponsor is a Director or above (or equivalent) at unit level within the University of Washington.
+            </p>
+            <p class="form-description">
+              The App Sponsor will be notified and asked to agree to the sponsor terms and conditions.
+            </p>
+            {{ sponsorform }}
+            
+            <p class="btn-container">
+              <a href="/developers/" class="btn">Cancel</a>
+              <input type="submit" class="btn btn-primary" name="submit" value="Submit" />
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <script>
