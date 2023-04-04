@@ -1,4 +1,4 @@
-{% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+{% extends "mdot/boilerplate.html" %}
 {% block title %}
   Building Apps Home
 {% endblock title %}
@@ -7,7 +7,7 @@
     <div class="container">
       <h2 class="mdot-subhead" id="page_header">Sponsor Agreement</h2>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col">
           <section>
             <p class="article intro">
               You have been designated as the sponsor for the app <strong>{{ app_name }}</strong>. App Sponsors are responsible for adhering to the conditions set in the UW Terms and Conditions. Please fill out the app sponsor agreement form below to take responsibility for the app.

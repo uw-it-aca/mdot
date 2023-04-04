@@ -1,4 +1,4 @@
-{% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
+{% extends "mdot/boilerplate.html" %}
 {% block title %}
   Building Apps Home
 {% endblock title %}
@@ -9,7 +9,7 @@
         UW Developer Store <span class="nobreak">Publishing Process</span>
       </h2>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col">
           <p class="article intro">
             So, you have developed a native app and want to publish it under the UW Developer Store? Here is what you do next.
           </p>
