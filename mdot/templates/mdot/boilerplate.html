@@ -16,93 +16,120 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"/>
     <!-- Favicons -->
-    <style></style>
+    <style>
+      .bg-dark-purple {
+        background-color: #4b2e83;
+      }
+
+      .bg-purple {
+        background-color: #613BA9;
+      }
+
+      .text-dark-beige {
+        color: #85754d;
+      }
+
+    </style>
   </head>
   <body>
-    <div class="col-lg-8 mx-auto p-4 py-md-5">
-      <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-        <a href="/"
-           class="d-flex align-items-center text-body-emphasis text-decoration-none text-uppercase fw-bold"
-           style="color:#4B2E84 !important">
-          <span class="fs-4">Mobile<i class="bi bi-phone fs-4"></i>UW</span>
-        </a>
-      </header>
-      <main>
-        {% block content %}
-        {% endblock content %}
-      </main>
-      <aside>
-        {% block subcontent %}
-          <div class="container">
-            <!-- Example row of columns -->
-            <div class="row">
-              <div class="col">
-                <h2 class="sub-content-header" id="publish_header">
-                  Publishing native apps at UW
-                </h2>
-                <div class="sub-content-article">
-                  <p>
-                    If your native app is intended for broad UW use, consider publication in the UW Developer App Store.
-                  </p>
-                  <ul>
-                    <li>
-                      <a href="/developers/guidelines">Guidelines</a>
-                    </li>
-                    <li>
-                      <a href="/developers/process">Process Overview</a>
-                    </li>
-                    <li>
-                      <a href="/developers/request">Request Developer Access</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-md-4 mdot-resource-group"
-                   role="complementary"
-                   aria-labelledby="help_header">
-                <h2 class="sub-content-header" id="help_header">Get Help</h2>
-                <div class="sub-content-article">
-                  <ul>
-                    <li>
-                      <div class="sub-content-category">Resources:</div>
-                      <ul>
+    <div>
+      <div class="bg-dark-purple lh-lg">
+        <div class="container">
+          <div class="row">
+            <header class="col d-flex align-items-center">
+              <a href="/"
+                 class="d-flex align-items-center text-decoration-none text-uppercase fw-bold text-white">
+                <span class="fs-2">Mobile<i class="bi bi-phone"></i>UW</span>
+              </a>
+            </header>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <main class="col py-5">
+            {% block content %}
+            {% endblock content %}
+          </main>
+        </div>
+      </div>
+      <div class="bg-purple">
+        <div class="container">
+          <div class="row">
+            <aside class="col">
+              {% block subcontent %}
+                <!-- Example row of columns -->
+                <div class="row py-4 text-light">
+                  <div class="col">
+                    <h2 class="h4 text-uppercase" id="publish_header">
+                      Publishing native apps at UW
+                    </h2>
+                    <div class="sub-content-article">
+                      <p>
+                        If your native app is intended for broad UW use, consider publication in the UW Developer App Store.
+                      </p>
+                      <ul class="list-unstyled">
                         <li>
-                          <a href="/developers">Building a Mobile App</a>
+                          <a href="/developers/guidelines" class="text-light">Guidelines</a>
                         </li>
                         <li>
-                          <a href="http://www.washington.edu/accessibility/help/">Accessibility Help</a>
+                          <a href="/developers/process" class="text-light">Process Overview</a>
                         </li>
                         <li>
-                          <a href="http://www.washington.edu/brand/">UW Brand Guidelines</a>
+                          <a href="/developers/request" class="text-light">Request Developer Access</a>
                         </li>
                       </ul>
-                    </li>
-                    <li>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mdot-resource-group"
+                       role="complementary"
+                       aria-labelledby="help_header">
+                    <h2 class="h4 text-uppercase text-light" id="help_header">Get Help</h2>
+                    <div class="sub-content-article">
+                      <div class="sub-content-category">Resources:</div>
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="/developers" class="text-light">Building a Mobile App</a>
+                        </li>
+                        <li>
+                          <a href="http://www.washington.edu/accessibility/help/"
+                             class="text-light">Accessibility Help</a>
+                        </li>
+                        <li>
+                          <a href="http://www.washington.edu/brand/" class="text-light">UW Brand Guidelines</a>
+                        </li>
+                      </ul>
                       <div class="sub-content-category" style="padding-top:10px;">
                         Email Us About:
                       </div>
-                      <ul>
+                      <ul class="list-unstyled">
                         <li>
-                          <a href="mailto:{{ service_email }}">Publishing Your App</a>
+                          <a href="mailto:{{ service_email }}" class="text-light">Publishing Your App</a>
                         </li>
                         <li>
-                          <a href="mailto:{{ service_email }}">Creating an App Store</a>
+                          <a href="mailto:{{ service_email }}" class="text-light">Creating an App Store</a>
                         </li>
                         <li>
-                          <a href="{{ ux_contact }}" title="Request a UX consultation">User Experience/Usability Consultation</a>
+                          <a href="{{ ux_contact }}"
+                             title="Request a UX consultation"
+                             class="text-light">User Experience/Usability Consultation</a>
                         </li>
                       </ul>
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              {% endblock subcontent %}
+            </aside>
           </div>
-        {% endblock subcontent %}
-      </aside>
-      <footer class="pt-5 my-5 text-body-secondary border-top">
-        Copyright &copy; 2023 University of Washington Privacy Terms
-      </footer>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <footer class="col">
+            Copyright &copy; 2023 University of Washington Privacy Terms
+          </footer>
+        </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
