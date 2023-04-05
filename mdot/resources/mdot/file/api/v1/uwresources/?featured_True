@@ -44,6 +44,196 @@
     "id": 2,
     "title": "Maps",
     "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
+    "image": "/static/mdot/img/android-nexus.jpg",
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/maps/"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:33:02.041000Z",
+    "last_modified": "2015-08-05T18:33:42.690000Z"
+  },
+  {
+    "id": 3,
+    "title": "IT Connect",
+    "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
+    "image": null,
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/maps/"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:33:02.041000Z",
+    "last_modified": "2015-08-05T18:33:42.690000Z"
+  },
+  {
+    "id": 4,
+    "title": "Calendar",
+    "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
+    "image": "/static/mdot/img/android-nexus.jpg",
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/maps/"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:33:02.041000Z",
+    "last_modified": "2015-08-05T18:33:42.690000Z"
+  },
+  {
+    "id": 5,
+    "title": "One Bus Away",
+    "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
+    "image": null,
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/maps/"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:33:02.041000Z",
+    "last_modified": "2015-08-05T18:33:42.690000Z"
+  },
+  {
+    "id": 6,
+    "title": "Events",
+    "feature_desc": "Cras vehicula ornare orci quis congue. Vestibulum eget nisi vulputate, gravida elit in.",
+    "image": null,
+    "featured": true,
+    "accessible": false,
+    "responsive_web": true,
+    "resource_links": [
+      {
+        "link_type": "WEB",
+        "url": "http://www.washington.edu/maps/"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+      }
+    ],
+    "intended_audiences": [
+      {
+        "audience": "students"
+      },
+      {
+        "audience": "faculty"
+      },
+      {
+        "audience": "staff"
+      },
+      {
+        "audience": "general_public"
+      }
+    ],
+    "campus_bothell": false,
+    "campus_tacoma": false,
+    "campus_seattle": true,
+    "created_date": "2015-08-05T18:33:02.041000Z",
+    "last_modified": "2015-08-05T18:33:42.690000Z"
+  },
+  {
+    "id": 7,
+    "title": "Scout",
+    "feature_desc": "Donec vel pellentesque nulla. Fusce hendrerit eros nec tellus eleifend.",
     "image": null,
     "featured": true,
     "accessible": false,
