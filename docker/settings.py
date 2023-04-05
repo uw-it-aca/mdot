@@ -25,6 +25,7 @@ INSTALLED_APPS += [
     "mdot",
     "compressor",
     # "django.contrib.admin",
+    "django_bootstrap5",
 ]
 
 MIDDLEWARE += (

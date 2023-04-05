@@ -1,5 +1,7 @@
 {% extends "mdot/boilerplate.html" %}
 {% load mdot_extras %}
+{% load django_bootstrap5 %}
+
 {% block title %}
   Building Apps Home
 {% endblock title %}
@@ -16,42 +18,16 @@
             If so, please fill out the form below. We will process your request and let you know the next steps.
           </p>
           <p>All the fields below must be filled out in order to submit this form.</p>
-          <form id="main-form" method="post" class="request-form" novalidate>
+          <form id="main-form" method="post" class="col-6" novalidate>
             {% csrf_token %}
+    
             {{ form.non_field_errors }}
-            {% if managerform.errors or sponsorform.errors or appform.errors %}
-              <p style="color: red; margin-bottom: 0;">
-                Please correct the field errors below:
-              </p>
-              <ul style="list-style-type: disc; margin-left: 2em;">
-                {% for field, errors in appform.errors.items %}
-                  {% for error in errors %}
-                    <li style="color: red;">
-                      App Information: {{ error | replace_this_field:field }}
-                    </li>
-                  {% endfor %}
-                {% endfor %}
-                {% for field, errors in sponsorform.errors.items %}
-                  {% for error in errors %}
-                    <li style="color: red;">
-                      Sponsor Contact: {{ error | replace_this_field:field }}
-                    </li>
-                  {% endfor %}
-                {% endfor %}
-                {% for field, errors in managerform.errors.items %}
-                {% for error in errors %}
-                  <li style="color: red;">
-                    Developer Contact: {{ error | replace_this_field:field }}
-                  </li>
-                {% endfor %}
-              {% endfor %}
-              </ul>
-            {% endif %}
+          
             <h3 class="form-heading">App Information:</h3>
             <p class="form-description">
               This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.
             </p>
-            {{ appform }}
+            {% bootstrap_form appform %}
 
             <h3 class="form-heading">Developer Contact:</h3>
             <p class="form-description">
@@ -60,7 +36,7 @@
             <p class="form-description">
               The App Manager will be responsible for code maintenance and app distribution.
             </p>
-            {{ managerform }}
+            {% bootstrap_form managerform %}
 
             <h3 class="form-heading">Sponsor Contact:</h3>
             <p class="form-description">
@@ -70,12 +46,11 @@
             <p class="form-description">
               The App Sponsor will be notified and asked to agree to the sponsor terms and conditions.
             </p>
-            {{ sponsorform }}
+            {% bootstrap_form sponsorform %}
             
-            <p class="btn-container">
-              <a href="/developers/" class="btn">Cancel</a>
-              <input type="submit" class="btn btn-primary" name="submit" value="Submit" />
-            </p>
+            {% bootstrap_button button_type="link" href="/developers/" content="Cancel" %}
+            {% bootstrap_button button_type="submit" content="Submit" %}
+
           </form>
         </div>
       </div>

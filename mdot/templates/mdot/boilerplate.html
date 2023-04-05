@@ -20,6 +20,9 @@
       .bg-dark-purple {
         background-color: #4b2e83;
       }
+      .text-dark-purple {
+        color: #4b2e83;
+      }
 
       .bg-purple {
         background-color: #613BA9;
@@ -29,17 +32,29 @@
         color: #85754d;
       }
 
+      .square {
+        width: 100%;
+        padding-bottom: 100%;
+        background-size: cover;
+        background-position: center;
+        transition-duration: 0.2s;
+        transition-property: transform;
+      }
+      .square:hover {
+        transform: scale(1.05);
+      }
+      
     </style>
   </head>
   <body>
     <div>
-      <div class="bg-dark-purple lh-lg">
+      <div class="bg-dark-purple lh-lg py-2">
         <div class="container">
           <div class="row">
             <header class="col d-flex align-items-center">
               <a href="/"
                  class="d-flex align-items-center text-decoration-none text-uppercase fw-bold text-white">
-                <span class="fs-2">Mobile<i class="bi bi-phone"></i>UW</span>
+                <span class="fs-3">Mobile<i class="bi bi-phone"></i>UW</span>
               </a>
             </header>
           </div>
@@ -53,15 +68,15 @@
           </main>
         </div>
       </div>
-      <div class="bg-purple">
+      <div class="bg-light border-top border-bottom">
         <div class="container">
           <div class="row">
             <aside class="col">
               {% block subcontent %}
-                <!-- Example row of columns -->
-                <div class="row py-4 text-light">
+                <div class="row py-4 text-dark">
                   <div class="col">
-                    <h2 class="h4 text-uppercase" id="publish_header">
+                    <h2 class="h4 text-uppercase text-dark-purple fw-bold"
+                        id="publish_header">
                       Publishing native apps at UW
                     </h2>
                     <div class="sub-content-article">
@@ -70,49 +85,46 @@
                       </p>
                       <ul class="list-unstyled">
                         <li>
-                          <a href="/developers/guidelines" class="text-light">Guidelines</a>
+                          <a href="/developers/guidelines" class="link-dark">Guidelines</a>
                         </li>
                         <li>
-                          <a href="/developers/process" class="text-light">Process Overview</a>
+                          <a href="/developers/process" class="link-dark">Process Overview</a>
                         </li>
                         <li>
-                          <a href="/developers/request" class="text-light">Request Developer Access</a>
+                          <a href="/developers/request" class="link-dark">Request Developer Access</a>
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <div class="col-md-4 mdot-resource-group"
-                       role="complementary"
-                       aria-labelledby="help_header">
-                    <h2 class="h4 text-uppercase text-light" id="help_header">Get Help</h2>
+                  <div class="col-md-4 " role="complementary" aria-labelledby="help_header">
+                    <h2 class="h4 text-uppercase text-dark-purple fw-bold" id="help_header">
+                      Get Help
+                    </h2>
                     <div class="sub-content-article">
-                      <div class="sub-content-category">Resources:</div>
+                      <div class="fw-bold">Resources:</div>
                       <ul class="list-unstyled">
                         <li>
-                          <a href="/developers" class="text-light">Building a Mobile App</a>
+                          <a href="/developers" class="link-dark">Building a Mobile App</a>
                         </li>
                         <li>
-                          <a href="http://www.washington.edu/accessibility/help/"
-                             class="text-light">Accessibility Help</a>
+                          <a href="http://www.washington.edu/accessibility/help" class="link-dark">Accessibility Help</a>
                         </li>
                         <li>
-                          <a href="http://www.washington.edu/brand/" class="text-light">UW Brand Guidelines</a>
+                          <a href="http://www.washington.edu/brand/" class="link-dark">UW Brand Guidelines</a>
                         </li>
                       </ul>
-                      <div class="sub-content-category" style="padding-top:10px;">
-                        Email Us About:
-                      </div>
+                      <div class="fw-bold">Email Us About:</div>
                       <ul class="list-unstyled">
                         <li>
-                          <a href="mailto:{{ service_email }}" class="text-light">Publishing Your App</a>
+                          <a href="mailto:{{ service_email }}" class="link-dark">Publishing Your App</a>
                         </li>
                         <li>
-                          <a href="mailto:{{ service_email }}" class="text-light">Creating an App Store</a>
+                          <a href="mailto:{{ service_email }}" class="link-dark">Creating an App Store</a>
                         </li>
                         <li>
                           <a href="{{ ux_contact }}"
                              title="Request a UX consultation"
-                             class="text-light">User Experience/Usability Consultation</a>
+                             class="link-dark">User Experience/Usability Consultation</a>
                         </li>
                       </ul>
                     </div>
@@ -125,8 +137,16 @@
       </div>
       <div class="container">
         <div class="row">
-          <footer class="col">
-            Copyright &copy; 2023 University of Washington Privacy Terms
+          <footer class="col small lh-lg py-2">
+            <span class="me-5">Copyright &copy; {% now "Y" %} University of Washington</span>
+            <ul class="d-inline list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="https://www.washington.edu/online/privacy/" target="_blank">Privacy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.washington.edu/online/terms/" target="_blank">Terms</a>
+              </li>
+            </ul>
           </footer>
         </div>
       </div>
