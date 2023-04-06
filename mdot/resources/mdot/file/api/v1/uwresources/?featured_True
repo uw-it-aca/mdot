@@ -3,7 +3,7 @@
     "id": 1,
     "title": "UW Directory",
     "feature_desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "image": "/static/mdot/img/android-nexus.jpg",
+    "image": "/static/mdot/img/random-students2.png",
     "featured": true,
     "accessible": false,
     "responsive_web": true,
@@ -15,6 +15,10 @@
       {
         "link_type": "IOS",
         "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
+      },
+      {
+        "link_type": "AND",
+        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
       }
     ],
     "intended_audiences": [
@@ -56,6 +60,10 @@
       {
         "link_type": "AND",
         "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+      },
+      {
+        "link_type": "IOS",
+        "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
       }
     ],
     "intended_audiences": [
@@ -82,7 +90,7 @@
     "id": 3,
     "title": "IT Connect",
     "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
-    "image": null,
+    "image": "/static/mdot/img/random-students.png",
     "featured": true,
     "accessible": false,
     "responsive_web": true,
@@ -90,10 +98,6 @@
       {
         "link_type": "WEB",
         "url": "http://www.washington.edu/maps/"
-      },
-      {
-        "link_type": "AND",
-        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
       }
     ],
     "intended_audiences": [
@@ -120,7 +124,7 @@
     "id": 4,
     "title": "Calendar",
     "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
-    "image": "/static/mdot/img/android-nexus.jpg",
+    "image": "/static/mdot/img/random-students.png",
     "featured": true,
     "accessible": false,
     "responsive_web": true,
@@ -158,7 +162,7 @@
     "id": 5,
     "title": "One Bus Away",
     "feature_desc": "Nunc augue sapien, rutrum feugiat euismod vel, iaculis id ante.",
-    "image": null,
+    "image": "/static/mdot/img/random-students2.png",
     "featured": true,
     "accessible": false,
     "responsive_web": true,
@@ -206,8 +210,8 @@
         "url": "http://www.washington.edu/maps/"
       },
       {
-        "link_type": "AND",
-        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+        "link_type": "IOS",
+        "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
       }
     ],
     "intended_audiences": [
@@ -244,8 +248,8 @@
         "url": "http://www.washington.edu/maps/"
       },
       {
-        "link_type": "AND",
-        "url": "https://play.google.com/store/apps/details?id=com.joulespersecond.seattlebusbot&hl=en"
+        "link_type": "IOS",
+        "url": "https://apps.apple.com/us/app/uw-scout/id551472160"
       }
     ],
     "intended_audiences": [
