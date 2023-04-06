@@ -3,42 +3,35 @@
   Building Apps Home
 {% endblock title %}
 {% block content %}
-  <div class="mdot-developers pub-guidelines">
-    <div class="container">
-      <h2 class="mdot-subhead" id="page_header">
-        UW Developer Store <span class="nobreak">Publishing Guidelines</span>
-      </h2>
-      <div class="row">
-        <div class="col">
-          <h3>Publishing Roles</h3>
-          <p>
-            Publishing an Application (App) through the UW Mobile Developer Programs, will require adhering to the followingroles and responsibilities:
-          </p>
-          <ul>
-            <li>
-              <strong>Application Sponsor</strong>
-              <p>
-                The Sponsor is a Director or above (or equivalent) at the unit level within the University of Washington.
-              </p>
-            </li>
-            <li>
-              <strong>Primary Developer</strong>
-              <p>
-                The Developer will be responsible for code maintenance and app distribution.
-              </p>
-            </li>
-            <li>
-              <strong>UW-IT</strong>
-              <p>
-                University of Washington, Information Technology (UW-IT) will be responsible for granting access to the various Application developer programs.
-              </p>
-            </li>
-          </ul>
-          {% include "mdot/includes/guidelines/sponsor_resp.html" %}
-          {% include "mdot/includes/guidelines/dev_resp.html" %}
-          {% include "mdot/includes/guidelines/uwit_resp.html" %}
-        </div>
-      </div>
-    </div>
-  </div>
+  <h1 id="page_header">
+    UW Developer Store <span class="nobreak">Publishing Guidelines</span>
+  </h1>
+  <p class="lead mb-4">Lorem ipsum dolor amet...</p>
+  <h2>Publishing Roles</h2>
+  <p>
+    Publishing an Application (App) through the UW Mobile Developer Programs, will require adhering to the followingroles and responsibilities:
+  </p>
+  <ul>
+    <li>
+      <strong>Application Sponsor</strong>
+      <p>
+        The Sponsor is a Director or above (or equivalent) at the unit level within the University of Washington.
+      </p>
+    </li>
+    <li>
+      <strong>Primary Developer</strong>
+      <p>
+        The Developer will be responsible for code maintenance and app distribution.
+      </p>
+    </li>
+    <li>
+      <strong>UW-IT</strong>
+      <p>
+        University of Washington, Information Technology (UW-IT) will be responsible for granting access to the various Application developer programs.
+      </p>
+    </li>
+  </ul>
+  {% include "mdot/includes/guidelines/sponsor_resp.html" %}
+  {% include "mdot/includes/guidelines/dev_resp.html" %}
+  {% include "mdot/includes/guidelines/uwit_resp.html" %}
 {% endblock content %}

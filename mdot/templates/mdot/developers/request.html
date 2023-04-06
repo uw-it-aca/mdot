@@ -5,48 +5,44 @@
   Building Apps Home
 {% endblock title %}
 {% block content %}
-  <div class="mdot-developers">
-    <div class="container">
-      <h2 class="mdot-subhead" id="page_header">Request Developer Access</h2>
-      <div class="row">
-        <div class="col">
-          <p class="article intro">
-            Ready to submit your app for inclusion in the UW Development App Stores? Does it meet our <a href="/developers/guidelines">publishing guidelines</a>?
-          </p>
-          <p class="article intro">
-            If so, please fill out the form below. We will process your request and let you know the next steps.
-          </p>
-          <p>All the fields below must be filled out in order to submit this form.</p>
-          <form id="main-form" method="post" class="col-6" novalidate>
-            {% csrf_token %}
-            {{ form.non_field_errors }}
-            <h3 class="form-heading">App Information:</h3>
-            <p class="form-description">
-              This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.
-            </p>
-            {% bootstrap_form appform %}
-            <h3 class="form-heading">Developer Contact:</h3>
-            <p class="form-description">
-              This portion of the form should be filled out with the details of the person who will be serving as the App Manager.
-            </p>
-            <p class="form-description">
-              The App Manager will be responsible for code maintenance and app distribution.
-            </p>
-            {% bootstrap_form managerform %}
-            <h3 class="form-heading">Sponsor Contact:</h3>
-            <p class="form-description">
-              This portion of the form should be filled out with the details of the person who will be serving as the App Sponsor.
-              The sponsor is a Director or above (or equivalent) at unit level within the University of Washington.
-            </p>
-            <p class="form-description">
-              The App Sponsor will be notified and asked to agree to the sponsor terms and conditions.
-            </p>
-            {% bootstrap_form sponsorform %}
-            {% bootstrap_button button_type="link" href="/developers/" content="Cancel" %}
-            {% bootstrap_button button_type="submit" content="Submit" %}
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h1 id="page_header">Request Developer Access</h1>
+  <p class="lead mb-4">
+    Ready to submit your app for inclusion in the UW Development App Stores?
+  </p>
+  <p>
+    Does it meet our <a href="/developers/guidelines">publishing guidelines</a>?
+  </p>
+  <p class="article intro">
+    If so, please fill out the form below. We will process your request and let you know the next steps.
+  </p>
+  <p>All the fields below must be filled out in order to submit this form.</p>
+  
+  <form id="main-form" method="post" class="col-6" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <h3 class="form-heading">App Information:</h3>
+    <p class="form-description">
+      This portion of the form should be filled out with the details of the app you would like to submit to the UW App Store.
+    </p>
+    {% bootstrap_form appform %}
+    <h3 class="form-heading">Developer Contact:</h3>
+    <p class="form-description">
+      This portion of the form should be filled out with the details of the person who will be serving as the App Manager.
+    </p>
+    <p class="form-description">
+      The App Manager will be responsible for code maintenance and app distribution.
+    </p>
+    {% bootstrap_form managerform %}
+    <h3 class="form-heading">Sponsor Contact:</h3>
+    <p class="form-description">
+      This portion of the form should be filled out with the details of the person who will be serving as the App Sponsor.
+      The sponsor is a Director or above (or equivalent) at unit level within the University of Washington.
+    </p>
+    <p class="form-description">
+      The App Sponsor will be notified and asked to agree to the sponsor terms and conditions.
+    </p>
+    {% bootstrap_form sponsorform %}
+    {% bootstrap_button button_type="link" href="/developers/" content="Cancel" %}
+    {% bootstrap_button button_type="submit" content="Submit" %}
+  </form>
 {% endblock content %}
