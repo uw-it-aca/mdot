@@ -1,5 +1,7 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-{% block title %}403 Forbidden{% endblock %}
+{% block title %}
+  403 Forbidden
+{% endblock title %}
 {% block content %}
   <div class="mdot-developers">
     <div class="container">
@@ -12,4 +14,4 @@
       </p>
     </div>
   </div>
-{% endblock %}
+{% endblock content %}
