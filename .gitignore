@@ -74,3 +74,6 @@ static/CACHE
 # IDE files
 .idea
 .idea/
+
+# VSCode
+.vscode
