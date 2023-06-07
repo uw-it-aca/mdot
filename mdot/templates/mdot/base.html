@@ -1,19 +1,22 @@
 {% load static %}
 {% load compress %}
-
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Mobile UW: {% block title %}{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Mobile UW:
+      {% block title %}
+      {% endblock title %}
+    </title>
     {% include "mdot/includes/head.html" %}
   </head>
   <body>
-
     <div class="mdot-navbar" role="banner" aria-labelledby="app_header">
       <div class="container-fluid">
-        <div class="uw-icon" style="background: transparent url('{% static "mdot/img/w-mini_wht.png" %}') no-repeat;"></div>
+        <div class="uw-icon"
+             style="background: transparent url('{% static "mdot/img/w-mini_wht.png" %}') no-repeat">
+        </div>
         <div class="uw-background"></div>
         <div class="brand-title">
           <h1 id="app_header" class="mdot-logo">
@@ -23,61 +26,100 @@
         </div>
       </div>
     </div>
-
-    <div class="mdot-content" id="content" role="main" aria-labelledby="page_header">
-      {% block content %}{% endblock %}
+    <div class="mdot-content"
+         id="content"
+         role="main"
+         aria-labelledby="page_header">
+      {% block content %}
+      {% endblock content %}
     </div>
-
     {% block subcontent %}
-    <div class="mdot-sub-content" >
-
+      <div class="mdot-sub-content">
         <div class="container">
-
-            <!-- Example row of columns -->
-            <div class="row" >
-
-                <div class="col-md-8 mdot-resource-group" role="complementary" aria-labelledby="publish_header" style="margin-bottom: 1.5em;">
-                    <h2 class="sub-content-header" id="publish_header">Publishing native apps at UW</h2>
-                    <div class="sub-content-article">
-                    <p>If your native app is intended for broad UW use, consider publication in the UW Developer App Store.</p>
-                    <ul>
-                        <li><a href="/developers/guidelines">Guidelines</a></li>
-                        <li><a href="/developers/process" >Process Overview</a></li>
-                        <li><a href="/developers/request">Request Developer Access</a></li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 mdot-resource-group" role="complementary" aria-labelledby="help_header">
-                  <h2 class="sub-content-header" id="help_header">Get Help</h2>
-                  <div class="sub-content-article">
-                    <ul>
-                        <li><div class="sub-content-category">Resources:</div>
-                        	<ul>
-    							<li><a href="/developers">Building a Mobile App</a></li>
-    							<li><a href="http://www.washington.edu/accessibility/help/">Accessibility Help</a></li>
-    							<li><a href="http://www.washington.edu/brand/">UW Brand Guidelines</a></li>
-                        	</ul></li>
-                        	<li><div class="sub-content-category" style="padding-top:10px;">Email Us About:</div><ul>
-                                    <li><a href="mailto:{{service_email}}">Publishing Your App</a></li>
-                                    <li><a href="mailto:{{service_email}}">Creating an App Store</a></li>
-                                    <li><a href="{{ux_contact}}" title="Request a UX consultation">User Experience/Usability Consultation</a></li>
-                        	</ul></li>
-                    </ul>
-                  </div>
-                </div>
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-8 mdot-resource-group"
+                 role="complementary"
+                 aria-labelledby="publish_header"
+                 style="margin-bottom: 1.5em">
+              <h2 class="sub-content-header" id="publish_header">
+                Publishing native apps at UW
+              </h2>
+              <div class="sub-content-article">
+                <p>
+                  If your native app is intended for broad UW use, consider publication in the UW Developer App Store.
+                </p>
+                <ul>
+                  <li>
+                    <a href="/developers/guidelines">Guidelines</a>
+                  </li>
+                  <li>
+                    <a href="/developers/process">Process Overview</a>
+                  </li>
+                  <li>
+                    <a href="/developers/request">Request Developer Access</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-
-
+            <div class="col-md-4 mdot-resource-group"
+                 role="complementary"
+                 aria-labelledby="help_header">
+              <h2 class="sub-content-header" id="help_header">Get Help</h2>
+              <div class="sub-content-article">
+                <ul>
+                  <li>
+                    <div class="sub-content-category">Resources:</div>
+                    <ul>
+                      <li>
+                        <a href="/developers">Building a Mobile App</a>
+                      </li>
+                      <li>
+                        <a href="http://www.washington.edu/accessibility/help/">Accessibility Help</a>
+                      </li>
+                      <li>
+                        <a href="http://www.washington.edu/brand/">UW Brand Guidelines</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <div class="sub-content-category" style="padding-top:10px;">
+                      Email Us About:
+                    </div>
+                    <ul>
+                      <li>
+                        <a href="mailto:{{ service_email }}">Publishing Your App</a>
+                      </li>
+                      <li>
+                        <a href="mailto:{{ service_email }}">Creating an App Store</a>
+                      </li>
+                      <li>
+                        <a href="{{ ux_contact }}" title="Request a UX consultation">User Experience/Usability Consultation</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-
-    {% endblock %}
-
-    <div id="footer" class="mdot-footer" role="contentinfo" aria-label="Copyright & Legal Info">
+      </div>
+    {% endblock subcontent %}
+    <div id="footer"
+         class="mdot-footer"
+         role="contentinfo"
+         aria-label="Copyright & Legal Info">
       <div class="container">
-        <div>Copyright &copy; {% now "Y" %} UW-IT AXDD <span><a target="_blank" href="http://www.washington.edu/online/privacy/" {% if google_analytics %}onclick="gtag('event','http://www.washington.edu/online/privacy/', {'event_category': 'outbound'})"{% endif %} title="UW Privacy Policy">Privacy</a></span> <span><a target="_blank" href="http://www.washington.edu/online/terms/" {% if google_analytics %}onclick="gtag('event','http://www.washington.edu/online/terms/', {'event_category': 'outbound'})"{% endif %} title="UW Terms of Use">Terms</a></span></div>
+        <div>
+          Copyright &copy; {% now "Y" %} UW-IT AXDD <span><a target="_blank"
+   href="http://www.washington.edu/online/privacy/"
+   {% if google_analytics %}onclick="gtag('event','http://www.washington.edu/online/privacy/', {'event_category': 'outbound'})"{% endif %}
+   title="UW Privacy Policy">Privacy</a></span> <span><a target="_blank"
+   href="http://www.washington.edu/online/terms/"
+   {% if google_analytics %}onclick="gtag('event','http://www.washington.edu/online/terms/', {'event_category': 'outbound'})"{% endif %}
+   title="UW Terms of Use">Terms</a></span>
+        </div>
       </div>
     </div>
-
   </body>
 </html>

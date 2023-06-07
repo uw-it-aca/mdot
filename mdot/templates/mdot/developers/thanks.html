@@ -1,22 +1,17 @@
 {% extends request.GET.hybrid|yesno:"mdot/base_hybrid.html,mdot/base.html" %}
-
-{% block title %}Building Apps Home{% endblock %}
-
+{% block title %}
+  Building Apps Home
+{% endblock title %}
 {% block content %}
-
-<div class="mdot-developers">
-
-    <div class="container" >
-
-        <h2 class="mdot-subhead" id="page_header">Request Developer Access</h2>
-        <h3>Thank You</h3> 
-        <p class="thanks">Your response has been recorded.</p>
-        <p class="thanks">
-            The App Sponsor will be notified and asked to agree to the sponsor terms and conditions. Access to the Developer Program 
-            will be granted to the App Manager after the Sponsor submits the app sponsor agreement form.
-        </p>
-
-
+  <div class="mdot-developers">
+    <div class="container">
+      <h2 class="mdot-subhead" id="page_header">Request Developer Access</h2>
+      <h3>Thank You</h3>
+      <p class="thanks">Your response has been recorded.</p>
+      <p class="thanks">
+        The App Sponsor will be notified and asked to agree to the sponsor terms and conditions. Access to the Developer Program
+        will be granted to the Primary Developer after the Sponsor submits the app sponsor agreement form.
+      </p>
     </div>
-</div>
+  </div>
 {% endblock %}
