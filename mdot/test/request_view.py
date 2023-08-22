@@ -30,6 +30,10 @@ class MdotRequestTest(TestCase):
             name='Android',
             app_store='Google Play Store'
         )
+        self.platform_ios = Platform.objects.create(
+            name='IOS',
+            app_store='Apple Store'
+        )
         self.sponsor = Sponsor.objects.create(
             first_name="sponsor",
             last_name="last name",
@@ -53,6 +57,14 @@ class MdotRequestTest(TestCase):
             requestor=self.requestor,
         )
         self.app.platform.add(self.platform)
+        self.app_duplicate = App.objects.create(
+            name="app name",
+            primary_language="English",
+            app_manager=self.manager,
+            app_sponsor=self.sponsor,
+            requestor=self.requestor,
+        )
+        self.app_duplicate.platform.add(self.platform_ios)
 
     def test_view_correct_sponsor(self):
         """
@@ -166,7 +178,7 @@ class MdotRequestTest(TestCase):
         a view for an app that does not exist
         """
         pk = self.app.pk
-        nonexistant_pk = pk + 1
+        nonexistant_pk = pk + 10
 
         self.client.force_login(self.app_sponsor)
         response = self.client.get(
@@ -210,6 +222,37 @@ class MdotRequestTest(TestCase):
             len(Manager.objects.filter(netid=self.manager.netid)),
             1
         )
+
+    def test_agreeing_same_name(self):
+        """
+        Test to check that agreeing to one app will only agree to that app
+        and not to any other apps with the same name.
+        """
+
+        pk = self.app.pk
+        pk_duplicate = self.app_duplicate.pk
+
+        self.client.force_login(self.app_sponsor)
+
+        # checkbox values
+        params = {
+            "sponsor-requirements": "on",
+            "understand-agreements": "on",
+            "understand-manager": "on",
+            "agree": "on"
+        }
+        response = self.client.post("/developers/request/{}/".format(pk),
+                                    params)
+        self.assertEqual(response.status_code, 200)
+        # check that agreement object was created
+        self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
+        self.assertEquals(Agreement.objects.get(app__pk=pk).status, 'agreed')
+        self.assertTrue('Agreed on' in self.app.status())
+
+        # check app with same name's status was not changed
+        self.assertFalse(Agreement.objects.filter(app__pk=pk_duplicate)
+                         .exists())
+        self.assertEqual(self.app_duplicate.status(), 'Pending')
 
     def tearDown(self):
         pass
