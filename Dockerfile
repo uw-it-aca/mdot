@@ -11,8 +11,8 @@ ADD --chown=acait:acait docker/ /app/project/
 ADD --chown=acait:acait docker/app_start.sh /scripts
 RUN chmod u+x /scripts/app_start.sh
 
-RUN . /app/bin/pip install -r requirements.txt
-RUN . /app/bin/pip install psycopg2
+RUN /app/bin/pip install -r requirements.txt
+RUN /app/bin/pip install psycopg2
 
 RUN . /app/bin/activate && pip install nodeenv && nodeenv -p &&\
     npm install -g npm && ./bin/npm install less -g
