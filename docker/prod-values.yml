@@ -67,18 +67,15 @@ externalService:
   enabled: true
   name: mdot-db-service
   type: ClusterIP
-  serviceAddress: 172.18.0.37
-  servicePort: 3306
+  serviceAddress: 172.18.1.206
+  servicePort: 5432
 database:
-  engine: mysql
+  engine: postgres
   name: mdot_prod
   hostname: mdot-db-service
   secretName: prod.mdot.uw.edu-sql-secrets
 repo: mdot
 instance: prod
-image:
-  repository: gcr.io/uwit-mci-axdd/mdot
-  tag: IMAGE_TAG
 memcached:
   enabled: false
 cronjob:
@@ -105,7 +102,7 @@ externalSecrets:
   enabled: true
   secrets:
     - name: prod.mdot.uw.edu-secrets
-      externalKey: axdd/kv/data/mdot/prod/secrets
+      externalKey: mdot/prod/secrets
       data:
         - name: admin-authz-group
           property: admin-authz-group
@@ -122,26 +119,26 @@ externalSecrets:
         - name: mdot-ux-contact
           property: mdot-ux-contact
     - name: prod.mdot.uw.edu-sql-secrets
-      externalKey: axdd/kv/data/mdot/prod/sql-secrets
+      externalKey: mdot/prod/sql-secrets
       data:
         - name: username
           property: username
         - name: password
           property: password
     - name: prod.mdot.uw.edu-uwca-certs
-      externalKey: axdd/kv/data/mdot/prod/uwca-certs
+      externalKey: mdot/prod/uwca-certs
       data:
         - name: prod.mdot.uw.edu-uwca.cert
           property: prod.mdot.uw.edu-uwca.cert
         - name: prod.mdot.uw.edu-uwca.key
           property: prod.mdot.uw.edu-uwca.key
     - name: prod.mdot.uw.edu-ic-cert
-      externalKey: axdd/kv/data/mdot/prod/ic-certs
+      externalKey: mdot/prod/ic-certs
       data:
         - name: prod.mdot.uw.edu-ic.cert
           property: prod.mdot.uw.edu-ic.cert
     - name: prod.mdot.uw.edu-uw-idp-cert
-      externalKey: axdd/kv/data/idp-cert
+      externalKey: idp-cert
       data:
         - name: uw-idp-cert
           property: cert
