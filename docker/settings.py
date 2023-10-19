@@ -3,11 +3,6 @@ from .base_settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-if os.getenv("ENV", "localdev") == "localdev":
-    DEBUG = True
-else:
-    DEBUG = False
-
 ALLOWED_HOSTS += [
     "test.mobile.washington.edu",  # for testing purposes
     "mobile.uw.edu",  # Extraneous after DNS switch
@@ -15,6 +10,13 @@ ALLOWED_HOSTS += [
     "mobile.washington.edu",  # Extraneous after DNS switch unless 301
     "m.washington.edu",  # Extraneous after DNS switch unless 301
 ]
+
+if os.getenv("ENV", "localdev") == "localdev":
+    DEBUG = True
+else:
+    DEBUG = False
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{host}" for host in ALLOWED_HOSTS if host.endswith(".edu")]
 
 GOOGLE_ANALYTICS_KEY = os.getenv('GOOGLE_ANALYTICS_KEY', None)
 

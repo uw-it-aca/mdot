@@ -1,7 +1,8 @@
 # Copyright 2023 UW-IT, University of Washington
 # SPDX-License-Identifier: Apache-2.0
 
-from django.urls import include, path
+from django.urls import path
+from django.conf.urls import include
 from . import views
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
