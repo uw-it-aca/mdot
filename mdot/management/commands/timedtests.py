@@ -32,68 +32,59 @@ def _test_agreement_filter_timeliness():
     )
 
     apps, agreements = [], []
-    statuses = ['agreed', 'denied', 'removed']
+    statuses = ["agreed", "denied", "removed"]
     for i in range(1000):
-        apps.append(App.objects.create(
-            name='TestApp' + str(i),
-            primary_language='English',
-            app_manager=Manager.objects.create(
-                first_name='J',
-                last_name='average',
-                netid='mantest',
-                email='manager@uw.edu'
-            ),
-            app_sponsor=Sponsor.objects.create(
-                first_name='Sponsor',
-                last_name='lname',
-                netid='spontest',
-                email='sponsor@uw.edu'
-            ),
-            requestor=requestor
-        ))
+        apps.append(
+            App.objects.create(
+                name="TestApp" + str(i),
+                primary_language="English",
+                app_manager=Manager.objects.create(
+                    first_name="J",
+                    last_name="average",
+                    netid="mantest",
+                    email="manager@uw.edu",
+                ),
+                app_sponsor=Sponsor.objects.create(
+                    first_name="Sponsor",
+                    last_name="lname",
+                    netid="spontest",
+                    email="sponsor@uw.edu",
+                ),
+                requestor=requestor,
+            )
+        )
 
-        agreements.append(Agreement.objects.create(
-            app=apps[i],
-            status=statuses[random.randint(0, 2)]
-        ))
+        agreements.append(
+            Agreement.objects.create(
+                app=apps[i], status=statuses[random.randint(0, 2)]
+            )
+        )
 
     start = time.time()
     agreeds = AgreementFilter(
-        None,
-        {'status': 'agreed'},
-        Agreement,
-        AgreementAdmin
+        None, {"status": "agreed"}, Agreement, AgreementAdmin
     )
     denieds = AgreementFilter(
-        None,
-        {'status': 'denied'},
-        Agreement,
-        AgreementAdmin
+        None, {"status": "denied"}, Agreement, AgreementAdmin
     )
     removeds = AgreementFilter(
-        None,
-        {'status': 'removed'},
-        Agreement,
-        AgreementAdmin
+        None, {"status": "removed"}, Agreement, AgreementAdmin
     )
     pendings = AgreementFilter(
-        None,
-        {'status': 'pending'},
-        Agreement,
-        AgreementAdmin
+        None, {"status": "pending"}, Agreement, AgreementAdmin
     )
-    print('\nQueryset lengths (out of 1000):')
+    print("\nQueryset lengths (out of 1000):")
     print(len(pendings.queryset(None, App.objects.all())))
     print(len(agreeds.queryset(None, App.objects.all())))
     print(len(denieds.queryset(None, App.objects.all())))
     print(len(removeds.queryset(None, App.objects.all())))
     end = time.time()
-    print('\ntime taken: ' + str(end - start) + ' seconds')
+    print("\ntime taken: " + str(end - start) + " seconds")
 
 
 class Command(BaseCommand):
-    help = 'Runs tests to check the timeliness of MDOT'
+    help = "Runs tests to check the timeliness of MDOT"
 
     def handle(self, *args, **options):
         _test_agreement_filter_timeliness()
-        self.stdout.write(self.style.SUCCESS('Completed'))
+        self.stdout.write(self.style.SUCCESS("Completed"))

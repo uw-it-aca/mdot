@@ -10,11 +10,14 @@ register = template.Library()
 @register.filter
 @stringfilter
 def add_whitespace(value):
-    return value.replace('_', ' ')
+    return value.replace("_", " ")
 
 
 @register.filter
 @stringfilter
 def replace_this_field(value, field):
-    return value.replace('This field', add_whitespace(title(field)))\
-        if 'This field' in value else value
+    return (
+        value.replace("This field", add_whitespace(title(field)))
+        if "This field" in value
+        else value
+    )

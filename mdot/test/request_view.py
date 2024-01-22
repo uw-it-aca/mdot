@@ -3,8 +3,16 @@
 
 from django.test import Client, TestCase
 from django.contrib.auth.models import User
-from mdot.models import SponsorForm, ManagerForm, AppForm,\
-    Platform, App, Sponsor, Manager, Agreement
+from mdot.models import (
+    SponsorForm,
+    ManagerForm,
+    AppForm,
+    Platform,
+    App,
+    Sponsor,
+    Manager,
+    Agreement,
+)
 
 
 class MdotRequestTest(TestCase):
@@ -16,19 +24,14 @@ class MdotRequestTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.app_sponsor = User.objects.create_user(
-            username="javerage",
-            email="javerage@uw.edu",
-            password="p@ssTest1"
+            username="javerage", email="javerage@uw.edu", password="p@ssTest1"
         )
         self.requestor = User.objects.create_user(
-            username="testuser",
-            email="testuser@uw.edu",
-            password="p@ssTest2"
+            username="testuser", email="testuser@uw.edu", password="p@ssTest2"
         )
 
         self.platform = Platform.objects.create(
-            name='Android',
-            app_store='Google Play Store'
+            name="Android", app_store="Google Play Store"
         )
         self.sponsor = Sponsor.objects.create(
             first_name="sponsor",
@@ -37,13 +40,13 @@ class MdotRequestTest(TestCase):
             email="javerage@uw.edu",
             title="title",
             department="department",
-            unit="unit"
+            unit="unit",
         )
         self.manager = Manager.objects.create(
             first_name="manager",
             last_name="last name",
             netid="man",
-            email="man@uw.edu"
+            email="man@uw.edu",
         )
         self.app = App.objects.create(
             name="app name",
@@ -95,10 +98,11 @@ class MdotRequestTest(TestCase):
             "sponsor-requirements": "on",
             "understand-agreements": "on",
             "understand-manager": "on",
-            "agree": "on"
+            "agree": "on",
         }
-        response = self.client.post("/developers/request/{}/".format(pk),
-                                    params)
+        response = self.client.post(
+            "/developers/request/{}/".format(pk), params
+        )
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b"Thank You" in response.content)
         # check that agreement object was created
@@ -119,11 +123,10 @@ class MdotRequestTest(TestCase):
         self.client.force_login(self.app_sponsor)
 
         # checkbox values
-        params = {
-            "sponsor-requirements": "on"
-        }
-        response = self.client.post("/developers/request/{}/".format(pk),
-                                    params)
+        params = {"sponsor-requirements": "on"}
+        response = self.client.post(
+            "/developers/request/{}/".format(pk), params
+        )
         # make sure agreement is not made for app
         self.assertFalse(Agreement.objects.filter(app__pk=pk).exists())
 
@@ -140,7 +143,7 @@ class MdotRequestTest(TestCase):
         self.assertEqual(response.status_code, 200)
         # make sure agreement object is created with 'false' for agree value
         self.assertTrue(Agreement.objects.filter(app__pk=pk).exists())
-        self.assertEquals(Agreement.objects.get(app__pk=pk).status, 'denied')
+        self.assertEquals(Agreement.objects.get(app__pk=pk).status, "denied")
 
         # accessing the original request page should redirect to Thank you page
         response = self.client.get("/developers/request/{}/".format(pk))
@@ -170,11 +173,13 @@ class MdotRequestTest(TestCase):
 
         self.client.force_login(self.app_sponsor)
         response = self.client.get(
-            "/developers/request/{}/".format(nonexistant_pk))
+            "/developers/request/{}/".format(nonexistant_pk)
+        )
         self.assertEqual(response.status_code, 404)
 
         response = self.client.get(
-            "/developers/decline/{}/".format(nonexistant_pk))
+            "/developers/decline/{}/".format(nonexistant_pk)
+        )
         self.assertEqual(response.status_code, 404)
 
     def test_submitting_removes_duplicate_sponsor(self):
@@ -183,15 +188,14 @@ class MdotRequestTest(TestCase):
         Sponsor doesn't create a duplicate Sponsor.
         """
 
-        self.client.request(app=self.app,
-                            sponsor=self.sponsor,
-                            manager=self.manager)
-        self.client.request(app=self.app,
-                            sponsor=self.sponsor,
-                            manager=self.manager)
+        self.client.request(
+            app=self.app, sponsor=self.sponsor, manager=self.manager
+        )
+        self.client.request(
+            app=self.app, sponsor=self.sponsor, manager=self.manager
+        )
         self.assertEqual(
-            len(Sponsor.objects.filter(netid=self.sponsor.netid)),
-            1
+            len(Sponsor.objects.filter(netid=self.sponsor.netid)), 1
         )
 
     def test_submitting_removes_duplicate_manager(self):
@@ -200,15 +204,14 @@ class MdotRequestTest(TestCase):
         Manager doesn't create a duplicate Sponsor.
         """
 
-        self.client.request(app=self.app,
-                            sponsor=self.sponsor,
-                            manager=self.manager)
-        self.client.request(app=self.app,
-                            sponsor=self.sponsor,
-                            manager=self.manager)
+        self.client.request(
+            app=self.app, sponsor=self.sponsor, manager=self.manager
+        )
+        self.client.request(
+            app=self.app, sponsor=self.sponsor, manager=self.manager
+        )
         self.assertEqual(
-            len(Manager.objects.filter(netid=self.manager.netid)),
-            1
+            len(Manager.objects.filter(netid=self.manager.netid)), 1
         )
 
     def tearDown(self):

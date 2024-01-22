@@ -16,8 +16,15 @@ from .mdot_rest_client.client import MDOT
 
 import urllib
 import json
-from .models import SponsorForm, ManagerForm, AppForm, \
-    App, Agreement, Sponsor, Manager
+from .models import (
+    SponsorForm,
+    ManagerForm,
+    AppForm,
+    App,
+    Agreement,
+    Sponsor,
+    Manager,
+)
 
 
 def home(request):
@@ -44,18 +51,23 @@ def request(request):
         sponsorForm = SponsorForm(request.POST, prefix="sponsor")
         managerForm = ManagerForm(request.POST, prefix="manager")
         appForm = AppForm(request.POST, prefix="app")
-        if (sponsorForm.is_valid() and managerForm.is_valid()
-                and appForm.is_valid()):
+        if (
+            sponsorForm.is_valid()
+            and managerForm.is_valid()
+            and appForm.is_valid()
+        ):
             if not Sponsor.objects.filter(netid=sponsorForm.instance.netid):
                 sponsor = sponsorForm.save()
             else:
                 sponsor = Sponsor.objects.filter(
-                    netid=sponsorForm.instance.netid)[0]
+                    netid=sponsorForm.instance.netid
+                )[0]
             if not Manager.objects.filter(netid=managerForm.instance.netid):
                 manager = managerForm.save()
             else:
                 manager = Manager.objects.filter(
-                    netid=managerForm.instance.netid)[0]
+                    netid=managerForm.instance.netid
+                )[0]
             app = appForm.save(commit=False)
             app.app_sponsor = sponsor
             app.app_manager = manager
@@ -71,34 +83,37 @@ def request(request):
             email_context = {
                 "sponsor_name": spon_name,
                 "app_name": app.name,
-                "agreement_link": "{}{}".format(root_url, request_detail_url)
+                "agreement_link": "{}{}".format(root_url, request_detail_url),
             }
             app_requestor_email = "{}@uw.edu".format(app.requestor.username)
 
             msg = EmailMultiAlternatives(
                 "App Sponsorship Agreement Required: {}".format(app.name),
-                get_template(   # text content
-                    "mdot/developers/email/sponsor_plain.html").render(
-                    email_context
-                ),
+                get_template(  # text content
+                    "mdot/developers/email/sponsor_plain.html"
+                ).render(email_context),
                 getattr(settings, "MDOT_SERVICE_EMAIL", None),
                 [sponsor.email],
-                cc=[app_requestor_email, manager.email]
+                cc=[app_requestor_email, manager.email],
             )
             msg.attach_alternative(
-                get_template(
-                    "mdot/developers/email/sponsor.html").render(
+                get_template("mdot/developers/email/sponsor.html").render(
                     email_context
-                ), "text/html")
+                ),
+                "text/html",
+            )
 
             msg.send()
 
             # send email to service now
-            subject = ("MDOT: Mobile Intake Form "
-                       "for {} Submitted").format(app.name)
-            message = ("The Mobile Intake form has been filled out by {}"
-                       " on {}. The details of the submission are included"
-                       " below:").format(app.requestor, app.request_date)
+            subject = ("MDOT: Mobile Intake Form " "for {} Submitted").format(
+                app.name
+            )
+            message = (
+                "The Mobile Intake form has been filled out by {}"
+                " on {}. The details of the submission are included"
+                " below:"
+            ).format(app.requestor, app.request_date)
             sender = app_requestor_email
             cc = sponsor.email
             email_service_now(app, subject, message, sender, cc, "incomplete")
@@ -108,10 +123,7 @@ def request(request):
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
             }
 
-            return render(
-                request,
-                "mdot/developers/thanks.html",
-                params)
+            return render(request, "mdot/developers/thanks.html", params)
         else:
             forms = {
                 "sponsorform": sponsorForm,
@@ -151,41 +163,38 @@ def sponsor(request, pk):
 
     # sponsor has agreed
     # check that the sponsor has agreed to all conditions
-    if (request.method == "POST"
-            and "sponsor-requirements" in request.POST
-            and "understand-agreements" in request.POST
-            and "understand-manager" in request.POST
-            and "agree" in request.POST):
-        agreement = Agreement.objects.create(
-            app=app, status='agreed'
-        )
+    if (
+        request.method == "POST"
+        and "sponsor-requirements" in request.POST
+        and "understand-agreements" in request.POST
+        and "understand-manager" in request.POST
+        and "agree" in request.POST
+    ):
+        agreement = Agreement.objects.create(app=app, status="agreed")
         agreement.save()
 
         # send email to service now
         spon_name = " ".join((app_sponsor.first_name, app_sponsor.last_name))
         subject = "MDOT: Sponsorship for {} Accepted".format(app.name)
-        message = ("The designated app sponsor {0} for the app {1}"
-                   " has agreed on {2}.").format(
-                       spon_name, app.name, agreement.agree_time)
+        message = (
+            "The designated app sponsor {0} for the app {1}"
+            " has agreed on {2}."
+        ).format(spon_name, app.name, agreement.agree_time)
         sender = app.app_sponsor.email
         cc = "{}@uw.edu".format(app.requestor.username)
         email_service_now(app, subject, message, sender, cc, "complete")
 
         params = {
-            'service_email': getattr(settings, "MDOT_SERVICE_EMAIL", None),
-            'ux_contact': getattr(settings, "MDOT_UX_CONTACT", None),
+            "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
+            "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
         }
-        return render(
-            request,
-            'mdot/developers/agree.html',
-            params)
+        return render(request, "mdot/developers/agree.html", params)
 
     # GET request
     else:
         agreement = Agreement.objects.filter(
-                app=app,
-                app__app_sponsor__netid=request.user.username
-            )
+            app=app, app__app_sponsor__netid=request.user.username
+        )
 
         if not agreement:
             # serve agreement form
@@ -193,13 +202,15 @@ def sponsor(request, pk):
                 "app_name": app.name,
                 "app_id": pk,
                 "manager": " ".join(
-                    (app.app_manager.first_name, app.app_manager.last_name)),
+                    (app.app_manager.first_name, app.app_manager.last_name)
+                ),
                 "sponsor": " ".join(
-                    (app_sponsor.first_name, app_sponsor.last_name)),
+                    (app_sponsor.first_name, app_sponsor.last_name)
+                ),
                 "primary_lang": app.primary_language,
                 "platforms": list(app.platform.all()),
                 "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
-                "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None)
+                "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
             }
             return render(request, "mdot/developers/sponsor.html", params)
         else:
@@ -207,19 +218,12 @@ def sponsor(request, pk):
             params = {
                 "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
                 "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
-                "app": app.name
+                "app": app.name,
             }
-            if agreement.latest("agree_time").status == 'agreed':
-                return render(
-                    request,
-                    "mdot/developers/agree.html",
-                    params)
+            if agreement.latest("agree_time").status == "agreed":
+                return render(request, "mdot/developers/agree.html", params)
             else:
-                return render(
-                    request,
-                    "mdot/developers/decline.html",
-                    params
-                )
+                return render(request, "mdot/developers/decline.html", params)
 
 
 @login_required
@@ -235,44 +239,44 @@ def decline(request, pk):
 
     # create new agreement object for app with agree set to false
     agreement = Agreement.objects.filter(
-        app=app, app__app_sponsor__netid=request.user.username)
+        app=app, app__app_sponsor__netid=request.user.username
+    )
     if not agreement:
-        agreement = Agreement.objects.create(
-            app=app,
-            status='denied'
-        )
+        agreement = Agreement.objects.create(app=app, status="denied")
         agreement.save()
 
         # send email to mdot team and original app requestor
         email_context = {
             "app": app.name,
             "app_sponsor": "{} {}".format(
-                app_sponsor.first_name, app_sponsor.last_name)
+                app_sponsor.first_name, app_sponsor.last_name
+            ),
         }
         app_requestor_email = "{}@uw.edu".format(app.requestor.username)
 
         # send email to original app requestor and cc service team
         msg = EmailMultiAlternatives(
             "Sponsorship Declined: {}".format(app.name),
-            get_template(
-                "mdot/developers/email/decline_plain.html"
-                ).render(email_context),
+            get_template("mdot/developers/email/decline_plain.html").render(
+                email_context
+            ),
             getattr(settings, "MDOT_SERVICE_EMAIL", None),
             [app_requestor_email],
-            cc=[getattr(settings, "MDOT_SERVICE_EMAIL", None)]
+            cc=[getattr(settings, "MDOT_SERVICE_EMAIL", None)],
         )
         msg.attach_alternative(
-            get_template(
-                "mdot/developers/email/decline.html").render(
+            get_template("mdot/developers/email/decline.html").render(
                 email_context
-            ), "text/html")
+            ),
+            "text/html",
+        )
 
         msg.send()
 
     params = {
         "service_email": getattr(settings, "MDOT_SERVICE_EMAIL", None),
         "ux_contact": getattr(settings, "MDOT_UX_CONTACT", None),
-        "app": app.name
+        "app": app.name,
     }
     return render(request, "mdot/developers/decline.html", params)
 
@@ -289,17 +293,19 @@ def email_service_now(app, subject, message, sender, cc, status):
         "status": status,
         "sponsor_netid": app_sponsor.netid,
         "sponsor_name": " ".join(
-            (app_sponsor.first_name, app_sponsor.last_name)),
+            (app_sponsor.first_name, app_sponsor.last_name)
+        ),
         "sponsor_email": app_sponsor.email,
         "sponsor_dept": app_sponsor.department,
         "sponsor_unit": app_sponsor.unit,
         "manager_name": " ".join(
-            (app_manager.first_name, app_manager.last_name)),
+            (app_manager.first_name, app_manager.last_name)
+        ),
         "manager_netid": app_manager.netid,
         "manager_email": app_manager.email,
         "app_name": app.name,
         "app_lang": app.primary_language,
-        "app_store": list(app.platform.all())
+        "app_store": list(app.platform.all()),
     }
 
     try:
@@ -310,13 +316,14 @@ def email_service_now(app, subject, message, sender, cc, status):
             ),
             sender,
             [getattr(settings, "MDOT_SERVICE_EMAIL", None)],
-            cc=[cc, app_manager.email]
+            cc=[cc, app_manager.email],
         )
         email.attach_alternative(
-            get_template(
-                "mdot/developers/email/service.html").render(
+            get_template("mdot/developers/email/service.html").render(
                 email_context
-            ), "text/html")
+            ),
+            "text/html",
+        )
 
         email.send()
 
