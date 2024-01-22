@@ -13,7 +13,8 @@ from django.core.exceptions import ValidationError
 
 # assumes NetID conforms to personal or shared NetID requirements
 netid_validator = RegexValidator(
-    regex=r'^[a-z][a-z0-9\-\_\.]{,127}$', message='NetID must be valid.')
+    regex=r"^[a-z][a-z0-9\-\_\.]{,127}$", message="NetID must be valid."
+)
 
 
 class Platform(models.Model):
@@ -37,7 +38,7 @@ class Sponsor(models.Model):
         return self.netid
 
     def full_name(self):
-        return self.first_name + ' ' + self.last_name
+        return self.first_name + " " + self.last_name
 
 
 class Manager(models.Model):
@@ -46,7 +47,7 @@ class Manager(models.Model):
     netid = models.CharField(
         max_length=16,
         validators=[netid_validator],
-        error_messages={'required': 'Please enter a valid NetID'},
+        error_messages={"required": "Please enter a valid NetID"},
     )
     email = models.EmailField(max_length=256)
 
@@ -54,21 +55,21 @@ class Manager(models.Model):
         return self.netid
 
     def full_name(self):
-        return self.first_name + ' ' + self.last_name
+        return self.first_name + " " + self.last_name
 
 
 AGREEMENT_CHOICES = [
-    ('agreed', 'Agreed'),
-    ('denied', 'Denied'),
-    ('removed', 'Removed'),
+    ("agreed", "Agreed"),
+    ("denied", "Denied"),
+    ("removed", "Removed"),
 ]
 
 
 class Agreement(models.Model):
-    app = models.ForeignKey('App', on_delete=models.CASCADE)
-    status = models.CharField(choices=AGREEMENT_CHOICES,
-                              max_length=20,
-                              default='')
+    app = models.ForeignKey("App", on_delete=models.CASCADE)
+    status = models.CharField(
+        choices=AGREEMENT_CHOICES, max_length=20, default=""
+    )
     agree_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -77,19 +78,26 @@ class Agreement(models.Model):
     # time to expiration is subject to change
     def expiration_date(self):
         try:
-            return (self.agree_time.replace(year=self.agree_time.year + 1)
-                    - timedelta(hours=7)).strftime('%b %d, %Y')
+            return (
+                self.agree_time.replace(year=self.agree_time.year + 1)
+                - timedelta(hours=7)
+            ).strftime("%b %d, %Y")
         # Change date from February 29th to March 1st if leap year
         except ValueError:
-            return (self.agree_time
-                    + (date(self.agree_time.year + 1, 1, 1)
-                       - date(self.agree_time.year, 1, 1))
-                    - timedelta(hours=7)).strftime('%b %d, %Y')
+            return (
+                self.agree_time
+                + (
+                    date(self.agree_time.year + 1, 1, 1)
+                    - date(self.agree_time.year, 1, 1)
+                )
+                - timedelta(hours=7)
+            ).strftime("%b %d, %Y")
 
     def clean(self):
-        if self.status == '':
-            raise ValidationError('Please select a status '
-                                  'for the agreement.')
+        if self.status == "":
+            raise ValidationError(
+                "Please select a status " "for the agreement."
+            )
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -97,7 +105,7 @@ class Agreement(models.Model):
 
 
 class Note(models.Model):
-    app = models.ForeignKey('App', on_delete=models.CASCADE)
+    app = models.ForeignKey("App", on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -108,11 +116,13 @@ class App(models.Model):
     primary_language = models.CharField(max_length=20)
     platform = models.ManyToManyField(Platform)
     app_manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
-    manager_contact = models.CharField(default=str(Manager.email),
-                                       editable=False)
+    manager_contact = models.CharField(
+        default=str(Manager.email), editable=False
+    )
     app_sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE)
-    sponsor_contact = models.CharField(default=str(Sponsor.email),
-                                       editable=False)
+    sponsor_contact = models.CharField(
+        default=str(Sponsor.email), editable=False
+    )
     requestor = models.ForeignKey(User, on_delete=models.CASCADE)
     request_date = models.DateTimeField(auto_now_add=True)
 
@@ -141,17 +151,22 @@ class App(models.Model):
 
             agreements.sort(key=time)
             # time adjusted back 7 hours due to disparity (temp fix?)
-            time = (agreements[-1].agree_time - timedelta(hours=7))\
-                .strftime('%b %d, %Y, %I:%M %p')
-            if datetime.now().date() > datetime.strptime(
-                    agreements[-1].expiration_date(), '%b %d, %Y').date():
-                return 'Pending'
-            if agreements[-1].status == 'agreed':
+            time = (agreements[-1].agree_time - timedelta(hours=7)).strftime(
+                "%b %d, %Y, %I:%M %p"
+            )
+            if (
+                datetime.now().date()
+                > datetime.strptime(
+                    agreements[-1].expiration_date(), "%b %d, %Y"
+                ).date()
+            ):
+                return "Pending"
+            if agreements[-1].status == "agreed":
                 return "Agreed on " + time
-            elif agreements[-1].status == 'denied':
+            elif agreements[-1].status == "denied":
                 return "Denied on " + time
             else:  # agreements[-1].status == 'removed':
-                return 'Removed on ' + time
+                return "Removed on " + time
 
     sponsor_contact = property(sponsor_contact)
     manager_contact = property(manager_contact)
@@ -162,18 +177,14 @@ class SponsorForm(forms.ModelForm):
     class Meta:
         model = Sponsor
         fields = "__all__"
-        labels = {
-            "netid": "UW NetID"
-        }
+        labels = {"netid": "UW NetID"}
 
 
 class ManagerForm(forms.ModelForm):
     class Meta:
         model = Manager
         fields = "__all__"
-        labels = {
-            "netid": "UW NetID"
-        }
+        labels = {"netid": "UW NetID"}
 
 
 class AppForm(forms.ModelForm):
@@ -182,12 +193,13 @@ class AppForm(forms.ModelForm):
         fields = ["name", "primary_language", "platform"]
         labels = {
             "name": "Application Name",
-            "platform": "Distribution Platform"
+            "platform": "Distribution Platform",
         }
 
     def __init__(self, *args, **kwargs):
         super(AppForm, self).__init__(*args, **kwargs)
-        self.fields["primary_language"] \
-            .widget.attrs["placeholder"] = "e.g. English"
+        self.fields["primary_language"].widget.attrs[
+            "placeholder"
+        ] = "e.g. English"
         self.fields["platform"].widget = forms.CheckboxSelectMultiple()
         self.fields["platform"].queryset = Platform.objects.all()
