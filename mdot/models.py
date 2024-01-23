@@ -129,7 +129,7 @@ class App(models.Model):
         return ", ".join([p.app_store for p in self.platform.all()])
 
     def status(self):
-        dates = Agreement.objects.filter(app__name=self.name)
+        dates = Agreement.objects.filter(app__pk=self.pk)
         if not dates.exists():
             return "Pending"
         else:
