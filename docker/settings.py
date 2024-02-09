@@ -49,6 +49,7 @@ RESTCLIENTS_MDOT_DAO_CLASS = os.getenv("RESTCLIENTS_MDOT_DAO_CLASS", "Mock")
 RESTCLIENTS_MDOT_HOST = os.getenv("RESTCLIENTS_MDOT_HOST", None)
 RESTCLIENTS_CA_BUNDLE = '/etc/ssl/certs/ca-certificates.crt'
 
+EMAIL_BACKEND = 'project.mail.backends.EmailBackend'
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 
 MDOT_HELP_EMAIL = os.getenv(
