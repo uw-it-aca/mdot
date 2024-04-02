@@ -3,7 +3,7 @@
 
 from django.test import Client, TestCase
 from django.contrib.auth.models import User
-from mdot.models import SponsorForm, ManagerForm, AppForm,\
+from mdot.models import SponsorForm, ManagerForm, AppForm, \
     Platform, App, Sponsor, Manager, Agreement
 
 
