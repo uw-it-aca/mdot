@@ -1,9 +1,9 @@
-# Copyright 2023 UW-IT, University of Washington
+# Copyright 2024 UW-IT, University of Washington
 # SPDX-License-Identifier: Apache-2.0
 
 from django.test import Client, TestCase
 from django.contrib.auth.models import User
-from mdot.models import SponsorForm, ManagerForm, AppForm,\
+from mdot.models import SponsorForm, ManagerForm, AppForm, \
     Platform, App, Sponsor, Manager, Agreement
 
 
