@@ -24,6 +24,8 @@ setup(
         'user-agents',
         'django-user-agents',
         'UW-Django-SAML2',
+        'lxml==4.9.4',
+        'xmlsec==1.3.13'
     ],
     license='Apache License, Version 2.0',
     description='Mobile UW web application',
