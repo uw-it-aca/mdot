@@ -28,33 +28,29 @@ class MdotAdminTest(TestCase):
 
         self.client = Client()
         self.user = User.objects.create_user(
-            username="javerage",
-            email="javerage@uw.edu",
-            password="p@ssTest1"
+            username="javerage", email="javerage@uw.edu", password="p@ssTest1"
         )
         self.platform_android = Platform.objects.create(
-            name='Android',
-            app_store='Google Play Store'
+            name="Android", app_store="Google Play Store"
         )
         self.platform_ios = Platform.objects.create(
-            name='IOS',
-            app_store='Apple Store'
+            name="IOS", app_store="Apple Store"
         )
         self.sponsor = Sponsor.objects.create(
-            first_name='Sponsor',
-            last_name='lname',
-            netid='spontest',
-            email='sponsor@uw.edu'
+            first_name="Sponsor",
+            last_name="lname",
+            netid="spontest",
+            email="sponsor@uw.edu",
         )
         self.manager = Manager.objects.create(
-            first_name='J',
-            last_name='average',
-            netid='mantest',
-            email='manager@uw.edu'
+            first_name="J",
+            last_name="average",
+            netid="mantest",
+            email="manager@uw.edu",
         )
         self.app = App.objects.create(
-            name='TestApp',
-            primary_language='English',
+            name="TestApp",
+            primary_language="English",
             app_manager=self.manager,
             app_sponsor=self.sponsor,
             requestor=self.user,
@@ -66,8 +62,8 @@ class MdotAdminTest(TestCase):
         displays the app store name correctly.
         """
 
-        platform = Platform(name='Incorrect', app_store='Android')
-        self.assertEqual('Android', str(platform))
+        platform = Platform(name="Incorrect", app_store="Android")
+        self.assertEqual("Android", str(platform))
 
     def test_sponsor_name_displays_properly(self):
         """
@@ -75,7 +71,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        self.assertEqual('Sponsor lname', str(self.sponsor.full_name()))
+        self.assertEqual("Sponsor lname", str(self.sponsor.full_name()))
 
     def test_manager_name_displays_properly(self):
         """
@@ -83,7 +79,7 @@ class MdotAdminTest(TestCase):
         displays the full name correctly.
         """
 
-        self.assertEqual('J average', str(self.manager.full_name()))
+        self.assertEqual("J average", str(self.manager.full_name()))
 
     def test_app_name_displays_properly(self):
         """
@@ -91,7 +87,7 @@ class MdotAdminTest(TestCase):
         displays the app's name correctly.
         """
 
-        self.assertEqual('TestApp', str(self.app))
+        self.assertEqual("TestApp", str(self.app))
 
     def test_manager_contact_displays_properly(self):
         """
@@ -100,7 +96,7 @@ class MdotAdminTest(TestCase):
         """
 
         display = self.app.manager_contact
-        self.assertEqual('manager@uw.edu', display)
+        self.assertEqual("manager@uw.edu", display)
 
     def test_sponsor_contact_displays_properly(self):
         """
@@ -109,7 +105,7 @@ class MdotAdminTest(TestCase):
         """
 
         display = self.app.sponsor_contact
-        self.assertEqual('sponsor@uw.edu', display)
+        self.assertEqual("sponsor@uw.edu", display)
 
     def test_agreement_name_displays_properly(self):
         """
@@ -117,8 +113,8 @@ class MdotAdminTest(TestCase):
         displays correctly.
         """
 
-        agreement = Agreement(app=self.app, status='agreed')
-        self.assertEqual('TestApp', str(agreement))
+        agreement = Agreement(app=self.app, status="agreed")
+        self.assertEqual("TestApp", str(agreement))
 
     def test_agreed_status_displays_properly(self):
         """
@@ -127,12 +123,10 @@ class MdotAdminTest(TestCase):
 
         time = datetime.now()
         agreement = Agreement.objects.create(
-            app=self.app,
-            status='agreed',
-            agree_time=time
+            app=self.app, status="agreed", agree_time=time
         )
         display = self.app.status()
-        self.assertTrue(str(display).startswith('Agreed on '))
+        self.assertTrue(str(display).startswith("Agreed on "))
         # self.assertEqual(
         #     'Agreed on ' + time.strftime('%b %d, %Y, %I:%M %p'),
         #     str(display)
@@ -145,12 +139,10 @@ class MdotAdminTest(TestCase):
 
         time = datetime.now()
         agreement = Agreement.objects.create(
-            app=self.app,
-            status='denied',
-            agree_time=time
+            app=self.app, status="denied", agree_time=time
         )
         display = self.app.status()
-        self.assertTrue(str(display).startswith('Denied on '))
+        self.assertTrue(str(display).startswith("Denied on "))
         # self.assertEqual(
         #     'Denied on ' + time.strftime('%b %d, %Y, %I:%M %p'),
         #     str(display)
@@ -163,12 +155,10 @@ class MdotAdminTest(TestCase):
 
         time = datetime.now()
         agreement = Agreement.objects.create(
-            app=self.app,
-            status='removed',
-            agree_time=time
+            app=self.app, status="removed", agree_time=time
         )
         display = self.app.status()
-        self.assertTrue(str(display).startswith('Removed on '))
+        self.assertTrue(str(display).startswith("Removed on "))
         # self.assertEqual(
         #     'Removed on ' + time.strftime('%b %d, %Y, %I:%M %p'),
         #     str(display)
@@ -180,12 +170,9 @@ class MdotAdminTest(TestCase):
         """
 
         time = datetime.now()
-        agreement = Agreement(
-            app=self.app,
-            agree_time=time
-        )
+        agreement = Agreement(app=self.app, agree_time=time)
         display = self.app.status()
-        self.assertEqual('Pending', str(display))
+        self.assertEqual("Pending", str(display))
 
     def test_app_platform_displays_properly(self):
         """
@@ -194,7 +181,7 @@ class MdotAdminTest(TestCase):
 
         self.app.platform.add(self.platform_ios, self.platform_android)
         display = self.app.app_platform()
-        self.assertEqual('Google Play Store, Apple Store', str(display))
+        self.assertEqual("Google Play Store, Apple Store", str(display))
 
     def test_invalid_agreement_status(self):
         """
@@ -205,9 +192,8 @@ class MdotAdminTest(TestCase):
         time = datetime.now()
         with self.assertRaises(ValidationError):
             agreement = Agreement.objects.create(
-                app=self.app,
-                status='',
-                agree_time=time)
+                app=self.app, status="", agree_time=time
+            )
 
     def test_agreement_filter_accepted_status(self):
         """
@@ -216,17 +202,10 @@ class MdotAdminTest(TestCase):
         """
 
         time = datetime.now()
-        agreement = Agreement(
-            app=self.app,
-            status='agreed',
-            agree_time=time
-        )
+        agreement = Agreement(app=self.app, status="agreed", agree_time=time)
         apps = App.objects.all()
         f = AgreementFilter(
-            None,
-            {'status': 'agreed'},
-            Agreement,
-            AgreementAdmin
+            None, {"status": "agreed"}, Agreement, AgreementAdmin
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists)
 
@@ -237,17 +216,10 @@ class MdotAdminTest(TestCase):
         """
 
         time = datetime.now()
-        agreement = Agreement(
-            app=self.app,
-            status='denied',
-            agree_time=time
-        )
+        agreement = Agreement(app=self.app, status="denied", agree_time=time)
         apps = App.objects.all()
         f = AgreementFilter(
-            None,
-            {'status': 'denied'},
-            Agreement,
-            AgreementAdmin
+            None, {"status": "denied"}, Agreement, AgreementAdmin
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists)
 
@@ -258,17 +230,10 @@ class MdotAdminTest(TestCase):
         """
 
         time = datetime.now()
-        agreement = Agreement(
-            app=self.app,
-            status='removed',
-            agree_time=time
-        )
+        agreement = Agreement(app=self.app, status="removed", agree_time=time)
         apps = App.objects.all()
         f = AgreementFilter(
-            None,
-            {'status': 'removed'},
-            Agreement,
-            AgreementAdmin
+            None, {"status": "removed"}, Agreement, AgreementAdmin
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists)
 
@@ -282,10 +247,7 @@ class MdotAdminTest(TestCase):
         Agreement.objects.all().delete()
         apps = App.objects.all()
         f = AgreementFilter(
-            None,
-            {'status': 'pending'},
-            Agreement,
-            AgreementAdmin
+            None, {"status": "pending"}, Agreement, AgreementAdmin
         )
         self.assertTrue(f.queryset(None, apps).filter(id=self.app.id).exists())
 

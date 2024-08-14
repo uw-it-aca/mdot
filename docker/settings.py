@@ -39,22 +39,18 @@ MIDDLEWARE += (
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+#    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     MEDIA_ROOT = "/app/data/"
     MEDIA_URL = "/media/"
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#else:
+#    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 RESTCLIENTS_MDOT_DAO_CLASS = os.getenv("RESTCLIENTS_MDOT_DAO_CLASS", "Mock")
 RESTCLIENTS_MDOT_HOST = os.getenv("RESTCLIENTS_MDOT_HOST", None)
 RESTCLIENTS_CA_BUNDLE = '/etc/ssl/certs/ca-certificates.crt'
 
+EMAIL_BACKEND = 'project.mail.backends.EmailBackend'
 EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_PORT = 587
-EMAIL_TIMEOUT = 15
-EMAIL_USE_TLS = True
-EMAIL_SSL_CERTFILE = os.getenv("CERT_PATH", "")
-EMAIL_SSL_KEYFILE = os.getenv("KEY_PATH", "")
 
 MDOT_HELP_EMAIL = os.getenv(
     "MDOT_HELP_EMAIL", "help@example.edu"

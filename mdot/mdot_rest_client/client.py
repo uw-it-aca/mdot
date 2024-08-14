@@ -16,6 +16,7 @@ class MDOT(DAO):
     Uses Mock DAO with following configuration:
     RESTCLIENTS_MDOT_DAO_CLASS='Mock'
     """
+
     def get_resources(self, **kwargs):
         url = "/api/v1/uwresources/"
         i = kwargs.__len__()
@@ -27,8 +28,7 @@ class MDOT(DAO):
                     url += "&"
                 i = i - 1
 
-        response = self.getURL(url,
-                               {'Accept': 'application/json'})
+        response = self.getURL(url, {"Accept": "application/json"})
         resources = json.loads(response.data)
         resources = self._python_list_to_resources_model_list(resources)
         return resources
@@ -36,19 +36,22 @@ class MDOT(DAO):
     def _python_list_to_resources_model_list(self, resources):
         client_resources = []
         for resource in resources:
-            client_resource = ClientResource(resource['id'],
-                                             resource['title'],
-                                             resource['feature_desc'],
-                                             resource['image'],
-                                             resource['resource_links'])
+            client_resource = ClientResource(
+                resource["id"],
+                resource["title"],
+                resource["feature_desc"],
+                resource["image"],
+                resource["resource_links"],
+            )
             client_resources.append(client_resource)
             client_resources = sorted(
                 client_resources,
-                key=lambda client_resource: client_resource.title)
+                key=lambda client_resource: client_resource.title,
+            )
         return client_resources
 
     def service_name(self):
-        return 'mdot'
+        return "mdot"
 
     def service_mock_paths(self):
         path = [abspath(os.path.join(dirname(__file__), "../resources"))]
@@ -63,6 +66,7 @@ class ClientResource(object):
     """
     A class object to be used in the mdot client views.
     """
+
     resource_id = None
     title = None
     feature_desc = None
@@ -73,8 +77,9 @@ class ClientResource(object):
         if isinstance(resource_id, int):
             self.resource_id = resource_id
         else:
-            raise TypeError("resource_id is not an int: {0}".format(
-                            resource_id))
+            raise TypeError(
+                "resource_id is not an int: {0}".format(resource_id)
+            )
         if isinstance(title, str):
             self.title = title
         else:
@@ -82,12 +87,13 @@ class ClientResource(object):
         if isinstance(feature_desc, str):
             self.feature_desc = feature_desc
         else:
-            raise TypeError("feature_desc is not unicode: {0}".format(
-                            feature_desc))
+            raise TypeError(
+                "feature_desc is not unicode: {0}".format(feature_desc)
+            )
         if isinstance(image, str):
             self.image_url = image
         elif image is None:
-            self.image_url = u''
+            self.image_url = ""
         else:
             raise TypeError("image_url is not unicode: {0}".format(image))
         self.resource_links = self.add_resource_link(links)
@@ -95,34 +101,35 @@ class ClientResource(object):
     def add_resource_link(self, links):
         resource_links = {}
         for link in links:
-            if isinstance(link['link_type'], str) and\
-               isinstance(link['url'], str):
-                resource_links[link['link_type']] = link['url']
+            if isinstance(link["link_type"], str) and isinstance(
+                link["url"], str
+            ):
+                resource_links[link["link_type"]] = link["url"]
             else:
                 raise TypeError("Error with resource_links: {0}".format(links))
         return resource_links
 
     def has_ios(self):
         for link in self.resource_links:
-            if link == 'IOS':
+            if link == "IOS":
                 return True
         return False
 
     def has_and(self):
         for link in self.resource_links:
-            if link == 'AND':
+            if link == "AND":
                 return True
         return False
 
     def has_wip(self):
         for link in self.resource_links:
-            if link == 'WIP':
+            if link == "WIP":
                 return True
         return False
 
     def has_web(self):
         for link in self.resource_links:
-            if link == 'WEB':
+            if link == "WEB":
                 return True
         return False
 
