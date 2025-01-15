@@ -2,20 +2,12 @@ version: '3.4'
 
 services:
   app:
+    environment:
+      PORT: 8000
     restart: always
     container_name: mdot
     build:
       context: .
-      dockerfile: ${DOCKERFILE:-Dockerfile}
       target: app-container
-    # map the local (host) directories to their container counterparts
-    # to support live-syncing
-    volumes:
-      - ./mdot:/app/mdot
     ports:
-      - "${PORT:-8000}:8000"
-    environment:
-      ENV: localdev
-      AUTH: ${AUTH:-SAML_MOCK}
-      RESTCLIENTS_MDOT_DAO_CLASS: ${RESTCLIENTS_MDOT_DAO_CLASS:-Mock}
-      RESTCLIENTS_MDOT_HOST: ${RESTCLIENTS_MDOT_HOST:-None}
+      - "${RUNSERVER_PORT:-8000}:8000"
