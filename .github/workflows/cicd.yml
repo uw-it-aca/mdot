@@ -154,7 +154,7 @@ jobs:
 
       - name: Deployment Pipeline
         if: >-
-          contains(fromJSON('["main", "master", "develop", "qa"]'),
+          contains(fromJSON('["main"]'),
             needs.context.outputs.git_repo_branch)
         uses: uw-it-aca/actions/cicd-deploy@main
         with:
