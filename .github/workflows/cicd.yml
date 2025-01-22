@@ -1,48 +1,14 @@
-#
-# Example GitHub Actions config that drives UW-IT AXD2 integration and deployment
-#
-# Preconditions:
-#
-#  1) Application docker build is based on django-container
-#
-#  2) Application test suite is kicked off in docker/test.sh
-#
-#  3) Application repo has access to the two secrets
-#     at https://github.com/organizations/uw-it-aca/settings/secrets:
-#
-#     GH_AUTH_TOKEN: Grants access to private flux deployment repo
-#     GCP_JSON_KEY: Grants access to Google Cloud Registry
-#
-# To adapt this config file to a specific django project:
-#
-#  1) Set RELEASE_NAME suitable for deployment to k8s. RELEASE_NAME must
-#     match the "repo" value in docker/*-values.yml.
-#
-#  2) Set DJANGO_APP to the name of the django project name/directory.
-#
-#  3) Verify that the lists of branches for push/pull_request is appropriate,
-#     and add other branch names if needed.  Additional branch names must
-#     also have steps defined in the deploy job
-#
-#  4) Confirm that the build steps are suitable.  Likely they are, but
-#     some projects have an intermediate build step that could benefit
-#     from caching, so it may be useful to augment the build steps.
-#
 ---
 name: Build, Test and Deploy
 
 env:
-  # Release name must match "repo" value in docker/*-values.yml
   RELEASE_NAME: mdot
-  DJANGO_APP: mdot
 
-# Be sure that branches defined here have corresponding steps
-# defined in the "deploy" job
 on:
   push:
-    branches: [main, master, qa, develop, feature/eval-me]
+    branches: [main, develop]
   pull_request:
-    branches: [main, master, qa, develop, feature/eval-me]
+    branches: [main, develop]
     types: [opened, reopened, synchronize]
 
 jobs:
@@ -62,24 +28,13 @@ jobs:
           release_name: ${{ env.RELEASE_NAME }}
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
 
     needs: context
 
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Run Python Linters
-        uses: uw-it-aca/actions/python-linters@main
-        with:
-          app_name: ${DJANGO_APP}
-          exclude_paths: 'migrations'
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -93,43 +48,13 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Build App Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v3
         with:
-          context: .
-          target: app-container
           tags: ${{ needs.context.outputs.image_tag }}
           push: false
           load: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-
-      - name: Build Test Image
-        uses: docker/build-push-action@v6
-        with:
-          target: app-test-container
-          tags: app-test-container
-          push: false
-          load: true
-
-      - name: Run Tests in Image
-        id: tests
-        shell: bash
-        run: >-
-          docker run -u root -t
-          -v ${PWD}:/coverage
-          -e DJANGO_APP="$DJANGO_APP"
-          -e "ENV=localdev" -e "AUTH=SAML_MOCK"
-          app-test-container
-          bash -c ". ./docker/test.sh"
-
-      - name: Record Test Results
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          python -m pip install --upgrade pip coverage coveralls==3.3.1
-          coverage combine
-          coveralls
 
       - name: Push Image to Repository
         if: github.event_name == 'push'
@@ -143,10 +68,10 @@ jobs:
 
     needs: [context, build]
 
+    runs-on: ubuntu-22.04
+
     outputs:
       context: ${{ steps.context.outputs.context }}
-
-    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout Repo
@@ -154,24 +79,14 @@ jobs:
 
       - name: Deployment Pipeline
         if: >-
-          contains(fromJSON('["main", "master", "develop", "qa"]'),
+          contains(fromJSON('["main", "master"]'),
             needs.context.outputs.git_repo_branch)
         uses: uw-it-aca/actions/cicd-deploy@main
         with:
           release_name: ${{ env.RELEASE_NAME }}
+          gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
           commit_hash: ${{ needs.context.outputs.commit_hash }}
           git_repo_branch: ${{ needs.context.outputs.git_repo_branch }}
-          gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
-
-      - name: Deploy Evaluation Branch
-        if: needs.context.outputs.git_repo_branch == 'feature/eval-me'
-        uses: uw-it-aca/actions/cicd-deploy@main
-        with:
-          release_name: ${{ env.RELEASE_NAME }}
-          commit_hash: ${{ needs.context.outputs.commit_hash }}
-          git_repo_branch: ${{ needs.context.outputs.git_repo_branch }}
-          gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
-          app_instance: eval
 
       - name: 'Surface context from executed build step'
         id: context
@@ -193,3 +108,4 @@ jobs:
           gh_auth_token: ${{ secrets.GH_AUTH_TOKEN }}
           registry_password: ${{ secrets.GCP_JSON_KEY }}
           context: ${{ needs.deploy.outputs.context }}
+          prune_flux_preserve_count: 2
