@@ -1,8 +1,8 @@
 autoscaling:
   enabled: true
-  minReplicas: 2
-  maxReplicas: 4
-targetAverageUtilization: 100
+  minReplicas: 1
+  maxReplicas: 2
+
 ingress:
   enabled: true
   tls:
@@ -49,131 +49,66 @@ ingress:
         - "/"
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/ssl-ciphers: "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-SHA256"
-    nginx.ingress.kubernetes.io/client-body-buffer-size: "16K"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       return 301 https://www.washington.edu/mobile/;
-lifecycle:
-  enabled: true
-  preStop:
-    enabled: true
-affinity:
-   podsSpanNodes: true
-readiness:
-  enabled: true
-externalService:
-  enabled: true
-  name: mdot-db-service
-  type: ClusterIP
-  serviceAddress: 172.18.1.206
-  servicePort: 5432
-database:
-  engine: postgres
-  name: mdot_prod
-  hostname: mdot-db-service
-  secretName: prod.mdot.uw.edu-sql-secrets
+
 repo: mdot
 instance: prod
-memcached:
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 256Mi
+  requests:
+    cpu: 25m
+    memory: 128Mi
+
+service:
+  enabled: true
+  ports:
+    - port: 80
+      targetPort: 8000
+      name: http
+    - port: 9113
+      targetPort: 9113
+      name: metrics
+
+deploymentInitialization:
   enabled: false
+
+daemon:
+  enabled: false
+
+database:
+  engine: null
+
+externalService:
+  enabled: false
+
 cronjob:
   enabled: false
+
+memcached:
+  enabled: false
+
 certs:
-  mounted: true
-  certPath: /certs/prod.mdot.uw.edu-uwca.cert
-  keyPath: /certs/prod.mdot.uw.edu-uwca.key
-  secretName: prod.mdot.uw.edu-uwca-certs
-environmentVariables:
-  - name: AUTH
-    value: SAML
-  - name: CLUSTER_CNAME
-    value: mobile.uw.edu
-  - name: ENV
-    value: prod
-  - name: RESTCLIENTS_MDOT_DAO_CLASS
-    value: Live
-  - name: RESTCLIENTS_MDOT_HOST
-    value: https://prod-api.mdot.uw.edu
-  - name: SAML_ENTITY_ID
-    value: https://mobile.uw.edu/saml2
-externalSecrets:
+  mounted: false
+
+gcsCredentials:
+  mounted: false
+
+metrics:
   enabled: true
-  secrets:
-    - name: prod.mdot.uw.edu-secrets
-      externalKey: mdot/prod/secrets
-      data:
-        - name: admin-authz-group
-          property: admin-authz-group
-        - name: django-secret
-          property: django-secret
-        - name: google-analytics-key
-          property: google-analytics-key
-        - name: email-host
-          property: email-host
-        - name: mdot-help-email
-          property: mdot-help-email
-        - name: mdot-service-team-email
-          property: mdot-service-team-email
-        - name: mdot-ux-contact
-          property: mdot-ux-contact
-    - name: prod.mdot.uw.edu-sql-secrets
-      externalKey: mdot/prod/sql-secrets
-      data:
-        - name: username
-          property: username
-        - name: password
-          property: password
-    - name: prod.mdot.uw.edu-uwca-certs
-      externalKey: mdot/prod/uwca-certs
-      data:
-        - name: prod.mdot.uw.edu-uwca.cert
-          property: prod.mdot.uw.edu-uwca.cert
-        - name: prod.mdot.uw.edu-uwca.key
-          property: prod.mdot.uw.edu-uwca.key
-    - name: prod.mdot.uw.edu-ic-cert
-      externalKey: mdot/prod/ic-certs
-      data:
-        - name: prod.mdot.uw.edu-ic.cert
-          property: prod.mdot.uw.edu-ic.cert
-    - name: prod.mdot.uw.edu-uw-idp-cert
-      externalKey: idp-cert
-      data:
-        - name: uw-idp-cert
-          property: cert
-environmentVariablesSecrets:
-  adminAuthzGroup:
-    name: ADMIN_AUTHZ_GROUP
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: admin-authz-group
-  djangoSecret:
-    name: DJANGO_SECRET
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: django-secret
-  googleAnalyticsKey:
-    name: GOOGLE_ANALYTICS_KEY
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: google-analytics-key
-  emailHost:
-    name: EMAIL_HOST
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: email-host
-  mdotHelpEmail:
-    name: MDOT_HELP_EMAIL
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: mdot-help-email
-  mdotUXContact:
-    name: MDOT_UX_CONTACT
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: mdot-ux-contact
-  mdotServiceEmail:
-    name: MDOT_SERVICE_EMAIL
-    secretName: prod.mdot.uw.edu-secrets
-    secretKey: mdot-service-team-email
-  samlSPCert:
-    name: SP_CERT
-    secretName: prod.mdot.uw.edu-ic-cert
-    secretKey: prod.mdot.uw.edu-ic.cert
-  samlIDPCert:
-    name: IDP_CERT
-    secretName: prod.mdot.uw.edu-uw-idp-cert
-    secretKey: uw-idp-cert
+  serviceMonitor:
+    enabled: true
+    port: metrics
+
+readiness:
+  enabled: false
+
+lifecycle:
+  enabled: true
+
+environmentVariables:
+  - name: "ENV"
+    value: "prod"

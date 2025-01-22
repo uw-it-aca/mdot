@@ -1,3 +1,0 @@
-include README.md
-recursive-include mdot/static *
-recursive-include mdot/templates *
